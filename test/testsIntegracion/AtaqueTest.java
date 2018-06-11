@@ -16,7 +16,7 @@ import juego.Mazo;
 class AtaqueTest {
 
 	@Test
-	void testJugadorADestruyeMonstruoDeJugadorBYLoLastima() {
+	void testJugadorAAtacaConUnMonstruoMasFuerteQueElDeBAmbosEnModoAtaqueSeDestruyeElDeBYSeLastimaB() {
 		
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
@@ -36,7 +36,7 @@ class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(dragonBlancoDeOjosAzules);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		
-		jugadorB.meAtaca(jugadorA);
+		dragonBlancoDeOjosAzules.atacar(insectoComeHombres);
 		
 		//VIDA DEL JUGADOR B - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (3000 - 450);
@@ -45,7 +45,7 @@ class AtaqueTest {
 	}
 	
 	@Test
-	void testJugadorADestruyeSuPropioMonstruoYSeLastima() {
+	void testJugadorAAtacaConUnMonstruoMasDebilQueElDeBAmbosEnModoAtaqueSeDestruyeSuPropioMonstruoYSeLastimaA() {
 		
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
@@ -65,7 +65,7 @@ class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(dragonBlancoDeOjosAzules);
 		
-		jugadorB.meAtaca(jugadorA);
+		insectoComeHombres.atacar(dragonBlancoDeOjosAzules);
 		
 		//VIDA DEL JUGADOR A - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (3000 - 450);
@@ -74,7 +74,7 @@ class AtaqueTest {
 	}
 	
 	@Test
-	void testJugadorADestruyeMonstruosYNadieSeLastima() {
+	void testJugadorAAtacaConUnMonstruoIgualDeFuerteQueElDeBEnModoAtaqueSeDestruyenAmbosMonstruosYNadieSeLastima() {
 		
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
@@ -94,7 +94,7 @@ class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(otroInsectoComeHombres);
 		
-		jugadorB.meAtaca(jugadorA);
+		insectoComeHombres.atacar(otroInsectoComeHombres);
 		
 		int vida = 8000;
 		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
@@ -104,7 +104,7 @@ class AtaqueTest {
 	}
 	
 	@Test
-	void testJugadorAAtacaMonstruoEnModoDefensaDeJugadorBYNoLastima() {
+	void testJugadorAAtacaConUnMonstruoMasDebilAlDeBEnModoDefensaNingunMonstruoSeDestruyeYNadieSeLastima() {
 		
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
@@ -124,10 +124,41 @@ class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoDefensa(dragonBlancoDeOjosAzules);
 		
-		jugadorB.meAtaca(jugadorA);
+		insectoComeHombres.atacar(dragonBlancoDeOjosAzules);
 		
 		int vida = 8000;
+		assertFalse(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertFalse(jugadorB.estaLaCartaEnCementerio(dragonBlancoDeOjosAzules));
+		assertEquals(vida, jugadorA.vida()); 
+		assertEquals(vida, jugadorB.vida()); 
+	}
+	
+	@Test
+	void testJugadorAAtacaConUnMonstruoMasFuerteAlDeBEnModoDefensaSeDestruyeElMonstruoDeBYNadieSeLastima() {
+		
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
+		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
+		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
+		
+		mazoA.agregar(dragonBlancoDeOjosAzules);
+		mazoB.agregar(insectoComeHombres);
+		
+		Jugador jugadorA = new Jugador(mazoA);
+		Jugador jugadorB = new Jugador(mazoB);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
+		
+		jugadorA.colocarCartaMonstruoEnModoAtaque(dragonBlancoDeOjosAzules);
+		jugadorB.colocarCartaMonstruoEnModoDefensa(insectoComeHombres);
+		
+		dragonBlancoDeOjosAzules.atacar(dragonBlancoDeOjosAzules);
+		
+		int vida = 8000;
+		assertTrue(jugadorB.estaLaCartaEnCementerio(insectoComeHombres));
+		assertEquals(vida, jugadorA.vida()); 
 		assertEquals(vida, jugadorB.vida()); 
 	}
 	
@@ -157,11 +188,8 @@ class AtaqueTest {
 		jugadorA.tomarCartaDelMazo();
 		jugadorA.colocarCartaMagicaBocaArriba(agujeroOscuro);
 		
-		int vida = 8000;
 		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertTrue(jugadorB.estaLaCartaEnCementerio(dragonBlancoDeOjosAzules));
-		assertEquals(vida, jugadorA.vida());
-		assertEquals(vida, jugadorB.vida()); 
 	}
 
 }
