@@ -16,59 +16,51 @@ class JuegoTest {
 
 	@Test
 	void testColocarCartaMonstruoEnModoAtaque() {
-		Jugador jugador = new Jugador();
+
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
+		insectoComeHombres.colocarEnModoAtaque();
 
-		jugador.agregarCartaAMano(insectoComeHombres);
-		jugador.colocarCartaMonstruo(insectoComeHombres, new ModoAtaque());
-
-		assertTrue(jugador.tieneCartaMonstruoEnModoAtaque());
+		assertTrue(insectoComeHombres.estaEnModoAtaque());
 	}
 
 	@Test
 	void testColocarCartaMonstruoEnModoDefensa() {
-		Jugador jugador = new Jugador();
+
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
+		insectoComeHombres.colocarEnModoDefensa();
 
-		jugador.agregarCartaAMano(insectoComeHombres);
-		jugador.colocarCartaMonstruo(insectoComeHombres, new ModoDefensa());
-
-		assertTrue(jugador.tieneCartaMonstruoEnModoDefensa());
+		assertTrue(insectoComeHombres.estaEnModoDefensa());
 	}
 
 	@Test
 	void testColocarCartaMagicaBocaAbajo() {
-		Jugador jugador = new Jugador();
+
 		AgujeroOscuro agujeroOscuro = new AgujeroOscuro();
+		agujeroOscuro.colocarBocaAbajo();
 
-		jugador.agregarCartaAMano(agujeroOscuro);
-		jugador.colocarCartaMagica(agujeroOscuro, new ModoInactivo());
-
-		assertTrue(jugador.tieneCartaMagicaInactiva());
+		assertTrue(agujeroOscuro.estaBocaAbajo());
 	}
 
 	@Test
 	void testColocarCartaTrampaBocaAbajo() {
-		Jugador jugador = new Jugador();
+		
 		CilindroMagico cilindroMagico = new CilindroMagico();
+		cilindroMagico.colocarBocaAbajo();
 
-		jugador.agregarCartaAMano(cilindroMagico);
-		jugador.colocarCartaTrampa(cilindroMagico, new ModoInactivo());
-
-		assertTrue(jugador.tieneCartaTrampaInactiva());
+		assertTrue(cilindroMagico.estaBocaAbajo());
 	}
 
 	@Test
 	void testSacrificarMonstruo() {
+		
 		Jugador jugador = new Jugador();
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 
 		jugador.agregarCartaAMano(insectoComeHombres);
-		jugador.colocarCartaMonstruo(insectoComeHombres, new ModoAtaque());
-
+		insectoComeHombres.colocarEnModoAtaque();
 		jugador.sacrificarMonstruo(insectoComeHombres);
 
-		assertTrue(jugador.estaEnCementerio(insectoComeHombres));
+		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));
 	}
 
 }

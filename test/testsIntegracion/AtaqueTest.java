@@ -1,6 +1,7 @@
 package testsIntegracion;
 
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -32,7 +33,7 @@ class AtaqueTest {
 		
 		//VIDA DEL JUGADOR B - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (3000 - 450);
-		assertTrue(jugadorB.estaEnCementerio(insectoComeHombres));
+		assertTrue(jugadorB.estaLaCartaEnCementerio(insectoComeHombres));
 		assertEquals(vida, jugadorB.vida()); 
 	}
 	
@@ -52,7 +53,7 @@ class AtaqueTest {
 		
 		//VIDA DEL JUGADOR A - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (3000 - 450);
-		assertTrue(jugadorA.estaEnCementerio(insectoComeHombres));
+		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertEquals(vida, jugadorA.vida()); 
 	}
 	
@@ -71,8 +72,8 @@ class AtaqueTest {
 		jugadorB.meAtaca(jugadorA);
 		
 		int vida = 8000;
-		assertTrue(jugadorA.estaEnCementerio(insectoComeHombres));
-		assertTrue(jugadorB.estaEnCementerio(otroInsectoComeHombres));
+		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(jugadorB.estaLaCartaEnCementerio(otroInsectoComeHombres));
 		assertEquals(vida, jugadorA.vida()); 
 		assertEquals(vida, jugadorB.vida()); 
 	}
@@ -92,7 +93,7 @@ class AtaqueTest {
 		jugadorB.meAtaca(jugadorA);
 		
 		int vida = 8000;
-		assertFalse(jugadorB.estaEnCementerio(dragonBlancoDeOjosAzules));
+		assertFalse(jugadorB.estaLaCartaEnCementerio(dragonBlancoDeOjosAzules));
 		assertEquals(vida, jugadorB.vida()); 
 	}
 	
@@ -112,8 +113,8 @@ class AtaqueTest {
 		jugadorA.colocarCartaMagica(agujeroOscuro, new ModoActivo());
 		
 		int vida = 8000;
-		assertTrue(jugadorA.estaEnCementerio(insectoComeHombres));
-		assertTrue(jugadorB.estaEnCementerio(dragonBlancoDeOjosAzules));
+		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(jugadorB.estaLaCartaEnCementerio(dragonBlancoDeOjosAzules));
 		assertEquals(vida, jugadorA.vida());
 		assertEquals(vida, jugadorB.vida()); 
 	}

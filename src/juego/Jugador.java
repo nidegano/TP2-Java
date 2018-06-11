@@ -50,7 +50,7 @@ public class Jugador {
 
 	}
 
-	public boolean estaEnCementerio(Carta carta) {
+	public boolean estaLaCartaEnCementerio(Carta carta) {
 		// TODO Auto-generated method stub
 		return false;
 	}
