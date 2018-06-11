@@ -46,11 +46,10 @@ class JuegoTest {
 
 	@Test
 	void testSacrificarMonstruo() {
-		
 		Mazo mazo = new Mazo();
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		mazo.agregar(insectoComeHombres);
-		
+
 		Jugador jugador = new Jugador(mazo);
 		jugador.tomarCartaDelMazo();
 

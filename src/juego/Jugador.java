@@ -11,7 +11,7 @@ public class Jugador {
 	private ArrayList<Carta> cementerio;
 	private ArrayList<CartaMonstruo> monstruos;
 	private ArrayList<Carta> cartasEspeciales;
-	Mazo mazo;
+	private Mazo mazo;
 
 	public Jugador(Mazo mazo) {
 		this.vida = 8000;
@@ -23,7 +23,6 @@ public class Jugador {
 	}
 
 	public void tomarCartaDelMazo() {
-		
 		Carta unaCarta = mazo.tomarUnaCarta();
 		this.mano.add(unaCarta);
 	}
@@ -38,8 +37,7 @@ public class Jugador {
 	}
 
 	public void meAtaca(Jugador jugadorA) {
-		
-		
+
 	}
 
 	public int vida() {
@@ -47,26 +45,23 @@ public class Jugador {
 	}
 
 	public void colocarCartaMonstruoEnModoAtaque(CartaMonstruo cartaMonstruo) {
-		
-		transferirCartaMonstruoAlCampo(cartaMonstruo);		
+		transferirCartaMonstruoAlCampo(cartaMonstruo);
 		cartaMonstruo.colocarEnModoAtaque();
 		this.monstruos.add(cartaMonstruo);
 	}
 
 	public void colocarCartaMonstruoEnModoDefensa(CartaMonstruo cartaMonstruo) {
-
-		transferirCartaMonstruoAlCampo(cartaMonstruo);		
+		transferirCartaMonstruoAlCampo(cartaMonstruo);
 		cartaMonstruo.colocarEnModoDefensa();
 		this.monstruos.add(cartaMonstruo);
 	}
 
 	public void colocarCartaMagicaBocaArriba(CartaMagica cartaMagica) {
-
-		transferirCartaMagicaAlCampo(cartaMagica);		
+		transferirCartaMagicaAlCampo(cartaMagica);
 		cartaMagica.colocarBocaArriba();
 		this.cartasEspeciales.add(cartaMagica);
 	}
-	
+
 	private void transferirCartaMonstruoAlCampo(CartaMonstruo carta) {
 		this.mano.remove(carta);
 		this.monstruos.add(carta);

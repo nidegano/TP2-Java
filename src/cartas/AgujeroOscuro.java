@@ -18,7 +18,7 @@ public class AgujeroOscuro extends CartaMagica {
 	}
 
 	public void colocarBocaArriba() {
-		this.estado = new ModoActivo();		
+		this.estado = new ModoActivo();
 	}
 
 }

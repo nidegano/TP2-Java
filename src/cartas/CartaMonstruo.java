@@ -24,9 +24,9 @@ public abstract class CartaMonstruo extends Carta {
 	public boolean estaEnModoDefensa() {
 		return this.estado.esModoDefensa();
 	}
-	
+
 	public void atacar(CartaMonstruo otroMonstruo) {
-		
+
 	}
 
 }

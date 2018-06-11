@@ -5,8 +5,6 @@ import estado.ModoInactivo;
 
 public class CartaMagica extends Carta {
 
-	
-	
 	public void colocarBocaArriba() {
 		this.estado = new ModoActivo();
 	}
@@ -22,4 +20,5 @@ public class CartaMagica extends Carta {
 	public boolean estaBocaAbajo() {
 		return this.estado.esInactivo();
 	}
+
 }

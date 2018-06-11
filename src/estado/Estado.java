@@ -7,7 +7,7 @@ public abstract class Estado {
 	public abstract boolean esModoDefensa();
 
 	public abstract boolean esInactivo();
-	
+
 	public abstract boolean esActivo();
 
 }
