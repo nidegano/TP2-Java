@@ -25,9 +25,11 @@ class AtaqueTest {
 		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
 
 		jugadorA.agregarCartaAMano(dragonBlancoDeOjosAzules);
-		jugadorB.agregarCartaAMano(insectoComeHombres);
-		jugadorA.colocarCartaMonstruo(dragonBlancoDeOjosAzules, new ModoAtaque());
-		jugadorB.colocarCartaMonstruo(insectoComeHombres, new ModoAtaque());
+		jugadorB.agregarCartaAMano(insectoComeHombres);		
+		jugadorA.colocarCartaMonstruo(dragonBlancoDeOjosAzules);
+		jugadorB.colocarCartaMonstruo(insectoComeHombres);
+		dragonBlancoDeOjosAzules.colocarEnModoAtaque();
+		insectoComeHombres.colocarEnModoAtaque();
 		
 		jugadorB.meAtaca(jugadorA);
 		
@@ -45,9 +47,11 @@ class AtaqueTest {
 		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
 
 		jugadorA.agregarCartaAMano(insectoComeHombres);
-		jugadorB.agregarCartaAMano(dragonBlancoDeOjosAzules);
-		jugadorA.colocarCartaMonstruo(insectoComeHombres, new ModoAtaque());
-		jugadorB.colocarCartaMonstruo(dragonBlancoDeOjosAzules, new ModoAtaque());
+		jugadorB.agregarCartaAMano(dragonBlancoDeOjosAzules);		
+		jugadorA.colocarCartaMonstruo(insectoComeHombres);
+		jugadorB.colocarCartaMonstruo(dragonBlancoDeOjosAzules);
+		insectoComeHombres.colocarEnModoAtaque();
+		dragonBlancoDeOjosAzules.colocarEnModoAtaque();
 		
 		jugadorB.meAtaca(jugadorA);
 		
@@ -66,8 +70,10 @@ class AtaqueTest {
 
 		jugadorA.agregarCartaAMano(insectoComeHombres);
 		jugadorB.agregarCartaAMano(otroInsectoComeHombres);
-		jugadorA.colocarCartaMonstruo(insectoComeHombres, new ModoAtaque());
-		jugadorB.colocarCartaMonstruo(otroInsectoComeHombres, new ModoAtaque());
+		jugadorA.colocarCartaMonstruo(insectoComeHombres);
+		jugadorB.colocarCartaMonstruo(otroInsectoComeHombres);
+		insectoComeHombres.colocarEnModoAtaque();
+		otroInsectoComeHombres.colocarEnModoAtaque();
 		
 		jugadorB.meAtaca(jugadorA);
 		
@@ -87,8 +93,10 @@ class AtaqueTest {
 
 		jugadorA.agregarCartaAMano(insectoComeHombres);
 		jugadorB.agregarCartaAMano(dragonBlancoDeOjosAzules);
-		jugadorA.colocarCartaMonstruo(insectoComeHombres, new ModoAtaque());
-		jugadorB.colocarCartaMonstruo(dragonBlancoDeOjosAzules, new ModoDefensa());
+		jugadorA.colocarCartaMonstruo(insectoComeHombres);
+		jugadorB.colocarCartaMonstruo(dragonBlancoDeOjosAzules);
+		insectoComeHombres.colocarEnModoAtaque();
+		dragonBlancoDeOjosAzules.colocarEnModoDefensa();
 		
 		jugadorB.meAtaca(jugadorA);
 		
@@ -108,9 +116,14 @@ class AtaqueTest {
 		jugadorA.agregarCartaAMano(insectoComeHombres);
 		jugadorA.agregarCartaAMano(agujeroOscuro);
 		jugadorB.agregarCartaAMano(dragonBlancoDeOjosAzules);
-		jugadorA.colocarCartaMonstruo(insectoComeHombres, new ModoAtaque());
-		jugadorB.colocarCartaMonstruo(dragonBlancoDeOjosAzules, new ModoDefensa());
-		jugadorA.colocarCartaMagica(agujeroOscuro, new ModoActivo());
+		
+		jugadorA.colocarCartaMonstruo(insectoComeHombres);
+		jugadorB.colocarCartaMonstruo(dragonBlancoDeOjosAzules);
+		insectoComeHombres.colocarEnModoAtaque();
+		dragonBlancoDeOjosAzules.colocarEnModoDefensa();
+		
+		jugadorA.colocarCartaMagica(agujeroOscuro);
+		agujeroOscuro.colocarBocaArriba();
 		
 		int vida = 8000;
 		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));

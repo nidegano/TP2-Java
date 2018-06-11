@@ -1,5 +1,6 @@
 package cartas;
 
+import estado.ModoActivo;
 import estado.ModoInactivo;
 
 public class AgujeroOscuro extends CartaMagica {
@@ -14,6 +15,10 @@ public class AgujeroOscuro extends CartaMagica {
 
 	public boolean estaBocaAbajo() {
 		return this.estado.esInactivo();
+	}
+
+	public void colocarBocaArriba() {
+		this.estado = new ModoActivo();		
 	}
 
 }
