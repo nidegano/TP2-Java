@@ -17,4 +17,10 @@ public class ModoDefensa extends Estado {
 		return false;
 	}
 
+	@Override
+	public boolean esActivo() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

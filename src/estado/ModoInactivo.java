@@ -17,4 +17,10 @@ public class ModoInactivo extends Estado {
 		return true;
 	}
 
+	@Override
+	public boolean esActivo() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

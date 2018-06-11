@@ -17,4 +17,9 @@ public class ModoActivo extends Estado {
 		return false;
 	}
 
+	@Override
+	public boolean esActivo() {
+		return false;
+	}
+
 }

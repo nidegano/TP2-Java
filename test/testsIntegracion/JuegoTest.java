@@ -49,8 +49,7 @@ class JuegoTest {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 
 		jugador.agregarCartaAMano(insectoComeHombres);
-		insectoComeHombres.colocarEnModoAtaque();
-		jugador.colocarCartaMonstruo(insectoComeHombres);
+		jugador.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugador.sacrificarMonstruo(insectoComeHombres);
 
 		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));

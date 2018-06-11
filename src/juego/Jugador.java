@@ -24,21 +24,6 @@ public class Jugador {
 		this.mano.add(carta);
 	}
 
-	public void colocarCartaMonstruo(CartaMonstruo carta) {
-		this.mano.remove(carta);
-		this.monstruos.add(carta);
-	}
-
-	public void colocarCartaMagica(CartaMagica carta) {
-		this.mano.remove(carta);
-		this.cartasEspeciales.add(carta);
-	}
-
-	public void colocarCartaTrampa(CartaTrampa carta) {
-		this.mano.remove(carta);
-		this.cartasEspeciales.add(carta);
-	}
-
 	public void sacrificarMonstruo(CartaMonstruo carta) {
 		this.mano.remove(carta);
 		this.cementerio.add(carta);
@@ -55,6 +40,39 @@ public class Jugador {
 
 	public int vida() {
 		return this.vida;
+	}
+
+	public void colocarCartaMonstruoEnModoAtaque(CartaMonstruo cartaMonstruo) {
+		
+		transferirCartaMonstruoAlCampo(cartaMonstruo);		
+		cartaMonstruo.colocarEnModoAtaque();
+	}
+
+	public void colocarCartaMonstruoEnModoDefensa(CartaMonstruo cartaMonstruo) {
+
+		transferirCartaMonstruoAlCampo(cartaMonstruo);		
+		cartaMonstruo.colocarEnModoDefensa();
+	}
+
+	public void colocarCartaMagicaBocaArriba(CartaMagica cartaMagica) {
+
+		transferirCartaMagicaAlCampo(cartaMagica);		
+		cartaMagica.colocarBocaArriba();		
+	}
+	
+	private void transferirCartaMonstruoAlCampo(CartaMonstruo carta) {
+		this.mano.remove(carta);
+		this.monstruos.add(carta);
+	}
+
+	private void transferirCartaMagicaAlCampo(CartaMagica carta) {
+		this.mano.remove(carta);
+		this.cartasEspeciales.add(carta);
+	}
+
+	private void transferirCartaTrampaAlCampo(CartaTrampa carta) {
+		this.mano.remove(carta);
+		this.cartasEspeciales.add(carta);
 	}
 
 }
