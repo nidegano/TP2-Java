@@ -28,5 +28,8 @@ public abstract class CartaMonstruo extends Carta {
 	public void atacar(CartaMonstruo otroMonstruo) {
 
 	}
-
+	
+	public void atacado(int puntosDeAtaque){
+	
+	}
 }

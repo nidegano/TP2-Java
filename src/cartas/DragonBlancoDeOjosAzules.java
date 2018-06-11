@@ -10,5 +10,10 @@ public class DragonBlancoDeOjosAzules extends CartaMonstruo {
 		this.nivel = 8;
 		this.estado = new ModoInactivo();
 	}
-
+	
+	public void atacar(CartaMonstruo otroMonstruo) {
+		//otroMonstruo compara estos puntos con su ATK y se manda al cementerio de ser necesario
+		//O le saca vida a su dueño
+		otroMonstruo.atacado(this.puntosDeAtaque);
+	}
 }

@@ -20,15 +20,22 @@ public class Jugador {
 		this.monstruos = new ArrayList<CartaMonstruo>();
 		this.cartasEspeciales = new ArrayList<Carta>();
 		this.mazo = mazo;
+		mazo.asignarDuenioDelMazo(this);
 	}
 
 	public void tomarCartaDelMazo() {
 		Carta unaCarta = mazo.tomarUnaCarta();
+		unaCarta.asignarDuenioDeLaCarta(this);
 		this.mano.add(unaCarta);
 	}
 
 	public void sacrificarMonstruo(CartaMonstruo carta) {
 		this.mano.remove(carta);
+		this.cementerio.add(carta);
+	}
+	
+	public void mandarAlCementerio(CartaMonstruo carta) {
+		this.monstruos.remove(carta);
 		this.cementerio.add(carta);
 	}
 
@@ -76,5 +83,8 @@ public class Jugador {
 		this.mano.remove(carta);
 		this.cartasEspeciales.add(carta);
 	}
-
+	
+	public void reducirVida(int cantidad) {
+		this.vida = this.vida - cantidad;
+	}
 }
