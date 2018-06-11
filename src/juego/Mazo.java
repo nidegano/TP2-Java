@@ -3,7 +3,6 @@ package juego;
 import cartas.Carta;
 
 public class Mazo extends ContenedorDeCartas {
-	public Jugador duenioDelMazo;
 
 	public Mazo() {
 		super();
@@ -15,8 +14,5 @@ public class Mazo extends ContenedorDeCartas {
 		this.cartas.remove(0);
 		return carta;
 	}
-	
-	public void asignarDuenioDelMazo(Jugador jugador) {
-		this.duenioDelMazo = jugador;
-	}
+
 }

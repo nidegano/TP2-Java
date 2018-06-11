@@ -20,7 +20,6 @@ public class Jugador {
 		this.monstruos = new ArrayList<CartaMonstruo>();
 		this.cartasEspeciales = new ArrayList<Carta>();
 		this.mazo = mazo;
-		mazo.asignarDuenioDelMazo(this);
 	}
 
 	public void tomarCartaDelMazo() {
