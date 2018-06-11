@@ -7,16 +7,12 @@ import org.junit.jupiter.api.Test;
 import cartas.AgujeroOscuro;
 import cartas.CilindroMagico;
 import cartas.InsectoComeHombres;
-import estado.ModoAtaque;
-import estado.ModoDefensa;
-import estado.ModoInactivo;
 import juego.Jugador;
 
 class JuegoTest {
 
 	@Test
 	void testColocarCartaMonstruoEnModoAtaque() {
-
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		insectoComeHombres.colocarEnModoAtaque();
 
@@ -25,7 +21,6 @@ class JuegoTest {
 
 	@Test
 	void testColocarCartaMonstruoEnModoDefensa() {
-
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		insectoComeHombres.colocarEnModoDefensa();
 
@@ -34,7 +29,6 @@ class JuegoTest {
 
 	@Test
 	void testColocarCartaMagicaBocaAbajo() {
-
 		AgujeroOscuro agujeroOscuro = new AgujeroOscuro();
 		agujeroOscuro.colocarBocaAbajo();
 
@@ -43,7 +37,6 @@ class JuegoTest {
 
 	@Test
 	void testColocarCartaTrampaBocaAbajo() {
-		
 		CilindroMagico cilindroMagico = new CilindroMagico();
 		cilindroMagico.colocarBocaAbajo();
 
@@ -52,12 +45,12 @@ class JuegoTest {
 
 	@Test
 	void testSacrificarMonstruo() {
-		
 		Jugador jugador = new Jugador();
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 
 		jugador.agregarCartaAMano(insectoComeHombres);
 		insectoComeHombres.colocarEnModoAtaque();
+		jugador.colocarCartaMonstruo(insectoComeHombres);
 		jugador.sacrificarMonstruo(insectoComeHombres);
 
 		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));

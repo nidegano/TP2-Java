@@ -1,5 +1,9 @@
 package cartas;
 
-public class Carta {
+import estado.Estado;
+
+public abstract class Carta {
+
+	protected Estado estado;
 
 }

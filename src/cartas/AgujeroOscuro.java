@@ -1,15 +1,19 @@
 package cartas;
 
+import estado.ModoInactivo;
+
 public class AgujeroOscuro extends CartaMagica {
 
+	public AgujeroOscuro() {
+		this.estado = new ModoInactivo();
+	}
+
 	public void colocarBocaAbajo() {
-		// TODO Auto-generated method stub
-		
+		this.estado = new ModoInactivo();
 	}
 
 	public boolean estaBocaAbajo() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.estado.esInactivo();
 	}
 
 }

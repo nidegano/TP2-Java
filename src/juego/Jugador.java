@@ -1,68 +1,60 @@
 package juego;
 
+import java.util.ArrayList;
+
 import cartas.*;
-import estado.Estado;
 
 public class Jugador {
 
+	private int vida;
+	private ArrayList<Carta> mano;
+	private ArrayList<Carta> cementerio;
+	private ArrayList<CartaMonstruo> monstruos;
+	private ArrayList<Carta> cartasEspeciales;
+
+	public Jugador() {
+		this.vida = 8000;
+		this.mano = new ArrayList<Carta>();
+		this.cementerio = new ArrayList<Carta>();
+		this.monstruos = new ArrayList<CartaMonstruo>();
+		this.cartasEspeciales = new ArrayList<Carta>();
+	}
+
 	public void agregarCartaAMano(Carta carta) {
-		// TODO Auto-generated method stub
-
+		this.mano.add(carta);
 	}
 
-	public void colocarCartaMonstruo(CartaMonstruo carta, Estado estado) {
-		// TODO Auto-generated method stub
-
+	public void colocarCartaMonstruo(CartaMonstruo carta) {
+		this.mano.remove(carta);
+		this.monstruos.add(carta);
 	}
 
-	public boolean tieneCartaMonstruoEnModoAtaque() {
-		// TODO Auto-generated method stub
-		return false;
+	public void colocarCartaMagica(CartaMagica carta) {
+		this.mano.remove(carta);
+		this.cartasEspeciales.add(carta);
 	}
 
-	public boolean tieneCartaMonstruoEnModoDefensa() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public void colocarCartaMagica(CartaMagica carta, Estado estado) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public boolean tieneCartaMagicaInactiva() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public void colocarCartaTrampa(CartaTrampa carta, Estado estado) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public boolean tieneCartaTrampaInactiva() {
-		// TODO Auto-generated method stub
-		return false;
+	public void colocarCartaTrampa(CartaTrampa carta) {
+		this.mano.remove(carta);
+		this.cartasEspeciales.add(carta);
 	}
 
 	public void sacrificarMonstruo(CartaMonstruo carta) {
-		// TODO Auto-generated method stub
-
+		this.mano.remove(carta);
+		this.cementerio.add(carta);
 	}
 
 	public boolean estaLaCartaEnCementerio(Carta carta) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.cementerio.contains(carta);
 	}
 
 	public void meAtaca(Jugador jugadorA) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public int vida() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.vida;
 	}
 
 }

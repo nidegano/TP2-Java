@@ -1,5 +1,11 @@
 package estado;
 
-public class Estado {
+public abstract class Estado {
+
+	public abstract boolean esModoAtaque();
+
+	public abstract boolean esModoDefensa();
+
+	public abstract boolean esInactivo();
 
 }

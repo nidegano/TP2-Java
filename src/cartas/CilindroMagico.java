@@ -1,15 +1,15 @@
 package cartas;
 
+import estado.ModoInactivo;
+
 public class CilindroMagico extends CartaTrampa {
 
 	public void colocarBocaAbajo() {
-		// TODO Auto-generated method stub
-		
+		this.estado = new ModoInactivo();
 	}
 
 	public boolean estaBocaAbajo() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.estado.esInactivo();
 	}
 
 }
