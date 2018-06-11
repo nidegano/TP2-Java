@@ -11,18 +11,28 @@ import cartas.AgujeroOscuro;
 import cartas.DragonBlancoDeOjosAzules;
 import cartas.InsectoComeHombres;
 import juego.Jugador;
+import juego.Mazo;
 
 class AtaqueTest {
 
 	@Test
 	void testJugadorADestruyeMonstruoDeJugadorBYLoLastima() {
-		Jugador jugadorA = new Jugador();
-		Jugador jugadorB = new Jugador();
-		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
+		
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
 		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
-
-		jugadorA.agregarCartaAMano(dragonBlancoDeOjosAzules);
-		jugadorB.agregarCartaAMano(insectoComeHombres);		
+		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
+		
+		mazoA.agregar(dragonBlancoDeOjosAzules);
+		mazoB.agregar(insectoComeHombres);
+		
+		Jugador jugadorA = new Jugador(mazoA);
+		Jugador jugadorB = new Jugador(mazoB);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
+		
 		jugadorA.colocarCartaMonstruoEnModoAtaque(dragonBlancoDeOjosAzules);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		
@@ -36,13 +46,22 @@ class AtaqueTest {
 	
 	@Test
 	void testJugadorADestruyeSuPropioMonstruoYSeLastima() {
-		Jugador jugadorA = new Jugador();
-		Jugador jugadorB = new Jugador();
+		
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
-
-		jugadorA.agregarCartaAMano(insectoComeHombres);
-		jugadorB.agregarCartaAMano(dragonBlancoDeOjosAzules);		
+		
+		mazoA.agregar(insectoComeHombres);
+		mazoB.agregar(dragonBlancoDeOjosAzules);
+		
+		Jugador jugadorA = new Jugador(mazoA);
+		Jugador jugadorB = new Jugador(mazoB);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
+	
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(dragonBlancoDeOjosAzules);
 		
@@ -56,13 +75,22 @@ class AtaqueTest {
 	
 	@Test
 	void testJugadorADestruyeMonstruosYNadieSeLastima() {
-		Jugador jugadorA = new Jugador();
-		Jugador jugadorB = new Jugador();
+		
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		InsectoComeHombres otroInsectoComeHombres = new InsectoComeHombres();
-
-		jugadorA.agregarCartaAMano(insectoComeHombres);
-		jugadorB.agregarCartaAMano(otroInsectoComeHombres);
+		
+		mazoA.agregar(insectoComeHombres);
+		mazoB.agregar(otroInsectoComeHombres);
+		
+		Jugador jugadorA = new Jugador(mazoA);
+		Jugador jugadorB = new Jugador(mazoB);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
+		
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(otroInsectoComeHombres);
 		
@@ -77,13 +105,22 @@ class AtaqueTest {
 	
 	@Test
 	void testJugadorAAtacaMonstruoEnModoDefensaDeJugadorBYNoLastima() {
-		Jugador jugadorA = new Jugador();
-		Jugador jugadorB = new Jugador();
+		
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
-
-		jugadorA.agregarCartaAMano(insectoComeHombres);
-		jugadorB.agregarCartaAMano(dragonBlancoDeOjosAzules);
+		
+		mazoA.agregar(insectoComeHombres);
+		mazoB.agregar(dragonBlancoDeOjosAzules);
+		
+		Jugador jugadorA = new Jugador(mazoA);
+		Jugador jugadorB = new Jugador(mazoB);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
+		
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoDefensa(dragonBlancoDeOjosAzules);
 		
@@ -96,19 +133,28 @@ class AtaqueTest {
 	
 	@Test
 	void testJugadorADestruyeTodosLosMonstruosConAgujeroOscuro() {
-		Jugador jugadorA = new Jugador();
-		Jugador jugadorB = new Jugador();
+		
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
 		AgujeroOscuro agujeroOscuro = new AgujeroOscuro();
-
-		jugadorA.agregarCartaAMano(insectoComeHombres);
-		jugadorA.agregarCartaAMano(agujeroOscuro);
-		jugadorB.agregarCartaAMano(dragonBlancoDeOjosAzules);
+		
+		mazoA.agregar(insectoComeHombres);
+		mazoA.agregar(agujeroOscuro);
+		mazoB.agregar(dragonBlancoDeOjosAzules);
+		
+		Jugador jugadorA = new Jugador(mazoA);
+		Jugador jugadorB = new Jugador(mazoB);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
 		
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoDefensa(dragonBlancoDeOjosAzules);
 		
+		jugadorA.tomarCartaDelMazo();
 		jugadorA.colocarCartaMagicaBocaArriba(agujeroOscuro);
 		
 		int vida = 8000;

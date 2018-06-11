@@ -8,6 +8,7 @@ import cartas.AgujeroOscuro;
 import cartas.CilindroMagico;
 import cartas.InsectoComeHombres;
 import juego.Jugador;
+import juego.Mazo;
 
 class JuegoTest {
 
@@ -45,10 +46,14 @@ class JuegoTest {
 
 	@Test
 	void testSacrificarMonstruo() {
-		Jugador jugador = new Jugador();
+		
+		Mazo mazo = new Mazo();
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
+		mazo.agregar(insectoComeHombres);
+		
+		Jugador jugador = new Jugador(mazo);
+		jugador.tomarCartaDelMazo();
 
-		jugador.agregarCartaAMano(insectoComeHombres);
 		jugador.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugador.sacrificarMonstruo(insectoComeHombres);
 

@@ -19,7 +19,6 @@ public class ModoInactivo extends Estado {
 
 	@Override
 	public boolean esActivo() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
