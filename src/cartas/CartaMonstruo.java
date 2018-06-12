@@ -3,6 +3,7 @@ package cartas;
 import estado.ModoAtaque;
 import estado.ModoDefensa;
 import excepciones.BatallaEmpatadaException;
+import java.lang.Math;
 
 public abstract class CartaMonstruo extends Carta {
 
@@ -39,10 +40,8 @@ public abstract class CartaMonstruo extends Carta {
 	public int obtenerPuntosDeVidaADebilitar(CartaMonstruo cartaAtacante) {
 		int puntosDeVida = 0;
 		if (this.estado.esModoAtaque())
-			puntosDeVida = (cartaAtacante.puntosDeAtaque - this.puntosDeAtaque);
+			puntosDeVida = Math.abs(cartaAtacante.puntosDeAtaque - this.puntosDeAtaque);
 
-		if (puntosDeVida < 0)
-			puntosDeVida = puntosDeVida * (-1);
 		return puntosDeVida;
 	}
 
