@@ -36,21 +36,18 @@ public class Jugador {
 	}
 
 	public void colocarCartaMonstruoEnModoAtaque(CartaMonstruo cartaMonstruo) {
-		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
 		cartaMonstruo.colocarEnModoAtaque();
-		this.monstruos.add(cartaMonstruo);
+		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
 	}
 
 	public void colocarCartaMonstruoEnModoDefensa(CartaMonstruo cartaMonstruo) {
-		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
 		cartaMonstruo.colocarEnModoDefensa();
-		this.monstruos.add(cartaMonstruo);
+		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
 	}
 
 	public void colocarCartaMagicaBocaArriba(CartaMagica cartaMagica) {
-		this.transferirCartaMagicaAlCampo(cartaMagica);
 		cartaMagica.colocarBocaArriba();
-		this.cartasEspeciales.add(cartaMagica);
+		this.transferirCartaMagicaAlCampo(cartaMagica);
 	}
 
 	public CartaMonstruo elegirMonstruo() {
