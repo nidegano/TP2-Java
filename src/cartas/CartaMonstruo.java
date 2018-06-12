@@ -9,10 +9,12 @@ public abstract class CartaMonstruo extends Carta {
 
 	protected int puntosDeAtaque;
 	protected int puntosDeDefensa;
+	protected int puntosSegunEstado;
 	protected int nivel;
 
 	public void colocarEnModoAtaque() {
 		this.estado = new ModoAtaque();
+		this.puntosSegunEstado = this.puntosDeAtaque;
 	}
 
 	public boolean estaEnModoAtaque() {
@@ -21,27 +23,26 @@ public abstract class CartaMonstruo extends Carta {
 
 	public void colocarEnModoDefensa() {
 		this.estado = new ModoDefensa();
+		this.puntosSegunEstado = this.puntosDeDefensa;
 	}
 
 	public boolean estaEnModoDefensa() {
 		return this.estado.esModoDefensa();
 	}
 
+	//Los puntos que se utilizan para el calculo dependen del estado de la carta.
 	public boolean esPerdedoraContra(CartaMonstruo cartaAtacante) {
-		if ((this.estado.esModoAtaque()) && (this.puntosDeAtaque < cartaAtacante.puntosDeAtaque))
-			return true;
-		if ((this.estado.esModoDefensa()) && (this.puntosDeDefensa < cartaAtacante.puntosDeAtaque))
-			return true;
-		if ((this.puntosDeAtaque == cartaAtacante.puntosDeAtaque) || (this.puntosDeDefensa == cartaAtacante.puntosDeAtaque))
+		if(this.puntosSegunEstado == cartaAtacante.puntosDeAtaque)
 			throw new BatallaEmpatadaException();
-		return false;
+		
+		return (this.puntosSegunEstado < cartaAtacante.puntosDeAtaque);
 	}
 
 	public int obtenerPuntosDeVidaADebilitar(CartaMonstruo cartaAtacante) {
 		int puntosDeVida = 0;
 		if (this.estado.esModoAtaque())
 			puntosDeVida = Math.abs(cartaAtacante.puntosDeAtaque - this.puntosDeAtaque);
-
+ 
 		return puntosDeVida;
 	}
 
