@@ -46,10 +46,9 @@ class JuegoTest {
 
 	@Test
 	void testSacrificarMonstruo() {
-		Mazo mazo = new Mazo();
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
+		Mazo mazo = new Mazo();
 		mazo.agregar(insectoComeHombres);
-
 		Jugador jugador = new Jugador(mazo);
 		jugador.tomarCartaDelMazo();
 

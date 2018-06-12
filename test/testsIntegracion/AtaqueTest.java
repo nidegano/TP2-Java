@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import cartas.AgujeroOscuro;
 import cartas.DragonBlancoDeOjosAzules;
 import cartas.InsectoComeHombres;
+import juego.Batalla;
 import juego.Jugador;
 import juego.Mazo;
 
@@ -35,7 +36,8 @@ class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(dragonBlancoDeOjosAzules);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 
-		dragonBlancoDeOjosAzules.atacar(insectoComeHombres);
+		Batalla batalla = new Batalla(jugadorA, jugadorB);
+		batalla.librarBatalla();
 
 		// VIDA DEL JUGADOR B - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (3000 - 450);
@@ -63,7 +65,8 @@ class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(dragonBlancoDeOjosAzules);
 
-		insectoComeHombres.atacar(dragonBlancoDeOjosAzules);
+		Batalla batalla = new Batalla(jugadorA, jugadorB);
+		batalla.librarBatalla();
 
 		// VIDA DEL JUGADOR A - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (3000 - 450);
@@ -91,7 +94,8 @@ class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(otroInsectoComeHombres);
 
-		insectoComeHombres.atacar(otroInsectoComeHombres);
+		Batalla batalla = new Batalla(jugadorA, jugadorB);
+		batalla.librarBatalla();
 
 		int vida = 8000;
 		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
@@ -120,7 +124,8 @@ class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoDefensa(dragonBlancoDeOjosAzules);
 
-		insectoComeHombres.atacar(dragonBlancoDeOjosAzules);
+		Batalla batalla = new Batalla(jugadorA, jugadorB);
+		batalla.librarBatalla();
 
 		int vida = 8000;
 		assertFalse(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
@@ -149,7 +154,8 @@ class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(dragonBlancoDeOjosAzules);
 		jugadorB.colocarCartaMonstruoEnModoDefensa(insectoComeHombres);
 
-		dragonBlancoDeOjosAzules.atacar(dragonBlancoDeOjosAzules);
+		Batalla batalla = new Batalla(jugadorA, jugadorB);
+		batalla.librarBatalla();
 
 		int vida = 8000;
 		assertTrue(jugadorB.estaLaCartaEnCementerio(insectoComeHombres));

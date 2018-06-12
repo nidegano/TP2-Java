@@ -1,13 +1,13 @@
 package juego;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import cartas.Carta;
+import excepciones.CapacidadMaximaException;
 
 public class ContenedorDeCartas {
 
-	protected List<Carta> cartas;
+	protected ArrayList<Carta> cartas;
 	protected int capacidad;
 
 	public ContenedorDeCartas() {
@@ -15,6 +15,8 @@ public class ContenedorDeCartas {
 	}
 
 	public void agregar(Carta carta) {
+		if (this.cartas.size() == this.capacidad)
+			throw new CapacidadMaximaException();
 		this.cartas.add(carta);
 	}
 

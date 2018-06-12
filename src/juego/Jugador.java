@@ -22,50 +22,57 @@ public class Jugador {
 		this.mazo = mazo;
 	}
 
+	public int vida() {
+		return this.vida;
+	}
+
+	public void debilitar(int puntosDeVidaADebilitar) {
+		this.vida = this.vida - puntosDeVidaADebilitar;
+	}
+
 	public void tomarCartaDelMazo() {
 		Carta unaCarta = mazo.tomarUnaCarta();
-		unaCarta.asignarDuenioDeLaCarta(this);
 		this.mano.add(unaCarta);
+	}
+
+	public void colocarCartaMonstruoEnModoAtaque(CartaMonstruo cartaMonstruo) {
+		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
+		cartaMonstruo.colocarEnModoAtaque();
+		this.monstruos.add(cartaMonstruo);
+	}
+
+	public void colocarCartaMonstruoEnModoDefensa(CartaMonstruo cartaMonstruo) {
+		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
+		cartaMonstruo.colocarEnModoDefensa();
+		this.monstruos.add(cartaMonstruo);
+	}
+
+	public void colocarCartaMagicaBocaArriba(CartaMagica cartaMagica) {
+		this.transferirCartaMagicaAlCampo(cartaMagica);
+		cartaMagica.colocarBocaArriba();
+		this.cartasEspeciales.add(cartaMagica);
+	}
+
+	public CartaMonstruo elegirMonstruo() {
+		return this.monstruos.get(0);
 	}
 
 	public void sacrificarMonstruo(CartaMonstruo carta) {
 		this.mano.remove(carta);
 		this.cementerio.add(carta);
 	}
-	
-	public void mandarAlCementerio(CartaMonstruo carta) {
+
+	public void enviarAlCementerio(CartaMonstruo carta) {
 		this.monstruos.remove(carta);
 		this.cementerio.add(carta);
 	}
 
+	public boolean estaLaCartaEnZonaDeMonstruo(Carta carta) {
+		return this.monstruos.contains(carta);
+	}
+
 	public boolean estaLaCartaEnCementerio(Carta carta) {
 		return this.cementerio.contains(carta);
-	}
-
-	public void meAtaca(Jugador jugadorA) {
-
-	}
-
-	public int vida() {
-		return this.vida;
-	}
-
-	public void colocarCartaMonstruoEnModoAtaque(CartaMonstruo cartaMonstruo) {
-		transferirCartaMonstruoAlCampo(cartaMonstruo);
-		cartaMonstruo.colocarEnModoAtaque();
-		this.monstruos.add(cartaMonstruo);
-	}
-
-	public void colocarCartaMonstruoEnModoDefensa(CartaMonstruo cartaMonstruo) {
-		transferirCartaMonstruoAlCampo(cartaMonstruo);
-		cartaMonstruo.colocarEnModoDefensa();
-		this.monstruos.add(cartaMonstruo);
-	}
-
-	public void colocarCartaMagicaBocaArriba(CartaMagica cartaMagica) {
-		transferirCartaMagicaAlCampo(cartaMagica);
-		cartaMagica.colocarBocaArriba();
-		this.cartasEspeciales.add(cartaMagica);
 	}
 
 	private void transferirCartaMonstruoAlCampo(CartaMonstruo carta) {
@@ -78,12 +85,4 @@ public class Jugador {
 		this.cartasEspeciales.add(carta);
 	}
 
-	private void transferirCartaTrampaAlCampo(CartaTrampa carta) {
-		this.mano.remove(carta);
-		this.cartasEspeciales.add(carta);
-	}
-	
-	public void reducirVida(int cantidad) {
-		this.vida = this.vida - cantidad;
-	}
 }
