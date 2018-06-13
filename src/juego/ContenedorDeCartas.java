@@ -1,7 +1,6 @@
 package juego;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import cartas.Carta;
 import excepciones.CapacidadMaximaException;
@@ -32,10 +31,6 @@ public class ContenedorDeCartas {
 
 	public void remover(Carta carta) {
 		this.cartas.remove(carta);
-	}
-
-	public List<Carta> transferirTodasLasCartas() {
-		return this.cartas;
 	}
 
 	public void matarATodasLasCartas() {

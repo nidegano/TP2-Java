@@ -10,7 +10,7 @@ public class Jugador {
 	private ArrayList<Carta> mano;
 	private ArrayList<Carta> cementerio;
 	private ContenedorDeCartas zonaMonstruos;
-	private ArrayList<Carta> cartasEspeciales;
+	private ContenedorDeCartas cartasEspeciales;
 	private Mazo mazo;
 
 	public Jugador(Mazo mazo) {
@@ -18,7 +18,7 @@ public class Jugador {
 		this.mano = new ArrayList<Carta>();
 		this.cementerio = new ArrayList<Carta>();
 		this.zonaMonstruos = new ContenedorDeCartas(5);
-		this.cartasEspeciales = new ArrayList<Carta>();
+		this.cartasEspeciales = new ContenedorDeCartas(10);
 		this.mazo = mazo;
 	}
 
@@ -79,17 +79,19 @@ public class Jugador {
 
 	private void transferirCartaMagicaAlCampo(CartaMagica carta) {
 		this.mano.remove(carta);
-		this.cartasEspeciales.add(carta);
+		this.cartasEspeciales.agregar(carta);
 	}
 
 	public void destruirCartasEnCampo() {
-		
 		this.zonaMonstruos.matarATodasLasCartas();
+		this.cartasEspeciales.matarATodasLasCartas();
+		
 		this.enviarCartasMuertasAlCementerio();
 	}
 
 	//Cada zona mete sus cartas muertas al cementerio
 	public void enviarCartasMuertasAlCementerio() {
 		this.zonaMonstruos.enviarCartasMuertasAlCementerio(this.cementerio);
+		this.cartasEspeciales.enviarCartasMuertasAlCementerio(this.cementerio);
 	}
 }
