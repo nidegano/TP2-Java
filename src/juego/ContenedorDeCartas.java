@@ -38,13 +38,6 @@ public class ContenedorDeCartas {
 		return this.cartas;
 	}
 
-	public void eliminarTodasLasCartas() {
-		
-		for (Carta carta : this.cartas) {
-			this.remover(carta);
-		}
-	}
-
 	public void matarATodasLasCartas() {
 		
 		for (Carta carta : this.cartas) {

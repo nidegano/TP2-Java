@@ -2,8 +2,6 @@ package juego;
 
 import java.util.ArrayList;
 
-//import java.util.List;
-
 import cartas.*;
 
 public class Jugador {
