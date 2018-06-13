@@ -18,7 +18,7 @@ public class Jugador {
 		this.mano = new ArrayList<Carta>();
 		this.cementerio = new ArrayList<Carta>();
 		this.zonaMonstruos = new ContenedorDeCartas(5);
-		this.cartasEspeciales = new ContenedorDeCartas(10);
+		this.cartasEspeciales = new ContenedorDeCartas(5);
 		this.mazo = mazo;
 	}
 
