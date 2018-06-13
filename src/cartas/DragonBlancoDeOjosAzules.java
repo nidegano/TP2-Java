@@ -2,7 +2,7 @@ package cartas;
 
 import estado.ModoInactivo;
 
-public class DragonBlancoDeOjosAzules extends CartaMonstruo {
+public class DragonBlancoDeOjosAzules extends MonstruoRequiereDosSacrificios {
 
 	public DragonBlancoDeOjosAzules() {
 		this.puntosDeAtaque = 3000;

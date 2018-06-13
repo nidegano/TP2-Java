@@ -1,7 +1,8 @@
 package juego;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+
+import java.util.List;
 
 import cartas.*;
 
@@ -10,7 +11,7 @@ public class Jugador {
 	private int vida;
 	private ArrayList<Carta> mano;
 	private ArrayList<Carta> cementerio;
-	private ArrayList<CartaMonstruo> monstruos;
+	private ContenedorDeCartas zonaMonstruos;
 	private ArrayList<Carta> cartasEspeciales;
 	private Mazo mazo;
 
@@ -18,7 +19,7 @@ public class Jugador {
 		this.vida = 8000;
 		this.mano = new ArrayList<Carta>();
 		this.cementerio = new ArrayList<Carta>();
-		this.monstruos = new ArrayList<CartaMonstruo>();
+		this.zonaMonstruos = new ContenedorDeCartas(5);
 		this.cartasEspeciales = new ArrayList<Carta>();
 		this.mazo = mazo;
 	}
@@ -40,6 +41,11 @@ public class Jugador {
 		cartaMonstruo.colocarEnModoAtaque();
 		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
 	}
+	
+	public void colocarCartaMonstruoDeUnSacrificioEnModoAtaque(CartaMonstruo cartaMonstruo) {
+		cartaMonstruo.colocarEnModoAtaque();
+		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
+	}
 
 	public void colocarCartaMonstruoEnModoDefensa(CartaMonstruo cartaMonstruo) {
 		cartaMonstruo.colocarEnModoDefensa();
@@ -52,7 +58,7 @@ public class Jugador {
 	}
 
 	public CartaMonstruo elegirMonstruo() {
-		return this.monstruos.get(0);
+		return (CartaMonstruo) this.zonaMonstruos.obtenerPrimero();
 	}
 
 	public void sacrificarMonstruo(CartaMonstruo carta) {
@@ -61,12 +67,12 @@ public class Jugador {
 	}
 
 	public void enviarAlCementerio(CartaMonstruo carta) {
-		this.monstruos.remove(carta);
+		this.zonaMonstruos.remover(carta);
 		this.cementerio.add(carta);
 	}
 
 	public boolean estaLaCartaEnZonaDeMonstruo(Carta carta) {
-		return this.monstruos.contains(carta);
+		return this.zonaMonstruos.estaDentro(carta);
 	}
 
 	public boolean estaLaCartaEnCementerio(Carta carta) {
@@ -75,7 +81,7 @@ public class Jugador {
 
 	private void transferirCartaMonstruoAlCampo(CartaMonstruo carta) {
 		this.mano.remove(carta);
-		this.monstruos.add(carta);
+		this.zonaMonstruos.agregar(carta);
 	}
 
 	private void transferirCartaMagicaAlCampo(CartaMagica carta) {
@@ -88,12 +94,17 @@ public class Jugador {
 	}
 
 	public void destruirCartasEnCampo() {
-		Iterator<CartaMonstruo> iter = monstruos.iterator();
 		
-		//itero la lista monstruos. 
-		while(iter.hasNext()) {
-			this.cementerio.add(iter.next()); //agrego carta al cementerio
-			iter.remove(); //la borro de la lista
+		this.zonaMonstruos.matarATodasLasCartas();
+		this.enviarCartasMuertasAlCementerio();
+	}
+
+	public void enviarCartasMuertasAlCementerio() {
+		
+		List<Carta> cartasMuertas = this.zonaMonstruos.obtenerCartasMuertas();
+		
+		for (Carta carta : cartasMuertas) {
+			this.cementerio.add(carta);
 		}
 	}
 }

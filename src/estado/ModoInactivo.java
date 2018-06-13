@@ -22,4 +22,10 @@ public class ModoInactivo extends Estado {
 		return false;
 	}
 
+	@Override
+	public boolean estaMuerta() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

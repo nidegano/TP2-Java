@@ -5,8 +5,7 @@ import cartas.Carta;
 public class Mazo extends ContenedorDeCartas {
 
 	public Mazo() {
-		super();
-		this.capacidad = 40;
+		super(40);
 	}
 
 	public Carta tomarUnaCarta() {
