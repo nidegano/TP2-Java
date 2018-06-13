@@ -39,11 +39,6 @@ public class Jugador {
 		cartaMonstruo.colocarEnModoAtaque();
 		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
 	}
-	
-	public void colocarCartaMonstruoDeUnSacrificioEnModoAtaque(CartaMonstruo cartaMonstruo) {
-		cartaMonstruo.colocarEnModoAtaque();
-		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
-	}
 
 	public void colocarCartaMonstruoEnModoDefensa(CartaMonstruo cartaMonstruo) {
 		cartaMonstruo.colocarEnModoDefensa();
