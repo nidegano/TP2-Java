@@ -2,7 +2,7 @@ package juego;
 
 import java.util.ArrayList;
 
-import java.util.List;
+//import java.util.List;
 
 import cartas.*;
 
@@ -89,22 +89,14 @@ public class Jugador {
 		this.cartasEspeciales.add(carta);
 	}
 
-	public Carta elegirMagica() {
-		return this.cartasEspeciales.get(0);
-	}
-
 	public void destruirCartasEnCampo() {
 		
 		this.zonaMonstruos.matarATodasLasCartas();
 		this.enviarCartasMuertasAlCementerio();
 	}
 
+	//Cada zona mete sus cartas muertas al cementerio
 	public void enviarCartasMuertasAlCementerio() {
-		
-		List<Carta> cartasMuertas = this.zonaMonstruos.obtenerCartasMuertas();
-		
-		for (Carta carta : cartasMuertas) {
-			this.cementerio.add(carta);
-		}
+		this.zonaMonstruos.enviarCartasMuertasAlCementerio(this.cementerio);
 	}
 }

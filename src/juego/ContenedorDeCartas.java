@@ -23,22 +23,18 @@ public class ContenedorDeCartas {
 	}
 
 	public Carta obtenerPrimero() {
-
 		return this.cartas.get(0);
 	}
 
 	public boolean estaDentro(Carta carta) {
-		
 		return this.cartas.contains(carta);
 	}
 
 	public void remover(Carta carta) {
-		
 		this.cartas.remove(carta);
 	}
 
 	public List<Carta> transferirTodasLasCartas() {
-		
 		return this.cartas;
 	}
 
@@ -49,23 +45,17 @@ public class ContenedorDeCartas {
 		}
 	}
 
-	public List<Carta> obtenerCartasMuertas() {
-		
-		List<Carta> muertas = new ArrayList<Carta>();
-		
-		for (Carta carta : this.cartas) {
-			if (carta.estaMuerta()) {
-				muertas.add(carta);
-			}
-		}
-		return muertas;
-	}
-
 	public void matarATodasLasCartas() {
 		
 		for (Carta carta : this.cartas) {
-
 			carta.matar();
+		}
+	}
+
+	public void enviarCartasMuertasAlCementerio(ArrayList<Carta> cementerio) {
+		for (Carta carta : this.cartas) {
+			if (carta.estaMuerta())
+				cementerio.add(carta);
 		}
 	}
 }
