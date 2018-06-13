@@ -187,6 +187,8 @@ class AtaqueTest {
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorA.colocarCartaMagicaBocaArriba(agujeroOscuro);
+		
+		agujeroOscuro.efecto(jugadorA, jugadorB);
 
 		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertTrue(jugadorB.estaLaCartaEnCementerio(dragonBlancoDeOjosAzules));

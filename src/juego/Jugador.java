@@ -1,6 +1,7 @@
 package juego;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import cartas.*;
 
@@ -82,4 +83,17 @@ public class Jugador {
 		this.cartasEspeciales.add(carta);
 	}
 
+	public Carta elegirMagica() {
+		return this.cartasEspeciales.get(0);
+	}
+
+	public void destruirCartasEnCampo() {
+		Iterator<CartaMonstruo> iter = monstruos.iterator();
+		
+		//itero la lista monstruos. 
+		while(iter.hasNext()) {
+			this.cementerio.add(iter.next()); //agrego carta al cementerio
+			iter.remove(); //la borro de la lista
+		}
+	}
 }
