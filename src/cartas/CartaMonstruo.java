@@ -17,24 +17,22 @@ public abstract class CartaMonstruo extends Carta {
 		this.puntosSegunEstado = this.puntosDeAtaque;
 	}
 
-	public boolean estaEnModoAtaque() {
-		return this.estado.esModoAtaque();
-	}
-
 	public void colocarEnModoDefensa() {
 		this.estado = new ModoDefensa();
 		this.puntosSegunEstado = this.puntosDeDefensa;
+	}
+	
+	public boolean estaEnModoAtaque() {
+		return this.estado.esModoAtaque();
 	}
 
 	public boolean estaEnModoDefensa() {
 		return this.estado.esModoDefensa();
 	}
 
-	// Los puntos que se utilizan para el calculo dependen del estado de la carta
 	public boolean esPerdedoraContra(CartaMonstruo cartaAtacante) {
 		if (this.puntosSegunEstado == cartaAtacante.puntosDeAtaque)
 			throw new BatallaEmpatadaException();
-
 		return (this.puntosSegunEstado < cartaAtacante.puntosDeAtaque);
 	}
 

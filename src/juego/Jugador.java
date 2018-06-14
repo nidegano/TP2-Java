@@ -64,7 +64,7 @@ public class Jugador {
 		this.cementerio.add(carta);
 	}
 
-	public boolean estaLaCartaEnZonaDeMonstruo(Carta carta) {
+	public boolean estaLaCartaEnZonaDeMonstruo(CartaMonstruo carta) {
 		return this.zonaMonstruos.estaDentro(carta);
 	}
 
