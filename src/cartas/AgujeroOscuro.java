@@ -7,7 +7,7 @@ import juego.Jugador;
 public class AgujeroOscuro extends CartaMagica {
 
 	public AgujeroOscuro() {
-		this.estado = new ModoInactivo();
+		super();
 	}
 
 	public void colocarBocaAbajo() {
