@@ -21,9 +21,9 @@ public class AgujeroOscuro extends CartaMagica {
 	public void colocarBocaArriba() {
 		this.estado = new ModoActivo();
 	}
-	
+
 	public void efecto(Jugador jugadorA, Jugador jugadorB) {
-		if(estado.esActivo()) {
+		if (estado.esActivo()) {
 			jugadorA.destruirCartasEnCampo();
 			jugadorB.destruirCartasEnCampo();
 		}

@@ -9,7 +9,7 @@ public abstract class Estado {
 	public abstract boolean esInactivo();
 
 	public abstract boolean esActivo();
-	
+
 	public abstract boolean estaMuerta();
 
 }

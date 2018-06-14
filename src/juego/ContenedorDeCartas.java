@@ -34,16 +34,14 @@ public class ContenedorDeCartas {
 	}
 
 	public void matarATodasLasCartas() {
-		
-		for (Carta carta : this.cartas) {
+		for (Carta carta : this.cartas)
 			carta.matar();
-		}
 	}
 
 	public void enviarCartasMuertasAlCementerio(ArrayList<Carta> cementerio) {
-		for (Carta carta : this.cartas) {
+		for (Carta carta : this.cartas)
 			if (carta.estaMuerta())
 				cementerio.add(carta);
-		}
 	}
+
 }

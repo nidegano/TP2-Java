@@ -1,12 +1,10 @@
 package testsIntegracion;
 
 import static org.junit.Assert.assertEquals;
-
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import cartas.AgujeroOscuro;
 import cartas.ExodiaCabeza;
@@ -15,10 +13,10 @@ import juego.Batalla;
 import juego.Jugador;
 import juego.Mazo;
 
-class AtaqueTest {
+public class AtaqueTest {
 
 	@Test
-	void testJugadorAAtacaConUnMonstruoMasFuerteQueElDeBAmbosEnModoAtaqueSeDestruyeElDeBYSeLastimaB() {
+	public void testJugadorAAtacaConUnMonstruoMasFuerteQueElDeBAmbosEnModoAtaqueSeDestruyeElDeBYSeLastimaB() {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -47,7 +45,7 @@ class AtaqueTest {
 	}
 
 	@Test
-	void testJugadorAAtacaConUnMonstruoMasDebilQueElDeBAmbosEnModoAtaqueSeDestruyeSuPropioMonstruoYSeLastimaA() {
+	public void testJugadorAAtacaConUnMonstruoMasDebilQueElDeBAmbosEnModoAtaqueSeDestruyeSuPropioMonstruoYSeLastimaA() {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -76,7 +74,7 @@ class AtaqueTest {
 	}
 
 	@Test
-	void testJugadorAAtacaConUnMonstruoIgualDeFuerteQueElDeBEnModoAtaqueSeDestruyenAmbosMonstruosYNadieSeLastima() {
+	public void testJugadorAAtacaConUnMonstruoIgualDeFuerteQueElDeBEnModoAtaqueSeDestruyenAmbosMonstruosYNadieSeLastima() {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -106,7 +104,7 @@ class AtaqueTest {
 	}
 
 	@Test
-	void testJugadorAAtacaConUnMonstruoMasDebilAlDeBEnModoDefensaNingunMonstruoSeDestruyeYNadieSeLastima() {
+	public void testJugadorAAtacaConUnMonstruoMasDebilAlDeBEnModoDefensaNingunMonstruoSeDestruyeYNadieSeLastima() {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -136,7 +134,7 @@ class AtaqueTest {
 	}
 
 	@Test
-	void testJugadorAAtacaConUnMonstruoMasFuerteAlDeBEnModoDefensaSeDestruyeElMonstruoDeBYNadieSeLastima() {
+	public void testJugadorAAtacaConUnMonstruoMasFuerteAlDeBEnModoDefensaSeDestruyeElMonstruoDeBYNadieSeLastima() {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -165,7 +163,7 @@ class AtaqueTest {
 	}
 
 	@Test
-	void testJugadorADestruyeTodosLosMonstruosConAgujeroOscuro() {
+	public void testJugadorADestruyeTodosLosMonstruosConAgujeroOscuro() {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -188,7 +186,7 @@ class AtaqueTest {
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorA.colocarCartaMagicaBocaArriba(agujeroOscuro);
-		
+
 		agujeroOscuro.efecto(jugadorA, jugadorB);
 
 		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
