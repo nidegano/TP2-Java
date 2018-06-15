@@ -1,5 +1,3 @@
-[![Build Status](https://nicopaez.ci.cloudbees.com/view/Algo3/job/proyecto-base-aglo3/badge/icon)](https://nicopaez.ci.cloudbees.com/view/Algo3/job/proyecto-base-aglo3/)
-
 ## Definición de pruebas
 ### Nombrar correctamente los archivos de pruebas
 
