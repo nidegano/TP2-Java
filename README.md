@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/nidegano/TP2-Java.svg?branch=master)](https://travis-ci.org/nidegano/TP2-Java)
+
 ## Definición de pruebas
 ### Nombrar correctamente los archivos de pruebas
 
