@@ -1,5 +1,6 @@
 package cartas;
 
+
 import estado.ModoInactivo;
 
 public class CartaTrampa extends Carta {
@@ -9,7 +10,7 @@ public class CartaTrampa extends Carta {
 	}
 
 	public boolean estaBocaAbajo() {
-		return this.estado.esInactivo();
+		return this.estado instanceof ModoInactivo;
 	}
 
 }
