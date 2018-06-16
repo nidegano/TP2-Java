@@ -36,7 +36,7 @@ public class AtaqueTest {
 		jugadorB.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla();
+		batalla.librarBatalla(exodiaCabeza,insectoComeHombres);
 
 		// VIDA DEL JUGADOR B - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (1000 - 450);
@@ -65,7 +65,7 @@ public class AtaqueTest {
 		jugadorB.colocarCartaMonstruoEnModoAtaque(exodiaCabeza);
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla();
+		batalla.librarBatalla(insectoComeHombres,exodiaCabeza);
 
 		// VIDA DEL JUGADOR A - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (1000 - 450);
@@ -94,7 +94,7 @@ public class AtaqueTest {
 		jugadorB.colocarCartaMonstruoEnModoAtaque(otroInsectoComeHombres);
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla();
+		batalla.librarBatalla(insectoComeHombres,otroInsectoComeHombres);
 
 		int vida = 8000;
 		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
@@ -104,7 +104,7 @@ public class AtaqueTest {
 	}
 
 	@Test
-	public void testJugadorAAtacaConUnMonstruoMasDebilAlDeBEnModoDefensaNingunMonstruoSeDestruyeYNadieSeLastima() {
+	public void testJugadorAAtacaConUnMonstruoMasDebilAlDeBEnModoDefensaSeDestruyeElMonstruoDeAYNadieSeLastima() {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -124,11 +124,10 @@ public class AtaqueTest {
 		jugadorB.colocarCartaMonstruoEnModoDefensa(exodiaCabeza);
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla();
+		batalla.librarBatalla(insectoComeHombres,exodiaCabeza);
 
 		int vida = 8000;
-		assertFalse(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
-		assertFalse(jugadorB.estaLaCartaEnCementerio(exodiaCabeza));
+		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertEquals(vida, jugadorA.vida());
 		assertEquals(vida, jugadorB.vida());
 	}
@@ -154,7 +153,7 @@ public class AtaqueTest {
 		jugadorB.colocarCartaMonstruoEnModoDefensa(insectoComeHombres);
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla();
+		batalla.librarBatalla(exodiaCabeza,exodiaCabeza);
 
 		int vida = 8000;
 		assertTrue(jugadorB.estaLaCartaEnCementerio(insectoComeHombres));

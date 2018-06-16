@@ -93,4 +93,12 @@ public class Jugador {
 		this.zonaCartasEspeciales.agregar(carta);
 	}
 
+	public boolean esDueñoDe(CartaMonstruo cartaMonstruo) {
+		//aca usaria el ContenedorDeCartas "seleccion" pero por ahora hago que chequee todos sus contenedores de cartas.		
+		
+		return  this.mano.contains(cartaMonstruo) ||
+				this.zonaMonstruos.estaDentro(cartaMonstruo) ||
+				this.zonaCartasEspeciales.estaDentro(cartaMonstruo);
+	}
+
 }

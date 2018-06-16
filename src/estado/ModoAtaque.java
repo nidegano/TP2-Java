@@ -1,31 +1,25 @@
 package estado;
 
-public class ModoAtaque extends Estado {
+import juego.FormaDeAfectarAlJugador;
+import juego.NoRestar;
+import juego.Restar;
 
-	@Override
-	public boolean esModoAtaque() {
-		return true;
+public class ModoAtaque extends EstadoDeCartaMonstruo {
+
+	public ModoAtaque(int puntosDeAtaque) {
+		super();
+		this.puntosAsociadosAlEstado = puntosDeAtaque;
 	}
 
-	@Override
-	public boolean esModoDefensa() {
-		return false;
+	//Aca quise hacer DoubleDispatchPattern (el de piedra-papel-tijera del campus)
+	
+	public FormaDeAfectarAlJugador determinarFormaDeAfectarAlJugadorQueCorresponda(ModoAtaque estado) {
+		
+		return new Restar();
 	}
-
-	@Override
-	public boolean esInactivo() {
-		return false;
+	
+	public FormaDeAfectarAlJugador determinarFormaDeAfectarAlJugadorQueCorresponda(ModoDefensa estado) {
+		
+		return new NoRestar();
 	}
-
-	@Override
-	public boolean esActivo() {
-		return false;
-	}
-
-	@Override
-	public boolean estaMuerta() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

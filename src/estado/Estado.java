@@ -2,14 +2,15 @@ package estado;
 
 public abstract class Estado {
 
-	public abstract boolean esModoAtaque();
+	private boolean estaMuerta;
+	
+	public boolean estaMuerta() {
+		
+		return this.estaMuerta;
+	}
 
-	public abstract boolean esModoDefensa();
-
-	public abstract boolean esInactivo();
-
-	public abstract boolean esActivo();
-
-	public abstract boolean estaMuerta();
-
+	public void transformarAMuerto() {
+		
+		this.estaMuerta = true;
+	}
 }

@@ -1,46 +1,41 @@
 package cartas;
 
+import estado.EstadoDeCartaMonstruo;
 import estado.ModoAtaque;
 import estado.ModoDefensa;
-import excepciones.BatallaEmpatadaException;
-import java.lang.Math;
+import juego.FormaDeAfectarAlJugador;
 
 public abstract class CartaMonstruo extends Carta {
 
 	protected int puntosDeAtaque;
 	protected int puntosDeDefensa;
-	protected int puntosSegunEstado;
 	protected int nivel;
 
 	public void colocarEnModoAtaque() {
-		this.estado = new ModoAtaque();
-		this.puntosSegunEstado = this.puntosDeAtaque;
+		
+		this.estado = new ModoAtaque(puntosDeAtaque);
 	}
 
 	public void colocarEnModoDefensa() {
-		this.estado = new ModoDefensa();
-		this.puntosSegunEstado = this.puntosDeDefensa;
+		
+		this.estado = new ModoDefensa(puntosDeDefensa);;
 	}
 	
 	public boolean estaEnModoAtaque() {
-		return this.estado.esModoAtaque();
+		return this.estado.getClass().equals(ModoAtaque.class);
 	}
 
 	public boolean estaEnModoDefensa() {
-		return this.estado.esModoDefensa();
+		return this.estado.getClass().equals(ModoDefensa.class);
 	}
 
-	public boolean esPerdedoraContra(CartaMonstruo cartaAtacante) {
-		if (this.puntosSegunEstado == cartaAtacante.puntosDeAtaque)
-			throw new BatallaEmpatadaException();
-		return (this.puntosSegunEstado < cartaAtacante.puntosDeAtaque);
+	public FormaDeAfectarAlJugador enfrentarCon(CartaMonstruo monstruoAtacado) {
+		
+		return ((ModoAtaque) this.estado).determinarFormaDeAfectarAlJugadorQueCorresponda(monstruoAtacado.estado);
 	}
 
-	public int obtenerPuntosDeVidaADebilitar(CartaMonstruo cartaAtacante) {
-		int puntosDeVida = 0;
-		if (this.estado.esModoAtaque())
-			puntosDeVida = Math.abs(cartaAtacante.puntosDeAtaque - this.puntosDeAtaque);
-		return puntosDeVida;
-	}
+	public int puntosAUtilizarSegunEstado() {
 
+		return ((EstadoDeCartaMonstruo) this.estado).puntosAsociadosAlEstado();
+	}
 }
