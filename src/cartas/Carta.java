@@ -13,7 +13,7 @@ public abstract class Carta {
 	}
 
 	public boolean estaMuerta() {
-		return this.estado.estaMuerta();
+		return this.estado instanceof Muerto;
 	}
 
 	public void matar() {

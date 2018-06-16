@@ -1,5 +1,6 @@
 package cartas;
 
+import estado.ModoActivo;
 import juego.Jugador;
 
 public class AgujeroOscuro extends CartaMagica {
@@ -9,7 +10,7 @@ public class AgujeroOscuro extends CartaMagica {
 	}
 
 	public void efecto(Jugador jugadorA, Jugador jugadorB) {
-		if (estado.esActivo()) {
+		if (estado instanceof ModoActivo) {
 			jugadorA.destruirCartasEnCampo();
 			jugadorB.destruirCartasEnCampo();
 		}

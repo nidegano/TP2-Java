@@ -1,5 +1,6 @@
 package cartas;
 
+
 import estado.ModoAtaque;
 import estado.ModoDefensa;
 import excepciones.BatallaEmpatadaException;
@@ -23,11 +24,11 @@ public abstract class CartaMonstruo extends Carta {
 	}
 	
 	public boolean estaEnModoAtaque() {
-		return this.estado.esModoAtaque();
+		return this.estado instanceof ModoAtaque;
 	}
 
 	public boolean estaEnModoDefensa() {
-		return this.estado.esModoDefensa();
+		return this.estado instanceof ModoDefensa;
 	}
 
 	public boolean esPerdedoraContra(CartaMonstruo cartaAtacante) {
@@ -38,7 +39,7 @@ public abstract class CartaMonstruo extends Carta {
 
 	public int obtenerPuntosDeVidaADebilitar(CartaMonstruo cartaAtacante) {
 		int puntosDeVida = 0;
-		if (this.estado.esModoAtaque())
+		if (this.estado instanceof ModoAtaque)
 			puntosDeVida = Math.abs(cartaAtacante.puntosDeAtaque - this.puntosDeAtaque);
 		return puntosDeVida;
 	}

@@ -14,11 +14,11 @@ public class CartaMagica extends Carta {
 	}
 
 	public boolean estaBocaArriba() {
-		return this.estado.esActivo();
+		return this.estado instanceof ModoActivo;
 	}
 
 	public boolean estaBocaAbajo() {
-		return this.estado.esInactivo();
+		return this.estado instanceof ModoInactivo;
 	}
 
 }
