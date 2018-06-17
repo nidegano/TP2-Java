@@ -1,7 +1,6 @@
 package testsIntegracion;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -37,6 +36,8 @@ public class AtaqueTest {
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
 		batalla.librarBatalla(exodiaCabeza,insectoComeHombres);
+		
+		jugadorB.enviarCartasMuertasAlCementerio();
 
 		// VIDA DEL JUGADOR B - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (1000 - 450);
@@ -66,6 +67,8 @@ public class AtaqueTest {
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
 		batalla.librarBatalla(insectoComeHombres,exodiaCabeza);
+		
+		jugadorA.enviarCartasMuertasAlCementerio();
 
 		// VIDA DEL JUGADOR A - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (1000 - 450);
@@ -95,6 +98,9 @@ public class AtaqueTest {
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
 		batalla.librarBatalla(insectoComeHombres,otroInsectoComeHombres);
+		
+		jugadorA.enviarCartasMuertasAlCementerio();
+		jugadorB.enviarCartasMuertasAlCementerio();
 
 		int vida = 8000;
 		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
@@ -125,6 +131,8 @@ public class AtaqueTest {
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
 		batalla.librarBatalla(insectoComeHombres,exodiaCabeza);
+		
+		jugadorA.enviarCartasMuertasAlCementerio();
 
 		int vida = 8000;
 		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
@@ -153,7 +161,9 @@ public class AtaqueTest {
 		jugadorB.colocarCartaMonstruoEnModoDefensa(insectoComeHombres);
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla(exodiaCabeza,exodiaCabeza);
+		batalla.librarBatalla(exodiaCabeza,insectoComeHombres);
+		
+		jugadorB.enviarCartasMuertasAlCementerio();
 
 		int vida = 8000;
 		assertTrue(jugadorB.estaLaCartaEnCementerio(insectoComeHombres));
@@ -187,6 +197,9 @@ public class AtaqueTest {
 		jugadorA.colocarCartaMagicaBocaArriba(agujeroOscuro);
 
 		agujeroOscuro.efecto(jugadorA, jugadorB);
+		
+		jugadorA.enviarCartasMuertasAlCementerio();
+		jugadorB.enviarCartasMuertasAlCementerio();
 
 		assertTrue(jugadorA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertTrue(jugadorB.estaLaCartaEnCementerio(exodiaCabeza));
