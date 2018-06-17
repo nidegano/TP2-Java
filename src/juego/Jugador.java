@@ -45,7 +45,7 @@ public class Jugador {
 		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
 	}
 
-	public void colocarCartaMagicaBocaArriba(CartaMagica cartaMagica) {
+	public void colocarCartaMagicaBocaArriba(Carta cartaMagica) {
 		cartaMagica.colocarBocaArriba();
 		this.transferirCartaMagicaAlCampo(cartaMagica);
 	}
@@ -88,7 +88,7 @@ public class Jugador {
 		this.zonaMonstruos.agregar(carta);
 	}
 
-	private void transferirCartaMagicaAlCampo(CartaMagica carta) {
+	private void transferirCartaMagicaAlCampo(Carta carta) {
 		this.mano.remove(carta);
 		this.zonaCartasEspeciales.agregar(carta);
 	}

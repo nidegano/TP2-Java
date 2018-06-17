@@ -2,7 +2,7 @@ package cartas;
 
 import juego.Jugador;
 
-public class AgujeroOscuro extends CartaMagica {
+public class AgujeroOscuro extends Carta {
 
 	public AgujeroOscuro() {
 		super();

@@ -9,9 +9,9 @@ public class Mazo extends ContenedorDeCartas {
 	}
 
 	public Carta tomarUnaCarta() {
-		Carta carta = this.cartas.get(0);
-		this.cartas.remove(0);
-		return carta;
+		//Carta carta = this.cartas.get(0);
+		//this.cartas.remove(0);
+		return this.cartas.remove(0);
 	}
 
 }

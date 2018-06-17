@@ -5,7 +5,8 @@ import estado.ModoAtaque;
 import estado.ModoDefensa;
 import juego.FormaDeAfectarAlJugador;
 
-public abstract class CartaMonstruo extends Carta {
+
+public class CartaMonstruo extends Carta {
 
 	protected int puntosDeAtaque;
 	protected int puntosDeDefensa;
