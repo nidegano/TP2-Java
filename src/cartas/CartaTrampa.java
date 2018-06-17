@@ -9,7 +9,7 @@ public class CartaTrampa extends Carta {
 	}
 
 	public boolean estaBocaAbajo() {
-		return this.estado.getClass().equals(ModoInactivo.class);
+		return this.estado instanceof ModoInactivo;
 	}
 
 }

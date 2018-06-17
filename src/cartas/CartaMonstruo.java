@@ -22,11 +22,11 @@ public abstract class CartaMonstruo extends Carta {
 	}
 	
 	public boolean estaEnModoAtaque() {
-		return this.estado.getClass().equals(ModoAtaque.class);
+		return this.estado instanceof ModoAtaque;
 	}
 
 	public boolean estaEnModoDefensa() {
-		return this.estado.getClass().equals(ModoDefensa.class);
+		return this.estado instanceof ModoDefensa;
 	}
 
 	public FormaDeAfectarAlJugador enfrentarCon(CartaMonstruo monstruoAtacado) {

@@ -1,6 +1,6 @@
 package juego;
 
-public class Restar extends FormaDeAfectarAlJugador {
+public class Restar implements FormaDeAfectarAlJugador {
 
 	@Override
 	public void afectar(Jugador jugador, int puntosDeVidaADebilitar) {

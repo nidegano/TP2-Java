@@ -1,4 +1,4 @@
 package estado;
 
-public class EstadoDeCartaEspecial extends Estado {
+public class EstadoDeCartaEspecial implements Estado {
 }

@@ -1,6 +1,6 @@
 package estado;
 
-public abstract class EstadoDeCartaMonstruo extends Estado {
+public abstract class EstadoDeCartaMonstruo implements Estado {
 	
 	protected int puntosAsociadosAlEstado;
 

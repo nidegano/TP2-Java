@@ -17,9 +17,9 @@ public class ModoAtaque extends EstadoDeCartaMonstruo {
 		
 		FormaDeAfectarAlJugador formaDeAfectar = null;
 		
-		if (estado.getClass().equals(ModoAtaque.class))
+		if (estado instanceof ModoAtaque)
 			formaDeAfectar = new Restar();
-		if (estado.getClass().equals(ModoDefensa.class)) {
+		if (estado instanceof ModoDefensa) {
 			formaDeAfectar = new NoRestar();
 		}
 		return formaDeAfectar;
