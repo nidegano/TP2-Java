@@ -1,4 +1,4 @@
 package estado;
 
-public class ModoInactivo extends EstadoDeCartaEspecial {
+public class ModoInactivo implements Estado {
 }
