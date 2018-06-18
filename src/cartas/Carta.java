@@ -3,6 +3,7 @@ package cartas;
 import estado.Estado;
 import estado.ModoActivo;
 import estado.ModoInactivo;
+import estado.ModoMuerta;
 
 
 public class Carta {
