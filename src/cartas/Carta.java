@@ -1,7 +1,6 @@
 package cartas;
 
 import estado.Estado;
-import estado.ModoMuerta;
 
 public abstract class Carta {
 

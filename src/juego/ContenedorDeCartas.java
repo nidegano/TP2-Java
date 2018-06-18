@@ -38,10 +38,10 @@ public class ContenedorDeCartas {
 			carta.matar();
 	}
 
-	public void enviarCartasMuertasAlCementerio(ArrayList<Carta> cementerio) {
+	public void enviarCartasMuertasAlCementerio(ContenedorDeCartas cementerio) {
 		for (Carta carta : this.cartas)
 			if (carta.estaMuerta())
-				cementerio.add(carta);
+				cementerio.agregar(carta);
 	}
 
 }

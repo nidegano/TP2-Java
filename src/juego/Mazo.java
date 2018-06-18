@@ -14,4 +14,8 @@ public class Mazo extends ContenedorDeCartas {
 		return carta;
 	}
 
+	public int capacidad() {
+		return this.capacidad;
+	}
+
 }

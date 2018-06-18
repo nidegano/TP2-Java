@@ -1,22 +1,20 @@
 package juego;
 
-import java.util.ArrayList;
-
 import cartas.*;
 
 public class Jugador {
 
 	private int vida;
-	private ArrayList<Carta> mano;
-	private ArrayList<Carta> cementerio;
+	private ContenedorDeCartas mano;
+	private ContenedorDeCartas cementerio;
 	private ContenedorDeCartas zonaMonstruos;
 	private ContenedorDeCartas zonaCartasEspeciales;
 	private Mazo mazo;
 
 	public Jugador(Mazo mazo) {
 		this.vida = 8000;
-		this.mano = new ArrayList<Carta>();
-		this.cementerio = new ArrayList<Carta>();
+		this.mano = new ContenedorDeCartas(5);
+		this.cementerio = new ContenedorDeCartas(mazo.capacidad());
 		this.zonaMonstruos = new ContenedorDeCartas(5);
 		this.zonaCartasEspeciales = new ContenedorDeCartas(5);
 		this.mazo = mazo;
@@ -32,22 +30,22 @@ public class Jugador {
 
 	public void tomarCartaDelMazo() {
 		Carta unaCarta = mazo.tomarUnaCarta();
-		this.mano.add(unaCarta);
+		this.mano.agregar(unaCarta);
 	}
 
 	public void colocarCartaMonstruoEnModoAtaque(CartaMonstruo cartaMonstruo) {
 		cartaMonstruo.colocarEnModoAtaque();
-		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
+		this.pasarCartaMonstruoDeLaManoAlCampo(cartaMonstruo);
 	}
 
 	public void colocarCartaMonstruoEnModoDefensa(CartaMonstruo cartaMonstruo) {
 		cartaMonstruo.colocarEnModoDefensa();
-		this.transferirCartaMonstruoAlCampo(cartaMonstruo);
+		this.pasarCartaMonstruoDeLaManoAlCampo(cartaMonstruo);
 	}
 
 	public void colocarCartaMagicaBocaArriba(CartaMagica cartaMagica) {
 		cartaMagica.colocarBocaArriba();
-		this.transferirCartaMagicaAlCampo(cartaMagica);
+		this.pasarCartaMagicaDeLaManoAlCampo(cartaMagica);
 	}
 
 	public CartaMonstruo elegirMonstruo() {
@@ -55,13 +53,13 @@ public class Jugador {
 	}
 
 	public void sacrificarMonstruo(CartaMonstruo carta) {
-		this.mano.remove(carta);
-		this.cementerio.add(carta);
+		this.mano.remover(carta);
+		this.cementerio.agregar(carta);
 	}
 
 	public void enviarAlCementerio(CartaMonstruo carta) {
 		this.zonaMonstruos.remover(carta);
-		this.cementerio.add(carta);
+		this.cementerio.agregar(carta);
 	}
 
 	public boolean estaLaCartaEnZonaDeMonstruo(CartaMonstruo carta) {
@@ -69,7 +67,7 @@ public class Jugador {
 	}
 
 	public boolean estaLaCartaEnCementerio(Carta carta) {
-		return this.cementerio.contains(carta);
+		return this.cementerio.estaDentro(carta);
 	}
 
 	public void destruirCartasEnCampo() {
@@ -83,20 +81,20 @@ public class Jugador {
 		this.zonaCartasEspeciales.enviarCartasMuertasAlCementerio(this.cementerio);
 	}
 	
-	private void transferirCartaMonstruoAlCampo(CartaMonstruo carta) {
-		this.mano.remove(carta);
+	private void pasarCartaMonstruoDeLaManoAlCampo(CartaMonstruo carta) {
+		this.mano.remover(carta);
 		this.zonaMonstruos.agregar(carta);
 	}
 
-	private void transferirCartaMagicaAlCampo(CartaMagica carta) {
-		this.mano.remove(carta);
+	private void pasarCartaMagicaDeLaManoAlCampo(CartaMagica carta) {
+		this.mano.remover(carta);
 		this.zonaCartasEspeciales.agregar(carta);
 	}
 
 	public boolean esDueñoDe(CartaMonstruo cartaMonstruo) {
 		//aca usaria el ContenedorDeCartas "seleccion" pero por ahora hago que chequee todos sus contenedores de cartas.		
 		
-		return  this.mano.contains(cartaMonstruo) ||
+		return  this.mano.estaDentro(cartaMonstruo) ||
 				this.zonaMonstruos.estaDentro(cartaMonstruo) ||
 				this.zonaCartasEspeciales.estaDentro(cartaMonstruo);
 	}
