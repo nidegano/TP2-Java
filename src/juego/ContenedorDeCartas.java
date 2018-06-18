@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import cartas.Carta;
 import excepciones.CapacidadMaximaException;
+import excepciones.CartaNoEstaException;
+import excepciones.ContenedorDeCartasVacioException;
 
 public class ContenedorDeCartas {
 
@@ -22,7 +24,12 @@ public class ContenedorDeCartas {
 	}
 
 	public Carta obtenerPrimero() {
-		return this.cartas.get(0);
+		try {
+			return this.cartas.get(0);
+		}
+		catch (IndexOutOfBoundsException e) {
+			throw new ContenedorDeCartasVacioException();
+		}
 	}
 
 	public boolean estaDentro(Carta carta) {
@@ -30,6 +37,11 @@ public class ContenedorDeCartas {
 	}
 
 	public void remover(Carta carta) {
+		
+		if (!this.estaDentro(carta)) {
+			throw new CartaNoEstaException();
+		}
+		
 		this.cartas.remove(carta);
 	}
 

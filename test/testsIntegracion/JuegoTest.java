@@ -121,6 +121,7 @@ public class JuegoTest {
 
 		Jugador jugador = new Jugador(mazo);
 		jugador.tomarCartaDelMazo();
+		jugador.tomarCartaDelMazo();
 
 		jugador.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugador.colocarCartaMonstruoEnModoAtaque(otroInsectoComeHombres);
@@ -145,6 +146,7 @@ public class JuegoTest {
 		mazo.agregar(dragonBlancoDeOjosAzules);
 
 		Jugador jugador = new Jugador(mazo);
+		jugador.tomarCartaDelMazo();
 		jugador.tomarCartaDelMazo();
 
 		jugador.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
