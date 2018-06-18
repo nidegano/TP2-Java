@@ -35,8 +35,8 @@ public class AtaqueTest {
 		jugadorB.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla(exodiaCabeza,insectoComeHombres);
-		
+		batalla.librarBatalla(exodiaCabeza, insectoComeHombres);
+
 		jugadorB.enviarCartasMuertasAlCementerio();
 
 		// VIDA DEL JUGADOR B - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
@@ -66,8 +66,8 @@ public class AtaqueTest {
 		jugadorB.colocarCartaMonstruoEnModoAtaque(exodiaCabeza);
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla(insectoComeHombres,exodiaCabeza);
-		
+		batalla.librarBatalla(insectoComeHombres, exodiaCabeza);
+
 		jugadorA.enviarCartasMuertasAlCementerio();
 
 		// VIDA DEL JUGADOR A - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
@@ -97,8 +97,8 @@ public class AtaqueTest {
 		jugadorB.colocarCartaMonstruoEnModoAtaque(otroInsectoComeHombres);
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla(insectoComeHombres,otroInsectoComeHombres);
-		
+		batalla.librarBatalla(insectoComeHombres, otroInsectoComeHombres);
+
 		jugadorA.enviarCartasMuertasAlCementerio();
 		jugadorB.enviarCartasMuertasAlCementerio();
 
@@ -130,8 +130,8 @@ public class AtaqueTest {
 		jugadorB.colocarCartaMonstruoEnModoDefensa(exodiaCabeza);
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla(insectoComeHombres,exodiaCabeza);
-		
+		batalla.librarBatalla(insectoComeHombres, exodiaCabeza);
+
 		jugadorA.enviarCartasMuertasAlCementerio();
 
 		int vida = 8000;
@@ -161,8 +161,8 @@ public class AtaqueTest {
 		jugadorB.colocarCartaMonstruoEnModoDefensa(insectoComeHombres);
 
 		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla(exodiaCabeza,insectoComeHombres);
-		
+		batalla.librarBatalla(exodiaCabeza, insectoComeHombres);
+
 		jugadorB.enviarCartasMuertasAlCementerio();
 
 		int vida = 8000;
@@ -197,7 +197,7 @@ public class AtaqueTest {
 		jugadorA.colocarCartaMagicaBocaArriba(agujeroOscuro);
 
 		agujeroOscuro.efecto(jugadorA, jugadorB);
-		
+
 		jugadorA.enviarCartasMuertasAlCementerio();
 		jugadorB.enviarCartasMuertasAlCementerio();
 

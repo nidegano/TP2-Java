@@ -26,8 +26,7 @@ public class ContenedorDeCartas {
 	public Carta obtenerPrimero() {
 		try {
 			return this.cartas.get(0);
-		}
-		catch (IndexOutOfBoundsException e) {
+		} catch (IndexOutOfBoundsException e) {
 			throw new ContenedorDeCartasVacioException();
 		}
 	}
@@ -37,11 +36,8 @@ public class ContenedorDeCartas {
 	}
 
 	public void remover(Carta carta) {
-		
-		if (!this.estaDentro(carta)) {
+		if (!this.estaDentro(carta))
 			throw new CartaNoEstaException();
-		}
-		
 		this.cartas.remove(carta);
 	}
 

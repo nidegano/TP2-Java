@@ -21,8 +21,8 @@ public class Batalla {
 		
 		this.chequearQueElMonstruoAtacanteEsteEnModoAtacar(monstruoAtacante);
 		
-		Jugador jugadorAtacante = this.determinarElDueñoDeLaCarta(monstruoAtacante);
-		Jugador jugadorDefensor = this.determinarElDueñoDeLaCarta(monstruoAtacado);
+		Jugador jugadorAtacante = this.determinarElDuenioDeLaCarta(monstruoAtacante);
+		Jugador jugadorDefensor = this.determinarElDuenioDeLaCarta(monstruoAtacado);
 		
 		this.formaDeAfectar = this.determinarLaFormaDeAfectarAlJugador(monstruoAtacante,monstruoAtacado);
 		
@@ -54,17 +54,13 @@ public class Batalla {
 		this.formaDeAfectar.afectar(jugador,diferencia);
 	}
 
-	private Jugador determinarElDueñoDeLaCarta(CartaMonstruo cartaMonstruo) {
-		
-		if (this.jugador1.esDueñoDe(cartaMonstruo)) {
+	private Jugador determinarElDuenioDeLaCarta(CartaMonstruo cartaMonstruo) {
+		if (this.jugador1.esDuenioDe(cartaMonstruo))
 			return this.jugador1;
-		}
-		if (this.jugador2.esDueñoDe(cartaMonstruo)){
+		if (this.jugador2.esDuenioDe(cartaMonstruo))
 			return this.jugador2;
-		}
-		else {
+		else
 			throw new LaCartaPasadaNoPerteneceANingunJugadorException();
-		}
 	}
 
 	private int determinarDiferenciaDePuntosDeAtaqueODefensaEntreLosMonstruos(CartaMonstruo atacante,

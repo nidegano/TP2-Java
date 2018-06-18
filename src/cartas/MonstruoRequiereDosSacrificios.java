@@ -9,4 +9,5 @@ public class MonstruoRequiereDosSacrificios extends CartaMonstruo {
 		otroMonstruo.matar();
 		this.estado = new ModoAtaque(puntosDeAtaque);
 	}
+
 }

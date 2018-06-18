@@ -19,7 +19,6 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testAgregarSeAgregaUnCartaYAlUsarEstaDentroDevuelveTrue() {
-		
 		Carta unaCarta = new Carta();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		
@@ -30,7 +29,6 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testAgregarSeAgreganMasCartasQueLaCapacidadYTiraUnaCapacidadMaximaException() {
-		
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(3);
 		
 		try {
@@ -47,7 +45,6 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testAgregarSeAgreganTantasCartasComoLaCapacidadYNoTiraUnaCapacidadMaximaException() {
-		
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(3);
 	
 		try {
@@ -63,7 +60,6 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testObtenerPrimeroSeAgreganDosCartasYDevuelveLaPrimera() {
-		
 		Carta unaCarta = new Carta();
 		Carta otraCarta = new Carta();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
@@ -76,7 +72,6 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testObtenerPrimeroConContenedorVacioTiraUnaContenedorDeCartasVacioException() {
-		
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(3);
 		
 		try {
@@ -90,7 +85,6 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testEstaDentroSeAgreganUnaCartaYCuandoSePreguntaPorEsaCartaDevuelveTrue() {
-		
 		Carta unaCarta = new Carta();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		contenedor.agregar(unaCarta);
@@ -100,7 +94,6 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testEstaDentroSeAgreganUnaCartaYCuandoSePreguntaPorOtraCartaDevuelveFalse() {
-		
 		Carta unaCarta = new Carta();
 		Carta otraCarta = new Carta();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
@@ -111,7 +104,6 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testEstaDentroNoSeAgregaNingunaCartaYCuandoSePreguntaPorUnaCartaDevuelveFalse() {
-		
 		Carta unaCarta = new Carta();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		
@@ -120,7 +112,6 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testRemoverSeRemueveUnaCartaYCuandoSePreguntaEstaDentroSobreEsaCartaDevuelveFalse() {
-		
 		Carta unaCarta = new Carta();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		contenedor.agregar(unaCarta);
@@ -131,7 +122,6 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testRemoverCuandoSeQuiereRemoverUnaCartaQueNoEstaTiraCartaNoEstaException() {
-		
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(3);
 		Carta unaCarta = new Carta();
 		
@@ -146,19 +136,16 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testMatarTodasLasCartasAgrega5CartasAplicaElMetodoYChequeoUnaPorUnaQueTodasLasCartasEstenMuertas() {
-
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		List<Carta> cartas = this.crearTantasCartas(4);
 		this.agregarCartasAContenedor(contenedor,cartas);
 		contenedor.matarATodasLasCartas();
 		
 		assertTrue(this.todasLasCartasEstanMuertas(cartas));
-	
 	}
 	
 	@Test
 	public void testEnviarCartasMuertasAlCementerioAgregaVariasCartasLasMataATodasYVerificaQueTodasEstenEnElCementerio() {
-
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		
 		Carta carta1 = new Carta();
@@ -180,12 +167,10 @@ public class ContenedorDeCartasTest {
 		assertTrue(cementerio.estaDentro(carta2));
 		assertTrue(cementerio.estaDentro(carta3));
 		assertTrue(cementerio.estaDentro(carta4));
-	
 	}
 	
 	@Test
 	public void testEnviarCartasMuertasAlCementerioAgregaVariasCartasLasMataAAlgunasYVerificaQueTodasEsasAlgunasEstenEnElCementerio() {
-
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		
 		Carta carta1 = new Carta();
@@ -209,36 +194,26 @@ public class ContenedorDeCartasTest {
 		assertTrue(cementerio.estaDentro(carta2));
 		assertTrue(cementerio.estaDentro(carta3));
 		assertFalse(cementerio.estaDentro(carta4));
-	
 	}
 
 	private boolean todasLasCartasEstanMuertas(List<Carta> cartas) {
-		
 		for (Carta carta : cartas) {
-			
-			if (!carta.estaMuerta()) {
+			if (!carta.estaMuerta())
 				return false;
-			}
 		}		
 		return true;
 	}
 
 	private void agregarCartasAContenedor(ContenedorDeCartas contenedor, List<Carta> cartas) {
-		
-		for (Carta carta : cartas) {
-			
+		for (Carta carta : cartas)
 			contenedor.agregar(carta);
-		}		
 	}
 
 	private List<Carta> crearTantasCartas(int cantidad) {
-		
 		List<Carta> cartas = new ArrayList<Carta>();
-		
-		for (int i = 1; i<=cantidad;i++) {
+		for (int i = 1; i<=cantidad;i++)
 			cartas.add(new Carta());
-		}
-		
 		return cartas;
 	}
+
 }

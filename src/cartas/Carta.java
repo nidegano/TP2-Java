@@ -5,7 +5,6 @@ import estado.ModoActivo;
 import estado.ModoInactivo;
 import estado.ModoMuerta;
 
-
 public class Carta {
 
 	protected Estado estado;
@@ -17,7 +16,7 @@ public class Carta {
 	public void matar() {
 		this.estado = new ModoMuerta();
 	}
-	
+
 	public void colocarBocaArriba() {
 		this.estado = new ModoActivo();
 	}
@@ -33,4 +32,5 @@ public class Carta {
 	public boolean estaBocaAbajo() {
 		return this.estado instanceof ModoInactivo;
 	}
+
 }

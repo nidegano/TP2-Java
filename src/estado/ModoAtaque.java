@@ -11,17 +11,16 @@ public class ModoAtaque extends EstadoDeCartaMonstruo {
 		this.puntosAsociadosAlEstado = puntosDeAtaque;
 	}
 
-	//Aca quise hacer DoubleDispatchPattern (el de piedra-papel-tijera del campus) (no me salio)
-	
+	// Aca quise hacer DoubleDispatchPattern (el de piedra-papel-tijera del campus)
+	// (no me salio)
+
 	public FormaDeAfectarAlJugador determinarFormaDeAfectarAlJugadorQueCorresponda(Estado estado) {
-		
 		FormaDeAfectarAlJugador formaDeAfectar = null;
-		
 		if (estado instanceof ModoAtaque)
 			formaDeAfectar = new Restar();
-		if (estado instanceof ModoDefensa) {
+		if (estado instanceof ModoDefensa)
 			formaDeAfectar = new NoRestar();
-		}
 		return formaDeAfectar;
 	}
+
 }
