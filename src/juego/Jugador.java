@@ -36,7 +36,8 @@ public class Jugador {
 	}
 
 	public void colocarCartaMonstruoEnModoAtaque(CartaMonstruo cartaMonstruo) {
-		cartaMonstruo.colocarEnModoAtaque();
+		ContenedorDeCartas sacrificios = new ContenedorDeCartas(0);
+		cartaMonstruo.colocarEnModoAtaque(sacrificios);
 		this.pasarCartaMonstruoDeLaManoALaZonaMonstruos(cartaMonstruo);
 	}
 

@@ -1,8 +1,10 @@
 package cartas;
 
+
 import estado.EstadoDeCartaMonstruo;
 import estado.ModoAtaque;
 import estado.ModoDefensa;
+import juego.ContenedorDeCartas;
 import juego.FormaDeAfectarAlJugador;
 
 public class CartaMonstruo extends Carta {
@@ -11,7 +13,8 @@ public class CartaMonstruo extends Carta {
 	protected int puntosDeDefensa;
 	protected int nivel;
 
-	public void colocarEnModoAtaque() {
+	public void colocarEnModoAtaque( ContenedorDeCartas sacrificios ) {
+		sacrificios.matarATodasLasCartas();
 		this.estado = new ModoAtaque(puntosDeAtaque);
 	}
 

@@ -11,6 +11,7 @@ import cartas.DragonArmadoOscuro;
 import cartas.CilindroMagico;
 import cartas.DragonBlancoDeOjosAzules;
 import cartas.InsectoComeHombres;
+import juego.ContenedorDeCartas;
 import juego.Jugador;
 import juego.Mazo;
 
@@ -19,7 +20,8 @@ public class JuegoTest {
 	@Test
 	public void testColocarCartaMonstruoEnModoAtaque() {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
-		insectoComeHombres.colocarEnModoAtaque();
+		ContenedorDeCartas sacrificios = new ContenedorDeCartas(0);
+		insectoComeHombres.colocarEnModoAtaque(sacrificios);
 
 		assertTrue(insectoComeHombres.estaEnModoAtaque());
 	}
@@ -79,8 +81,11 @@ public class JuegoTest {
 		jugador.tomarCartaDelMazo();
 
 		jugador.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
+		
+		ContenedorDeCartas sacrificios = new ContenedorDeCartas(1);
+		sacrificios.agregar(insectoComeHombres);
 
-		espadachinSilencioso.colocarEnModoAtaque(insectoComeHombres);
+		espadachinSilencioso.colocarEnModoAtaque(sacrificios);
 		jugador.enviarCartasMuertasAlCementerio();
 
 		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));
@@ -101,7 +106,10 @@ public class JuegoTest {
 
 		jugador.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 
-		jinzo.colocarEnModoAtaque(insectoComeHombres);
+		ContenedorDeCartas sacrificios = new ContenedorDeCartas(1);
+		sacrificios.agregar(insectoComeHombres);
+		
+		jinzo.colocarEnModoAtaque(sacrificios);
 		jugador.enviarCartasMuertasAlCementerio();
 
 		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));
@@ -126,7 +134,11 @@ public class JuegoTest {
 		jugador.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugador.colocarCartaMonstruoEnModoAtaque(otroInsectoComeHombres);
 
-		dragonArmadoOscuro.colocarEnModoAtaque(insectoComeHombres, otroInsectoComeHombres);
+		ContenedorDeCartas sacrificios = new ContenedorDeCartas(2);
+		sacrificios.agregar(insectoComeHombres);
+		sacrificios.agregar(otroInsectoComeHombres);
+		
+		dragonArmadoOscuro.colocarEnModoAtaque(sacrificios);
 		jugador.enviarCartasMuertasAlCementerio();
 
 		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));
@@ -151,8 +163,12 @@ public class JuegoTest {
 
 		jugador.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugador.colocarCartaMonstruoEnModoAtaque(otroInsectoComeHombres);
+		
+		ContenedorDeCartas sacrificios = new ContenedorDeCartas(2);
+		sacrificios.agregar(insectoComeHombres);
+		sacrificios.agregar(otroInsectoComeHombres);
 
-		dragonBlancoDeOjosAzules.colocarEnModoAtaque(insectoComeHombres, otroInsectoComeHombres);
+		dragonBlancoDeOjosAzules.colocarEnModoAtaque(sacrificios);
 		jugador.enviarCartasMuertasAlCementerio();
 
 		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));

@@ -1,6 +1,6 @@
 package cartas;
 
-public class DragonBlancoDeOjosAzules extends MonstruoRequiereDosSacrificios {
+public class DragonBlancoDeOjosAzules extends CartaMonstruo {
 
 	public DragonBlancoDeOjosAzules() {
 		super();

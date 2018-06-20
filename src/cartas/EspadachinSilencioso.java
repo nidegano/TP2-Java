@@ -1,6 +1,6 @@
 package cartas;
 
-public class EspadachinSilencioso extends MonstruoRequiereUnSacrificio {
+public class EspadachinSilencioso extends CartaMonstruo {
 
 	public EspadachinSilencioso() {
 		super();

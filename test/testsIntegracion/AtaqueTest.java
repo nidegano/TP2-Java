@@ -39,7 +39,7 @@ public class AtaqueTest {
 
 		jugadorB.enviarCartasMuertasAlCementerio();
 
-		// VIDA DEL JUGADOR B - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
+		// VIDA DEL JUGADOR B - (ATAQUE DE EXODIA - ATAQUE DE INSECTO)
 		int vida = 8000 - (1000 - 450);
 		assertTrue(jugadorB.estaLaCartaEnCementerio(insectoComeHombres));
 		assertEquals(vida, jugadorB.vida());
