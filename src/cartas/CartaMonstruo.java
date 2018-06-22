@@ -1,6 +1,5 @@
 package cartas;
 
-
 import estado.EstadoDeCartaMonstruo;
 import estado.ModoAtaque;
 import estado.ModoDefensa;
@@ -30,12 +29,12 @@ public class CartaMonstruo extends Carta {
 		return this.estado instanceof ModoDefensa;
 	}
 
-	public FormaDeAfectarAlJugador enfrentarCon(CartaMonstruo monstruoAtacado) {
-		return ((ModoAtaque) this.estado).determinarFormaDeAfectarAlJugadorQueCorresponda(monstruoAtacado.estado);
-	}
-
 	public int puntosAUtilizarSegunEstado() {
 		return ((EstadoDeCartaMonstruo) this.estado).puntosAsociadosAlEstado();
+	}
+	
+	public FormaDeAfectarAlJugador formaDeAfectar() {
+		return estado.formaDeAfectar();
 	}
 
 }

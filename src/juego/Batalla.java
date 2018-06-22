@@ -1,7 +1,6 @@
 package juego;
 
 import cartas.CartaMonstruo;
-
 import excepciones.LaCartaPasadaNoPerteneceANingunJugadorException;
 import excepciones.MonstruoAtacanteNoEstabaEnModoAtaqueException;
 
@@ -23,7 +22,7 @@ public class Batalla {
 		Jugador jugadorAtacante = this.determinarElDuenioDeLaCarta(monstruoAtacante);
 		Jugador jugadorDefensor = this.determinarElDuenioDeLaCarta(monstruoAtacado);
 
-		this.formaDeAfectar = this.determinarLaFormaDeAfectarAlJugador(monstruoAtacante, monstruoAtacado);
+		formaDeAfectar = this.determinarLaFormaDeAfectarAlJugador( monstruoAtacado);
 
 		int diferencia = this.determinarDiferenciaDePuntosDeAtaqueODefensaEntreLosMonstruos(monstruoAtacante, monstruoAtacado);
 
@@ -40,12 +39,12 @@ public class Batalla {
 		}
 	}
 
-	private FormaDeAfectarAlJugador determinarLaFormaDeAfectarAlJugador(CartaMonstruo monstruoAtacante, CartaMonstruo monstruoAtacado) {
-		return monstruoAtacante.enfrentarCon(monstruoAtacado);
+	private FormaDeAfectarAlJugador determinarLaFormaDeAfectarAlJugador(CartaMonstruo monstruoAtacado) {
+		return monstruoAtacado.formaDeAfectar();
 	}
 
 	private void afectar(Jugador jugador, int diferencia) {
-		this.formaDeAfectar.afectar(jugador, diferencia);
+		formaDeAfectar.afectar(jugador, diferencia);
 	}
 
 	private Jugador determinarElDuenioDeLaCarta(CartaMonstruo cartaMonstruo) {
