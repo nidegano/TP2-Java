@@ -1,8 +1,8 @@
 package cartas;
 
-public class ExodiaCabeza extends CartaMonstruo {
+public class CabezaExodia extends CartaMonstruo {
 
-	public ExodiaCabeza() {
+	public CabezaExodia() {
 		super();
 		this.puntosDeAtaque = 1000;
 		this.puntosDeDefensa = 1000;

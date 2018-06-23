@@ -4,10 +4,19 @@ import estado.Estado;
 import estado.ModoActivo;
 import estado.ModoInactivo;
 import estado.ModoMuerta;
+import juego.Campo;
+import juego.Jugador;
 
-public class Carta {
+public abstract class Carta {
 
 	protected Estado estado;
+	protected Jugador jugadorDueño;
+	
+	public void asignarDueño(Jugador jugador) {
+		this.jugadorDueño = jugador;
+	}
+	
+	public abstract void agregarEnCampo(Campo campo);
 
 	public boolean estaMuerta() {
 		return this.estado instanceof ModoMuerta;
@@ -19,6 +28,7 @@ public class Carta {
 
 	public void colocarBocaArriba() {
 		this.estado = new ModoActivo();
+		this.agregarEnCampo(this.jugadorDueño.campo());
 	}
 
 	public void colocarBocaAbajo() {

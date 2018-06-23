@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import cartas.AgujeroOscuro;
 import cartas.Carta;
-import cartas.ExodiaCabeza;
+import cartas.CabezaExodia;
 import excepciones.CartaNoEstaEnCampoException;
 import excepciones.CartaNoPuedeIrAlCementerioSinMorirException;
 import juego.Jugador;
@@ -38,7 +38,7 @@ public class JugadorTest {
 	@Test
 	public void testColocarCartaMonstruoEnModoAtaquePoneACartaMonstruoEnModoAtaque() {
 		Mazo mazo = new Mazo();
-		ExodiaCabeza monstruo = new ExodiaCabeza();
+		CabezaExodia monstruo = new CabezaExodia();
 		mazo.agregar(monstruo);
 
 		Jugador jugador = new Jugador(mazo);
@@ -51,7 +51,7 @@ public class JugadorTest {
 	@Test
 	public void testColocarCartaMonstruoEnModoDefensaPoneACartaMonstruoEnModoDefensa() {
 		Mazo mazo = new Mazo();
-		ExodiaCabeza monstruo = new ExodiaCabeza();
+		CabezaExodia monstruo = new CabezaExodia();
 		mazo.agregar(monstruo);
 
 		Jugador jugador = new Jugador(mazo);
@@ -77,7 +77,7 @@ public class JugadorTest {
 	@Test
 	public void testSacrificarMonstruoSinPonerloEnElCampoTiraCartaNoEstaEnCampoException() {
 		Mazo mazo = new Mazo();
-		ExodiaCabeza monstruo = new ExodiaCabeza();
+		CabezaExodia monstruo = new CabezaExodia();
 		mazo.agregar(monstruo);
 
 		Jugador jugador = new Jugador(mazo);
@@ -94,7 +94,7 @@ public class JugadorTest {
 	@Test
 	public void testSacrificarMonstruoHabiendoloPuestoEnElCampoYElMonstruoMuere() {
 		Mazo mazo = new Mazo();
-		ExodiaCabeza monstruo = new ExodiaCabeza();
+		CabezaExodia monstruo = new CabezaExodia();
 		mazo.agregar(monstruo);
 
 		Jugador jugador = new Jugador(mazo);
@@ -109,7 +109,7 @@ public class JugadorTest {
 	@Test
 	public void testEnviarCartaMonstruoAlCementerioSinQueElMonstruoEsteMuertoTiraCartaNoPuedeIrAlCementerioSinMorirException() {
 		Mazo mazo = new Mazo();
-		ExodiaCabeza monstruo = new ExodiaCabeza();
+		CabezaExodia monstruo = new CabezaExodia();
 		mazo.agregar(monstruo);
 
 		Jugador jugador = new Jugador(mazo);
@@ -126,8 +126,8 @@ public class JugadorTest {
 	@Test
 	public void testDestruirCartasEnCampoSeColocaDosCartaMonstruoEnCampoYMueren() {
 		Mazo mazo = new Mazo();
-		ExodiaCabeza monstruo1 = new ExodiaCabeza();
-		ExodiaCabeza monstruo2 = new ExodiaCabeza();
+		CabezaExodia monstruo1 = new CabezaExodia();
+		CabezaExodia monstruo2 = new CabezaExodia();
 		mazo.agregar(monstruo1);
 		mazo.agregar(monstruo2);
 
@@ -166,9 +166,9 @@ public class JugadorTest {
 	@Test
 	public void testEnviarCartasMuertasAlCementerioSeSeMatanDosCartaMonstruoDeTresYAparecenEnElCementerio() {
 		Mazo mazo = new Mazo();
-		ExodiaCabeza monstruo1 = new ExodiaCabeza();
-		ExodiaCabeza monstruo2 = new ExodiaCabeza();
-		ExodiaCabeza monstruo3 = new ExodiaCabeza();
+		CabezaExodia monstruo1 = new CabezaExodia();
+		CabezaExodia monstruo2 = new CabezaExodia();
+		CabezaExodia monstruo3 = new CabezaExodia();
 		mazo.agregar(monstruo1);
 		mazo.agregar(monstruo2);
 		mazo.agregar(monstruo3);
@@ -237,7 +237,7 @@ public class JugadorTest {
 	@Test
 	public void testEsDuenioDevuelveTrueCuandoJugadorPoneLaCartaMonstruoEnLaZonaDeMonstruos() {
 		Mazo mazo = new Mazo();
-		ExodiaCabeza monstruo = new ExodiaCabeza();
+		CabezaExodia monstruo = new CabezaExodia();
 		mazo.agregar(monstruo);
 
 	

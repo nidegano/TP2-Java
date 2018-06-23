@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import cartas.Carta;
 import excepciones.CapacidadMaximaException;
-import excepciones.CartaNoEstaException;
+import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import excepciones.ContenedorDeCartasVacioException;
 import juego.ContenedorDeCartas;
 
@@ -129,7 +129,7 @@ public class ContenedorDeCartasTest {
 			contenedor.remover(unaCarta);
 			assertTrue(false);
 		}
-		catch (CartaNoEstaException e) {
+		catch (CartaNoEstaEnContenedorDeCartasException e) {
 			assertTrue(true);		
 		}		
 	}

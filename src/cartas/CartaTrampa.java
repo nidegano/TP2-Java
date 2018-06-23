@@ -1,6 +1,7 @@
 package cartas;
 
 import estado.ModoInactivo;
+import juego.Campo;
 
 public class CartaTrampa extends Carta {
 
@@ -10,6 +11,12 @@ public class CartaTrampa extends Carta {
 
 	public boolean estaBocaAbajo() {
 		return this.estado instanceof ModoInactivo;
+	}
+
+	@Override
+	public void agregarEnCampo(Campo campo) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -3,17 +3,32 @@ package cartas;
 import estado.EstadoDeCartaMonstruo;
 import estado.ModoAtaque;
 import estado.ModoDefensa;
+import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.FormaDeAfectarAlJugador;
+import juego.Jugador;
 
 public class CartaMonstruo extends Carta {
 
 	protected int puntosDeAtaque;
 	protected int puntosDeDefensa;
 	protected int nivel;
+	
+	public CartaMonstruo () {
+		super();
+	}
+	
+	public void invocarEnModoAtaque() {
+		this.colocarEnModoAtaque();
+		this.agregarEnCampo(this.jugadorDueño.campo());
+	}
+	
+	public void invocarEnModoDefensa() {
+		this.colocarEnModoDefensa();
+		this.agregarEnCampo(this.jugadorDueño.campo());
+	}
 
-	public void colocarEnModoAtaque( ContenedorDeCartas sacrificios ) {
-		sacrificios.matarATodasLasCartas();
+	public void colocarEnModoAtaque() {
 		this.estado = new ModoAtaque(puntosDeAtaque);
 	}
 
@@ -37,4 +52,18 @@ public class CartaMonstruo extends Carta {
 		return estado.formaDeAfectar();
 	}
 
+	@Override
+	public void agregarEnCampo(Campo campo) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void atacar(CartaMonstruo monstruoAtacado) {
+		// TODO Auto-generated method stub
+	}
+	
+	public void atacarDirectamenteAlJugador(Jugador jugadorB) {
+		// TODO Auto-generated method stub
+		
+	}
 }

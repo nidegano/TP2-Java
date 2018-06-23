@@ -9,4 +9,9 @@ public class InsectoComeHombres extends CartaMonstruo {
 		this.nivel = 2;
 	}
 
+	public void invocarEnModoDefensaBocaAbajo() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -4,9 +4,8 @@ public class Jinzo extends CartaMonstruo {
 
 	public Jinzo() {
 		super();
-		this.puntosDeAtaque = 2400;
-		this.puntosDeDefensa = 1500;
+		this.puntosDeAtaque = 500;
+		this.puntosDeDefensa = 400;
 		this.nivel = 6;
 	}
-
 }

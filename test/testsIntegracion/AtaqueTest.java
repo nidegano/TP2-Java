@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import cartas.AgujeroOscuro;
-import cartas.ExodiaCabeza;
+import cartas.CabezaExodia;
 import cartas.InsectoComeHombres;
 import juego.Batalla;
 import juego.Jugador;
@@ -19,7 +19,7 @@ public class AtaqueTest {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
-		ExodiaCabeza exodiaCabeza = new ExodiaCabeza();
+		CabezaExodia exodiaCabeza = new CabezaExodia();
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 
 		mazoA.agregar(exodiaCabeza);
@@ -51,7 +51,7 @@ public class AtaqueTest {
 		Mazo mazoB = new Mazo();
 
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
-		ExodiaCabeza exodiaCabeza = new ExodiaCabeza();
+		CabezaExodia exodiaCabeza = new CabezaExodia();
 
 		mazoA.agregar(insectoComeHombres);
 		mazoB.agregar(exodiaCabeza);
@@ -115,7 +115,7 @@ public class AtaqueTest {
 		Mazo mazoB = new Mazo();
 
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
-		ExodiaCabeza exodiaCabeza = new ExodiaCabeza();
+		CabezaExodia exodiaCabeza = new CabezaExodia();
 
 		mazoA.agregar(insectoComeHombres);
 		mazoB.agregar(exodiaCabeza);
@@ -146,7 +146,7 @@ public class AtaqueTest {
 		Mazo mazoB = new Mazo();
 
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
-		ExodiaCabeza exodiaCabeza = new ExodiaCabeza();
+		CabezaExodia exodiaCabeza = new CabezaExodia();
 
 		mazoA.agregar(exodiaCabeza);
 		mazoB.agregar(insectoComeHombres);
@@ -177,7 +177,7 @@ public class AtaqueTest {
 		Mazo mazoB = new Mazo();
 
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
-		ExodiaCabeza exodiaCabeza = new ExodiaCabeza();
+		CabezaExodia exodiaCabeza = new CabezaExodia();
 		AgujeroOscuro agujeroOscuro = new AgujeroOscuro();
 
 		mazoA.agregar(insectoComeHombres);

@@ -8,18 +8,12 @@ public class Jugador {
 
 	private int vida;
 	private ContenedorDeCartas mano;
-	private ContenedorDeCartas cementerio;
-	private ContenedorDeCartas zonaMonstruos;
-	private ContenedorDeCartas zonaCartasEspeciales;
-	private Mazo mazo;
+	private Campo campo;
 
-	public Jugador(Mazo mazo) {
+	public Jugador(Campo campo) {
 		this.vida = 8000;
-		this.mano = new ContenedorDeCartas(5);
-		this.cementerio = new ContenedorDeCartas(mazo.capacidad());
-		this.zonaMonstruos = new ContenedorDeCartas(5);
-		this.zonaCartasEspeciales = new ContenedorDeCartas(5);
-		this.mazo = mazo;
+		this.mano = new ContenedorDeCartas(7);
+		this.campo = campo;
 	}
 
 	public int vida() {
@@ -31,7 +25,7 @@ public class Jugador {
 	}
 
 	public void tomarCartaDelMazo() {
-		Carta unaCarta = mazo.tomarUnaCarta();
+		Carta unaCarta = campo.tomarUnaCartaDelMazo();
 		this.mano.agregar(unaCarta);
 	}
 
@@ -110,4 +104,13 @@ public class Jugador {
 		this.zonaCartasEspeciales.agregar(carta);
 	}
 
+	public Campo campo() {
+		// TODO Auto-generated method stub
+		return this.campo;
+	}
+
+	public Object cartasEnMano() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import cartas.Carta;
 import excepciones.CapacidadMaximaException;
-import excepciones.CartaNoEstaException;
+import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import excepciones.ContenedorDeCartasVacioException;
 
 public class ContenedorDeCartas {
@@ -37,7 +37,7 @@ public class ContenedorDeCartas {
 
 	public void remover(Carta carta) {
 		if (!this.estaDentro(carta))
-			throw new CartaNoEstaException();
+			throw new CartaNoEstaEnContenedorDeCartasException();
 		this.cartas.remove(carta);
 	}
 
