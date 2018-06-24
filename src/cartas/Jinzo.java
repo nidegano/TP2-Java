@@ -1,6 +1,6 @@
 package cartas;
 
-public class Jinzo extends CartaMonstruo {
+public class Jinzo extends CartaRequiereSacrificios {
 
 	public Jinzo() {
 		super();

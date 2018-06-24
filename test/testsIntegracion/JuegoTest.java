@@ -11,6 +11,7 @@ import cartas.DragonArmadoOscuro;
 import cartas.CilindroMagico;
 import cartas.DragonBlancoDeOjosAzules;
 import cartas.InsectoComeHombres;
+import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.Jugador;
 import juego.Mazo;
@@ -20,8 +21,7 @@ public class JuegoTest {
 	@Test
 	public void testColocarCartaMonstruoEnModoAtaque() {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
-		ContenedorDeCartas sacrificios = new ContenedorDeCartas(0);
-		insectoComeHombres.colocarEnModoAtaque(sacrificios);
+		insectoComeHombres.colocarEnModoAtaque();
 
 		assertTrue(insectoComeHombres.estaEnModoAtaque());
 	}
@@ -51,20 +51,19 @@ public class JuegoTest {
 	}
 
 	@Test
-	public void testSacrificarMonstruo() {
+	public void testMuereMonstruoYApareceEnCementerio() {
 		Mazo mazo = new Mazo();
-
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
-
 		mazo.agregar(insectoComeHombres);
+		
+		Campo campo = new Campo(mazo);
 
-		Jugador jugador = new Jugador(mazo);
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
-
-		jugador.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
-		jugador.sacrificarMonstruo(insectoComeHombres);
-
-		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));
+		
+		insectoComeHombres.matar();
+		
+		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
 	}
 
 	@Test
@@ -77,7 +76,9 @@ public class JuegoTest {
 		mazo.agregar(insectoComeHombres);
 		mazo.agregar(espadachinSilencioso);
 
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 
 		jugador.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
@@ -86,9 +87,8 @@ public class JuegoTest {
 		sacrificios.agregar(insectoComeHombres);
 
 		espadachinSilencioso.colocarEnModoAtaque(sacrificios);
-		jugador.enviarCartasMuertasAlCementerio();
 
-		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
 	}
 
 	@Test
@@ -101,7 +101,9 @@ public class JuegoTest {
 		mazo.agregar(insectoComeHombres);
 		mazo.agregar(jinzo);
 
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 
 		jugador.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
@@ -110,9 +112,8 @@ public class JuegoTest {
 		sacrificios.agregar(insectoComeHombres);
 		
 		jinzo.colocarEnModoAtaque(sacrificios);
-		jugador.enviarCartasMuertasAlCementerio();
 
-		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
 	}
 
 	@Test
@@ -127,7 +128,9 @@ public class JuegoTest {
 		mazo.agregar(otroInsectoComeHombres);
 		mazo.agregar(dragonArmadoOscuro);
 
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		jugador.tomarCartaDelMazo();
 
@@ -139,10 +142,9 @@ public class JuegoTest {
 		sacrificios.agregar(otroInsectoComeHombres);
 		
 		dragonArmadoOscuro.colocarEnModoAtaque(sacrificios);
-		jugador.enviarCartasMuertasAlCementerio();
 
-		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));
-		assertTrue(jugador.estaLaCartaEnCementerio(otroInsectoComeHombres));
+		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campo.estaLaCartaEnCementerio(otroInsectoComeHombres));
 	}
 
 	@Test
@@ -157,7 +159,9 @@ public class JuegoTest {
 		mazo.agregar(otroInsectoComeHombres);
 		mazo.agregar(dragonBlancoDeOjosAzules);
 
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		jugador.tomarCartaDelMazo();
 
@@ -169,10 +173,9 @@ public class JuegoTest {
 		sacrificios.agregar(otroInsectoComeHombres);
 
 		dragonBlancoDeOjosAzules.colocarEnModoAtaque(sacrificios);
-		jugador.enviarCartasMuertasAlCementerio();
 
-		assertTrue(jugador.estaLaCartaEnCementerio(insectoComeHombres));
-		assertTrue(jugador.estaLaCartaEnCementerio(otroInsectoComeHombres));
+		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campo.estaLaCartaEnCementerio(otroInsectoComeHombres));
 	}
 
 }

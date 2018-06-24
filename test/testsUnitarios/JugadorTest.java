@@ -8,9 +8,11 @@ import org.junit.Test;
 
 import cartas.AgujeroOscuro;
 import cartas.Carta;
+import cartas.CartaDePrueba;
 import cartas.CabezaExodia;
 import excepciones.CartaNoEstaEnCampoException;
 import excepciones.CartaNoPuedeIrAlCementerioSinMorirException;
+import juego.Campo;
 import juego.Jugador;
 import juego.Mazo;
 
@@ -18,7 +20,7 @@ public class JugadorTest {
 
 	@Test
 	public void testDebilitar100PuntosDejaAlJugadorCon7900DeVida() {
-		Jugador jugador = new Jugador(new Mazo());
+		Jugador jugador = new Jugador(new Campo(new Mazo()));
 		int vidaAlPrincipio = jugador.vida();
 		jugador.debilitar(100);
 		int vidaAlFinal = vidaAlPrincipio - 100;
@@ -28,7 +30,7 @@ public class JugadorTest {
 
 	@Test
 	public void testDebilitar0PuntosDejaAlJugadorConLaMismaVidaDelPrincipio() {
-		Jugador jugador = new Jugador(new Mazo());
+		Jugador jugador = new Jugador(new Campo(new Mazo()));
 		int vidaAlPrincipio = jugador.vida();
 		jugador.debilitar(0);
 
@@ -40,8 +42,10 @@ public class JugadorTest {
 		Mazo mazo = new Mazo();
 		CabezaExodia monstruo = new CabezaExodia();
 		mazo.agregar(monstruo);
+		
+		Campo campo = new Campo(mazo);
 
-		Jugador jugador = new Jugador(mazo);
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		jugador.colocarCartaMonstruoEnModoAtaque(monstruo);
 
@@ -54,7 +58,9 @@ public class JugadorTest {
 		CabezaExodia monstruo = new CabezaExodia();
 		mazo.agregar(monstruo);
 
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		jugador.colocarCartaMonstruoEnModoDefensa(monstruo);
 
@@ -67,60 +73,13 @@ public class JugadorTest {
 		AgujeroOscuro monstruo = new AgujeroOscuro();
 		mazo.agregar(monstruo);
 
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		jugador.colocarCartaMagicaBocaArriba(monstruo);
 
 		assertTrue(monstruo.estaBocaArriba());
-	}
-
-	@Test
-	public void testSacrificarMonstruoSinPonerloEnElCampoTiraCartaNoEstaEnCampoException() {
-		Mazo mazo = new Mazo();
-		CabezaExodia monstruo = new CabezaExodia();
-		mazo.agregar(monstruo);
-
-		Jugador jugador = new Jugador(mazo);
-		jugador.tomarCartaDelMazo();
-
-		try {
-			jugador.sacrificarMonstruo(monstruo);
-			assertTrue(false);
-		} catch (CartaNoEstaEnCampoException e) {
-			assertTrue(true);
-		}
-	}
-
-	@Test
-	public void testSacrificarMonstruoHabiendoloPuestoEnElCampoYElMonstruoMuere() {
-		Mazo mazo = new Mazo();
-		CabezaExodia monstruo = new CabezaExodia();
-		mazo.agregar(monstruo);
-
-		Jugador jugador = new Jugador(mazo);
-		jugador.tomarCartaDelMazo();
-
-		jugador.colocarCartaMonstruoEnModoAtaque(monstruo);
-		jugador.sacrificarMonstruo(monstruo);
-
-		assertTrue(monstruo.estaMuerta());
-	}
-
-	@Test
-	public void testEnviarCartaMonstruoAlCementerioSinQueElMonstruoEsteMuertoTiraCartaNoPuedeIrAlCementerioSinMorirException() {
-		Mazo mazo = new Mazo();
-		CabezaExodia monstruo = new CabezaExodia();
-		mazo.agregar(monstruo);
-
-		Jugador jugador = new Jugador(mazo);
-		jugador.tomarCartaDelMazo();
-
-		try {
-			jugador.enviarCartaMonstruoAlCementerio(monstruo);
-			assertTrue(false);
-		} catch (CartaNoPuedeIrAlCementerioSinMorirException e) {
-			assertTrue(true);
-		}
 	}
 
 	@Test
@@ -131,7 +90,9 @@ public class JugadorTest {
 		mazo.agregar(monstruo1);
 		mazo.agregar(monstruo2);
 
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		jugador.tomarCartaDelMazo();
 
@@ -151,7 +112,9 @@ public class JugadorTest {
 		mazo.agregar(magica1);
 		mazo.agregar(magica2);
 
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		jugador.tomarCartaDelMazo();
 
@@ -173,7 +136,9 @@ public class JugadorTest {
 		mazo.agregar(monstruo2);
 		mazo.agregar(monstruo3);
 
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		jugador.tomarCartaDelMazo();
 		jugador.tomarCartaDelMazo();
@@ -185,11 +150,9 @@ public class JugadorTest {
 		monstruo1.matar();
 		monstruo2.matar();
 
-		jugador.enviarCartasMuertasAlCementerio();
-
-		assertTrue(jugador.estaLaCartaEnCementerio(monstruo1));
-		assertTrue(jugador.estaLaCartaEnCementerio(monstruo2));
-		assertFalse(jugador.estaLaCartaEnCementerio(monstruo3));
+		assertTrue(campo.estaLaCartaEnCementerio(monstruo1));
+		assertTrue(campo.estaLaCartaEnCementerio(monstruo2));
+		assertFalse(campo.estaLaCartaEnCementerio(monstruo3));
 	}
 
 	@Test
@@ -202,7 +165,9 @@ public class JugadorTest {
 		mazo.agregar(magica2);
 		mazo.agregar(magica3);
 
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		jugador.tomarCartaDelMazo();
 		jugador.tomarCartaDelMazo();
@@ -214,21 +179,20 @@ public class JugadorTest {
 		magica1.matar();
 		magica2.matar();
 
-		jugador.enviarCartasMuertasAlCementerio();
-
-		assertTrue(jugador.estaLaCartaEnCementerio(magica1));
-		assertTrue(jugador.estaLaCartaEnCementerio(magica2));
-		assertFalse(jugador.estaLaCartaEnCementerio(magica3));
+		assertTrue(campo.estaLaCartaEnCementerio(magica1));
+		assertTrue(campo.estaLaCartaEnCementerio(magica2));
+		assertFalse(campo.estaLaCartaEnCementerio(magica3));
 	}
 
 	@Test
 	public void testEsDuenioDevuelveTrueCuandoJugadorTomaDelMazoUnaCarta() {
 		Mazo mazo = new Mazo();
-		Carta carta = new Carta();
+		Carta carta = new CartaDePrueba();
 		mazo.agregar(carta);
 
-	
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		
 		assertTrue(jugador.esDuenioDe(carta));
@@ -240,8 +204,9 @@ public class JugadorTest {
 		CabezaExodia monstruo = new CabezaExodia();
 		mazo.agregar(monstruo);
 
-	
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		jugador.colocarCartaMonstruoEnModoAtaque(monstruo); //coloca la carta en la zona de monstruos
 		
@@ -254,8 +219,9 @@ public class JugadorTest {
 		AgujeroOscuro magica = new AgujeroOscuro();
 		mazo.agregar(magica);
 
-	
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
 		jugador.colocarCartaMagicaBocaArriba(magica); //coloca la carta en la zona de especiales
 		
@@ -265,10 +231,12 @@ public class JugadorTest {
 	@Test
 	public void testEsDuenioDevuelveTrueCuandoJugadorNoTomaLaCartaDelMazo() {
 		Mazo mazo = new Mazo();
-		Carta carta = new Carta();
+		Carta carta = new CartaDePrueba();
 		mazo.agregar(carta);
 
-		Jugador jugador = new Jugador(mazo);
+		Campo campo = new Campo(mazo);
+
+		Jugador jugador = new Jugador(campo);
 		
 		assertFalse(jugador.esDuenioDe(carta));
 	}

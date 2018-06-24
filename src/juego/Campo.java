@@ -1,6 +1,7 @@
 package juego;
 
 import cartas.Carta;
+import cartas.InsectoComeHombres;
 import cartas.CabezaExodia;
 
 public class Campo {
@@ -31,6 +32,16 @@ public class Campo {
 	}
 	
 	public boolean estaDentro(Carta carta) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void destruirTodasLasCartas() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean estaLaCartaEnCementerio(Carta carta) {
 		// TODO Auto-generated method stub
 		return false;
 	}

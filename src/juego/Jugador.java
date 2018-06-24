@@ -50,11 +50,14 @@ public class Jugador {
 	}
 		
 	public Campo campo() {
-
 		return this.campo;	
 	}
 
-	public Object cartasEnMano() {
-		return null;
+	public ContenedorDeCartas cartasEnMano() {
+		return this.mano;
+	}
+	
+	public void destruirCartasEnCampo() {
+		campo.destruirTodasLasCartas();
 	}
 }

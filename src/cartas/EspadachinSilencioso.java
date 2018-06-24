@@ -1,6 +1,6 @@
 package cartas;
 
-public class EspadachinSilencioso extends CartaMonstruo {
+public class EspadachinSilencioso extends CartaRequiereSacrificios {
 
 	public EspadachinSilencioso() {
 		super();
@@ -8,5 +8,4 @@ public class EspadachinSilencioso extends CartaMonstruo {
 		this.puntosDeDefensa = 1000;
 		this.nivel = 5;
 	}
-
 }
