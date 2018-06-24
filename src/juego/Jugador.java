@@ -60,4 +60,8 @@ public class Jugador {
 	public void destruirCartasEnCampo() {
 		campo.destruirTodasLasCartas();
 	}
+
+	public ContenedorDeCartas obtenerCementerio() {
+		return this.campo.obtenerCementerio();
+	}
 }

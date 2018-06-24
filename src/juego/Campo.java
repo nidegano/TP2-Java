@@ -45,6 +45,10 @@ public class Campo {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public ContenedorDeCartas obtenerCementerio() {
+		return this.cementerio;
+	}
 	
 	
 }
