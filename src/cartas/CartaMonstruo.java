@@ -49,7 +49,7 @@ public class CartaMonstruo extends Carta {
 	}
 	
 	public FormaDeAfectarAlJugador formaDeAfectar() {
-		return estado.formaDeAfectar();
+		return ((EstadoDeCartaMonstruo) estado).formaDeAfectar();
 	}
 
 	@Override

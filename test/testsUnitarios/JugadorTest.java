@@ -100,8 +100,8 @@ public class JugadorTest {
 		jugador.colocarCartaMonstruoEnModoAtaque(monstruo2);
 		jugador.destruirCartasEnCampo();
 
-		assertTrue(monstruo1.estaMuerta());
-		assertTrue(monstruo2.estaMuerta());
+		assertTrue(campo.estaLaCartaEnCementerio(monstruo1));
+		assertTrue(campo.estaLaCartaEnCementerio(monstruo2));
 	}
 
 	@Test
@@ -122,8 +122,8 @@ public class JugadorTest {
 		jugador.colocarCartaMagicaBocaArriba(magica2); // se coloca en el campo
 		jugador.destruirCartasEnCampo();
 
-		assertTrue(magica1.estaMuerta());
-		assertTrue(magica2.estaMuerta());
+		assertTrue(campo.estaLaCartaEnCementerio(magica1));
+		assertTrue(campo.estaLaCartaEnCementerio(magica2));
 	}
 
 	@Test

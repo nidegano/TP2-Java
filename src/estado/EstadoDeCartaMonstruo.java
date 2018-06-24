@@ -10,7 +10,6 @@ public abstract class EstadoDeCartaMonstruo implements Estado {
 		return this.puntosAsociadosAlEstado;
 	}
 
-	@Override
 	public abstract FormaDeAfectarAlJugador formaDeAfectar();
 
 }

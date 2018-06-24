@@ -46,10 +46,4 @@ public class ContenedorDeCartas {
 			carta.matar();
 	}
 
-	public void enviarCartasMuertasAlCementerio(ContenedorDeCartas cementerio) {
-		for (Carta carta : this.cartas)
-			if (carta.estaMuerta())
-				cementerio.agregar(carta);
-	}
-
 }
