@@ -84,7 +84,7 @@ public class CartaMonstruo extends Carta {
 
 	private void perder(FormaDeAfectarAlJugador formaDeAfectar) {
 		
-		formaDeAfectar.afectar(jugadorDueño);
+		formaDeAfectar.afectar(this.jugadorDueño);
 		this.matar();
 	}
 

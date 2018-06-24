@@ -1,6 +1,7 @@
 package testsIntegracion;
 
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -8,7 +9,6 @@ import org.junit.Test;
 import cartas.AgujeroOscuro;
 import cartas.CabezaExodia;
 import cartas.InsectoComeHombres;
-import juego.Batalla;
 import juego.Campo;
 import juego.Jugador;
 import juego.Mazo;
@@ -31,6 +31,9 @@ public class AtaqueTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
+		
+		exodiaCabeza.asignarDueño(jugadorA);
+		insectoComeHombres.asignarDueño(jugadorB);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
@@ -38,8 +41,7 @@ public class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(exodiaCabeza);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 
-		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla(exodiaCabeza, insectoComeHombres);
+		exodiaCabeza.atacar(insectoComeHombres);
 
 		// VIDA DEL JUGADOR B - (ATAQUE DE EXODIA - ATAQUE DE INSECTO)
 		int vida = 8000 - (1000 - 450);
@@ -63,6 +65,9 @@ public class AtaqueTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
+		
+		exodiaCabeza.asignarDueño(jugadorA);
+		insectoComeHombres.asignarDueño(jugadorB);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
@@ -70,8 +75,7 @@ public class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(exodiaCabeza);
 
-		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla(insectoComeHombres, exodiaCabeza);
+		insectoComeHombres.atacar(exodiaCabeza);
 
 		// VIDA DEL JUGADOR A - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (1000 - 450);
@@ -95,6 +99,9 @@ public class AtaqueTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
+		
+		insectoComeHombres.asignarDueño(jugadorA);
+		otroInsectoComeHombres.asignarDueño(jugadorB);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
@@ -102,8 +109,7 @@ public class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoAtaque(otroInsectoComeHombres);
 
-		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla(insectoComeHombres, otroInsectoComeHombres);
+		insectoComeHombres.atacar(otroInsectoComeHombres);
 
 		int vida = 8000;
 		assertTrue(campoA.estaLaCartaEnCementerio(insectoComeHombres));
@@ -128,6 +134,9 @@ public class AtaqueTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
+		
+		insectoComeHombres.asignarDueño(jugadorA);
+		exodiaCabeza.asignarDueño(jugadorB);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
@@ -135,8 +144,7 @@ public class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
 		jugadorB.colocarCartaMonstruoEnModoDefensa(exodiaCabeza);
 
-		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla(insectoComeHombres, exodiaCabeza);
+		insectoComeHombres.atacar(exodiaCabeza);
 
 		int vida = 8000;
 		assertTrue(campoA.estaLaCartaEnCementerio(insectoComeHombres));
@@ -160,6 +168,9 @@ public class AtaqueTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
+		
+		exodiaCabeza.asignarDueño(jugadorA);
+		insectoComeHombres.asignarDueño(jugadorB);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
@@ -167,8 +178,7 @@ public class AtaqueTest {
 		jugadorA.colocarCartaMonstruoEnModoAtaque(exodiaCabeza);
 		jugadorB.colocarCartaMonstruoEnModoDefensa(insectoComeHombres);
 
-		Batalla batalla = new Batalla(jugadorA, jugadorB);
-		batalla.librarBatalla(exodiaCabeza, insectoComeHombres);
+		exodiaCabeza.atacar(insectoComeHombres);
 
 		int vida = 8000;
 		assertTrue(campoB.estaLaCartaEnCementerio(insectoComeHombres));
@@ -194,6 +204,10 @@ public class AtaqueTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
+		
+		insectoComeHombres.asignarDueño(jugadorA);
+		exodiaCabeza.asignarDueño(jugadorB);
+		agujeroOscuro.asignarDueño(jugadorA);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
@@ -204,7 +218,7 @@ public class AtaqueTest {
 		jugadorA.tomarCartaDelMazo();
 		jugadorA.colocarCartaMagicaBocaArriba(agujeroOscuro);
 
-		agujeroOscuro.efecto(jugadorA, jugadorB);
+		agujeroOscuro.activar();
 
 		assertTrue(campoA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertTrue(campoB.estaLaCartaEnCementerio(exodiaCabeza));

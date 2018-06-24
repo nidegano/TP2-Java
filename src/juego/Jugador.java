@@ -9,11 +9,16 @@ public class Jugador {
 	private int vida;
 	private ContenedorDeCartas mano;
 	private Campo campo;
+	private Jugador oponente;
 
 	public Jugador(Campo campo) {
 		this.vida = 8000;
 		this.mano = new ContenedorDeCartas(7);
 		this.campo = campo;
+	}
+	
+	public void asignarOponente(Jugador oponente) {
+		this.oponente = oponente;
 	}
 
 	public int vida() {
@@ -63,5 +68,10 @@ public class Jugador {
 
 	public ContenedorDeCartas obtenerCementerio() {
 		return this.campo.obtenerCementerio();
+	}
+
+	public Jugador oponente() {
+		// TODO Auto-generated method stub
+		return this.oponente;
 	}
 }

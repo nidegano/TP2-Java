@@ -39,10 +39,13 @@ public class SegundaEntregaTest {
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
 		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
+		
 		EspadachinSilencioso monstruoA = new EspadachinSilencioso();
 		EspadachinSilencioso monstruoB = new EspadachinSilencioso();
 		
-		Wasteland wasteland = new Wasteland(jugadorA,jugadorB);
+		Wasteland wasteland = new Wasteland();
 		
 		monstruoA.asignarDueño(jugadorA);
 		monstruoB.asignarDueño(jugadorB);
@@ -69,10 +72,13 @@ public class SegundaEntregaTest {
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
 		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
+		
 		EspadachinSilencioso monstruoA = new EspadachinSilencioso();
 		EspadachinSilencioso monstruoB = new EspadachinSilencioso();
 		
-		Sogen sogen = new Sogen(jugadorA,jugadorB);
+		Sogen sogen = new Sogen();
 		
 		monstruoA.asignarDueño(jugadorA);
 		monstruoB.asignarDueño(jugadorB);
@@ -117,6 +123,9 @@ public class SegundaEntregaTest {
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
 		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
+		
 		Jinzo monstruo1 = new Jinzo();
 		CabezaExodia monstruo2 = new CabezaExodia();
 		
@@ -142,6 +151,9 @@ public class SegundaEntregaTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
+		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
 		
 		Jinzo jinzo = new Jinzo();
 		CabezaExodia monstruoB = new CabezaExodia();
@@ -195,6 +207,9 @@ public class SegundaEntregaTest {
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
 		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
+		
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		CabezaExodia monstruoB = new CabezaExodia();
 		
@@ -224,6 +239,9 @@ public class SegundaEntregaTest {
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
 		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
+		
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		CilindroMagico cilindroMagico = new CilindroMagico();
 		
@@ -250,6 +268,9 @@ public class SegundaEntregaTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
+		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
 		
 		CabezaExodia monstruoA = new CabezaExodia();
 		AlphaTheMagnetWarrior monstruoB = new AlphaTheMagnetWarrior(); //carta nueva
