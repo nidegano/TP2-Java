@@ -1,6 +1,5 @@
 package cartas;
 
-import efectos.Efecto;
 import estado.EstadoDeCartaEspecial;
 import estado.ModoActivo;
 import estado.ModoInactivo;
@@ -10,9 +9,9 @@ import juego.Jugador;
 public abstract class CartaEspecial extends Carta {
 	
 	protected EstadoDeCartaEspecial estado;
-	protected Efecto efecto;
 	
 	public CartaEspecial() {
+		super();
 		this.estado = new ModoInactivo();
 	}
 	

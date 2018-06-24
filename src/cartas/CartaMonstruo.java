@@ -3,6 +3,7 @@ package cartas;
 import estado.EstadoDeCartaMonstruo;
 import estado.ModoAtaque;
 import estado.ModoDefensa;
+import excepciones.ParaAtacarDirectamenteAlJugadorNoTieneQueHaberMonstruosInvocadosException;
 import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.FormaDeAfectarAlJugador;
@@ -26,11 +27,13 @@ public class CartaMonstruo extends Carta {
 	public void invocarEnModoAtaque() {
 		this.colocarEnModoAtaque();
 		this.agregarEnCampo(this.jugadorDueño.campo());
+		this.efecto.activar();
 	}
 	
-	public void invocarEnModoDefensa() {
+	public void invocarEnModoDefensa() { //aca va a ser un problema pasar de defensa a ataque y viceversa
 		this.colocarEnModoDefensa();
 		this.agregarEnCampo(this.jugadorDueño.campo());
+		this.efecto.activar();
 	}
 
 	public void colocarEnModoAtaque() {
@@ -38,7 +41,7 @@ public class CartaMonstruo extends Carta {
 	}
 
 	public void colocarEnModoDefensa() {
-		this.estado = new ModoDefensa(puntosDeDefensa);
+		this.estado = new ModoDefensa(puntosDeDefensa);	
 	}
 
 	public int puntosAUtilizarSegunEstado() {
@@ -55,11 +58,20 @@ public class CartaMonstruo extends Carta {
 		this.contenedoresQueLaContienen.add(campo.obtenerZonaMonstruos());
 	}
 	
-	public void atacarDirectamenteAlJugador(Jugador jugadorB) {
-		// TODO Auto-generated method stub
-		
+	public void atacarDirectamenteAlOponente() {
+		this.chequearQueNoHayaMonstruosDelOponenteInvocados();		
+		this.jugadorDueño.oponente().debilitar(this.obtenerPuntosDeAtaque());		
 	}
 	
+	private void chequearQueNoHayaMonstruosDelOponenteInvocados() {
+		
+		int cantidadDeMonstruosInvocados = this.jugadorDueño.oponente().campo().obtenerZonaMonstruos().cantidad();
+		
+		if (cantidadDeMonstruosInvocados == 0){
+			throw new ParaAtacarDirectamenteAlJugadorNoTieneQueHaberMonstruosInvocadosException();			
+		}
+	}
+
 	public void atacar(CartaMonstruo monstruoAtacado) {
 
 		FormaDeAfectarAlJugador formaDeAfectar = monstruoAtacado.determinarLaFormaDeAfectarAlJugador(this);

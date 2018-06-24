@@ -3,6 +3,7 @@ package cartas;
 import java.util.ArrayList;
 import java.util.List;
 
+import efectos.Efecto;
 import estado.Estado;
 import estado.ModoActivo;
 import estado.ModoInactivo;
@@ -14,6 +15,7 @@ public abstract class Carta {
 
 	protected Jugador jugadorDueño;
 	protected List<ContenedorDeCartas> contenedoresQueLaContienen;
+	protected Efecto efecto;
 	
 	public Carta() {
 		this.contenedoresQueLaContienen = new ArrayList<ContenedorDeCartas>();

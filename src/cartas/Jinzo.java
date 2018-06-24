@@ -1,11 +1,14 @@
 package cartas;
 
-public class Jinzo extends CartaRequiereSacrificios {
+import efectos.EfectoJinzo;
+
+public class Jinzo extends CartaMonstruo {
 
 	public Jinzo() {
 		super();
 		this.puntosDeAtaque = new Puntos(500);
 		this.puntosDeDefensa = new Puntos(400);
-		this.nivel = 6;
+		this.nivel = 2;
+		this.efecto = new EfectoJinzo();
 	}
 }

@@ -32,21 +32,6 @@ public class Jugador {
 		this.mano.agregar(unaCarta);
 	}
 
-	public void colocarCartaMonstruoEnModoAtaque(CartaMonstruo cartaMonstruo) {
-		cartaMonstruo.agregarEnCampo(this.campo);
-		cartaMonstruo.colocarEnModoAtaque();
-	}
-
-	public void colocarCartaMonstruoEnModoDefensa(CartaMonstruo cartaMonstruo) {
-		cartaMonstruo.agregarEnCampo(this.campo);
-		cartaMonstruo.colocarEnModoDefensa();
-	}
-
-	public void colocarCartaMagicaBocaArriba(CartaMagica cartaMagica) {
-		cartaMagica.agregarEnCampo(this.campo);
-		cartaMagica.colocarBocaArriba();
-	}
-
 	public boolean esDuenioDe(Carta carta) {
 		
 		return this.mano.estaDentro(carta) || this.campo.estaDentro(carta);

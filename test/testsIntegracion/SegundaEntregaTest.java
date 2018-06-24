@@ -24,6 +24,7 @@ import cartas.Reinforcements;
 import cartas.Sogen;
 import cartas.Wasteland;
 import juego.Campo;
+import juego.ContenedorDeCartas;
 import juego.Juego;
 import juego.Jugador;
 import juego.Mazo;
@@ -164,7 +165,7 @@ public class SegundaEntregaTest {
 		jinzo.invocarEnModoAtaque();
 		monstruoB.invocarEnModoDefensa();
 		
-		jinzo.atacarDirectamenteAlJugador(jugadorB);
+		jinzo.atacarDirectamenteAlOponente();
 		
 		int vidaEsperadaDeJugadorB = 8000 - 500;
 		
@@ -190,7 +191,12 @@ public class SegundaEntregaTest {
 		dragon2.invocarEnModoAtaque();
 		dragon3.invocarEnModoAtaque();
 		
-		DragonDefinitivo dragonDefinitivo = new DragonDefinitivo(dragon1,dragon2,dragon3); //se pasa las referencias a los dragones
+		ContenedorDeCartas sacrificios = new ContenedorDeCartas(2);
+		sacrificios.agregar(dragon1);
+		sacrificios.agregar(dragon2);
+		sacrificios.agregar(dragon3);
+		
+		DragonDefinitivo dragonDefinitivo = new DragonDefinitivo(sacrificios); //se pasa las referencias a los dragones
 		dragonDefinitivo.invocarEnModoAtaque(); // se sacrifica a los dragones
 		
 		assertTrue(campoA.estaLaCartaEnCementerio(dragon1));	
@@ -251,7 +257,7 @@ public class SegundaEntregaTest {
 		insectoComeHombres.invocarEnModoAtaque();
 		cilindroMagico.colocarBocaAbajo();
 		
-		insectoComeHombres.atacarDirectamenteAlJugador(jugadorB);
+		insectoComeHombres.atacarDirectamenteAlOponente();
 		
 		int vidaEsperadaDeJugadorA = 8000;
 		int vidaEsperadaDeJugadorB = 8000 - 450;

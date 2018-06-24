@@ -46,6 +46,10 @@ public class ContenedorDeCartas implements Iterable<Carta> {
 		for (Carta carta : this.cartas)
 			carta.matar();
 	}
+	
+	public int cantidad() {
+		return this.cartas.size();
+	}
 
 	@Override
 	public Iterator<Carta> iterator() {
