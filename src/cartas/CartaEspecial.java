@@ -2,11 +2,12 @@ package cartas;
 
 import efectos.Efecto;
 import estado.EstadoDeCartaEspecial;
+import estado.ModoActivo;
 import estado.ModoInactivo;
 import juego.Campo;
 import juego.Jugador;
 
-public class CartaEspecial extends Carta {
+public abstract class CartaEspecial extends Carta {
 	
 	protected EstadoDeCartaEspecial estado;
 	protected Efecto efecto;
@@ -16,10 +17,7 @@ public class CartaEspecial extends Carta {
 	}
 	
 	@Override
-	public void agregarEnCampo(Campo campo) {
-		// TODO Auto-generated method stub
-
-	}
+	public abstract void agregarEnCampo(Campo campo);
 	
 	@Override
 	public void asignarDueño(Jugador jugadorDueño) {
@@ -29,6 +27,15 @@ public class CartaEspecial extends Carta {
 	
 	public void activar() {
 		this.estado.activar(this.efecto);
+		this.agregarEnCampo(this.jugadorDueño.campo());
+	}
+	
+	public void colocarBocaArriba() {
+		this.estado = new ModoActivo();
+	}
+	
+	public void colocarBocaAbajo() {
+		this.estado = new ModoInactivo();
 	}
 
 }

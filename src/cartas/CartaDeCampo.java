@@ -3,17 +3,11 @@ package cartas;
 import juego.Campo;
 import juego.Jugador;
 
-public class CartaDeCampo extends Carta {
+public class CartaDeCampo extends CartaEspecial {
 	
 	@Override
 	public void agregarEnCampo(Campo campo) {
-		// TODO Auto-generated method stub
-		
+		campo.obtenerZonaCartasDeCampo().agregar(this);
+		this.contenedoresQueLaContienen.add(campo.obtenerZonaCartasDeCampo());		
 	}
-	
-	public void activar() {
-		this.agregarEnCampo(this.jugadorDueño.campo());
-		//activar efecto?
-	}
-
 }

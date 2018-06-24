@@ -10,13 +10,8 @@ public class CartaMagica extends CartaEspecial {
 
 	@Override
 	public void agregarEnCampo(Campo campo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void colocarBocaArriba() {
-		// TODO Auto-generated method stub
-		
+		campo.obtenerZonaEspeciales().agregar(this);
+		this.contenedoresQueLaContienen.add(campo.obtenerZonaEspeciales());
 	}
 
 }

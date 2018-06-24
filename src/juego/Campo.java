@@ -53,6 +53,14 @@ public class Campo {
 	public ContenedorDeCartas obtenerZonaMonstruos() {
 		return this.zonaMonstruos;
 	}
+
+	public ContenedorDeCartas obtenerZonaEspeciales() {
+		return this.zonaCartasEspeciales;
+	}
+
+	public ContenedorDeCartas obtenerZonaCartasDeCampo() {
+		return this.zonaCartasDeCampo;
+	}
 	
 	
 }
