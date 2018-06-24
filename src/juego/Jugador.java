@@ -30,87 +30,31 @@ public class Jugador {
 	}
 
 	public void colocarCartaMonstruoEnModoAtaque(CartaMonstruo cartaMonstruo) {
-		ContenedorDeCartas sacrificios = new ContenedorDeCartas(0);
-		cartaMonstruo.colocarEnModoAtaque(sacrificios);
-		this.pasarCartaMonstruoDeLaManoALaZonaMonstruos(cartaMonstruo);
+		cartaMonstruo.agregarEnCampo(this.campo);
+		cartaMonstruo.colocarEnModoAtaque();
 	}
 
 	public void colocarCartaMonstruoEnModoDefensa(CartaMonstruo cartaMonstruo) {
+		cartaMonstruo.agregarEnCampo(this.campo);
 		cartaMonstruo.colocarEnModoDefensa();
-		this.pasarCartaMonstruoDeLaManoALaZonaMonstruos(cartaMonstruo);
 	}
 
 	public void colocarCartaMagicaBocaArriba(CartaMagica cartaMagica) {
+		cartaMagica.agregarEnCampo(this.campo);
 		cartaMagica.colocarBocaArriba();
-		this.pasarCartaMagicaDeLaManoALaZonaDeCartasEspeciales(cartaMagica);
-	}
-
-	public void sacrificarMonstruo(CartaMonstruo carta) {
-		this.chequearQueElMonstruoEsteEnLaZonaDeMonstruos(carta);
-		carta.matar();
-		this.enviarCartaMonstruoAlCementerio(carta);
-	}
-
-	public void enviarCartaMonstruoAlCementerio(CartaMonstruo carta) {
-		this.chequearQueEsteMuerta(carta);
-		if (this.zonaMonstruos.estaDentro(carta))
-			this.zonaMonstruos.remover(carta);
-		if (this.mano.estaDentro(carta))
-			this.mano.remover(carta);
-		this.cementerio.agregar(carta);
-	}
-
-	public boolean estaLaCartaEnZonaDeMonstruo(CartaMonstruo carta) {
-		return this.zonaMonstruos.estaDentro(carta);
-	}
-
-	public boolean estaLaCartaEnCementerio(Carta carta) {
-		return this.cementerio.estaDentro(carta);
-	}
-
-	public void destruirCartasEnCampo() {
-		this.zonaMonstruos.matarATodasLasCartas();
-		this.zonaCartasEspeciales.matarATodasLasCartas();
-	}
-
-	public void enviarCartasMuertasAlCementerio() {
-		this.zonaMonstruos.enviarCartasMuertasAlCementerio(this.cementerio);
-		this.zonaCartasEspeciales.enviarCartasMuertasAlCementerio(this.cementerio);
 	}
 
 	public boolean esDuenioDe(Carta carta) {
-		// aca usaria el ContenedorDeCartas "seleccion" pero por ahora hago que chequee
-		// todos sus contenedores de cartas.
-		return this.mano.estaDentro(carta) || this.zonaMonstruos.estaDentro(carta) || this.zonaCartasEspeciales.estaDentro(carta);
+		
+		return this.mano.estaDentro(carta) || this.campo.estaDentro(carta);
 	}
-
-	private void chequearQueElMonstruoEsteEnLaZonaDeMonstruos(CartaMonstruo carta) {
-		if (!this.zonaMonstruos.estaDentro(carta))
-			throw new CartaNoEstaEnCampoException();
-	}
-
-	private void chequearQueEsteMuerta(Carta carta) {
-		if (!carta.estaMuerta())
-			throw new CartaNoPuedeIrAlCementerioSinMorirException();
-	}
-
-	private void pasarCartaMonstruoDeLaManoALaZonaMonstruos(CartaMonstruo carta) {
-		this.mano.remover(carta);
-		this.zonaMonstruos.agregar(carta);
-	}
-
-	private void pasarCartaMagicaDeLaManoALaZonaDeCartasEspeciales(CartaMagica carta) {
-		this.mano.remover(carta);
-		this.zonaCartasEspeciales.agregar(carta);
-	}
-
+		
 	public Campo campo() {
-		// TODO Auto-generated method stub
-		return this.campo;
+
+		return this.campo;	
 	}
 
 	public Object cartasEnMano() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

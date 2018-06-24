@@ -29,4 +29,11 @@ public class Campo {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public boolean estaDentro(Carta carta) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
 }
