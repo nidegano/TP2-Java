@@ -3,7 +3,7 @@ package cartas;
 import estado.ModoInactivo;
 import juego.Campo;
 
-public class CartaTrampa extends Carta {
+public class CartaTrampa extends CartaEspecial {
 
 	public void colocarBocaAbajo() {
 		this.estado = new ModoInactivo();

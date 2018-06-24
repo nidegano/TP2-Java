@@ -2,6 +2,6 @@ package juego;
 
 public interface FormaDeAfectarAlJugador {
 
-	public abstract void afectar(Jugador jugador, int puntosDeVidaADebilitar);
+	public abstract void afectar(Jugador jugadorDueño);
 
 }

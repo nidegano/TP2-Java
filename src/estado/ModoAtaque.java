@@ -11,8 +11,8 @@ public class ModoAtaque extends EstadoDeCartaMonstruo {
 	}
 	
 	@Override
-	public FormaDeAfectarAlJugador formaDeAfectar() {
-		return new Restar();
+	public FormaDeAfectarAlJugador formaDeAfectar(int diferencia) {
+		return new Restar(diferencia);
 	}
 
 }

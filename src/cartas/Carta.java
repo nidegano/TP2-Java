@@ -12,7 +12,6 @@ import juego.Jugador;
 
 public abstract class Carta {
 
-	protected Estado estado;
 	protected Jugador jugadorDueño;
 	protected List<ContenedorDeCartas> contenedoresQueLaContienen;
 	
@@ -31,23 +30,6 @@ public abstract class Carta {
 		ContenedorDeCartas cementerio = this.jugadorDueño.obtenerCementerio();
 		cementerio.agregar(this);
 		this.quitarDeLosContenedoresEnLosQueEstaba();
-	}
-
-	public void colocarBocaArriba() {
-		this.estado = new ModoActivo();
-		this.agregarEnCampo(this.jugadorDueño.campo());
-	}
-
-	public void colocarBocaAbajo() {
-		this.estado = new ModoInactivo();
-	}
-
-	public boolean estaBocaArriba() {
-		return this.estado instanceof ModoActivo;
-	}
-
-	public boolean estaBocaAbajo() {
-		return this.estado instanceof ModoInactivo;
 	}
 	
 	private void quitarDeLosContenedoresEnLosQueEstaba() {

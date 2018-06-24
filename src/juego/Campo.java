@@ -49,6 +49,10 @@ public class Campo {
 	public ContenedorDeCartas obtenerCementerio() {
 		return this.cementerio;
 	}
+
+	public ContenedorDeCartas obtenerZonaMonstruos() {
+		return this.zonaMonstruos;
+	}
 	
 	
 }

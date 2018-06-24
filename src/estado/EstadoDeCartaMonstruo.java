@@ -10,6 +10,6 @@ public abstract class EstadoDeCartaMonstruo implements Estado {
 		return this.puntosAsociadosAlEstado;
 	}
 
-	public abstract FormaDeAfectarAlJugador formaDeAfectar();
+	public abstract FormaDeAfectarAlJugador formaDeAfectar(int diferencia);
 
 }
