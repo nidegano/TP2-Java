@@ -11,12 +11,16 @@ import juego.Jugador;
 public class CartaMonstruo extends Carta {
 
 	protected EstadoDeCartaMonstruo estado;
-	protected int puntosDeAtaque;
-	protected int puntosDeDefensa;
+	protected Puntos puntosDeAtaque;
+	protected Puntos puntosDeDefensa;
 	protected int nivel;
 	
 	public CartaMonstruo () {
 		super();
+	}
+	
+	public int obtenerPuntosDeAtaque() {
+		return this.puntosDeAtaque.valor();
 	}
 	
 	public void invocarEnModoAtaque() {
@@ -47,7 +51,6 @@ public class CartaMonstruo extends Carta {
 
 	@Override
 	public void agregarEnCampo(Campo campo) {
-		
 		campo.obtenerZonaMonstruos().agregar(this);
 		this.contenedoresQueLaContienen.add(campo.obtenerZonaMonstruos());
 	}
@@ -91,5 +94,13 @@ public class CartaMonstruo extends Carta {
 	private int determinarDiferenciaDePuntosDeAtaqueODefensaEntreLosMonstruos(CartaMonstruo monstruoAtacado) {
 		
 		return this.estado.puntosAsociadosAlEstado() - monstruoAtacado.estado.puntosAsociadosAlEstado();
+	}
+
+	public void aumentarPuntosDeAtaqueEn(int aumentoDePuntosDeAtaque) {
+		this.puntosDeAtaque.aumentar(aumentoDePuntosDeAtaque);
+	}
+
+	public void aumentarPuntosDeDefensaEn(int aumentoDePuntosDeDefensa) {
+		this.puntosDeDefensa.aumentar(aumentoDePuntosDeDefensa);		
 	}
 }

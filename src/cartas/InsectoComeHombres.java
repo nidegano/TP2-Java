@@ -4,8 +4,8 @@ public class InsectoComeHombres extends CartaMonstruo {
 
 	public InsectoComeHombres() {
 		super();
-		this.puntosDeAtaque = 450;
-		this.puntosDeDefensa = 600;
+		this.puntosDeAtaque = new Puntos(450);
+		this.puntosDeDefensa = new Puntos(600);
 		this.nivel = 2;
 	}
 

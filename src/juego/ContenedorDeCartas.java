@@ -1,13 +1,14 @@
 package juego;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import cartas.Carta;
 import excepciones.CapacidadMaximaException;
 import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import excepciones.ContenedorDeCartasVacioException;
 
-public class ContenedorDeCartas {
+public class ContenedorDeCartas implements Iterable<Carta> {
 
 	protected ArrayList<Carta> cartas;
 	protected int capacidad;
@@ -44,6 +45,11 @@ public class ContenedorDeCartas {
 	public void matarATodasLasCartas() {
 		for (Carta carta : this.cartas)
 			carta.matar();
+	}
+
+	@Override
+	public Iterator<Carta> iterator() {
+		return cartas.iterator();
 	}
 
 }

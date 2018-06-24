@@ -32,10 +32,12 @@ public abstract class CartaEspecial extends Carta {
 	
 	public void colocarBocaArriba() {
 		this.estado = new ModoActivo();
+		this.activar();
 	}
 	
 	public void colocarBocaAbajo() {
 		this.estado = new ModoInactivo();
+		//this.desactivar()?
 	}
 
 }

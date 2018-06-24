@@ -4,8 +4,8 @@ import juego.Jugador;
 
 public abstract class Efecto {
 	
-	private Jugador jugadorDueño;
-	private Jugador jugadorOponente;
+	protected Jugador jugadorDueño;
+	protected Jugador jugadorOponente;
 
 	public void aisgnarJugadoresEfecto(Jugador jugadorDueño,Jugador jugadorOponente) {
 		this.jugadorDueño = jugadorDueño;

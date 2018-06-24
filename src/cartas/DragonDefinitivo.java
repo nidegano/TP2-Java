@@ -4,8 +4,8 @@ public class DragonDefinitivo extends CartaRequiereSacrificios {
 
 	public DragonDefinitivo(DragonBlancoDeOjosAzules dragon1, DragonBlancoDeOjosAzules dragon2, DragonBlancoDeOjosAzules dragon3) {
 		super();
-		this.puntosDeAtaque = 4500;
-		this.puntosDeDefensa = 3800;
+		this.puntosDeAtaque = new Puntos(4500);
+		this.puntosDeDefensa = new Puntos(3800);
 		this.nivel = 12;
 	}
 	

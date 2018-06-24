@@ -1,8 +1,6 @@
 package juego;
 
 import cartas.*;
-import excepciones.CartaNoEstaEnCampoException;
-import excepciones.CartaNoPuedeIrAlCementerioSinMorirException;
 
 public class Jugador {
 

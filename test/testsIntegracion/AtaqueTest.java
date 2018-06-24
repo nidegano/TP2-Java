@@ -32,6 +32,9 @@ public class AtaqueTest {
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
 		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
+		
 		exodiaCabeza.asignarDueño(jugadorA);
 		insectoComeHombres.asignarDueño(jugadorB);
 
@@ -66,6 +69,9 @@ public class AtaqueTest {
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
 		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
+		
 		exodiaCabeza.asignarDueño(jugadorA);
 		insectoComeHombres.asignarDueño(jugadorB);
 
@@ -99,6 +105,9 @@ public class AtaqueTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
+		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
 		
 		insectoComeHombres.asignarDueño(jugadorA);
 		otroInsectoComeHombres.asignarDueño(jugadorB);
@@ -135,6 +144,9 @@ public class AtaqueTest {
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
 		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
+		
 		insectoComeHombres.asignarDueño(jugadorA);
 		exodiaCabeza.asignarDueño(jugadorB);
 
@@ -168,6 +180,9 @@ public class AtaqueTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
+		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
 		
 		exodiaCabeza.asignarDueño(jugadorA);
 		insectoComeHombres.asignarDueño(jugadorB);
@@ -204,6 +219,9 @@ public class AtaqueTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
+		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
 		
 		insectoComeHombres.asignarDueño(jugadorA);
 		exodiaCabeza.asignarDueño(jugadorB);

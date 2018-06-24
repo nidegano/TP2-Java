@@ -4,8 +4,8 @@ public class AlphaTheMagnetWarrior extends CartaMonstruo {
 
 	public AlphaTheMagnetWarrior() {
 		super();
-		this.puntosDeAtaque = 1400;
-		this.puntosDeDefensa = 1700;
+		this.puntosDeAtaque = new Puntos(1400);
+		this.puntosDeDefensa = new Puntos(1700);
 		this.nivel = 4;
 	}
 }

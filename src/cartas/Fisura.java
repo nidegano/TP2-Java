@@ -1,11 +1,13 @@
 package cartas;
 
-import juego.Jugador;
+import efectos.EfectoAgujeroOscuro;
+import efectos.EfectoFisura;
 
 public class Fisura extends CartaMagica {
-
-	public Fisura(Jugador jugadorA, Jugador jugadorB) {
-		// TODO Auto-generated constructor stub
+	
+	public Fisura() {
+		super();
+		this.efecto = new EfectoFisura();
 	}
 
 }

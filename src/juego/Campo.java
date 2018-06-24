@@ -1,8 +1,7 @@
 package juego;
 
 import cartas.Carta;
-import cartas.InsectoComeHombres;
-import cartas.CabezaExodia;
+import cartas.CartaMonstruo;
 
 public class Campo {
 
@@ -22,28 +21,22 @@ public class Campo {
 	}
 
 	public Carta tomarUnaCartaDelMazo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean estaEnCementerio(Carta carta) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.mazo.tomarUnaCarta();
 	}
 	
 	public boolean estaDentro(Carta carta) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.zonaCartasDeCampo.estaDentro(carta) &&
+				this.zonaCartasEspeciales.estaDentro(carta) &&
+				this.zonaMonstruos.estaDentro(carta);
 	}
 
 	public void destruirTodasLasCartas() {
-		// TODO Auto-generated method stub
-		
+		this.zonaCartasEspeciales.matarATodasLasCartas();
+		this.zonaMonstruos.matarATodasLasCartas();
 	}
 
 	public boolean estaLaCartaEnCementerio(Carta carta) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.cementerio.estaDentro(carta);
 	}
 
 	public ContenedorDeCartas obtenerCementerio() {
@@ -61,6 +54,23 @@ public class Campo {
 	public ContenedorDeCartas obtenerZonaCartasDeCampo() {
 		return this.zonaCartasDeCampo;
 	}
-	
-	
+
+
+	public CartaMonstruo obtenerElMonstruoDeMenorAtaque() {
+		
+		Carta monstruoDeMenorAtaque = this.zonaMonstruos.obtenerPrimero();
+		int puntosDelDeMenorAtaque = ((CartaMonstruo) monstruoDeMenorAtaque).obtenerPuntosDeAtaque();
+		int puntosAEvaluar;
+		
+		
+		for (Carta monstruo : this.zonaMonstruos) {
+			
+			puntosAEvaluar = ((CartaMonstruo) monstruo).obtenerPuntosDeAtaque();
+			if (puntosAEvaluar < puntosDelDeMenorAtaque) {
+				puntosDelDeMenorAtaque = puntosAEvaluar;
+				monstruoDeMenorAtaque = monstruo;
+			}
+		}
+		return (CartaMonstruo) monstruoDeMenorAtaque;
+	}
 }

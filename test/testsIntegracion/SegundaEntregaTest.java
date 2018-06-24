@@ -54,7 +54,7 @@ public class SegundaEntregaTest {
 		monstruoA.invocarEnModoAtaque(); //no es lo mismo invocarEnModoAtaque que colocarEnModoAtaque, invocar podria hacer mas cosas que solo cambiar el estado
 		monstruoB.invocarEnModoDefensa();
 		
-		wasteland.activar();
+		wasteland.colocarBocaArriba();
 		
 		monstruoA.atacar(monstruoB);
 		
@@ -87,7 +87,7 @@ public class SegundaEntregaTest {
 		monstruoA.invocarEnModoAtaque();
 		monstruoB.invocarEnModoDefensa();
 		
-		sogen.activar();
+		sogen.colocarBocaArriba();
 		
 		monstruoA.atacar(monstruoB);
 		
@@ -106,7 +106,7 @@ public class SegundaEntregaTest {
 		Jugador jugadorA = new Jugador(campoA);
 		
 		OllaDeLaCodicia ollaDeLaCodicia = new OllaDeLaCodicia();
-		ollaDeLaCodicia.asignarDueño(jugadorA);		
+		ollaDeLaCodicia.asignarDueño(jugadorA);
 		ollaDeLaCodicia.colocarBocaArriba();
 		
 		int cartasEsperadasEnMano = 2;
@@ -129,7 +129,7 @@ public class SegundaEntregaTest {
 		Jinzo monstruo1 = new Jinzo();
 		CabezaExodia monstruo2 = new CabezaExodia();
 		
-		Fisura fisura = new Fisura(jugadorA,jugadorB);
+		Fisura fisura = new Fisura();
 		
 		monstruo1.asignarDueño(jugadorB);
 		monstruo2.asignarDueño(jugadorB);
@@ -140,7 +140,7 @@ public class SegundaEntregaTest {
 		
 		fisura.colocarBocaArriba();
 		
-		assertTrue(campoB.estaEnCementerio(monstruo2));	
+		assertTrue(campoB.estaLaCartaEnCementerio(monstruo2));	
 	}
 	
 	@Test
@@ -193,9 +193,9 @@ public class SegundaEntregaTest {
 		DragonDefinitivo dragonDefinitivo = new DragonDefinitivo(dragon1,dragon2,dragon3); //se pasa las referencias a los dragones
 		dragonDefinitivo.invocarEnModoAtaque(); // se sacrifica a los dragones
 		
-		assertTrue(campoA.estaEnCementerio(dragon1));	
-		assertTrue(campoA.estaEnCementerio(dragon2));	
-		assertTrue(campoA.estaEnCementerio(dragon3));	
+		assertTrue(campoA.estaLaCartaEnCementerio(dragon1));	
+		assertTrue(campoA.estaLaCartaEnCementerio(dragon2));	
+		assertTrue(campoA.estaLaCartaEnCementerio(dragon3));	
 	}
 	
 	@Test
@@ -224,8 +224,8 @@ public class SegundaEntregaTest {
 		int vidaEsperadaDeJugadorA = 8000;
 		int vidaEsperadaDeJugadorB = 8000;
 		
-		assertTrue(campoB.estaEnCementerio(monstruoB));	
-		assertFalse(campoA.estaEnCementerio(insectoComeHombres));	
+		assertTrue(campoB.estaLaCartaEnCementerio(monstruoB));	
+		assertFalse(campoA.estaLaCartaEnCementerio(insectoComeHombres));	
 		assertEquals(vidaEsperadaDeJugadorA,jugadorA.vida());
 		assertEquals(vidaEsperadaDeJugadorB,jugadorB.vida());
 	}
@@ -291,8 +291,8 @@ public class SegundaEntregaTest {
 		int vidaEsperadaDeJugadorA = 8000;
 		int vidaEsperadaDeJugadorB = 8000 - 100;
 		
-		assertTrue(campoB.estaEnCementerio(monstruoB));	
-		assertFalse(campoA.estaEnCementerio(monstruoA));	
+		assertTrue(campoB.estaLaCartaEnCementerio(monstruoB));	
+		assertFalse(campoA.estaLaCartaEnCementerio(monstruoA));	
 		assertEquals(vidaEsperadaDeJugadorA,jugadorA.vida());
 		assertEquals(vidaEsperadaDeJugadorB,jugadorB.vida());
 	}
