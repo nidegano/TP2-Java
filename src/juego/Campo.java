@@ -25,7 +25,7 @@ public class Campo {
 
 	public boolean estaDentro(Carta carta) {
 		return this.zonaCartasDeCampo.estaDentro(carta) && this.zonaCartasEspeciales.estaDentro(carta)
-				&& this.zonaMonstruos.estaDentro(carta);
+				|| this.zonaMonstruos.estaDentro(carta);
 	}
 
 	public void destruirTodasLasCartas() {

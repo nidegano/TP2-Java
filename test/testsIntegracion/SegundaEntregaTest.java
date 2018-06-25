@@ -1,19 +1,21 @@
 package testsIntegracion;
 
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 import cartas.AlphaTheMagnetWarrior;
+import cartas.AncientBrain;
 import cartas.BrazoDerechoExodia;
 import cartas.BrazoIzquierdoExodia;
 import cartas.CilindroMagico;
 import cartas.DragonBlancoDeOjosAzules;
 import cartas.DragonDefinitivo;
-import cartas.EspadachinSilencioso;
 import cartas.CabezaExodia;
+import cartas.CartaDePrueba;
 import cartas.Fisura;
 import cartas.InsectoComeHombres;
 import cartas.Jinzo;
@@ -42,8 +44,8 @@ public class SegundaEntregaTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		Jinzo monstruoA = new Jinzo();
-		Jinzo monstruoB = new Jinzo();
+		AncientBrain monstruoA = new AncientBrain();
+		AncientBrain monstruoB = new AncientBrain();
 		
 		Wasteland wasteland = new Wasteland();
 		
@@ -52,13 +54,13 @@ public class SegundaEntregaTest {
 		wasteland.asignarDuenio(jugadorA);
 		
 		monstruoA.invocarEnModoAtaque(); //no es lo mismo invocarEnModoAtaque que colocarEnModoAtaque, invocar podria hacer mas cosas que solo cambiar el estado
-		monstruoB.invocarEnModoDefensa();
+		monstruoB.invocarEnModoAtaque();
 		
 		wasteland.colocarBocaArriba();
 		
 		monstruoA.atacar(monstruoB);
 		
-		int vidaEsperadaDeJugadorB = 8000 - ((2300 + 200) - (1000 + 300));
+		int vidaEsperadaDeJugadorB = 8000 - ((1000 + 200) - (700 + 300));
 		
 		assertEquals(vidaEsperadaDeJugadorB,jugadorB.vida());	
 	}
@@ -74,8 +76,8 @@ public class SegundaEntregaTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		Jinzo monstruoA = new Jinzo();
-		Jinzo monstruoB = new Jinzo();
+		AncientBrain monstruoA = new AncientBrain();
+		AncientBrain monstruoB = new AncientBrain();
 		
 		Sogen sogen = new Sogen();
 		
@@ -84,13 +86,13 @@ public class SegundaEntregaTest {
 		sogen.asignarDuenio(jugadorA);
 		
 		monstruoA.invocarEnModoAtaque();
-		monstruoB.invocarEnModoDefensa();
+		monstruoB.invocarEnModoAtaque();
 		
 		sogen.colocarBocaArriba();
 		
 		monstruoA.atacar(monstruoB);
 		
-		int vidaEsperadaDeJugadorB = 8000 - ((2300 + 200) - (1000 + 300));
+		int vidaEsperadaDeJugadorB = 8000 - ((1000 + 200) - (700 + 300));
 		
 		assertEquals(vidaEsperadaDeJugadorB,jugadorB.vida());	
 	}
@@ -98,6 +100,9 @@ public class SegundaEntregaTest {
 	@Test
 	public void testActivoUnaCartaOllaDeLaCodiciaYSeTomanDosCartasDelMazo() {
 		Mazo mazoA = new Mazo();
+		mazoA.agregar(new CartaDePrueba());
+		mazoA.agregar(new CartaDePrueba());
+		mazoA.agregar(new CartaDePrueba());
 		
 		Campo campoA = new Campo(mazoA);
 		
@@ -109,7 +114,7 @@ public class SegundaEntregaTest {
 		
 		int cartasEsperadasEnMano = 2;
 		
-		assertEquals(cartasEsperadasEnMano,jugadorA.cartasEnMano());	
+		assertEquals(cartasEsperadasEnMano,jugadorA.cantidadDeCartasEnMano());	
 	}
 	
 	@Test
@@ -123,7 +128,7 @@ public class SegundaEntregaTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		Jinzo monstruo1 = new Jinzo();
+		Jinzo monstruo1 = new Jinzo(); // es el de menor ataque de los dos
 		CabezaExodia monstruo2 = new CabezaExodia();
 		
 		Fisura fisura = new Fisura();
@@ -137,7 +142,7 @@ public class SegundaEntregaTest {
 		
 		fisura.colocarBocaArriba();
 		
-		assertTrue(campoB.estaLaCartaEnCementerio(monstruo2));	
+		assertTrue(campoB.estaLaCartaEnCementerio(monstruo1));	
 	}
 	
 	@Test
@@ -170,20 +175,17 @@ public class SegundaEntregaTest {
 	@Test
 	public void testPongo3DragonesBlancosDeOjosAzulesPongoUnDragonDefinitivoYSeSacrificanLosTresDragonesBlancosDeOjosAzules() {
 		Campo campoA = new Campo(new Mazo());
+		Campo campoB = new Campo(new Mazo());
 		
 		Jugador jugadorA = new Jugador(campoA);
+		Jugador jugadorB = new Jugador(campoB);
 		
-		ContenedorDeCartas sacrificios1 = new ContenedorDeCartas(2);
-		sacrificios1.agregar(new Jinzo());
-		sacrificios1.agregar(new Jinzo());
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
 		
-		ContenedorDeCartas sacrificios2 = new ContenedorDeCartas(2);
-		sacrificios2.agregar(new Jinzo());
-		sacrificios2.agregar(new Jinzo());
-		
-		ContenedorDeCartas sacrificios3 = new ContenedorDeCartas(2);
-		sacrificios3.agregar(new Jinzo());
-		sacrificios3.agregar(new Jinzo());		
+		ContenedorDeCartas sacrificios1 = this.prepararTantosMonstruosParaSacrificar(2, jugadorA);
+		ContenedorDeCartas sacrificios2 = this.prepararTantosMonstruosParaSacrificar(2, jugadorA);
+		ContenedorDeCartas sacrificios3 = this.prepararTantosMonstruosParaSacrificar(2, jugadorA);
 		
 		DragonBlancoDeOjosAzules dragon1 = new DragonBlancoDeOjosAzules(sacrificios1);
 		DragonBlancoDeOjosAzules dragon2 = new DragonBlancoDeOjosAzules(sacrificios2);
@@ -203,6 +205,7 @@ public class SegundaEntregaTest {
 		sacrificios.agregar(dragon3);
 		
 		DragonDefinitivo dragonDefinitivo = new DragonDefinitivo(sacrificios); //se pasa las referencias a los dragones
+		dragonDefinitivo.asignarDuenio(jugadorA);
 		dragonDefinitivo.invocarEnModoAtaque(); // se sacrifica a los dragones
 		
 		assertTrue(campoA.estaDentro(dragonDefinitivo));
@@ -264,8 +267,8 @@ public class SegundaEntregaTest {
 		
 		insectoComeHombres.atacarDirectamenteAlOponente();
 		
-		int vidaEsperadaDeJugadorA = 8000;
-		int vidaEsperadaDeJugadorB = 8000 - 450;
+		int vidaEsperadaDeJugadorA = 8000 - 450;
+		int vidaEsperadaDeJugadorB = 8000;
 		
 		assertEquals(vidaEsperadaDeJugadorA,jugadorA.vida());
 		assertEquals(vidaEsperadaDeJugadorB,jugadorB.vida());
@@ -349,6 +352,19 @@ public class SegundaEntregaTest {
 		jugadorA.tomarCartaDelMazo();
 
 		assertTrue(juego.perdioJugador(jugadorB));	
+	}
+	
+	private ContenedorDeCartas prepararTantosMonstruosParaSacrificar(int cantidadDeMonstruos,Jugador dueñoDeSacrificio) {
+		
+		ContenedorDeCartas sacrificios = new ContenedorDeCartas(cantidadDeMonstruos);
+		
+		for (int i = 1 ; i<=cantidadDeMonstruos ;i++) {
+			
+			Jinzo jinzo = new Jinzo();
+			sacrificios.agregar(jinzo);
+			jinzo.asignarDuenio(dueñoDeSacrificio);			
+		}
+		return sacrificios;
 	}
 	
 }

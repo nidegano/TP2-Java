@@ -63,7 +63,7 @@ public class CartaMonstruo extends Carta {
 
 	private void chequearQueNoHayaMonstruosDelOponenteInvocados() {
 		int cantidadDeMonstruosInvocados = this.jugadorDuenio.oponente().campo().obtenerZonaMonstruos().cantidad();
-		if (cantidadDeMonstruosInvocados == 0)
+		if (cantidadDeMonstruosInvocados != 0)
 			throw new ParaAtacarDirectamenteAlJugadorNoTieneQueHaberMonstruosInvocadosException();
 	}
 

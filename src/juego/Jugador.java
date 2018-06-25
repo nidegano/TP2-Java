@@ -40,8 +40,8 @@ public class Jugador {
 		return this.campo;
 	}
 
-	public ContenedorDeCartas cartasEnMano() {
-		return this.mano;
+	public int cantidadDeCartasEnMano() {
+		return this.mano.cantidad();
 	}
 
 	public void destruirCartasEnCampo() {
