@@ -10,7 +10,7 @@ public class EfectoInsectoComeHombres extends EfectoDeVolteo {
 
 	@Override
 	public void activar() {
-		this.monstruoObjetivo.matar();
+		this.monstruoEnemigoObjetivo.matar();
 		this.interrumpirAtaque();
 	}
 }

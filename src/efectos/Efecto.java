@@ -10,7 +10,8 @@ public abstract class Efecto {
 
 	protected Jugador jugadorDuenio;
 	protected Jugador jugadorOponente;
-	protected CartaMonstruo monstruoObjetivo;
+	protected CartaMonstruo monstruoEnemigoObjetivo;
+	protected CartaMonstruo monstruoPropioObjetivo;
 	protected Carta cartaDueña;
 	
 	public Efecto(Carta cartaDueña) {
@@ -24,12 +25,17 @@ public abstract class Efecto {
 		this.jugadorOponente = jugadorOponente;
 	}
 
-	public void asignarMonstruoObjetivo(CartaMonstruo cartaMonstruo) {
-		this.monstruoObjetivo = cartaMonstruo;		
+	public void asignarMonstruoEnemigoObjetivo(CartaMonstruo cartaMonstruo) {
+		this.monstruoEnemigoObjetivo = cartaMonstruo;		
+	}
+	
+	public void asignarMonstruoPropioObjetivo(CartaMonstruo cartaMonstruo) {
+		this.monstruoPropioObjetivo = cartaMonstruo;		
 	}
 
 	public void desasignarObjetivo() {
-		this.monstruoObjetivo = null;		
+		this.monstruoEnemigoObjetivo = null;
+		this.monstruoPropioObjetivo = null;
 	}
 
 	public abstract void serActivadoPor(Estado estadoDeLaCarta);

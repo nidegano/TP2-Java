@@ -1,7 +1,7 @@
 package efectos;
 
+
 import cartas.Carta;
-import cartas.CartaMonstruo;
 
 public class EfectoReinforcements extends EfectoEspeciales {
 
@@ -11,8 +11,7 @@ public class EfectoReinforcements extends EfectoEspeciales {
 
 	@Override
 	public void activar() {
-		CartaMonstruo c;
-		((CartaMonstruo) this.cartaDueña).aumentarPuntosDeAtaqueEn(500);
+		this.monstruoPropioObjetivo.aumentarPuntosDeAtaqueEn(500);
 		this.cartaDueña.matar();
 	}
 

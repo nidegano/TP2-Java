@@ -9,8 +9,8 @@ public class EfectoCilindroMagico extends EfectoEspeciales {
 	}
 
 	@Override
-	public void activar() {
-		int dañoQueIvaACausarElMonstruoAtacante = this.monstruoObjetivo.obtenerPuntosDeAtaque();
+	public void activar() {		
+		int dañoQueIvaACausarElMonstruoAtacante = this.monstruoEnemigoObjetivo.obtenerPuntosDeAtaque();
 		this.jugadorOponente.debilitar(dañoQueIvaACausarElMonstruoAtacante);
 		this.cartaDueña.matar();
 		this.interrumpirAtaque();

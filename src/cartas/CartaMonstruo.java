@@ -101,14 +101,14 @@ public abstract class CartaMonstruo extends Carta {
 		//uso Proxy
 		
 		try {
-			this.efecto.asignarMonstruoObjetivo(cartaMonstruo);
+			this.efecto.asignarMonstruoEnemigoObjetivo(cartaMonstruo);
 			this.activarEfectoSiCorresponde(); //posibles efectos de volteo
 			
 			ContenedorDeCartas cartasTrampa = this.jugadorDuenio.campo().obtenerContenedorCartasTrampa();
 
 			if (cartasTrampa.hayCartas()) {
 				CartaTrampa trampaQueTocaActivar = (CartaTrampa)cartasTrampa.obtenerPrimero();
-				trampaQueTocaActivar.colocarBocaArriba(cartaMonstruo);
+				trampaQueTocaActivar.colocarBocaArriba(cartaMonstruo,this);
 			}			
 		}
 		catch (AtaqueIntervenidoException e) {

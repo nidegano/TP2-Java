@@ -29,8 +29,14 @@ public abstract class CartaEspecial extends Carta {
 		this.estado.activar(this.efecto);
 	}
 	
-	public void activar(CartaMonstruo cartaMonstruo) {
-		this.efecto.asignarMonstruoObjetivo(cartaMonstruo);
+	public void activar(CartaMonstruo monstruoEnemigo) {
+		this.efecto.asignarMonstruoEnemigoObjetivo(monstruoEnemigo);
+		this.activar();		
+	}
+	
+	public void activar(CartaMonstruo monstruoEnemigo, CartaMonstruo monstruoPropio) {
+		this.efecto.asignarMonstruoEnemigoObjetivo(monstruoEnemigo);
+		this.efecto.asignarMonstruoPropioObjetivo(monstruoPropio);
 		this.activar();		
 	}
 
@@ -42,7 +48,7 @@ public abstract class CartaEspecial extends Carta {
 
 	public void colocarBocaAbajo() {
 		this.estado = new ModoInactivo();
-		// this.desactivar()?
+		this.agregarEnCampo(this.jugadorDuenio.campo());
 	}
 	
 	@Override

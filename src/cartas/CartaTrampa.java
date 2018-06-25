@@ -17,9 +17,13 @@ public abstract class CartaTrampa extends CartaEspecial {
 		this.jugadorDuenio.obtenerMano().remover(this);
 	}
 
-	public void colocarBocaArriba(CartaMonstruo cartaMonstruo) {
+	public void colocarBocaArriba(CartaMonstruo monstruoEnemigo,CartaMonstruo monstruoPropio) {
 		this.estado = new ModoActivo();
-		this.agregarEnCampo(this.jugadorDuenio.campo());
-		this.activar(cartaMonstruo);		
+		this.activar(monstruoEnemigo,monstruoPropio);		
+	}
+
+	public void colocarBocaArriba(CartaMonstruo monstruoEnemigo) {
+		this.estado = new ModoActivo();
+		this.activar(monstruoEnemigo);		
 	}
 }

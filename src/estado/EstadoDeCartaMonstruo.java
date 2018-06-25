@@ -1,11 +1,9 @@
 package estado;
 
 import cartas.Puntos;
-import efectos.Efecto;
+
 import efectos.EfectoDeCampo;
-import efectos.EfectoDeVolteo;
 import efectos.EfectoEspeciales;
-import efectos.EfectoInvocacionMonstruo;
 import efectos.EfectoNulo;
 import juego.FormaDeAfectarAlJugador;
 
