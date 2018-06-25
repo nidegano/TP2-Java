@@ -179,9 +179,21 @@ public class SegundaEntregaTest {
 		
 		Jugador jugadorA = new Jugador(campoA);
 		
-		DragonBlancoDeOjosAzules dragon1 = new DragonBlancoDeOjosAzules();
-		DragonBlancoDeOjosAzules dragon2 = new DragonBlancoDeOjosAzules();
-		DragonBlancoDeOjosAzules dragon3 = new DragonBlancoDeOjosAzules();
+		ContenedorDeCartas sacrificios1 = new ContenedorDeCartas(2);
+		sacrificios1.agregar(new Jinzo());
+		sacrificios1.agregar(new Jinzo());
+		
+		ContenedorDeCartas sacrificios2 = new ContenedorDeCartas(2);
+		sacrificios2.agregar(new Jinzo());
+		sacrificios2.agregar(new Jinzo());
+		
+		ContenedorDeCartas sacrificios3 = new ContenedorDeCartas(2);
+		sacrificios3.agregar(new Jinzo());
+		sacrificios3.agregar(new Jinzo());		
+		
+		DragonBlancoDeOjosAzules dragon1 = new DragonBlancoDeOjosAzules(sacrificios1);
+		DragonBlancoDeOjosAzules dragon2 = new DragonBlancoDeOjosAzules(sacrificios2);
+		DragonBlancoDeOjosAzules dragon3 = new DragonBlancoDeOjosAzules(sacrificios3);
 		
 		dragon1.asignarDueño(jugadorA);
 		dragon2.asignarDueño(jugadorA);
@@ -191,7 +203,7 @@ public class SegundaEntregaTest {
 		dragon2.invocarEnModoAtaque();
 		dragon3.invocarEnModoAtaque();
 		
-		ContenedorDeCartas sacrificios = new ContenedorDeCartas(2);
+		ContenedorDeCartas sacrificios = new ContenedorDeCartas(3);
 		sacrificios.agregar(dragon1);
 		sacrificios.agregar(dragon2);
 		sacrificios.agregar(dragon3);
@@ -199,6 +211,7 @@ public class SegundaEntregaTest {
 		DragonDefinitivo dragonDefinitivo = new DragonDefinitivo(sacrificios); //se pasa las referencias a los dragones
 		dragonDefinitivo.invocarEnModoAtaque(); // se sacrifica a los dragones
 		
+		assertTrue(campoA.estaDentro(dragonDefinitivo));
 		assertTrue(campoA.estaLaCartaEnCementerio(dragon1));	
 		assertTrue(campoA.estaLaCartaEnCementerio(dragon2));	
 		assertTrue(campoA.estaLaCartaEnCementerio(dragon3));	

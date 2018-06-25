@@ -1,5 +1,7 @@
 package cartas;
 
+import estado.ModoDefensaBocaAbajo;
+
 public class InsectoComeHombres extends CartaMonstruo {
 
 	public InsectoComeHombres() {
@@ -10,8 +12,7 @@ public class InsectoComeHombres extends CartaMonstruo {
 	}
 
 	public void invocarEnModoDefensaBocaAbajo() {
-		// TODO Auto-generated method stub
-		
+		this.estado = new ModoDefensaBocaAbajo(this.puntosDeDefensa);		
 	}
 
 }
