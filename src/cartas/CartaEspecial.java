@@ -26,11 +26,16 @@ public abstract class CartaEspecial extends Carta {
 
 	public void activar() {
 		this.estado.activar(this.efecto);
-		this.agregarEnCampo(this.jugadorDuenio.campo());
+	}
+	
+	public void activar(CartaMonstruo cartaMonstruo) {
+		this.efecto.asignarMonstruoObjetivo(cartaMonstruo);
+		this.activar();		
 	}
 
 	public void colocarBocaArriba() {
 		this.estado = new ModoActivo();
+		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.activar();
 	}
 

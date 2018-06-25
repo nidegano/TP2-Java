@@ -25,7 +25,7 @@ public class JuegoTest {
 		Jugador jugador = new Jugador(campo);
 		insectoComeHombres.asignarDuenio(jugador);
 
-		insectoComeHombres.colocarEnModoAtaque();
+		insectoComeHombres.invocarEnModoAtaque();
 
 		assertEquals(450, insectoComeHombres.puntosAUtilizarSegunEstado());
 	}
@@ -39,7 +39,7 @@ public class JuegoTest {
 		Jugador jugador = new Jugador(campo);
 		insectoComeHombres.asignarDuenio(jugador);
 
-		insectoComeHombres.colocarEnModoDefensa();
+		insectoComeHombres.invocarEnModoDefensa();
 
 		assertEquals(600, insectoComeHombres.puntosAUtilizarSegunEstado());
 	}

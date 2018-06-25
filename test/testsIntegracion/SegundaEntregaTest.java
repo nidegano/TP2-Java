@@ -232,7 +232,7 @@ public class SegundaEntregaTest {
 		monstruoB.asignarDuenio(jugadorB);
 		
 		insectoComeHombres.invocarEnModoDefensaBocaAbajo();
-		monstruoB.invocarEnModoDefensa();
+		monstruoB.invocarEnModoAtaque();
 		
 		monstruoB.atacar(insectoComeHombres);
 		
@@ -240,7 +240,7 @@ public class SegundaEntregaTest {
 		int vidaEsperadaDeJugadorB = 8000;
 		
 		assertTrue(campoB.estaLaCartaEnCementerio(monstruoB));	
-		assertFalse(campoA.estaLaCartaEnCementerio(insectoComeHombres));	
+		assertFalse(campoA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertEquals(vidaEsperadaDeJugadorA,jugadorA.vida());
 		assertEquals(vidaEsperadaDeJugadorB,jugadorB.vida());
 	}

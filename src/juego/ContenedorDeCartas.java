@@ -59,4 +59,9 @@ public class ContenedorDeCartas implements Iterable<Carta> {
 		return cartas.iterator();
 	}
 
+	public boolean hayCartas() {
+		
+		return this.cantidad() != 0;
+	}
+
 }

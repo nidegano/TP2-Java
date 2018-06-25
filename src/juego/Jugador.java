@@ -1,6 +1,7 @@
 package juego;
 
 import cartas.*;
+import excepciones.AtaqueIntervenidoException;
 
 public class Jugador {
 
@@ -54,6 +55,25 @@ public class Jugador {
 
 	public Jugador oponente() {
 		return this.oponente;
+	}
+
+	public void serAtacadoPor(CartaMonstruo cartaMonstruo) {
+		
+		//uso Proxy
+		
+		try {			
+			ContenedorDeCartas cartasTrampa = this.campo().obtenerContenedorCartasTrampa();
+
+			if (cartasTrampa.hayCartas()) {
+				CartaTrampa trampaQueLeTocaActivarse = (CartaTrampa)cartasTrampa.obtenerPrimero();
+				trampaQueLeTocaActivarse.colocarBocaArriba(cartaMonstruo);
+			}			
+		}
+		catch (AtaqueIntervenidoException e) {
+			throw new AtaqueIntervenidoException();
+		}
+		finally {
+		}
 	}
 
 }

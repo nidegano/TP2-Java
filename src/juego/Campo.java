@@ -10,6 +10,9 @@ public class Campo {
 	private ContenedorDeCartas zonaCartasEspeciales;
 	private ContenedorDeCartas zonaCartasDeCampo;
 	private Mazo mazo;
+	
+	private ContenedorDeCartas contenedorCartasMagicas;
+	private ContenedorDeCartas contenedorCartasTrampa;
 
 	public Campo(Mazo mazo) {
 		this.cementerio = new ContenedorDeCartas(mazo.capacidad());
@@ -17,6 +20,9 @@ public class Campo {
 		this.zonaCartasEspeciales = new ContenedorDeCartas(5);
 		this.zonaCartasDeCampo = new ContenedorDeCartas(1);
 		this.mazo = mazo;
+		
+		this.contenedorCartasMagicas = new ContenedorDeCartas(12); //pongo 5 porque se que mas de 12 seguro no hay (mano+especiales)
+		this.contenedorCartasTrampa = new ContenedorDeCartas(12);
 	}
 
 	public Carta tomarUnaCartaDelMazo() {
@@ -66,6 +72,14 @@ public class Campo {
 			}
 		}
 		return (CartaMonstruo) monstruoDeMenorAtaque;
+	}
+
+	public ContenedorDeCartas obtenerContenedorCartasMagicas() {
+		return this.contenedorCartasMagicas;
+	}
+	
+	public ContenedorDeCartas obtenerContenedorCartasTrampa() {
+		return this.contenedorCartasTrampa;
 	}
 
 }

@@ -6,7 +6,7 @@ public class OllaDeLaCodicia extends CartaMagica {
 
 	public OllaDeLaCodicia() {
 		super();
-		this.efecto = new EfectoOllaDeLaCodicia();
+		this.efecto = new EfectoOllaDeLaCodicia(this);
 	}
 
 }

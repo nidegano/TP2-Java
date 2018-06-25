@@ -18,7 +18,7 @@ public abstract class Carta {
 
 	public Carta() {
 		this.contenedoresQueLaContienen = new ArrayList<ContenedorDeCartas>();
-		this.efecto = new EfectoNulo();
+		this.efecto = new EfectoNulo(this);
 	}
 
 	public abstract void agregarEnCampo(Campo campo);

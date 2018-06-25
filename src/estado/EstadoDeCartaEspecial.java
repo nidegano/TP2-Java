@@ -1,9 +1,18 @@
 package estado;
 
-import efectos.Efecto;
+import efectos.EfectoDeVolteo;
+import efectos.EfectoInvocacionMonstruo;
+import efectos.EfectoNulo;
 
-public abstract class EstadoDeCartaEspecial implements Estado {
-
-	public abstract void activar(Efecto efecto);
+public abstract class EstadoDeCartaEspecial extends Estado {
+	
+	@Override
+	public void activar(EfectoNulo efectoNulo) {}
+	
+	@Override
+	public void activar(EfectoDeVolteo efectoDeVolteo) {}
+	
+	@Override
+	public void activar(EfectoInvocacionMonstruo efectoInvocacionMonstruo) {}
 
 }

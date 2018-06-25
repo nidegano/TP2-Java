@@ -1,11 +1,13 @@
 package estado;
 
-import efectos.Efecto;
+import efectos.EfectoDeCampo;
+import efectos.EfectoEspeciales;
 
 public class ModoInactivo extends EstadoDeCartaEspecial {
 
 	@Override
-	public void activar(Efecto efecto) {
-	}
-
+	public void activar(EfectoDeCampo efectoDeCampo) {}
+	
+	@Override
+	public void activar(EfectoEspeciales efectoEspeciales) {}
 }

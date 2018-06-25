@@ -6,7 +6,7 @@ public class Sogen extends CartaDeCampo {
 
 	public Sogen() {
 		super();
-		this.efecto = new EfectoSogen();
+		this.efecto = new EfectoSogen(this);
 	}
 
 }

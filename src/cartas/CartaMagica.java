@@ -12,6 +12,9 @@ public class CartaMagica extends CartaEspecial {
 	public void agregarEnCampo(Campo campo) {
 		campo.obtenerZonaEspeciales().agregar(this);
 		this.contenedoresQueLaContienen.add(campo.obtenerZonaEspeciales());
+		
+		campo.obtenerContenedorCartasMagicas().agregar(this);
+		this.contenedoresQueLaContienen.add(campo.obtenerContenedorCartasMagicas());
 	}
 
 }

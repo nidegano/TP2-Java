@@ -1,6 +1,6 @@
 package cartas;
 
-import estado.ModoDefensaBocaAbajo;
+import efectos.EfectoInsectoComeHombres;
 
 public class InsectoComeHombres extends CartaMonstruo {
 
@@ -9,10 +9,6 @@ public class InsectoComeHombres extends CartaMonstruo {
 		this.puntosDeAtaque = new Puntos(450);
 		this.puntosDeDefensa = new Puntos(600);
 		this.nivel = 2;
+		this.efecto = new EfectoInsectoComeHombres(this);
 	}
-
-	public void invocarEnModoDefensaBocaAbajo() {
-		this.estado = new ModoDefensaBocaAbajo(this.puntosDeDefensa);
-	}
-
 }

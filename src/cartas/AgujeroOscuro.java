@@ -6,7 +6,7 @@ public class AgujeroOscuro extends CartaMagica {
 
 	public AgujeroOscuro() {
 		super();
-		this.efecto = new EfectoAgujeroOscuro();
+		this.efecto = new EfectoAgujeroOscuro(this);
 	}
 
 }
