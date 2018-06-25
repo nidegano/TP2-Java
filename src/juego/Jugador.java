@@ -1,5 +1,7 @@
 package juego;
 
+import java.util.Iterator;
+
 import cartas.*;
 import excepciones.AtaqueIntervenidoException;
 
@@ -29,8 +31,12 @@ public class Jugador {
 	}
 
 	public void tomarCartaDelMazo() {
-		Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
-		this.mano.agregar(unaCarta);
+		try {
+		      Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
+		      this.mano.agregar(unaCarta);
+		} 
+		catch(IndexOutOfBoundsException e) {
+		}
 	}
 
 	public boolean esDuenioDe(Carta carta) {
@@ -72,8 +78,22 @@ public class Jugador {
 		catch (AtaqueIntervenidoException e) {
 			throw new AtaqueIntervenidoException();
 		}
-		finally {
+	}
+		
+	public boolean perdiste() {
+		return  ( vida == 0 ) || (this.tenesLasPartesDeExodiaEnTuMano()) || (campo.noTieneCartasEnELMazo()) ;
+	}
+
+	private boolean tenesLasPartesDeExodiaEnTuMano() {
+		int suma = 0;
+		
+		Iterator<Carta> it = mano.iterator();
+		while ( it.hasNext() ) {
+			Carta carta = it.next();
+			carta.sumarSiSosParteDeExodia(suma);
 		}
+		
+		return suma == 5;
 	}
 
 }

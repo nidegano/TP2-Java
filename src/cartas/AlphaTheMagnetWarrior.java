@@ -9,4 +9,10 @@ public class AlphaTheMagnetWarrior extends CartaMonstruo {
 		this.nivel = 4;
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

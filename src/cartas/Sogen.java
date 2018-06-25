@@ -9,4 +9,10 @@ public class Sogen extends CartaDeCampo {
 		this.efecto = new EfectoSogen(this);
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

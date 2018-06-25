@@ -9,4 +9,9 @@ public class CabezaExodia extends CartaMonstruo {
 		this.nivel = 3;
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		suma++;
+	}
+
 }

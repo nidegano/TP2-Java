@@ -3,7 +3,7 @@ package cartas;
 import excepciones.CantidadInadecuadaDeSacrificiosException;
 import juego.ContenedorDeCartas;
 
-public class CartaRequiereSacrificios extends CartaMonstruo {
+public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 
 	protected ContenedorDeCartas sacrificios;
 	protected int sacrificiosRequeridos;
@@ -24,5 +24,8 @@ public class CartaRequiereSacrificios extends CartaMonstruo {
 		for (Carta monstruo : this.sacrificios)
 			monstruo.matar();
 	}
+
+	@Override
+	public abstract void sumarSiSosParteDeExodia(int suma);
 
 }

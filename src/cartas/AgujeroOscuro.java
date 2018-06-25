@@ -9,4 +9,10 @@ public class AgujeroOscuro extends CartaMagica {
 		this.efecto = new EfectoAgujeroOscuro(this);
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

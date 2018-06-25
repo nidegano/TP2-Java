@@ -5,13 +5,14 @@ import org.junit.Test;
 
 import cartas.Carta;
 import cartas.CartaDePrueba;
+import cartas.Jinzo;
 import juego.Mazo;
 
 public class MazoTest {
 
 	@Test
 	public void testTomarUnaCartaSeRemueveUnaCartaDeMazoYAlPreguntarSiEsaCartaEstaDentroDevuelveFalse() {
-		Carta unaCarta = new CartaDePrueba();
+		Carta unaCarta = new Jinzo();
 		Mazo mazo = new Mazo();
 		mazo.agregar(unaCarta);
 		mazo.tomarUnaCarta();

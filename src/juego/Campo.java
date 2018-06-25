@@ -15,7 +15,7 @@ public class Campo {
 	private ContenedorDeCartas contenedorCartasTrampa;
 
 	public Campo(Mazo mazo) {
-		this.cementerio = new ContenedorDeCartas(mazo.capacidad());
+		this.cementerio = new ContenedorDeCartas(40);
 		this.zonaMonstruos = new ContenedorDeCartas(5);
 		this.zonaCartasEspeciales = new ContenedorDeCartas(5);
 		this.zonaCartasDeCampo = new ContenedorDeCartas(1);
@@ -82,4 +82,7 @@ public class Campo {
 		return this.contenedorCartasTrampa;
 	}
 
+	public boolean noTieneCartasEnELMazo() {
+		return mazo.tenesCartas();
+	}
 }

@@ -14,4 +14,10 @@ public class DragonDefinitivo extends CartaRequiereSacrificios {
 		this.sacrificios = sacrificios;
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

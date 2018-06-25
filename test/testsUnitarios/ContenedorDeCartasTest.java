@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import cartas.Carta;
 import cartas.CartaDePrueba;
+import cartas.Jinzo;
 import excepciones.CapacidadMaximaException;
 import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import excepciones.ContenedorDeCartasVacioException;
@@ -17,7 +18,7 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testAgregarSeAgregaUnCartaYAlUsarEstaDentroDevuelveTrue() {
-		Carta unaCarta = new CartaDePrueba();
+		Carta unaCarta = new Jinzo();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		
 		contenedor.agregar(unaCarta);
@@ -30,10 +31,10 @@ public class ContenedorDeCartasTest {
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(3);
 		
 		try {
-			contenedor.agregar(new CartaDePrueba());
-			contenedor.agregar(new CartaDePrueba());
-			contenedor.agregar(new CartaDePrueba());
-			contenedor.agregar(new CartaDePrueba());
+			contenedor.agregar(new Jinzo());
+			contenedor.agregar(new Jinzo());
+			contenedor.agregar(new Jinzo());
+			contenedor.agregar(new Jinzo());
 			assertTrue(false);
 		}
 		catch (CapacidadMaximaException e) {
@@ -46,9 +47,9 @@ public class ContenedorDeCartasTest {
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(3);
 	
 		try {
-			contenedor.agregar(new CartaDePrueba());
-			contenedor.agregar(new CartaDePrueba());
-			contenedor.agregar(new CartaDePrueba());
+			contenedor.agregar(new Jinzo());
+			contenedor.agregar(new Jinzo());
+			contenedor.agregar(new Jinzo());
 			assertTrue(true);
 		}
 		catch (CapacidadMaximaException e) {
@@ -58,8 +59,8 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testObtenerPrimeroSeAgreganDosCartasYDevuelveLaPrimera() {
-		Carta unaCarta = new CartaDePrueba();
-		Carta otraCarta = new CartaDePrueba();
+		Carta unaCarta = new Jinzo();
+		Carta otraCarta = new Jinzo();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		
 		contenedor.agregar(unaCarta);
@@ -83,7 +84,7 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testEstaDentroSeAgreganUnaCartaYCuandoSePreguntaPorEsaCartaDevuelveTrue() {
-		Carta unaCarta = new CartaDePrueba();
+		Carta unaCarta = new Jinzo();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		contenedor.agregar(unaCarta);
 		
@@ -92,8 +93,8 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testEstaDentroSeAgreganUnaCartaYCuandoSePreguntaPorOtraCartaDevuelveFalse() {
-		Carta unaCarta = new CartaDePrueba();
-		Carta otraCarta = new CartaDePrueba();
+		Carta unaCarta = new Jinzo();
+		Carta otraCarta = new Jinzo();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		contenedor.agregar(unaCarta);
 		
@@ -102,7 +103,7 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testEstaDentroNoSeAgregaNingunaCartaYCuandoSePreguntaPorUnaCartaDevuelveFalse() {
-		Carta unaCarta = new CartaDePrueba();
+		Carta unaCarta = new Jinzo();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		
 		assertFalse(contenedor.estaDentro(unaCarta));		
@@ -110,7 +111,7 @@ public class ContenedorDeCartasTest {
 	
 	@Test
 	public void testRemoverSeRemueveUnaCartaYCuandoSePreguntaEstaDentroSobreEsaCartaDevuelveFalse() {
-		Carta unaCarta = new CartaDePrueba();
+		Carta unaCarta = new Jinzo();
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(5);
 		contenedor.agregar(unaCarta);
 		contenedor.remover(unaCarta);
@@ -121,7 +122,7 @@ public class ContenedorDeCartasTest {
 	@Test
 	public void testRemoverCuandoSeQuiereRemoverUnaCartaQueNoEstaTiraCartaNoEstaException() {
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(3);
-		Carta unaCarta = new CartaDePrueba();
+		Carta unaCarta = new Jinzo();
 		
 		try {
 			contenedor.remover(unaCarta);

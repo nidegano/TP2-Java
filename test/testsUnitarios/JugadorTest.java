@@ -9,6 +9,7 @@ import org.junit.Test;
 import cartas.AgujeroOscuro;
 import cartas.Carta;
 import cartas.CartaDePrueba;
+import cartas.Jinzo;
 import cartas.CabezaExodia;
 import excepciones.CartaNoEstaEnCampoException;
 import excepciones.CartaNoPuedeIrAlCementerioSinMorirException;
@@ -40,7 +41,7 @@ public class JugadorTest {
 	@Test
 	public void testEsDuenioDevuelveTrueCuandoJugadorTomaDelMazoUnaCarta() {
 		Mazo mazo = new Mazo();
-		Carta carta = new CartaDePrueba();
+		Carta carta = new Jinzo();
 		mazo.agregar(carta);
 
 		Campo campo = new Campo(mazo);
@@ -93,7 +94,7 @@ public class JugadorTest {
 	@Test
 	public void testEsDuenioDevuelveTrueCuandoJugadorNoTomaLaCartaDelMazo() {
 		Mazo mazo = new Mazo();
-		Carta carta = new CartaDePrueba();
+		Carta carta = new Jinzo();
 		mazo.agregar(carta);
 
 		Campo campo = new Campo(mazo);

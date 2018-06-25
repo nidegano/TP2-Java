@@ -3,7 +3,7 @@ package cartas;
 import estado.ModoActivo;
 import juego.Campo;
 
-public class CartaTrampa extends CartaEspecial{
+public abstract class CartaTrampa extends CartaEspecial {
 
 	@Override
 	public void agregarEnCampo(Campo campo) {
@@ -19,4 +19,8 @@ public class CartaTrampa extends CartaEspecial{
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.activar(cartaMonstruo);		
 	}
+
+	@Override
+	public abstract void sumarSiSosParteDeExodia(int suma);
+
 }

@@ -9,4 +9,10 @@ public class Wasteland extends CartaDeCampo {
 		this.efecto = new EfectoWasteland(this);
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

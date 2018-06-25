@@ -2,7 +2,7 @@ package cartas;
 
 import juego.Campo;
 
-public class CartaMagica extends CartaEspecial {
+public abstract class CartaMagica extends CartaEspecial {
 
 	public CartaMagica() {
 		super();
@@ -16,5 +16,8 @@ public class CartaMagica extends CartaEspecial {
 		campo.obtenerContenedorCartasMagicas().agregar(this);
 		this.contenedoresQueLaContienen.add(campo.obtenerContenedorCartasMagicas());
 	}
+
+	@Override
+	public abstract void sumarSiSosParteDeExodia(int suma);
 
 }

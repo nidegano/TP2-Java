@@ -1,6 +1,7 @@
 package cartas;
 
 import efectos.EfectoInsectoComeHombres;
+import estado.ModoDefensaBocaAbajo;
 
 public class InsectoComeHombres extends CartaMonstruo {
 
@@ -10,5 +11,15 @@ public class InsectoComeHombres extends CartaMonstruo {
 		this.puntosDeDefensa = new Puntos(600);
 		this.nivel = 2;
 		this.efecto = new EfectoInsectoComeHombres(this);
+	}
+
+	public void invocarEnModoDefensaBocaAbajo() {
+		this.estado = new ModoDefensaBocaAbajo(this.puntosDeDefensa);
+	}
+
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		// TODO Auto-generated method stub
+		
 	}
 }

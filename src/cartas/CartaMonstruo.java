@@ -1,6 +1,7 @@
 package cartas;
 
 import estado.EstadoDeCartaMonstruo;
+
 import estado.ModoAtaque;
 import estado.ModoDefensa;
 import estado.ModoDefensaBocaAbajo;
@@ -10,7 +11,7 @@ import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.FormaDeAfectarAlJugador;
 
-public class CartaMonstruo extends Carta {
+public abstract class CartaMonstruo extends Carta {
 
 	protected EstadoDeCartaMonstruo estado;
 	protected Puntos puntosDeAtaque;
@@ -155,4 +156,8 @@ public class CartaMonstruo extends Carta {
 	protected void colocarEnModoDefensa() {
 		this.estado = new ModoDefensa(this.puntosDeDefensa);
 	}
+	
+	@Override
+	public abstract void sumarSiSosParteDeExodia(int suma);
+
 }
