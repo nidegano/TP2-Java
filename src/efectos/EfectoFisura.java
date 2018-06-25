@@ -5,14 +5,14 @@ import cartas.CartaMonstruo;
 
 public class EfectoFisura extends EfectoEspeciales {
 
-	public EfectoFisura(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoFisura(Carta cartaDuenia) {
+		super(cartaDuenia);
 	}
 
 	@Override
 	public void activar() {
 		CartaMonstruo monstruo = this.jugadorOponente.campo().obtenerElMonstruoDeMenorAtaque();
 		monstruo.matar();
-		this.cartaDueña.matar();
+		this.cartaDuenia.matar();
 	}
 }

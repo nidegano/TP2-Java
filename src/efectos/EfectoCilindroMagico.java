@@ -4,15 +4,15 @@ import cartas.Carta;
 
 public class EfectoCilindroMagico extends EfectoEspeciales {
 
-	public EfectoCilindroMagico(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoCilindroMagico(Carta cartaDuenia) {
+		super(cartaDuenia);
 	}
 
 	@Override
 	public void activar() {		
-		int dañoQueIvaACausarElMonstruoAtacante = this.monstruoEnemigoObjetivo.obtenerPuntosDeAtaque();
-		this.jugadorOponente.debilitar(dañoQueIvaACausarElMonstruoAtacante);
-		this.cartaDueña.matar();
+		int danioQueIvaACausarElMonstruoAtacante = this.monstruoEnemigoObjetivo.obtenerPuntosDeAtaque();
+		this.jugadorOponente.debilitar(danioQueIvaACausarElMonstruoAtacante);
+		this.cartaDuenia.matar();
 		this.interrumpirAtaque();
 	}
 }

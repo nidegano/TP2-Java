@@ -4,15 +4,15 @@ import cartas.Carta;
 
 public class EfectoAgujeroOscuro extends EfectoEspeciales {
 
-	public EfectoAgujeroOscuro(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoAgujeroOscuro(Carta cartaDuenia) {
+		super(cartaDuenia);
 	}
 
 	@Override
 	public void activar() {
 		this.jugadorOponente.destruirCartasEnCampo();
 		this.jugadorDuenio.destruirCartasEnCampo();
-		this.cartaDueña.matar();
+		this.cartaDuenia.matar();
 	}
 
 }

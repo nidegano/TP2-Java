@@ -4,8 +4,8 @@ import cartas.Carta;
 
 public class EfectoJinzo extends EfectoInvocacionMonstruo{
 
-	public EfectoJinzo(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoJinzo(Carta cartaDuenia) {
+		super(cartaDuenia);
 	}
 
 	@Override

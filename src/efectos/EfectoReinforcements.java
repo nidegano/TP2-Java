@@ -5,14 +5,14 @@ import cartas.Carta;
 
 public class EfectoReinforcements extends EfectoEspeciales {
 
-	public EfectoReinforcements(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoReinforcements(Carta cartaDuenia) {
+		super(cartaDuenia);
 	}
 
 	@Override
 	public void activar() {
 		this.monstruoPropioObjetivo.aumentarPuntosDeAtaqueEn(500);
-		this.cartaDueña.matar();
+		this.cartaDuenia.matar();
 	}
 
 }

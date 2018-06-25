@@ -5,8 +5,8 @@ import estado.Estado;
 
 public abstract class EfectoInvocacionMonstruo extends Efecto {
 
-	public EfectoInvocacionMonstruo(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoInvocacionMonstruo(Carta cartaDuenia) {
+		super(cartaDuenia);
 	}
 
 	@Override

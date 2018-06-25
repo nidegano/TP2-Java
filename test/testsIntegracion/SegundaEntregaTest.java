@@ -446,7 +446,7 @@ public class SegundaEntregaTest {
 		assertTrue(juego.perdioJugador(jugadorB));	
 	}
 	
-	private ContenedorDeCartas prepararTantosMonstruosParaSacrificar(int cantidadDeMonstruos,Jugador dueñoDeSacrificio) {
+	private ContenedorDeCartas prepararTantosMonstruosParaSacrificar(int cantidadDeMonstruos,Jugador duenioDeSacrificio) {
 		
 		ContenedorDeCartas sacrificios = new ContenedorDeCartas(cantidadDeMonstruos);
 		
@@ -454,7 +454,7 @@ public class SegundaEntregaTest {
 			
 			Jinzo jinzo = new Jinzo();
 			sacrificios.agregar(jinzo);
-			jinzo.asignarDuenio(dueñoDeSacrificio);			
+			jinzo.asignarDuenio(duenioDeSacrificio);			
 		}
 		return sacrificios;
 	}

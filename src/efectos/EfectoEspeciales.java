@@ -5,8 +5,8 @@ import estado.Estado;
 
 public abstract class EfectoEspeciales extends Efecto {
 
-	public EfectoEspeciales(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoEspeciales(Carta cartaDuenia) {
+		super(cartaDuenia);
 	}
 
 	@Override

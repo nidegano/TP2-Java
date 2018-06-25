@@ -4,8 +4,8 @@ import cartas.Carta;
 
 public class EfectoWasteland extends EfectoDeCampo {
 
-	public EfectoWasteland(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoWasteland(Carta cartaDuenia) {
+		super(cartaDuenia);
 		this.aumentoDePuntosDeAtaque = 200;
 		this.aumentoDePuntosDeDefensa = 300;
 	}

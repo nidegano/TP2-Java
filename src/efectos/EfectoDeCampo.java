@@ -7,8 +7,8 @@ import juego.ContenedorDeCartas;
 
 public class EfectoDeCampo extends Efecto {
 
-	public EfectoDeCampo(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoDeCampo(Carta cartaDuenia) {
+		super(cartaDuenia);
 	}
 
 	protected int aumentoDePuntosDeAtaque;

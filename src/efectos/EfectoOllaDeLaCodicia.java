@@ -4,15 +4,15 @@ import cartas.Carta;
 
 public class EfectoOllaDeLaCodicia extends EfectoEspeciales {
 
-	public EfectoOllaDeLaCodicia(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoOllaDeLaCodicia(Carta cartaDuenia) {
+		super(cartaDuenia);
 	}
 
 	@Override
 	public void activar() {
 		this.jugadorDuenio.tomarCartaDelMazo();
 		this.jugadorDuenio.tomarCartaDelMazo();
-		this.cartaDueña.matar();
+		this.cartaDuenia.matar();
 	}
 
 }

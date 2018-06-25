@@ -5,8 +5,8 @@ import estado.Estado;
 
 public class EfectoNulo extends Efecto {
 
-	public EfectoNulo(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoNulo(Carta cartaDuenia) {
+		super(cartaDuenia);
 	}
 
 	@Override

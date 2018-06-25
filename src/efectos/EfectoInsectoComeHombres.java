@@ -4,8 +4,8 @@ import cartas.Carta;
 
 public class EfectoInsectoComeHombres extends EfectoDeVolteo {
 
-	public EfectoInsectoComeHombres(Carta cartaDueña) {
-		super(cartaDueña);
+	public EfectoInsectoComeHombres(Carta cartaDuenia) {
+		super(cartaDuenia);
 	}
 
 	@Override

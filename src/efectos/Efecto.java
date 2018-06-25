@@ -12,10 +12,10 @@ public abstract class Efecto {
 	protected Jugador jugadorOponente;
 	protected CartaMonstruo monstruoEnemigoObjetivo;
 	protected CartaMonstruo monstruoPropioObjetivo;
-	protected Carta cartaDueña;
+	protected Carta cartaDuenia;
 	
-	public Efecto(Carta cartaDueña) {
-		this.cartaDueña = cartaDueña;
+	public Efecto(Carta cartaDuenia) {
+		this.cartaDuenia = cartaDuenia;
 	}
 
 	public abstract void activar();
