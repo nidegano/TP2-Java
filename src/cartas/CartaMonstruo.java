@@ -7,7 +7,7 @@ import excepciones.ParaAtacarDirectamenteAlJugadorNoTieneQueHaberMonstruosInvoca
 import juego.Campo;
 import juego.FormaDeAfectarAlJugador;
 
-public class CartaMonstruo extends Carta {
+public abstract class CartaMonstruo extends Carta {
 
 	protected EstadoDeCartaMonstruo estado;
 	protected Puntos puntosDeAtaque;
@@ -102,5 +102,8 @@ public class CartaMonstruo extends Carta {
 	public void aumentarPuntosDeDefensaEn(int aumentoDePuntosDeDefensa) {
 		this.puntosDeDefensa.aumentar(aumentoDePuntosDeDefensa);
 	}
+
+	@Override
+	public abstract void sumarSiSosParteDeExodia(int suma);
 
 }

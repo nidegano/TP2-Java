@@ -9,4 +9,10 @@ public class OllaDeLaCodicia extends CartaMagica {
 		this.efecto = new EfectoOllaDeLaCodicia();
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

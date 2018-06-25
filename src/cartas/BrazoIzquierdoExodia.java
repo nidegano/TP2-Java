@@ -9,4 +9,9 @@ public class BrazoIzquierdoExodia extends CartaMonstruo {
 		this.nivel = 1;
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		suma++;
+	}
+
 }

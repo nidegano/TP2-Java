@@ -42,4 +42,6 @@ public abstract class Carta {
 		}	
 	}
 
+	public abstract void sumarSiSosParteDeExodia(int suma);
+
 }

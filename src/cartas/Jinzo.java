@@ -12,4 +12,10 @@ public class Jinzo extends CartaMonstruo {
 		this.efecto = new EfectoJinzo();
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

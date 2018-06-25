@@ -12,7 +12,7 @@ public class Campo {
 	private Mazo mazo;
 
 	public Campo(Mazo mazo) {
-		this.cementerio = new ContenedorDeCartas(mazo.capacidad());
+		this.cementerio = new ContenedorDeCartas(40);
 		this.zonaMonstruos = new ContenedorDeCartas(5);
 		this.zonaCartasEspeciales = new ContenedorDeCartas(5);
 		this.zonaCartasDeCampo = new ContenedorDeCartas(1);
@@ -66,6 +66,10 @@ public class Campo {
 			}
 		}
 		return (CartaMonstruo) monstruoDeMenorAtaque;
+	}
+
+	public boolean noTieneCartasEnELMazo() {
+		return mazo.tenesCartas();
 	}
 
 }

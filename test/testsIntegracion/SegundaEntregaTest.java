@@ -317,8 +317,8 @@ public class SegundaEntregaTest {
 		Jugador jugadorA = new Jugador(campoA);
 		
 		Mazo mazoB = new Mazo();
-		Campo campoB = new Campo(mazoA);
-		Jugador jugadorB = new Jugador(campoA);
+		Campo campoB = new Campo(mazoB);
+		Jugador jugadorB = new Jugador(campoB);
 		
 		Juego juego = new Juego(jugadorA,jugadorB);
 		
@@ -334,8 +334,8 @@ public class SegundaEntregaTest {
 		Jugador jugadorA = new Jugador(campoA);
 		
 		Mazo mazoB = new Mazo();
-		Campo campoB = new Campo(mazoA);
-		Jugador jugadorB = new Jugador(campoA);
+		Campo campoB = new Campo(mazoB);
+		Jugador jugadorB = new Jugador(campoB);
 		
 		Juego juego = new Juego(jugadorA,jugadorB);
 		

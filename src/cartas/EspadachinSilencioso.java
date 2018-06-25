@@ -13,4 +13,10 @@ public class EspadachinSilencioso extends CartaRequiereSacrificios {
 		this.nivel = 5;
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

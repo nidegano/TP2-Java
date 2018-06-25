@@ -13,4 +13,10 @@ public class DragonArmadoOscuro extends CartaRequiereSacrificios {
 		this.nivel = 7;
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -15,4 +15,10 @@ public class InsectoComeHombres extends CartaMonstruo {
 		this.estado = new ModoDefensaBocaAbajo(this.puntosDeDefensa);
 	}
 
+	@Override
+	public void sumarSiSosParteDeExodia(int suma) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
