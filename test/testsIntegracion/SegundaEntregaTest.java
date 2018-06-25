@@ -35,8 +35,11 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnCadaLadoActivoUnaCartaWastelandYAumenta200DeAtaqueMiMonstruoY300DeDefensaElOtro() {
-		Campo campoA = new Campo(new Mazo());
-		Campo campoB = new Campo(new Mazo());
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
+		Campo campoA = new Campo(mazoA);
+		Campo campoB = new Campo(mazoB);
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
@@ -49,9 +52,17 @@ public class SegundaEntregaTest {
 		
 		Wasteland wasteland = new Wasteland();
 		
+		mazoA.agregar(monstruoA);
+		mazoB.agregar(monstruoB);
+		mazoA.agregar(wasteland);
+		
 		monstruoA.asignarDuenio(jugadorA);
 		monstruoB.asignarDuenio(jugadorB);
 		wasteland.asignarDuenio(jugadorA);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
+		jugadorA.tomarCartaDelMazo();
 		
 		monstruoA.invocarEnModoAtaque(); //no es lo mismo invocarEnModoAtaque que colocarEnModoAtaque, invocar podria hacer mas cosas que solo cambiar el estado
 		monstruoB.invocarEnModoAtaque();
@@ -67,8 +78,11 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnCadaLadoActivoUnaCartaSogenYAumenta200DeAtaqueMiMonstruoY500DeDefensaElOtro() {
-		Campo campoA = new Campo(new Mazo());
-		Campo campoB = new Campo(new Mazo());
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
+		Campo campoA = new Campo(mazoA);
+		Campo campoB = new Campo(mazoB);
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
@@ -85,6 +99,14 @@ public class SegundaEntregaTest {
 		monstruoB.asignarDuenio(jugadorB);
 		sogen.asignarDuenio(jugadorA);
 		
+		mazoA.agregar(monstruoA);
+		mazoA.agregar(sogen);
+		mazoB.agregar(monstruoB);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
+		
 		monstruoA.invocarEnModoAtaque();
 		monstruoB.invocarEnModoAtaque();
 		
@@ -100,16 +122,22 @@ public class SegundaEntregaTest {
 	@Test
 	public void testActivoUnaCartaOllaDeLaCodiciaYSeTomanDosCartasDelMazo() {
 		Mazo mazoA = new Mazo();
-		mazoA.agregar(new Jinzo());
-		mazoA.agregar(new Jinzo());
-		mazoA.agregar(new Jinzo());
 		
+		OllaDeLaCodicia ollaDeLaCodicia = new OllaDeLaCodicia();
+		
+		mazoA.agregar(ollaDeLaCodicia);	
+		
+		mazoA.agregar(new Jinzo());
+		mazoA.agregar(new Jinzo());
+
 		Campo campoA = new Campo(mazoA);
 		
 		Jugador jugadorA = new Jugador(campoA);
 		
-		OllaDeLaCodicia ollaDeLaCodicia = new OllaDeLaCodicia();
 		ollaDeLaCodicia.asignarDuenio(jugadorA);
+		
+		jugadorA.tomarCartaDelMazo();
+		
 		ollaDeLaCodicia.colocarBocaArriba();
 		
 		int cartasEsperadasEnMano = 2;
@@ -119,8 +147,11 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoDosMonstruosEnemigosActivoUnaCartaFisuraYMuereElMonstruoDeMenorAtaque() {
-		Campo campoA = new Campo(new Mazo());
-		Campo campoB = new Campo(new Mazo());
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
+		Campo campoA = new Campo(mazoA);
+		Campo campoB = new Campo(mazoB);
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
@@ -133,9 +164,17 @@ public class SegundaEntregaTest {
 		
 		Fisura fisura = new Fisura();
 		
+		mazoA.agregar(fisura);
+		mazoB.agregar(monstruo1);
+		mazoB.agregar(monstruo2);
+		
 		monstruo1.asignarDuenio(jugadorB);
 		monstruo2.asignarDuenio(jugadorB);
 		fisura.asignarDuenio(jugadorA);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
 		
 		monstruo1.invocarEnModoAtaque();
 		monstruo2.invocarEnModoAtaque();
@@ -147,8 +186,11 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnCadaLadoSiendoElPropioUnJinzoYVeoQueSePuedeAtacarDirectamenteAlJugadorContrario() {
-		Campo campoA = new Campo(new Mazo());
-		Campo campoB = new Campo(new Mazo());
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
+		Campo campoA = new Campo(mazoA);
+		Campo campoB = new Campo(mazoB);
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
@@ -162,6 +204,12 @@ public class SegundaEntregaTest {
 		jinzo.asignarDuenio(jugadorA);
 		monstruoB.asignarDuenio(jugadorB);
 		
+		mazoA.agregar(jinzo);
+		mazoB.agregar(monstruoB);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
+		
 		jinzo.invocarEnModoAtaque();
 		monstruoB.invocarEnModoDefensa();
 		
@@ -174,8 +222,11 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongo3DragonesBlancosDeOjosAzulesPongoUnDragonDefinitivoYSeSacrificanLosTresDragonesBlancosDeOjosAzules() {
-		Campo campoA = new Campo(new Mazo());
-		Campo campoB = new Campo(new Mazo());
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
+		Campo campoA = new Campo(mazoA);
+		Campo campoB = new Campo(mazoB);
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
@@ -195,6 +246,14 @@ public class SegundaEntregaTest {
 		dragon2.asignarDuenio(jugadorA);
 		dragon3.asignarDuenio(jugadorA);
 		
+		mazoA.agregar(dragon1);
+		mazoA.agregar(dragon2);
+		mazoA.agregar(dragon3);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorA.tomarCartaDelMazo();
+		jugadorA.tomarCartaDelMazo();
+		
 		dragon1.invocarEnModoAtaque();
 		dragon2.invocarEnModoAtaque();
 		dragon3.invocarEnModoAtaque();
@@ -206,6 +265,10 @@ public class SegundaEntregaTest {
 		
 		DragonDefinitivo dragonDefinitivo = new DragonDefinitivo(sacrificios); //se pasa las referencias a los dragones
 		dragonDefinitivo.asignarDuenio(jugadorA);
+		
+		mazoA.agregar(dragonDefinitivo);
+		jugadorA.tomarCartaDelMazo();
+		
 		dragonDefinitivo.invocarEnModoAtaque(); // se sacrifica a los dragones
 		
 		assertTrue(campoA.estaDentro(dragonDefinitivo));
@@ -216,8 +279,11 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnCadaLadoSiendoElPropioUnInsectoComeHombresBocaAbajoYAlSerAtacadoEsteDestruyeAlAtacanteSolamente() {
-		Campo campoA = new Campo(new Mazo());
-		Campo campoB = new Campo(new Mazo());
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
+		Campo campoA = new Campo(mazoA);
+		Campo campoB = new Campo(mazoB);
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
@@ -230,6 +296,12 @@ public class SegundaEntregaTest {
 		
 		insectoComeHombres.asignarDuenio(jugadorA);
 		monstruoB.asignarDuenio(jugadorB);
+		
+		mazoA.agregar(insectoComeHombres);
+		mazoB.agregar(monstruoB);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
 		
 		insectoComeHombres.invocarEnModoDefensaBocaAbajo();
 		monstruoB.invocarEnModoAtaque();
@@ -247,8 +319,11 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnemigoYUnCilindroMagicoDeMiLadoYCuandoElMonstruoEnemigoMeAtacaSeNiegaElAtaqueYloRecibeElJugadorEnemigo() {
-		Campo campoA = new Campo(new Mazo());
-		Campo campoB = new Campo(new Mazo());
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
+		Campo campoA = new Campo(mazoA);
+		Campo campoB = new Campo(mazoB);
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
@@ -261,6 +336,12 @@ public class SegundaEntregaTest {
 		
 		insectoComeHombres.asignarDuenio(jugadorA);
 		cilindroMagico.asignarDuenio(jugadorB);
+		
+		mazoA.agregar(insectoComeHombres);
+		mazoB.agregar(cilindroMagico);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
 		
 		insectoComeHombres.invocarEnModoAtaque();
 		cilindroMagico.colocarBocaAbajo();
@@ -276,8 +357,11 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnAmbosLadosYUnReinforcementsDeMiLadoYCuandoElMonstruoEnemigoMeAtacaMiMontruoAumentaElAtaqueEn500() {
-		Campo campoA = new Campo(new Mazo());
-		Campo campoB = new Campo(new Mazo());
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+		
+		Campo campoA = new Campo(mazoA);
+		Campo campoB = new Campo(mazoB);
 		
 		Jugador jugadorA = new Jugador(campoA);
 		Jugador jugadorB = new Jugador(campoB);
@@ -293,6 +377,14 @@ public class SegundaEntregaTest {
 		monstruoB.asignarDuenio(jugadorB);
 		
 		cilindroMagico.asignarDuenio(jugadorA);
+		
+		mazoA.agregar(monstruoA);
+		mazoA.agregar(cilindroMagico);
+		mazoB.agregar(monstruoB);
+		
+		jugadorA.tomarCartaDelMazo();
+		jugadorA.tomarCartaDelMazo();
+		jugadorB.tomarCartaDelMazo();
 		
 		monstruoA.invocarEnModoAtaque();
 		monstruoB.invocarEnModoAtaque();

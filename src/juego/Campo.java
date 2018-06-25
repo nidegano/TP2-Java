@@ -37,6 +37,9 @@ public class Campo {
 	public void destruirTodasLasCartas() {
 		this.zonaCartasEspeciales.matarATodasLasCartas();
 		this.zonaMonstruos.matarATodasLasCartas();
+		this.contenedorCartasMagicas.matarATodasLasCartas();
+		this.contenedorCartasTrampa.matarATodasLasCartas();
+		this.zonaCartasDeCampo.matarATodasLasCartas();
 	}
 
 	public boolean estaLaCartaEnCementerio(Carta carta) {

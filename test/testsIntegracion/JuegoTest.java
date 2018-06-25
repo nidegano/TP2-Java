@@ -24,7 +24,8 @@ public class JuegoTest {
 		Campo campo = new Campo(mazo);
 		Jugador jugador = new Jugador(campo);
 		insectoComeHombres.asignarDuenio(jugador);
-
+		
+		jugador.tomarCartaDelMazo();
 		insectoComeHombres.invocarEnModoAtaque();
 
 		assertEquals(450, insectoComeHombres.puntosAUtilizarSegunEstado());
@@ -38,7 +39,8 @@ public class JuegoTest {
 		Campo campo = new Campo(mazo);
 		Jugador jugador = new Jugador(campo);
 		insectoComeHombres.asignarDuenio(jugador);
-
+		
+		jugador.tomarCartaDelMazo();
 		insectoComeHombres.invocarEnModoDefensa();
 
 		assertEquals(600, insectoComeHombres.puntosAUtilizarSegunEstado());
@@ -66,6 +68,8 @@ public class JuegoTest {
 		Campo campo = new Campo(mazo);
 		Jugador jugador = new Jugador(campo);
 		insectoComeHombres.asignarDuenio(jugador);
+		
+		jugador.tomarCartaDelMazo();
 		insectoComeHombres.invocarEnModoAtaque();
 		
 		ContenedorDeCartas sacrificios = new ContenedorDeCartas(1);
@@ -73,6 +77,9 @@ public class JuegoTest {
 		EspadachinSilencioso espadachinSilencioso = new EspadachinSilencioso(sacrificios);
 		mazo.agregar(espadachinSilencioso);
 		espadachinSilencioso.asignarDuenio(jugador);
+		
+		mazo.agregar(espadachinSilencioso);
+		jugador.tomarCartaDelMazo();		
 		espadachinSilencioso.invocarEnModoAtaque();
 
 		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
@@ -93,6 +100,9 @@ public class JuegoTest {
 		Jugador jugador = new Jugador(campo);
 		insectoComeHombres.asignarDuenio(jugador);
 		otroInsectoComeHombres.asignarDuenio(jugador);
+		
+		jugador.tomarCartaDelMazo();
+		jugador.tomarCartaDelMazo();
 
 		insectoComeHombres.invocarEnModoAtaque();
 		otroInsectoComeHombres.invocarEnModoAtaque();
@@ -102,6 +112,9 @@ public class JuegoTest {
 		sacrificios.agregar(otroInsectoComeHombres);
 		DragonArmadoOscuro dragonArmadoOscuro = new DragonArmadoOscuro(sacrificios);
 		dragonArmadoOscuro.asignarDuenio(jugador);
+		mazo.agregar(dragonArmadoOscuro);
+		
+		jugador.tomarCartaDelMazo();
 		dragonArmadoOscuro.invocarEnModoAtaque();
 
 		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
@@ -124,6 +137,9 @@ public class JuegoTest {
 		insectoComeHombres.asignarDuenio(jugador);
 		otroInsectoComeHombres.asignarDuenio(jugador);
 
+		jugador.tomarCartaDelMazo();
+		jugador.tomarCartaDelMazo();
+		
 		insectoComeHombres.invocarEnModoAtaque();
 		otroInsectoComeHombres.invocarEnModoAtaque();
 		
@@ -132,6 +148,9 @@ public class JuegoTest {
 		sacrificios.agregar(otroInsectoComeHombres);
 		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules(sacrificios);
 		dragonBlancoDeOjosAzules.asignarDuenio(jugador);
+		
+		mazo.agregar(dragonBlancoDeOjosAzules);
+		jugador.tomarCartaDelMazo();
 		dragonBlancoDeOjosAzules.invocarEnModoAtaque();
 
 		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));

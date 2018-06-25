@@ -10,8 +10,8 @@ public class EfectoAgujeroOscuro extends EfectoEspeciales {
 
 	@Override
 	public void activar() {
-		this.jugadorDuenio.destruirCartasEnCampo();
 		this.jugadorOponente.destruirCartasEnCampo();
+		this.jugadorDuenio.destruirCartasEnCampo();
 		this.cartaDueña.matar();
 	}
 

@@ -66,7 +66,7 @@ public abstract class CartaMonstruo extends Carta {
 	}
 
 	public void atacarDirectamenteAlOponente() {
-		this.chequearQueNoHayaMonstruosDelOponenteInvocados();
+		//this.chequearQueNoHayaMonstruosDelOponenteInvocados(); Lo implementamos mejor despues
 		
 		try {
 			this.jugadorDuenio.oponente().serAtacadoPor(this);

@@ -41,9 +41,15 @@ public abstract class Carta {
 	}
 
 	private void quitarDeLosContenedoresEnLosQueEstaba() {
+		
 		for (ContenedorDeCartas contenedor :this.contenedoresQueLaContienen) {
 			contenedor.remover(this);
 		}
+		this.removerContenedoresQueLacontienen();
+	}
+
+	private void removerContenedoresQueLacontienen() {
+		this.contenedoresQueLaContienen = new ArrayList<ContenedorDeCartas>();		
 	}
 
 	public abstract void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia);
