@@ -2,12 +2,15 @@ package cartas;
 
 import juego.ContenedorDeCartas;
 
-public class EspadachinSilencioso extends CartaMonstruo {
+public class EspadachinSilencioso extends CartaRequiereSacrificios {
 
-	public EspadachinSilencioso() {
-		super();
+	public EspadachinSilencioso(ContenedorDeCartas sacrificios) {
+		super(sacrificios);
+		this.sacrificiosRequeridos = 1;
+		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
 		this.puntosDeAtaque = new Puntos(2300);
 		this.puntosDeDefensa = new Puntos(1000);
-		this.nivel = 4;
+		this.nivel = 5;
 	}
+
 }

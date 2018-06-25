@@ -4,8 +4,8 @@ public class EfectoOllaDeLaCodicia extends Efecto {
 
 	@Override
 	public void activar() {
-		this.jugadorDueño.tomarCartaDelMazo();
-		this.jugadorDueño.tomarCartaDelMazo();
+		this.jugadorDuenio.tomarCartaDelMazo();
+		this.jugadorDuenio.tomarCartaDelMazo();
 	}
 
 }

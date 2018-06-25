@@ -5,21 +5,20 @@ import cartas.CartaMonstruo;
 import juego.ContenedorDeCartas;
 
 public class EfectoDeCampo extends Efecto {
-	
+
 	protected int aumentoDePuntosDeAtaque;
 	protected int aumentoDePuntosDeDefensa;
 
 	@Override
 	public void activar() {
-		ContenedorDeCartas zonaMonstruosDueño = this.jugadorDueño.campo().obtenerZonaMonstruos();
+		ContenedorDeCartas zonaMonstruosDuenio = this.jugadorDuenio.campo().obtenerZonaMonstruos();
 		ContenedorDeCartas zonaMonstruosOponente = this.jugadorOponente.campo().obtenerZonaMonstruos();
-		
-		for (Carta monstruo : zonaMonstruosDueño) {
+
+		for (Carta monstruo : zonaMonstruosDuenio)
 			((CartaMonstruo) monstruo).aumentarPuntosDeAtaqueEn(aumentoDePuntosDeAtaque);
-		}
-		for (Carta monstruo : zonaMonstruosOponente) {
+
+		for (Carta monstruo : zonaMonstruosOponente)
 			((CartaMonstruo) monstruo).aumentarPuntosDeDefensaEn(aumentoDePuntosDeDefensa);
-		}
 	}
 
 }

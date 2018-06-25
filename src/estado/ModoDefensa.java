@@ -10,7 +10,7 @@ public class ModoDefensa extends EstadoDeCartaMonstruo {
 		super();
 		this.puntosAsociadosAlEstado = puntosDeDefensa;
 	}
-	
+
 	@Override
 	public FormaDeAfectarAlJugador formaDeAfectar(int diferencia) {
 		return new NoRestar();

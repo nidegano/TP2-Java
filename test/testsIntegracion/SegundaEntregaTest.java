@@ -33,7 +33,6 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnCadaLadoActivoUnaCartaWastelandYAumenta200DeAtaqueMiMonstruoY300DeDefensaElOtro() {
-		
 		Campo campoA = new Campo(new Mazo());
 		Campo campoB = new Campo(new Mazo());
 		
@@ -43,14 +42,14 @@ public class SegundaEntregaTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		EspadachinSilencioso monstruoA = new EspadachinSilencioso();
-		EspadachinSilencioso monstruoB = new EspadachinSilencioso();
+		Jinzo monstruoA = new Jinzo();
+		Jinzo monstruoB = new Jinzo();
 		
 		Wasteland wasteland = new Wasteland();
 		
-		monstruoA.asignarDueño(jugadorA);
-		monstruoB.asignarDueño(jugadorB);
-		wasteland.asignarDueño(jugadorA);
+		monstruoA.asignarDuenio(jugadorA);
+		monstruoB.asignarDuenio(jugadorB);
+		wasteland.asignarDuenio(jugadorA);
 		
 		monstruoA.invocarEnModoAtaque(); //no es lo mismo invocarEnModoAtaque que colocarEnModoAtaque, invocar podria hacer mas cosas que solo cambiar el estado
 		monstruoB.invocarEnModoDefensa();
@@ -66,7 +65,6 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnCadaLadoActivoUnaCartaSogenYAumenta200DeAtaqueMiMonstruoY500DeDefensaElOtro() {
-		
 		Campo campoA = new Campo(new Mazo());
 		Campo campoB = new Campo(new Mazo());
 		
@@ -76,14 +74,14 @@ public class SegundaEntregaTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		EspadachinSilencioso monstruoA = new EspadachinSilencioso();
-		EspadachinSilencioso monstruoB = new EspadachinSilencioso();
+		Jinzo monstruoA = new Jinzo();
+		Jinzo monstruoB = new Jinzo();
 		
 		Sogen sogen = new Sogen();
 		
-		monstruoA.asignarDueño(jugadorA);
-		monstruoB.asignarDueño(jugadorB);
-		sogen.asignarDueño(jugadorA);
+		monstruoA.asignarDuenio(jugadorA);
+		monstruoB.asignarDuenio(jugadorB);
+		sogen.asignarDuenio(jugadorA);
 		
 		monstruoA.invocarEnModoAtaque();
 		monstruoB.invocarEnModoDefensa();
@@ -99,7 +97,6 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testActivoUnaCartaOllaDeLaCodiciaYSeTomanDosCartasDelMazo() {
-		
 		Mazo mazoA = new Mazo();
 		
 		Campo campoA = new Campo(mazoA);
@@ -107,7 +104,7 @@ public class SegundaEntregaTest {
 		Jugador jugadorA = new Jugador(campoA);
 		
 		OllaDeLaCodicia ollaDeLaCodicia = new OllaDeLaCodicia();
-		ollaDeLaCodicia.asignarDueño(jugadorA);
+		ollaDeLaCodicia.asignarDuenio(jugadorA);
 		ollaDeLaCodicia.colocarBocaArriba();
 		
 		int cartasEsperadasEnMano = 2;
@@ -117,7 +114,6 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoDosMonstruosEnemigosActivoUnaCartaFisuraYMuereElMonstruoDeMenorAtaque() {
-		
 		Campo campoA = new Campo(new Mazo());
 		Campo campoB = new Campo(new Mazo());
 		
@@ -132,9 +128,9 @@ public class SegundaEntregaTest {
 		
 		Fisura fisura = new Fisura();
 		
-		monstruo1.asignarDueño(jugadorB);
-		monstruo2.asignarDueño(jugadorB);
-		fisura.asignarDueño(jugadorA);
+		monstruo1.asignarDuenio(jugadorB);
+		monstruo2.asignarDuenio(jugadorB);
+		fisura.asignarDuenio(jugadorA);
 		
 		monstruo1.invocarEnModoAtaque();
 		monstruo2.invocarEnModoAtaque();
@@ -146,7 +142,6 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnCadaLadoSiendoElPropioUnJinzoYVeoQueSePuedeAtacarDirectamenteAlJugadorContrario() {
-		
 		Campo campoA = new Campo(new Mazo());
 		Campo campoB = new Campo(new Mazo());
 		
@@ -159,8 +154,8 @@ public class SegundaEntregaTest {
 		Jinzo jinzo = new Jinzo();
 		CabezaExodia monstruoB = new CabezaExodia();
 		
-		jinzo.asignarDueño(jugadorA);
-		monstruoB.asignarDueño(jugadorB);
+		jinzo.asignarDuenio(jugadorA);
+		monstruoB.asignarDuenio(jugadorB);
 		
 		jinzo.invocarEnModoAtaque();
 		monstruoB.invocarEnModoDefensa();
@@ -174,7 +169,6 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongo3DragonesBlancosDeOjosAzulesPongoUnDragonDefinitivoYSeSacrificanLosTresDragonesBlancosDeOjosAzules() {
-		
 		Campo campoA = new Campo(new Mazo());
 		
 		Jugador jugadorA = new Jugador(campoA);
@@ -195,9 +189,9 @@ public class SegundaEntregaTest {
 		DragonBlancoDeOjosAzules dragon2 = new DragonBlancoDeOjosAzules(sacrificios2);
 		DragonBlancoDeOjosAzules dragon3 = new DragonBlancoDeOjosAzules(sacrificios3);
 		
-		dragon1.asignarDueño(jugadorA);
-		dragon2.asignarDueño(jugadorA);
-		dragon3.asignarDueño(jugadorA);
+		dragon1.asignarDuenio(jugadorA);
+		dragon2.asignarDuenio(jugadorA);
+		dragon3.asignarDuenio(jugadorA);
 		
 		dragon1.invocarEnModoAtaque();
 		dragon2.invocarEnModoAtaque();
@@ -219,7 +213,6 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnCadaLadoSiendoElPropioUnInsectoComeHombresBocaAbajoYAlSerAtacadoEsteDestruyeAlAtacanteSolamente() {
-		
 		Campo campoA = new Campo(new Mazo());
 		Campo campoB = new Campo(new Mazo());
 		
@@ -232,8 +225,8 @@ public class SegundaEntregaTest {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		CabezaExodia monstruoB = new CabezaExodia();
 		
-		insectoComeHombres.asignarDueño(jugadorA);
-		monstruoB.asignarDueño(jugadorB);
+		insectoComeHombres.asignarDuenio(jugadorA);
+		monstruoB.asignarDuenio(jugadorB);
 		
 		insectoComeHombres.invocarEnModoDefensaBocaAbajo();
 		monstruoB.invocarEnModoDefensa();
@@ -251,7 +244,6 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnemigoYUnCilindroMagicoDeMiLadoYCuandoElMonstruoEnemigoMeAtacaSeNiegaElAtaqueYloRecibeElJugadorEnemigo() {
-		
 		Campo campoA = new Campo(new Mazo());
 		Campo campoB = new Campo(new Mazo());
 		
@@ -264,8 +256,8 @@ public class SegundaEntregaTest {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		CilindroMagico cilindroMagico = new CilindroMagico();
 		
-		insectoComeHombres.asignarDueño(jugadorA);
-		cilindroMagico.asignarDueño(jugadorB);
+		insectoComeHombres.asignarDuenio(jugadorA);
+		cilindroMagico.asignarDuenio(jugadorB);
 		
 		insectoComeHombres.invocarEnModoAtaque();
 		cilindroMagico.colocarBocaAbajo();
@@ -281,7 +273,6 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testPongoUnMonstruoEnAmbosLadosYUnReinforcementsDeMiLadoYCuandoElMonstruoEnemigoMeAtacaMiMontruoAumentaElAtaqueEn500() {
-		
 		Campo campoA = new Campo(new Mazo());
 		Campo campoB = new Campo(new Mazo());
 		
@@ -295,10 +286,10 @@ public class SegundaEntregaTest {
 		AlphaTheMagnetWarrior monstruoB = new AlphaTheMagnetWarrior(); //carta nueva
 		Reinforcements cilindroMagico = new Reinforcements();
 		
-		monstruoA.asignarDueño(jugadorA);
-		monstruoB.asignarDueño(jugadorB);
+		monstruoA.asignarDuenio(jugadorA);
+		monstruoB.asignarDuenio(jugadorB);
 		
-		cilindroMagico.asignarDueño(jugadorA);
+		cilindroMagico.asignarDuenio(jugadorA);
 		
 		monstruoA.invocarEnModoAtaque();
 		monstruoB.invocarEnModoAtaque();
@@ -318,7 +309,6 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testElJugadorTieneQueTomarUnaCartaDelMazoEstandoEsteVacioPierde() {
-		
 		Mazo mazoA = new Mazo(); //esta vacio	
 		Campo campoA = new Campo(mazoA);
 		Jugador jugadorA = new Jugador(campoA);
@@ -336,7 +326,6 @@ public class SegundaEntregaTest {
 	
 	@Test
 	public void testElJugadorTieneLasCincoPartesDelExodiaYElOtroPierde() {
-		
 		Mazo mazoA = new Mazo();	
 		Campo campoA = new Campo(mazoA);
 		Jugador jugadorA = new Jugador(campoA);

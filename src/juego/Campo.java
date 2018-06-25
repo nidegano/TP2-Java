@@ -12,7 +12,6 @@ public class Campo {
 	private Mazo mazo;
 
 	public Campo(Mazo mazo) {
-
 		this.cementerio = new ContenedorDeCartas(mazo.capacidad());
 		this.zonaMonstruos = new ContenedorDeCartas(5);
 		this.zonaCartasEspeciales = new ContenedorDeCartas(5);
@@ -23,11 +22,10 @@ public class Campo {
 	public Carta tomarUnaCartaDelMazo() {
 		return this.mazo.tomarUnaCarta();
 	}
-	
+
 	public boolean estaDentro(Carta carta) {
-		return this.zonaCartasDeCampo.estaDentro(carta) &&
-				this.zonaCartasEspeciales.estaDentro(carta) &&
-				this.zonaMonstruos.estaDentro(carta);
+		return this.zonaCartasDeCampo.estaDentro(carta) && this.zonaCartasEspeciales.estaDentro(carta)
+				&& this.zonaMonstruos.estaDentro(carta);
 	}
 
 	public void destruirTodasLasCartas() {
@@ -55,16 +53,12 @@ public class Campo {
 		return this.zonaCartasDeCampo;
 	}
 
-
 	public CartaMonstruo obtenerElMonstruoDeMenorAtaque() {
-		
 		Carta monstruoDeMenorAtaque = this.zonaMonstruos.obtenerPrimero();
 		int puntosDelDeMenorAtaque = ((CartaMonstruo) monstruoDeMenorAtaque).obtenerPuntosDeAtaque();
 		int puntosAEvaluar;
-		
-		
+
 		for (Carta monstruo : this.zonaMonstruos) {
-			
 			puntosAEvaluar = ((CartaMonstruo) monstruo).obtenerPuntosDeAtaque();
 			if (puntosAEvaluar < puntosDelDeMenorAtaque) {
 				puntosDelDeMenorAtaque = puntosAEvaluar;
@@ -73,4 +67,5 @@ public class Campo {
 		}
 		return (CartaMonstruo) monstruoDeMenorAtaque;
 	}
+
 }

@@ -35,14 +35,14 @@ public class AtaqueTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		exodiaCabeza.asignarDueño(jugadorA);
-		insectoComeHombres.asignarDueño(jugadorB);
+		exodiaCabeza.asignarDuenio(jugadorA);
+		insectoComeHombres.asignarDuenio(jugadorB);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
 
-		jugadorA.colocarCartaMonstruoEnModoAtaque(exodiaCabeza);
-		jugadorB.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
+		exodiaCabeza.invocarEnModoAtaque();
+		insectoComeHombres.invocarEnModoAtaque();
 
 		exodiaCabeza.atacar(insectoComeHombres);
 
@@ -72,14 +72,14 @@ public class AtaqueTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		exodiaCabeza.asignarDueño(jugadorA);
-		insectoComeHombres.asignarDueño(jugadorB);
+		insectoComeHombres.asignarDuenio(jugadorA);
+		exodiaCabeza.asignarDuenio(jugadorB);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
 
-		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
-		jugadorB.colocarCartaMonstruoEnModoAtaque(exodiaCabeza);
+		insectoComeHombres.invocarEnModoAtaque();
+		exodiaCabeza.invocarEnModoAtaque();
 
 		insectoComeHombres.atacar(exodiaCabeza);
 
@@ -109,14 +109,14 @@ public class AtaqueTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		insectoComeHombres.asignarDueño(jugadorA);
-		otroInsectoComeHombres.asignarDueño(jugadorB);
+		insectoComeHombres.asignarDuenio(jugadorA);
+		otroInsectoComeHombres.asignarDuenio(jugadorB);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
 
-		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
-		jugadorB.colocarCartaMonstruoEnModoAtaque(otroInsectoComeHombres);
+		insectoComeHombres.invocarEnModoAtaque();
+		otroInsectoComeHombres.invocarEnModoAtaque();
 
 		insectoComeHombres.atacar(otroInsectoComeHombres);
 
@@ -147,14 +147,14 @@ public class AtaqueTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		insectoComeHombres.asignarDueño(jugadorA);
-		exodiaCabeza.asignarDueño(jugadorB);
+		insectoComeHombres.asignarDuenio(jugadorA);
+		exodiaCabeza.asignarDuenio(jugadorB);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
 
-		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
-		jugadorB.colocarCartaMonstruoEnModoDefensa(exodiaCabeza);
+		insectoComeHombres.invocarEnModoAtaque();
+		exodiaCabeza.invocarEnModoDefensa();
 
 		insectoComeHombres.atacar(exodiaCabeza);
 
@@ -184,14 +184,14 @@ public class AtaqueTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		exodiaCabeza.asignarDueño(jugadorA);
-		insectoComeHombres.asignarDueño(jugadorB);
+		exodiaCabeza.asignarDuenio(jugadorA);
+		insectoComeHombres.asignarDuenio(jugadorB);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
 
-		jugadorA.colocarCartaMonstruoEnModoAtaque(exodiaCabeza);
-		jugadorB.colocarCartaMonstruoEnModoDefensa(insectoComeHombres);
+		exodiaCabeza.invocarEnModoAtaque();
+		insectoComeHombres.invocarEnModoDefensa();
 
 		exodiaCabeza.atacar(insectoComeHombres);
 
@@ -223,18 +223,18 @@ public class AtaqueTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		insectoComeHombres.asignarDueño(jugadorA);
-		exodiaCabeza.asignarDueño(jugadorB);
-		agujeroOscuro.asignarDueño(jugadorA);
+		insectoComeHombres.asignarDuenio(jugadorA);
+		exodiaCabeza.asignarDuenio(jugadorB);
+		agujeroOscuro.asignarDuenio(jugadorA);
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
 
-		jugadorA.colocarCartaMonstruoEnModoAtaque(insectoComeHombres);
-		jugadorB.colocarCartaMonstruoEnModoDefensa(exodiaCabeza);
+		insectoComeHombres.invocarEnModoAtaque();
+		exodiaCabeza.invocarEnModoDefensa();
 
 		jugadorA.tomarCartaDelMazo();
-		jugadorA.colocarCartaMagicaBocaArriba(agujeroOscuro);
+		agujeroOscuro.colocarBocaArriba();
 
 		agujeroOscuro.activar();
 

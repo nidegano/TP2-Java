@@ -14,7 +14,7 @@ public class Jugador {
 		this.mano = new ContenedorDeCartas(7);
 		this.campo = campo;
 	}
-	
+
 	public void asignarOponente(Jugador oponente) {
 		this.oponente = oponente;
 	}
@@ -28,25 +28,24 @@ public class Jugador {
 	}
 
 	public void tomarCartaDelMazo() {
-		Carta unaCarta = campo.tomarUnaCartaDelMazo();
+		Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
 		this.mano.agregar(unaCarta);
 	}
 
 	public boolean esDuenioDe(Carta carta) {
-		
 		return this.mano.estaDentro(carta) || this.campo.estaDentro(carta);
 	}
-		
+
 	public Campo campo() {
-		return this.campo;	
+		return this.campo;
 	}
 
 	public ContenedorDeCartas cartasEnMano() {
 		return this.mano;
 	}
-	
+
 	public void destruirCartasEnCampo() {
-		campo.destruirTodasLasCartas();
+		this.campo.destruirTodasLasCartas();
 	}
 
 	public ContenedorDeCartas obtenerCementerio() {
@@ -54,7 +53,7 @@ public class Jugador {
 	}
 
 	public Jugador oponente() {
-		// TODO Auto-generated method stub
 		return this.oponente;
 	}
+
 }

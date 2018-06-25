@@ -1,6 +1,5 @@
 package cartas;
 
-import efectos.EfectoAgujeroOscuro;
 import efectos.EfectoOllaDeLaCodicia;
 
 public class OllaDeLaCodicia extends CartaMagica {
@@ -9,4 +8,5 @@ public class OllaDeLaCodicia extends CartaMagica {
 		super();
 		this.efecto = new EfectoOllaDeLaCodicia();
 	}
+
 }

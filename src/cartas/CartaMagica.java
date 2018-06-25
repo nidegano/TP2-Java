@@ -3,7 +3,7 @@ package cartas;
 import juego.Campo;
 
 public class CartaMagica extends CartaEspecial {
-	
+
 	public CartaMagica() {
 		super();
 	}

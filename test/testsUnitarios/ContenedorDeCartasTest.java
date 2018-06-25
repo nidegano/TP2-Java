@@ -4,9 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
 
 import cartas.Carta;
@@ -133,18 +130,6 @@ public class ContenedorDeCartasTest {
 		catch (CartaNoEstaEnContenedorDeCartasException e) {
 			assertTrue(true);		
 		}		
-	}
-
-	private void agregarCartasAContenedor(ContenedorDeCartas contenedor, List<Carta> cartas) {
-		for (Carta carta : cartas)
-			contenedor.agregar(carta);
-	}
-
-	private List<Carta> crearTantasCartas(int cantidad) {
-		List<Carta> cartas = new ArrayList<Carta>();
-		for (int i = 1; i<=cantidad;i++)
-			cartas.add(new CartaDePrueba());
-		return cartas;
 	}
 
 }
