@@ -21,7 +21,7 @@ public class Campo {
 		this.zonaCartasDeCampo = new ContenedorDeCartas(1);
 		this.mazo = mazo;
 		
-		this.contenedorCartasMagicas = new ContenedorDeCartas(12); //pongo 5 porque se que mas de 12 seguro no hay (mano+especiales)
+		this.contenedorCartasMagicas = new ContenedorDeCartas(12); //pongo 12 porque se que mas de 12 seguro no hay (mano+especiales)
 		this.contenedorCartasTrampa = new ContenedorDeCartas(12);
 	}
 

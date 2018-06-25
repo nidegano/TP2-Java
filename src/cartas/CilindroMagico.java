@@ -8,10 +8,4 @@ public class CilindroMagico extends CartaTrampa {
 		super();
 		this.efecto = new EfectoCilindroMagico(this);
 	}
-
-	@Override
-	public void sumarSiSosParteDeExodia(int suma) {
-		// TODO Auto-generated method stub
-		
-	}
 }

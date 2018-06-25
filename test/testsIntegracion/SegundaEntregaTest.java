@@ -2,6 +2,7 @@ package testsIntegracion;
 
 import static org.junit.Assert.assertEquals;
 
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -15,7 +16,6 @@ import cartas.CilindroMagico;
 import cartas.DragonBlancoDeOjosAzules;
 import cartas.DragonDefinitivo;
 import cartas.CabezaExodia;
-import cartas.CartaDePrueba;
 import cartas.Fisura;
 import cartas.InsectoComeHombres;
 import cartas.Jinzo;

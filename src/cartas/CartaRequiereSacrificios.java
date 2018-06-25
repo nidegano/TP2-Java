@@ -24,8 +24,4 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 		for (Carta monstruo : this.sacrificios)
 			monstruo.matar();
 	}
-
-	@Override
-	public abstract void sumarSiSosParteDeExodia(int suma);
-
 }

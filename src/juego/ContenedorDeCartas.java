@@ -63,5 +63,4 @@ public class ContenedorDeCartas implements Iterable<Carta> {
 		
 		return this.cantidad() != 0;
 	}
-
 }

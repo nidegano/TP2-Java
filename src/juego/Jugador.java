@@ -1,20 +1,18 @@
 package juego;
 
-import java.util.Iterator;
-
 import cartas.*;
 import excepciones.AtaqueIntervenidoException;
 
 public class Jugador {
 
 	private int vida;
-	private ContenedorDeCartas mano;
+	private Mano mano;
 	private Campo campo;
 	private Jugador oponente;
 
 	public Jugador(Campo campo) {
 		this.vida = 8000;
-		this.mano = new ContenedorDeCartas(7);
+		this.mano = new Mano();
 		this.campo = campo;
 	}
 
@@ -81,19 +79,14 @@ public class Jugador {
 	}
 		
 	public boolean perdiste() {
-		return  ( vida == 0 ) || (this.tenesLasPartesDeExodiaEnTuMano()) || (campo.noTieneCartasEnELMazo()) ;
+		return  ( vida == 0 ) || (this.tenesTodasLasPartesDeExodiaEnTuMano()) || (campo.noTieneCartasEnELMazo()) ;
 	}
 
-	private boolean tenesLasPartesDeExodiaEnTuMano() {
-		int suma = 0;
-		
-		Iterator<Carta> it = mano.iterator();
-		while ( it.hasNext() ) {
-			Carta carta = it.next();
-			carta.sumarSiSosParteDeExodia(suma);
-		}
-		
-		return suma == 5;
+	private boolean tenesTodasLasPartesDeExodiaEnTuMano() {
+		return this.mano.tenesTodasLasPartesDeExodia();
 	}
 
+	public Mano obtenerMano() {
+		return this.mano;
+	}
 }

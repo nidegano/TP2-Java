@@ -13,11 +13,4 @@ public class DragonDefinitivo extends CartaRequiereSacrificios {
 		this.nivel = 12;
 		this.sacrificios = sacrificios;
 	}
-
-	@Override
-	public void sumarSiSosParteDeExodia(int suma) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

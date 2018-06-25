@@ -1,7 +1,7 @@
 package cartas;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 
 import efectos.Efecto;
@@ -9,6 +9,8 @@ import efectos.EfectoNulo;
 import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.Jugador;
+import juego.Mano;
+import juego.RecolectorDePartesDeExodia;
 
 public abstract class Carta {
 
@@ -33,15 +35,16 @@ public abstract class Carta {
 		cementerio.agregar(this);
 		this.quitarDeLosContenedoresEnLosQueEstaba();
 	}
-
-	private void quitarDeLosContenedoresEnLosQueEstaba() {
-		Iterator<ContenedorDeCartas> iterator = this.contenedoresQueLaContienen.iterator();
-		while (iterator.hasNext()) {
-			ContenedorDeCartas contenedor = iterator.next();
-			contenedor.remover(this);
-		}	
+	
+	public void serAgregadaALaMano(Mano mano) {
+		this.contenedoresQueLaContienen.add(mano);
 	}
 
-	public abstract void sumarSiSosParteDeExodia(int suma);
+	private void quitarDeLosContenedoresEnLosQueEstaba() {
+		for (ContenedorDeCartas contenedor :this.contenedoresQueLaContienen) {
+			contenedor.remover(this);
+		}
+	}
 
+	public abstract void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia);
 }

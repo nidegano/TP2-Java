@@ -10,6 +10,7 @@ import excepciones.ParaAtacarDirectamenteAlJugadorNoTieneQueHaberMonstruosInvoca
 import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.FormaDeAfectarAlJugador;
+import juego.RecolectorDePartesDeExodia;
 
 public abstract class CartaMonstruo extends Carta {
 
@@ -59,6 +60,9 @@ public abstract class CartaMonstruo extends Carta {
 	public void agregarEnCampo(Campo campo) {
 		campo.obtenerZonaMonstruos().agregar(this);
 		this.contenedoresQueLaContienen.add(campo.obtenerZonaMonstruos());
+		
+		this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
+		this.jugadorDuenio.obtenerMano().remover(this);
 	}
 
 	public void atacarDirectamenteAlOponente() {
@@ -158,6 +162,6 @@ public abstract class CartaMonstruo extends Carta {
 	}
 	
 	@Override
-	public abstract void sumarSiSosParteDeExodia(int suma);
+	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {}
 
 }

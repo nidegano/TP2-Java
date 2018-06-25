@@ -236,8 +236,6 @@ public class AtaqueTest {
 		jugadorA.tomarCartaDelMazo();
 		agujeroOscuro.colocarBocaArriba();
 
-		agujeroOscuro.activar();
-
 		assertTrue(campoA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertTrue(campoB.estaLaCartaEnCementerio(exodiaCabeza));
 	}

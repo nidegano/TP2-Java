@@ -8,11 +8,4 @@ public class AlphaTheMagnetWarrior extends CartaMonstruo {
 		this.puntosDeDefensa = new Puntos(1700);
 		this.nivel = 4;
 	}
-
-	@Override
-	public void sumarSiSosParteDeExodia(int suma) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

@@ -11,11 +11,4 @@ public class Jinzo extends CartaMonstruo {
 		this.nivel = 2;
 		this.efecto = new EfectoJinzo(this);
 	}
-
-	@Override
-	public void sumarSiSosParteDeExodia(int suma) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

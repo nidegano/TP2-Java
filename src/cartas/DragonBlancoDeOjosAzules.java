@@ -12,11 +12,4 @@ public class DragonBlancoDeOjosAzules extends CartaRequiereSacrificios {
 		this.puntosDeDefensa = new Puntos(2500);
 		this.nivel = 8;
 	}
-
-	@Override
-	public void sumarSiSosParteDeExodia(int suma) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

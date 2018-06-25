@@ -1,10 +1,10 @@
 package testsUnitarios;
 
 import static org.junit.Assert.assertFalse;
+
 import org.junit.Test;
 
 import cartas.Carta;
-import cartas.CartaDePrueba;
 import cartas.Jinzo;
 import juego.Mazo;
 

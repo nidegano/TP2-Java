@@ -8,10 +8,4 @@ public class Reinforcements extends CartaTrampa {
 		super();
 		this.efecto = new EfectoReinforcements(this);
 	}
-
-	@Override
-	public void sumarSiSosParteDeExodia(int suma) {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -5,6 +5,7 @@ import estado.ModoActivo;
 import estado.ModoInactivo;
 import juego.Campo;
 import juego.Jugador;
+import juego.RecolectorDePartesDeExodia;
 
 public abstract class CartaEspecial extends Carta {
 
@@ -43,5 +44,8 @@ public abstract class CartaEspecial extends Carta {
 		this.estado = new ModoInactivo();
 		// this.desactivar()?
 	}
+	
+	@Override
+	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {}
 
 }

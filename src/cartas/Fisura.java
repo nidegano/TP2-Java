@@ -8,11 +8,4 @@ public class Fisura extends CartaMagica {
 		super();
 		this.efecto = new EfectoFisura(this);
 	}
-
-	@Override
-	public void sumarSiSosParteDeExodia(int suma) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

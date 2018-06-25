@@ -1,6 +1,8 @@
 package cartas;
 
-public class CabezaExodia extends CartaMonstruo {
+import juego.RecolectorDePartesDeExodia;
+
+public class CabezaExodia extends Exodia {
 
 	public CabezaExodia() {
 		super();
@@ -10,8 +12,7 @@ public class CabezaExodia extends CartaMonstruo {
 	}
 
 	@Override
-	public void sumarSiSosParteDeExodia(int suma) {
-		suma++;
+	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {
+		recolectorDePartesDeExodia.recolectarCabeza(this);
 	}
-
 }

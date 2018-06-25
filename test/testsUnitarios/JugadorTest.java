@@ -1,6 +1,7 @@
 package testsUnitarios;
 
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -8,11 +9,8 @@ import org.junit.Test;
 
 import cartas.AgujeroOscuro;
 import cartas.Carta;
-import cartas.CartaDePrueba;
 import cartas.Jinzo;
 import cartas.CabezaExodia;
-import excepciones.CartaNoEstaEnCampoException;
-import excepciones.CartaNoPuedeIrAlCementerioSinMorirException;
 import juego.Campo;
 import juego.Jugador;
 import juego.Mazo;
@@ -86,7 +84,7 @@ public class JugadorTest {
 		magica.asignarDuenio(jugadorA);
 		
 		jugadorA.tomarCartaDelMazo();
-		magica.colocarBocaArriba(); //coloca la carta en la zona de especiales
+		magica.colocarBocaAbajo(); //coloca la carta en la zona de especiales
 		
 		assertTrue(jugadorA.esDuenioDe(magica));
 	}

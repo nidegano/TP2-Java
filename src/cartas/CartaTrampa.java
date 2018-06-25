@@ -12,6 +12,9 @@ public abstract class CartaTrampa extends CartaEspecial {
 		
 		campo.obtenerContenedorCartasTrampa().agregar(this);
 		this.contenedoresQueLaContienen.add(campo.obtenerContenedorCartasTrampa());
+		
+		this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
+		this.jugadorDuenio.obtenerMano().remover(this);
 	}
 
 	public void colocarBocaArriba(CartaMonstruo cartaMonstruo) {
@@ -19,8 +22,4 @@ public abstract class CartaTrampa extends CartaEspecial {
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.activar(cartaMonstruo);		
 	}
-
-	@Override
-	public abstract void sumarSiSosParteDeExodia(int suma);
-
 }

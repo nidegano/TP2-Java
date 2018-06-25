@@ -15,9 +15,8 @@ public abstract class CartaMagica extends CartaEspecial {
 		
 		campo.obtenerContenedorCartasMagicas().agregar(this);
 		this.contenedoresQueLaContienen.add(campo.obtenerContenedorCartasMagicas());
+		
+		this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
+		this.jugadorDuenio.obtenerMano().remover(this);
 	}
-
-	@Override
-	public abstract void sumarSiSosParteDeExodia(int suma);
-
 }
