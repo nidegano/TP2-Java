@@ -38,153 +38,6 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void testColocarCartaMonstruoEnModoAtaquePoneACartaMonstruoEnModoAtaque() {
-		Mazo mazo = new Mazo();
-		CabezaExodia monstruo = new CabezaExodia();
-		mazo.agregar(monstruo);
-		
-		Campo campo = new Campo(mazo);
-
-		Jugador jugador = new Jugador(campo);
-		jugador.tomarCartaDelMazo();
-		jugador.colocarCartaMonstruoEnModoAtaque(monstruo);
-
-		assertTrue(monstruo.estaEnModoAtaque());
-	}
-
-	@Test
-	public void testColocarCartaMonstruoEnModoDefensaPoneACartaMonstruoEnModoDefensa() {
-		Mazo mazo = new Mazo();
-		CabezaExodia monstruo = new CabezaExodia();
-		mazo.agregar(monstruo);
-
-		Campo campo = new Campo(mazo);
-
-		Jugador jugador = new Jugador(campo);
-		jugador.tomarCartaDelMazo();
-		jugador.colocarCartaMonstruoEnModoDefensa(monstruo);
-
-		assertTrue(monstruo.estaEnModoDefensa());
-	}
-
-	@Test
-	public void testColocarCartaMagicaBocaArribaPoneACartaMagicaBocaArriba() {
-		Mazo mazo = new Mazo();
-		AgujeroOscuro monstruo = new AgujeroOscuro();
-		mazo.agregar(monstruo);
-
-		Campo campo = new Campo(mazo);
-
-		Jugador jugador = new Jugador(campo);
-		jugador.tomarCartaDelMazo();
-		jugador.colocarCartaMagicaBocaArriba(monstruo);
-
-		assertTrue(monstruo.estaBocaArriba());
-	}
-
-	@Test
-	public void testDestruirCartasEnCampoSeColocaDosCartaMonstruoEnCampoYMueren() {
-		Mazo mazo = new Mazo();
-		CabezaExodia monstruo1 = new CabezaExodia();
-		CabezaExodia monstruo2 = new CabezaExodia();
-		mazo.agregar(monstruo1);
-		mazo.agregar(monstruo2);
-
-		Campo campo = new Campo(mazo);
-
-		Jugador jugador = new Jugador(campo);
-		jugador.tomarCartaDelMazo();
-		jugador.tomarCartaDelMazo();
-
-		jugador.colocarCartaMonstruoEnModoAtaque(monstruo1);
-		jugador.colocarCartaMonstruoEnModoAtaque(monstruo2);
-		jugador.destruirCartasEnCampo();
-
-		assertTrue(campo.estaLaCartaEnCementerio(monstruo1));
-		assertTrue(campo.estaLaCartaEnCementerio(monstruo2));
-	}
-
-	@Test
-	public void testDestruirCartasEnCampoSeColocaDosCartaMagicasEnCampoYMueren() {
-		Mazo mazo = new Mazo();
-		AgujeroOscuro magica1 = new AgujeroOscuro();
-		AgujeroOscuro magica2 = new AgujeroOscuro();
-		mazo.agregar(magica1);
-		mazo.agregar(magica2);
-
-		Campo campo = new Campo(mazo);
-
-		Jugador jugador = new Jugador(campo);
-		jugador.tomarCartaDelMazo();
-		jugador.tomarCartaDelMazo();
-
-		jugador.colocarCartaMagicaBocaArriba(magica1); // se coloca en el campo
-		jugador.colocarCartaMagicaBocaArriba(magica2); // se coloca en el campo
-		jugador.destruirCartasEnCampo();
-
-		assertTrue(campo.estaLaCartaEnCementerio(magica1));
-		assertTrue(campo.estaLaCartaEnCementerio(magica2));
-	}
-
-	@Test
-	public void testEnviarCartasMuertasAlCementerioSeSeMatanDosCartaMonstruoDeTresYAparecenEnElCementerio() {
-		Mazo mazo = new Mazo();
-		CabezaExodia monstruo1 = new CabezaExodia();
-		CabezaExodia monstruo2 = new CabezaExodia();
-		CabezaExodia monstruo3 = new CabezaExodia();
-		mazo.agregar(monstruo1);
-		mazo.agregar(monstruo2);
-		mazo.agregar(monstruo3);
-
-		Campo campo = new Campo(mazo);
-
-		Jugador jugador = new Jugador(campo);
-		jugador.tomarCartaDelMazo();
-		jugador.tomarCartaDelMazo();
-		jugador.tomarCartaDelMazo();
-
-		jugador.colocarCartaMonstruoEnModoAtaque(monstruo1); // se coloca en el campo
-		jugador.colocarCartaMonstruoEnModoAtaque(monstruo2); // se coloca en el campo
-		jugador.colocarCartaMonstruoEnModoAtaque(monstruo3); // se coloca en el campo
-
-		monstruo1.matar();
-		monstruo2.matar();
-
-		assertTrue(campo.estaLaCartaEnCementerio(monstruo1));
-		assertTrue(campo.estaLaCartaEnCementerio(monstruo2));
-		assertFalse(campo.estaLaCartaEnCementerio(monstruo3));
-	}
-
-	@Test
-	public void testEnviarCartasMuertasAlCementerioSeSeMatanDosCartaMagicasDeTresYAparecenEnElCementerio() {
-		Mazo mazo = new Mazo();
-		AgujeroOscuro magica1 = new AgujeroOscuro();
-		AgujeroOscuro magica2 = new AgujeroOscuro();
-		AgujeroOscuro magica3 = new AgujeroOscuro();
-		mazo.agregar(magica1);
-		mazo.agregar(magica2);
-		mazo.agregar(magica3);
-
-		Campo campo = new Campo(mazo);
-
-		Jugador jugador = new Jugador(campo);
-		jugador.tomarCartaDelMazo();
-		jugador.tomarCartaDelMazo();
-		jugador.tomarCartaDelMazo();
-
-		jugador.colocarCartaMagicaBocaArriba(magica1); // se coloca en el campo
-		jugador.colocarCartaMagicaBocaArriba(magica2); // se coloca en el campo
-		jugador.colocarCartaMagicaBocaArriba(magica3); // se coloca en el campo
-
-		magica1.matar();
-		magica2.matar();
-
-		assertTrue(campo.estaLaCartaEnCementerio(magica1));
-		assertTrue(campo.estaLaCartaEnCementerio(magica2));
-		assertFalse(campo.estaLaCartaEnCementerio(magica3));
-	}
-
-	@Test
 	public void testEsDuenioDevuelveTrueCuandoJugadorTomaDelMazoUnaCarta() {
 		Mazo mazo = new Mazo();
 		Carta carta = new CartaDePrueba();
@@ -207,8 +60,10 @@ public class JugadorTest {
 		Campo campo = new Campo(mazo);
 
 		Jugador jugador = new Jugador(campo);
+		monstruo.asignarDuenio(jugador);
+		
 		jugador.tomarCartaDelMazo();
-		jugador.colocarCartaMonstruoEnModoAtaque(monstruo); //coloca la carta en la zona de monstruos
+		monstruo.invocarEnModoAtaque(); //coloca la carta en la zona de monstruos
 		
 		assertTrue(jugador.esDuenioDe(monstruo));
 	}
@@ -221,11 +76,18 @@ public class JugadorTest {
 
 		Campo campo = new Campo(mazo);
 
-		Jugador jugador = new Jugador(campo);
-		jugador.tomarCartaDelMazo();
-		jugador.colocarCartaMagicaBocaArriba(magica); //coloca la carta en la zona de especiales
+		Jugador jugadorA = new Jugador(campo);
+		Jugador jugadorB = new Jugador(campo);
 		
-		assertTrue(jugador.esDuenioDe(magica));
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
+		
+		magica.asignarDuenio(jugadorA);
+		
+		jugadorA.tomarCartaDelMazo();
+		magica.colocarBocaArriba(); //coloca la carta en la zona de especiales
+		
+		assertTrue(jugadorA.esDuenioDe(magica));
 	}
 
 	@Test
