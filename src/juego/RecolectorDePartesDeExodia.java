@@ -69,7 +69,7 @@ public class RecolectorDePartesDeExodia {
 	}
 
 	public boolean tenesTodasLasPartesDelExodia() {
-		return this.lugarParaLaCabeza.hayCartas() &&
+		return  this.lugarParaLaCabeza.hayCartas() &&
 				this.lugarParaElBrazoDerecho.hayCartas() &&
 				this.lugarParaElBrazoIzquierdo.hayCartas() &&
 				this.lugarParaLaPiernaDerecha.hayCartas() &&

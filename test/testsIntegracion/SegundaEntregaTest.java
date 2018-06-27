@@ -429,6 +429,9 @@ public class SegundaEntregaTest {
 		Campo campoB = new Campo(mazoB);
 		Jugador jugadorB = new Jugador(campoB);
 		
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
+		
 		Juego juego = new Juego(jugadorA,jugadorB);
 		
 		mazoA.agregar(new CabezaExodia());
@@ -436,6 +439,7 @@ public class SegundaEntregaTest {
 		mazoA.agregar(new BrazoDerechoExodia());
 		mazoA.agregar(new PiernaIzquierdaExodia());
 		mazoA.agregar(new PiernaDerechaExodia());
+		mazoB.agregar(new InsectoComeHombres());
 		
 		jugadorA.tomarCartaDelMazo();
 		jugadorA.tomarCartaDelMazo();

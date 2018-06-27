@@ -12,9 +12,4 @@ public class Mazo extends ContenedorDeCartas {
 		return this.cartas.remove(0);
 	}
 
-
-	public boolean tenesCartas() {
-		return capacidad != 0;
-	}
-
 }

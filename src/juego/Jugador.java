@@ -79,7 +79,7 @@ public class Jugador {
 	}
 		
 	public boolean perdiste() {
-		return  ( vida == 0 ) || (this.tenesTodasLasPartesDeExodiaEnTuMano()) || (campo.noTieneCartasEnELMazo()) ;
+		return  ( vida == 0 ) ||  !(campo.tieneCartasEnELMazo()) || oponente.tenesTodasLasPartesDeExodiaEnTuMano();
 	}
 
 	private boolean tenesTodasLasPartesDeExodiaEnTuMano() {

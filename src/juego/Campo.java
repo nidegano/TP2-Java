@@ -86,7 +86,7 @@ public class Campo {
 		return this.contenedorCartasTrampa;
 	}
 
-	public boolean noTieneCartasEnELMazo() {
-		return mazo.tenesCartas();
+	public boolean tieneCartasEnELMazo() {
+		return mazo.hayCartas();
 	}
 }
