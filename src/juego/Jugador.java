@@ -2,6 +2,8 @@ package juego;
 
 import cartas.*;
 import excepciones.AtaqueIntervenidoException;
+import excepciones.MazoSinCartasException;
+import excepciones.TengoTodasLasPartesDeExodiaException;
 
 public class Jugador {
 
@@ -9,11 +11,16 @@ public class Jugador {
 	private Mano mano;
 	private Campo campo;
 	private Jugador oponente;
+	private Juego juego;
 
 	public Jugador(Campo campo) {
 		this.vida = 8000;
 		this.mano = new Mano();
 		this.campo = campo;
+	}
+	
+	public void asignarJuego(Juego juego) {
+		this.juego = juego;
 	}
 
 	public void asignarOponente(Jugador oponente) {
@@ -30,10 +37,14 @@ public class Jugador {
 
 	public void tomarCartaDelMazo() {
 		try {
-		      Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
-		      this.mano.agregar(unaCarta);
+		    Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
+		    this.mano.agregar(unaCarta);
 		} 
-		catch(IndexOutOfBoundsException e) {
+		catch( MazoSinCartasException e) {
+			juego.perdi(this);
+		}
+		catch(TengoTodasLasPartesDeExodiaException e) {
+			juego.perdi(oponente);
 		}
 	}
 
@@ -78,13 +89,13 @@ public class Jugador {
 		}
 	}
 		
-	public boolean perdiste() {
+/*	public boolean perdiste() {
 		return  ( vida == 0 ) ||  !(campo.tieneCartasEnELMazo()) || oponente.tenesTodasLasPartesDeExodiaEnTuMano();
 	}
 
 	private boolean tenesTodasLasPartesDeExodiaEnTuMano() {
 		return this.mano.tenesTodasLasPartesDeExodia();
-	}
+	}*/
 
 	public Mano obtenerMano() {
 		return this.mano;

@@ -1,6 +1,7 @@
 package juego;
 
 import cartas.Carta;
+import excepciones.MazoSinCartasException;
 
 public class Mazo extends ContenedorDeCartas {
 
@@ -9,7 +10,12 @@ public class Mazo extends ContenedorDeCartas {
 	}
 
 	public Carta tomarUnaCarta() {
-		return this.cartas.remove(0);
+		try {
+			return this.cartas.remove(0);
+		} 
+		catch(IndexOutOfBoundsException e) {
+			throw new MazoSinCartasException();
+		}
 	}
 
 }

@@ -1,8 +1,10 @@
 package juego;
 
+
 import cartas.Carta;
 import excepciones.CapacidadMaximaException;
 import excepciones.CartaNoEstaEnContenedorDeCartasException;
+
 
 public class Mano extends ContenedorDeCartas {
 
@@ -20,7 +22,7 @@ public class Mano extends ContenedorDeCartas {
 		this.cartas.add(carta);
 		carta.serAgregadaALaMano(this);
 		
-		recolectorDePartesDeExodia.siEsUnaParteDelExodiaQueNoTeniaRecolectar(carta);
+			recolectorDePartesDeExodia.siEsUnaParteDelExodiaQueNoTeniaRecolectar(carta);
 	}
 	
 	@Override
@@ -32,8 +34,8 @@ public class Mano extends ContenedorDeCartas {
 		recolectorDePartesDeExodia.remover(carta);
 	}
 
-	public boolean tenesTodasLasPartesDeExodia() {
+/*	public boolean tenesTodasLasPartesDeExodia() {
 		return recolectorDePartesDeExodia.tenesTodasLasPartesDelExodia();
-	}
+	}*/
 
 }

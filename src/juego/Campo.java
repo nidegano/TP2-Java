@@ -1,5 +1,6 @@
 package juego;
 
+
 import cartas.Carta;
 import cartas.CartaMonstruo;
 
@@ -26,7 +27,7 @@ public class Campo {
 	}
 
 	public Carta tomarUnaCartaDelMazo() {
-		return this.mazo.tomarUnaCarta();
+			return this.mazo.tomarUnaCarta();
 	}
 
 	public boolean estaDentro(Carta carta) {
