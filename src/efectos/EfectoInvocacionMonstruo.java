@@ -11,6 +11,7 @@ public abstract class EfectoInvocacionMonstruo extends Efecto {
 
 	@Override
 	public void serActivadoPor(Estado estadoDeLaCarta) {
-		estadoDeLaCarta.activar(this);		
+		estadoDeLaCarta.activar(this);
 	}
+
 }

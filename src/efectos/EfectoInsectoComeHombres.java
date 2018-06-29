@@ -13,4 +13,5 @@ public class EfectoInsectoComeHombres extends EfectoDeVolteo {
 		this.monstruoEnemigoObjetivo.matar();
 		this.interrumpirAtaque();
 	}
+
 }

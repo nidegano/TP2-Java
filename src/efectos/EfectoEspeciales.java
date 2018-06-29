@@ -16,4 +16,5 @@ public abstract class EfectoEspeciales extends Efecto {
 	public void serActivadoPor(Estado estadoDeLaCarta) {
 		estadoDeLaCarta.activar(this);
 	}
+
 }

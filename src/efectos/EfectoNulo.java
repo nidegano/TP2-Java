@@ -11,13 +11,12 @@ public class EfectoNulo extends Efecto {
 
 	@Override
 	public void serActivadoPor(Estado estadoDeLaCarta) {
-		estadoDeLaCarta.activar(this);		
+		estadoDeLaCarta.activar(this);
 	}
 
 	@Override
 	public void activar() {
-		// TODO Auto-generated method stub
-		
+		// NO TIENE EFECTO
 	}
 
 }

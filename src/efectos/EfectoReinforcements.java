@@ -1,6 +1,5 @@
 package efectos;
 
-
 import cartas.Carta;
 
 public class EfectoReinforcements extends EfectoEspeciales {

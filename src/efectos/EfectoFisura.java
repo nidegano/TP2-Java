@@ -15,4 +15,5 @@ public class EfectoFisura extends EfectoEspeciales {
 		monstruo.matar();
 		this.cartaDuenia.matar();
 	}
+
 }

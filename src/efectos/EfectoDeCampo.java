@@ -7,12 +7,12 @@ import juego.ContenedorDeCartas;
 
 public class EfectoDeCampo extends Efecto {
 
+	protected int aumentoDePuntosDeAtaque;
+	protected int aumentoDePuntosDeDefensa;
+
 	public EfectoDeCampo(Carta cartaDuenia) {
 		super(cartaDuenia);
 	}
-
-	protected int aumentoDePuntosDeAtaque;
-	protected int aumentoDePuntosDeDefensa;
 
 	@Override
 	public void activar() {
@@ -28,7 +28,7 @@ public class EfectoDeCampo extends Efecto {
 
 	@Override
 	public void serActivadoPor(Estado estadoDeLaCarta) {
-		estadoDeLaCarta.activar(this);		
+		estadoDeLaCarta.activar(this);
 	}
 
 }

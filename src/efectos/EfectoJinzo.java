@@ -2,7 +2,7 @@ package efectos;
 
 import cartas.Carta;
 
-public class EfectoJinzo extends EfectoInvocacionMonstruo{
+public class EfectoJinzo extends EfectoInvocacionMonstruo {
 
 	public EfectoJinzo(Carta cartaDuenia) {
 		super(cartaDuenia);
