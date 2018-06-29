@@ -46,7 +46,7 @@ public class JugadorTest {
 
 		Jugador jugador = new Jugador(campo);
 		jugador.tomarCartaDelMazo();
-		
+
 		assertTrue(jugador.esDuenioDe(carta));
 	}
 
@@ -60,15 +60,15 @@ public class JugadorTest {
 
 		Jugador jugador = new Jugador(campo);
 		monstruo.asignarDuenio(jugador);
-		
+
 		jugador.tomarCartaDelMazo();
-		monstruo.invocarEnModoAtaque(); //coloca la carta en la zona de monstruos
-		
+		monstruo.invocarEnModoAtaque(); // coloca la carta en la zona de monstruos
+
 		assertTrue(jugador.esDuenioDe(monstruo));
 	}
 
 	@Test
-	public void testEsDuenioDevuelveTrueCuandoJugadorPoneLaCartaMagicaEnLaZonaEspeciales () {
+	public void testEsDuenioDevuelveTrueCuandoJugadorPoneLaCartaMagicaEnLaZonaEspeciales() {
 		Mazo mazo = new Mazo();
 		AgujeroOscuro magica = new AgujeroOscuro();
 		mazo.agregar(magica);
@@ -77,15 +77,15 @@ public class JugadorTest {
 
 		Jugador jugadorA = new Jugador(campo);
 		Jugador jugadorB = new Jugador(campo);
-		
+
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
-		
+
 		magica.asignarDuenio(jugadorA);
-		
+
 		jugadorA.tomarCartaDelMazo();
-		magica.colocarBocaAbajo(); //coloca la carta en la zona de especiales
-		
+		magica.colocarBocaAbajo(); // coloca la carta en la zona de especiales
+
 		assertTrue(jugadorA.esDuenioDe(magica));
 	}
 
@@ -98,7 +98,8 @@ public class JugadorTest {
 		Campo campo = new Campo(mazo);
 
 		Jugador jugador = new Jugador(campo);
-		
+
 		assertFalse(jugador.esDuenioDe(carta));
 	}
+
 }

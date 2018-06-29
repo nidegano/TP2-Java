@@ -19,4 +19,5 @@ public class MazoTest {
 
 		assertFalse(mazo.estaDentro(unaCarta));
 	}
+
 }
