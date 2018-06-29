@@ -11,4 +11,5 @@ public class Jinzo extends CartaMonstruo {
 		this.nivel = 2;
 		this.efecto = new EfectoJinzo(this);
 	}
+
 }

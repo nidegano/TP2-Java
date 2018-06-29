@@ -12,4 +12,5 @@ public class DragonArmadoOscuro extends CartaRequiereSacrificios {
 		this.puntosDeDefensa = new Puntos(1000);
 		this.nivel = 7;
 	}
+
 }

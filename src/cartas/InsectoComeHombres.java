@@ -16,4 +16,5 @@ public class InsectoComeHombres extends CartaMonstruo {
 	public void invocarEnModoDefensaBocaAbajo() {
 		this.estado = new ModoDefensaBocaAbajo(this.puntosDeDefensa);
 	}
+
 }

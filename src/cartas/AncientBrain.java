@@ -8,4 +8,5 @@ public class AncientBrain extends CartaMonstruo {
 		this.puntosDeDefensa = new Puntos(700);
 		this.nivel = 3;
 	}
+
 }

@@ -24,7 +24,10 @@ public abstract class Carta {
 	}
 
 	public abstract void agregarEnCampo(Campo campo);
-	//Cada vez que la metamos en un contenedor, hay que agregar ese contenedor a this.contenedoresQueLaContienen
+	// Cada vez que la metamos en un contenedor, hay que agregar ese contenedor a
+	// this.contenedoresQueLaContienen
+	
+	public abstract void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia);
 
 	public void asignarDuenio(Jugador jugador) {
 		this.jugadorDuenio = jugador;
@@ -35,22 +38,19 @@ public abstract class Carta {
 		cementerio.agregar(this);
 		this.quitarDeLosContenedoresEnLosQueEstaba();
 	}
-	
+
 	public void serAgregadaALaMano(Mano mano) {
 		this.contenedoresQueLaContienen.add(mano);
 	}
 
 	private void quitarDeLosContenedoresEnLosQueEstaba() {
-		
-		for (ContenedorDeCartas contenedor :this.contenedoresQueLaContienen) {
+		for (ContenedorDeCartas contenedor : this.contenedoresQueLaContienen)
 			contenedor.remover(this);
-		}
 		this.removerContenedoresQueLacontienen();
 	}
 
 	private void removerContenedoresQueLacontienen() {
-		this.contenedoresQueLaContienen = new ArrayList<ContenedorDeCartas>();		
+		this.contenedoresQueLaContienen = new ArrayList<ContenedorDeCartas>();
 	}
 
-	public abstract void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia);
 }

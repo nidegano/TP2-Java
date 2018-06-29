@@ -15,4 +15,5 @@ public class PiernaDerechaExodia extends Exodia {
 	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {
 		recolectorDePartesDeExodia.recolectarPiernaDerecha(this);
 	}
+
 }

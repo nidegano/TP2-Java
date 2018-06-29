@@ -18,6 +18,10 @@ public abstract class CartaEspecial extends Carta {
 
 	@Override
 	public abstract void agregarEnCampo(Campo campo);
+	
+	@Override
+	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {
+	}
 
 	@Override
 	public void asignarDuenio(Jugador jugador) {
@@ -28,16 +32,16 @@ public abstract class CartaEspecial extends Carta {
 	public void activar() {
 		this.estado.activar(this.efecto);
 	}
-	
+
 	public void activar(CartaMonstruo monstruoEnemigo) {
 		this.efecto.asignarMonstruoEnemigoObjetivo(monstruoEnemigo);
-		this.activar();		
+		this.activar();
 	}
-	
+
 	public void activar(CartaMonstruo monstruoEnemigo, CartaMonstruo monstruoPropio) {
 		this.efecto.asignarMonstruoEnemigoObjetivo(monstruoEnemigo);
 		this.efecto.asignarMonstruoPropioObjetivo(monstruoPropio);
-		this.activar();		
+		this.activar();
 	}
 
 	public void colocarBocaArriba() {
@@ -50,8 +54,5 @@ public abstract class CartaEspecial extends Carta {
 		this.estado = new ModoInactivo();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 	}
-	
-	@Override
-	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {}
 
 }

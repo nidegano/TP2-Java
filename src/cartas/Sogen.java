@@ -8,4 +8,5 @@ public class Sogen extends CartaDeCampo {
 		super();
 		this.efecto = new EfectoSogen(this);
 	}
+
 }

@@ -15,4 +15,5 @@ public class BrazoDerechoExodia extends Exodia {
 	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {
 		recolectorDePartesDeExodia.recolectarBrazoDerecho(this);
 	}
+
 }

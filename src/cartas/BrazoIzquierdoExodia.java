@@ -13,6 +13,7 @@ public class BrazoIzquierdoExodia extends Exodia {
 
 	@Override
 	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {
-		recolectorDePartesDeExodia.recolectarBrazoIzquierdo(this);		
+		recolectorDePartesDeExodia.recolectarBrazoIzquierdo(this);
 	}
+
 }

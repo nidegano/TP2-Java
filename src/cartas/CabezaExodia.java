@@ -15,4 +15,5 @@ public class CabezaExodia extends Exodia {
 	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {
 		recolectorDePartesDeExodia.recolectarCabeza(this);
 	}
+
 }

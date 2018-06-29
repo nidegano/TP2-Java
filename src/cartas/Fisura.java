@@ -8,4 +8,5 @@ public class Fisura extends CartaMagica {
 		super();
 		this.efecto = new EfectoFisura(this);
 	}
+
 }

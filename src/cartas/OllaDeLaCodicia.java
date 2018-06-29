@@ -8,4 +8,5 @@ public class OllaDeLaCodicia extends CartaMagica {
 		super();
 		this.efecto = new EfectoOllaDeLaCodicia(this);
 	}
+
 }

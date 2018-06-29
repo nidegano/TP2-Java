@@ -8,4 +8,5 @@ public class AgujeroOscuro extends CartaMagica {
 		super();
 		this.efecto = new EfectoAgujeroOscuro(this);
 	}
+
 }

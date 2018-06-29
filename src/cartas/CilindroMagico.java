@@ -8,4 +8,5 @@ public class CilindroMagico extends CartaTrampa {
 		super();
 		this.efecto = new EfectoCilindroMagico(this);
 	}
+
 }

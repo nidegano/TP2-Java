@@ -8,4 +8,5 @@ public class Wasteland extends CartaDeCampo {
 		super();
 		this.efecto = new EfectoWasteland(this);
 	}
+
 }

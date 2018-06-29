@@ -12,4 +12,5 @@ public class DragonBlancoDeOjosAzules extends CartaRequiereSacrificios {
 		this.puntosDeDefensa = new Puntos(2500);
 		this.nivel = 8;
 	}
+
 }

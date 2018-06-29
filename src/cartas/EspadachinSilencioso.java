@@ -12,4 +12,5 @@ public class EspadachinSilencioso extends CartaRequiereSacrificios {
 		this.puntosDeDefensa = new Puntos(1000);
 		this.nivel = 5;
 	}
+
 }

@@ -13,4 +13,5 @@ public class DragonDefinitivo extends CartaRequiereSacrificios {
 		this.nivel = 12;
 		this.sacrificios = sacrificios;
 	}
+
 }

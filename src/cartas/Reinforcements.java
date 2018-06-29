@@ -8,4 +8,5 @@ public class Reinforcements extends CartaTrampa {
 		super();
 		this.efecto = new EfectoReinforcements(this);
 	}
+
 }
