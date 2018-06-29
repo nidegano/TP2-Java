@@ -1,6 +1,5 @@
 package juego;
 
-
 import cartas.Carta;
 import cartas.CartaMonstruo;
 
@@ -11,7 +10,7 @@ public class Campo {
 	private ContenedorDeCartas zonaCartasEspeciales;
 	private ContenedorDeCartas zonaCartasDeCampo;
 	private Mazo mazo;
-	
+
 	private ContenedorDeCartas contenedorCartasMagicas;
 	private ContenedorDeCartas contenedorCartasTrampa;
 
@@ -21,18 +20,19 @@ public class Campo {
 		this.zonaCartasEspeciales = new ContenedorDeCartas(5);
 		this.zonaCartasDeCampo = new ContenedorDeCartas(1);
 		this.mazo = mazo;
-		
-		this.contenedorCartasMagicas = new ContenedorDeCartas(12); //pongo 12 porque se que mas de 12 seguro no hay (mano+especiales)
+		this.contenedorCartasMagicas = new ContenedorDeCartas(12);
 		this.contenedorCartasTrampa = new ContenedorDeCartas(12);
 	}
 
 	public Carta tomarUnaCartaDelMazo() {
-			return this.mazo.tomarUnaCarta();
+		return this.mazo.tomarUnaCarta();
 	}
 
 	public boolean estaDentro(Carta carta) {
-		return this.zonaCartasDeCampo.estaDentro(carta) || this.zonaCartasEspeciales.estaDentro(carta)
-				|| this.zonaMonstruos.estaDentro(carta) || this.contenedorCartasMagicas.estaDentro(carta) ||
+		return this.zonaCartasDeCampo.estaDentro(carta) ||
+				this.zonaCartasEspeciales.estaDentro(carta) ||
+				this.zonaMonstruos.estaDentro(carta) ||
+				this.contenedorCartasMagicas.estaDentro(carta) ||
 				this.contenedorCartasTrampa.estaDentro(carta);
 	}
 
@@ -82,7 +82,7 @@ public class Campo {
 	public ContenedorDeCartas obtenerContenedorCartasMagicas() {
 		return this.contenedorCartasMagicas;
 	}
-	
+
 	public ContenedorDeCartas obtenerContenedorCartasTrampa() {
 		return this.contenedorCartasTrampa;
 	}
@@ -90,4 +90,5 @@ public class Campo {
 	public boolean tieneCartasEnELMazo() {
 		return mazo.hayCartas();
 	}
+
 }

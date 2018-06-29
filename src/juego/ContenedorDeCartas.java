@@ -21,9 +21,8 @@ public class ContenedorDeCartas implements Iterable<Carta> {
 	public void agregar(Carta carta) {
 		if (this.cartas.size() == this.capacidad)
 			throw new CapacidadMaximaException();
-		if (!this.estaDentro(carta)) {
+		if (!this.estaDentro(carta))
 			this.cartas.add(carta);
-		}
 	}
 
 	public Carta obtenerPrimero() {
@@ -56,13 +55,13 @@ public class ContenedorDeCartas implements Iterable<Carta> {
 		return this.cartas.size();
 	}
 
+	public boolean hayCartas() {
+		return this.cantidad() != 0;
+	}
+	
 	@Override
 	public Iterator<Carta> iterator() {
 		return cartas.iterator();
 	}
 
-	public boolean hayCartas() {
-		
-		return this.cantidad() != 0;
-	}
 }

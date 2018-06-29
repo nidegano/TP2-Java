@@ -18,7 +18,7 @@ public class Jugador {
 		this.mano = new Mano();
 		this.campo = campo;
 	}
-	
+
 	public void asignarJuego(Juego juego) {
 		this.juego = juego;
 	}
@@ -37,13 +37,11 @@ public class Jugador {
 
 	public void tomarCartaDelMazo() {
 		try {
-		    Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
-		    this.mano.agregar(unaCarta);
-		} 
-		catch( MazoSinCartasException e) {
+			Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
+			this.mano.agregar(unaCarta);
+		} catch (MazoSinCartasException e) {
 			juego.perdi(this);
-		}
-		catch(TengoTodasLasPartesDeExodiaException e) {
+		} catch (TengoTodasLasPartesDeExodiaException e) {
 			juego.perdi(oponente);
 		}
 	}
@@ -73,31 +71,32 @@ public class Jugador {
 	}
 
 	public void serAtacadoPor(CartaMonstruo cartaMonstruo) {
-		
-		//uso Proxy
-		
-		try {			
+		// PATRON PROXY
+		try {
 			ContenedorDeCartas cartasTrampa = this.campo().obtenerContenedorCartasTrampa();
-
 			if (cartasTrampa.hayCartas()) {
-				CartaTrampa trampaQueLeTocaActivarse = (CartaTrampa)cartasTrampa.obtenerPrimero();
+				CartaTrampa trampaQueLeTocaActivarse = (CartaTrampa) cartasTrampa.obtenerPrimero();
 				trampaQueLeTocaActivarse.colocarBocaArriba(cartaMonstruo);
-			}			
-		}
-		catch (AtaqueIntervenidoException e) {
+			}
+		} catch (AtaqueIntervenidoException e) {
 			throw new AtaqueIntervenidoException();
 		}
 	}
-		
-/*	public boolean perdiste() {
-		return  ( vida == 0 ) ||  !(campo.tieneCartasEnELMazo()) || oponente.tenesTodasLasPartesDeExodiaEnTuMano();
-	}
-
-	private boolean tenesTodasLasPartesDeExodiaEnTuMano() {
-		return this.mano.tenesTodasLasPartesDeExodia();
-	}*/
 
 	public Mano obtenerMano() {
 		return this.mano;
 	}
+	
+	/*
+	public boolean perdiste() {
+		return ( vida == 0 ) ||
+		!(campo.tieneCartasEnELMazo()) ||
+	 	oponente.tenesTodasLasPartesDeExodiaEnTuMano();
+	}
+	 
+	private boolean tenesTodasLasPartesDeExodiaEnTuMano() {
+		return this.mano.tenesTodasLasPartesDeExodia();
+	}
+	*/
+
 }
