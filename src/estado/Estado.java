@@ -18,8 +18,9 @@ public abstract class Estado {
 	public abstract void activar(EfectoDeCampo efectoDeCampo);
 
 	public abstract void activar(EfectoEspeciales efectoEspeciales);
-	
+
 	public void activar(Efecto efecto) {
 		efecto.serActivadoPor(this);
 	}
+
 }

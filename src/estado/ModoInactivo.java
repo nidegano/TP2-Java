@@ -6,8 +6,11 @@ import efectos.EfectoEspeciales;
 public class ModoInactivo extends EstadoDeCartaEspecial {
 
 	@Override
-	public void activar(EfectoDeCampo efectoDeCampo) {}
-	
+	public void activar(EfectoDeCampo efectoDeCampo) {
+	}
+
 	@Override
-	public void activar(EfectoEspeciales efectoEspeciales) {}
+	public void activar(EfectoEspeciales efectoEspeciales) {
+	}
+
 }

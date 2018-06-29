@@ -20,10 +20,12 @@ public class ModoAtaque extends EstadoDeCartaMonstruo {
 	}
 
 	@Override
-	public void activar(EfectoDeVolteo efecto) {}
+	public void activar(EfectoDeVolteo efecto) {
+	}
 
 	@Override
 	public void activar(EfectoInvocacionMonstruo efectoInvocacionMonstruo) {
-		efectoInvocacionMonstruo.activar();		
+		efectoInvocacionMonstruo.activar();
 	}
+
 }

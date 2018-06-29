@@ -16,13 +16,17 @@ public abstract class EstadoDeCartaMonstruo extends Estado {
 	}
 
 	public abstract FormaDeAfectarAlJugador formaDeAfectar(int diferencia);
-	
-	@Override
-	public void activar(EfectoNulo efectoNulo) {}
 
 	@Override
-	public void activar(EfectoDeCampo efectoDeCampo) {}
+	public void activar(EfectoNulo efectoNulo) {
+	}
 
 	@Override
-	public void activar(EfectoEspeciales efectoEspeciales) {}
+	public void activar(EfectoDeCampo efectoDeCampo) {
+	}
+
+	@Override
+	public void activar(EfectoEspeciales efectoEspeciales) {
+	}
+
 }

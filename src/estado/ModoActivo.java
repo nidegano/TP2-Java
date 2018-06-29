@@ -7,11 +7,12 @@ public class ModoActivo extends EstadoDeCartaEspecial {
 
 	@Override
 	public void activar(EfectoDeCampo efectoDeCampo) {
-		efectoDeCampo.activar();		
+		efectoDeCampo.activar();
 	}
 
 	@Override
 	public void activar(EfectoEspeciales efectoEspeciales) {
-		efectoEspeciales.activar();		
+		efectoEspeciales.activar();
 	}
+
 }

@@ -24,5 +24,7 @@ public class ModoDefensaBocaAbajo extends EstadoDeCartaMonstruo {
 	}
 
 	@Override
-	public void activar(EfectoInvocacionMonstruo efectoInvocacionMonstruo) {}
+	public void activar(EfectoInvocacionMonstruo efectoInvocacionMonstruo) {
+	}
+
 }
