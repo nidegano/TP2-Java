@@ -4,11 +4,11 @@ import cartas.Carta;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
-public class BotonCarta extends Button {
+public class BotonCartaEspecial extends Button {
 
 	private Carta carta;
 
-	public BotonCarta(String texto, ImageView imageView) {
+	public BotonCartaEspecial(String texto, ImageView imageView) {
 		super(texto);
 		this.setOnAction(value -> {
 			imageView.setImage(this.carta.obtenerImagen());

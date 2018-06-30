@@ -10,7 +10,7 @@ public class BotonMazo extends Button {
 	public BotonMazo(String texto) {
 		super(texto);
 	}
-	
+
 	public void asignarMazo(Mazo unMazo) {
 		this.mazo = unMazo;
 	}
