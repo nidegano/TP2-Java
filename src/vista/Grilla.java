@@ -1,10 +1,10 @@
 package vista;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -13,13 +13,17 @@ import javafx.stage.Stage;
 import juego.Jugador;
 
 public class Grilla extends Application {
-
+	
 	private Jugador jugador1;
 	private Jugador jugador2;
-
-	public Grilla(Jugador unJugador, Jugador otroJugador) {
-		this.jugador1 = unJugador;
-		this.jugador2 = otroJugador;
+	private ArrayList<BotonCarta> botonesManoJugador1;
+	private ArrayList<BotonCarta> botonesManoJugador2;
+	
+	public Grilla(Jugador jugador1, Jugador jugador2) {
+		this.jugador1 = jugador1;
+		this.jugador2 = jugador2;
+		this.botonesManoJugador1 = new ArrayList<BotonCarta>();
+		this.botonesManoJugador2 = new ArrayList<BotonCarta>();
 	}
 	
 	@Override
@@ -41,19 +45,19 @@ public class Grilla extends Application {
         BotonMazo botonJugador1Mazo = new BotonMazo("Mazo");
 		botonJugador1Mazo.setMaxSize(100, 200);
 		
-		BotonCarta botonJugador1Cementerio = new BotonCarta("Cementerio");
+		BotonCarta botonJugador1Cementerio = new BotonCarta("Cementerio", imageView);
 		botonJugador1Cementerio.setMaxSize(100, 200);
 		
-		BotonCarta botonJugador1Campo = new BotonCarta("Campo");
+		BotonCarta botonJugador1Campo = new BotonCarta("Campo", imageView);
 		botonJugador1Campo.setMaxSize(100, 200);
 
-		BotonCarta botonJugador1Mano1 = new BotonCarta("Mano 1");
-		BotonCarta botonJugador1Mano2 = new BotonCarta("Mano 2");
-		BotonCarta botonJugador1Mano3 = new BotonCarta("Mano 3");
-		BotonCarta botonJugador1Mano4 = new BotonCarta("Mano 4");
-		BotonCarta botonJugador1Mano5 = new BotonCarta("Mano 5");
-		BotonCarta botonJugador1Mano6 = new BotonCarta("Mano 6");
-		BotonCarta botonJugador1Mano7 = new BotonCarta("Mano 7");
+		BotonCarta botonJugador1Mano1 = new BotonCarta("Mano 1", imageView);
+		BotonCarta botonJugador1Mano2 = new BotonCarta("Mano 2", imageView);
+		BotonCarta botonJugador1Mano3 = new BotonCarta("Mano 3", imageView);
+		BotonCarta botonJugador1Mano4 = new BotonCarta("Mano 4", imageView);
+		BotonCarta botonJugador1Mano5 = new BotonCarta("Mano 5", imageView);
+		BotonCarta botonJugador1Mano6 = new BotonCarta("Mano 6", imageView);
+		BotonCarta botonJugador1Mano7 = new BotonCarta("Mano 7", imageView);
 		botonJugador1Mano1.setMaxSize(100, 200);
 		botonJugador1Mano2.setMaxSize(100, 200);
 		botonJugador1Mano3.setMaxSize(100, 200);
@@ -61,24 +65,31 @@ public class Grilla extends Application {
 		botonJugador1Mano5.setMaxSize(100, 200);
 		botonJugador1Mano6.setMaxSize(100, 200);
 		botonJugador1Mano7.setMaxSize(100, 200);
+		this.botonesManoJugador1.add(botonJugador1Mano1);
+		this.botonesManoJugador1.add(botonJugador1Mano2);
+		this.botonesManoJugador1.add(botonJugador1Mano3);
+		this.botonesManoJugador1.add(botonJugador1Mano4);
+		this.botonesManoJugador1.add(botonJugador1Mano5);
+		this.botonesManoJugador1.add(botonJugador1Mano6);
+		this.botonesManoJugador1.add(botonJugador1Mano7);
 
 
-		BotonCarta botonJugador1Especial1 = new BotonCarta("Especial 1");
-		BotonCarta botonJugador1Especial2 = new BotonCarta("Especial 2");
-		BotonCarta botonJugador1Especial3 = new BotonCarta("Especial 3");
-		BotonCarta botonJugador1Especial4 = new BotonCarta("Especial 4");
-		BotonCarta botonJugador1Especial5 = new BotonCarta("Especial 5");
+		BotonCarta botonJugador1Especial1 = new BotonCarta("Especial 1", imageView);
+		BotonCarta botonJugador1Especial2 = new BotonCarta("Especial 2", imageView);
+		BotonCarta botonJugador1Especial3 = new BotonCarta("Especial 3", imageView);
+		BotonCarta botonJugador1Especial4 = new BotonCarta("Especial 4", imageView);
+		BotonCarta botonJugador1Especial5 = new BotonCarta("Especial 5", imageView);
 		botonJugador1Especial1.setMaxSize(100, 200);
 		botonJugador1Especial2.setMaxSize(100, 200);
 		botonJugador1Especial3.setMaxSize(100, 200);
 		botonJugador1Especial4.setMaxSize(100, 200);
 		botonJugador1Especial5.setMaxSize(100, 200);
 
-		BotonCarta botonJugador1Monstruo1 = new BotonCarta("Monstruo 1");
-		BotonCarta botonJugador1Monstruo2 = new BotonCarta("Monstruo 2");
-		BotonCarta botonJugador1Monstruo3 = new BotonCarta("Monstruo 3");
-		BotonCarta botonJugador1Monstruo4 = new BotonCarta("Monstruo 4");
-		BotonCarta botonJugador1Monstruo5 = new BotonCarta("Monstruo 5");
+		BotonCarta botonJugador1Monstruo1 = new BotonCarta("Monstruo 1", imageView);
+		BotonCarta botonJugador1Monstruo2 = new BotonCarta("Monstruo 2", imageView);
+		BotonCarta botonJugador1Monstruo3 = new BotonCarta("Monstruo 3", imageView);
+		BotonCarta botonJugador1Monstruo4 = new BotonCarta("Monstruo 4", imageView);
+		BotonCarta botonJugador1Monstruo5 = new BotonCarta("Monstruo 5", imageView);
 		botonJugador1Monstruo1.setMaxSize(100, 200);
 		botonJugador1Monstruo2.setMaxSize(100, 200);
 		botonJugador1Monstruo3.setMaxSize(100, 200);
@@ -114,19 +125,19 @@ public class Grilla extends Application {
 		BotonMazo botonJugador2Mazo = new BotonMazo("Mazo");
 		botonJugador2Mazo.setMaxSize(100, 200);
 		
-		BotonCarta botonJugador2Cementerio = new BotonCarta("Cementerio");
+		BotonCarta botonJugador2Cementerio = new BotonCarta("Cementerio", imageView);
 		botonJugador2Cementerio.setMaxSize(100, 200);
 		
-		BotonCarta botonJugador2Campo = new BotonCarta("Campo");
+		BotonCarta botonJugador2Campo = new BotonCarta("Campo", imageView);
 		botonJugador2Campo.setMaxSize(100, 200);
 
-		BotonCarta botonJugador2Mano1 = new BotonCarta("Mano 1");
-		BotonCarta botonJugador2Mano2 = new BotonCarta("Mano 2");
-		BotonCarta botonJugador2Mano3 = new BotonCarta("Mano 3");
-		BotonCarta botonJugador2Mano4 = new BotonCarta("Mano 4");
-		BotonCarta botonJugador2Mano5 = new BotonCarta("Mano 5");
-		BotonCarta botonJugador2Mano6 = new BotonCarta("Mano 6");
-		BotonCarta botonJugador2Mano7 = new BotonCarta("Mano 7");
+		BotonCarta botonJugador2Mano1 = new BotonCarta("Mano 1", imageView);
+		BotonCarta botonJugador2Mano2 = new BotonCarta("Mano 2", imageView);
+		BotonCarta botonJugador2Mano3 = new BotonCarta("Mano 3", imageView);
+		BotonCarta botonJugador2Mano4 = new BotonCarta("Mano 4", imageView);
+		BotonCarta botonJugador2Mano5 = new BotonCarta("Mano 5", imageView);
+		BotonCarta botonJugador2Mano6 = new BotonCarta("Mano 6", imageView);
+		BotonCarta botonJugador2Mano7 = new BotonCarta("Mano 7", imageView);
 		botonJugador2Mano1.setMaxSize(100, 200);
 		botonJugador2Mano2.setMaxSize(100, 200);
 		botonJugador2Mano3.setMaxSize(100, 200);
@@ -134,23 +145,30 @@ public class Grilla extends Application {
 		botonJugador2Mano5.setMaxSize(100, 200);
 		botonJugador2Mano6.setMaxSize(100, 200);
 		botonJugador2Mano7.setMaxSize(100, 200);
+		this.botonesManoJugador2.add(botonJugador2Mano1);
+		this.botonesManoJugador2.add(botonJugador2Mano2);
+		this.botonesManoJugador2.add(botonJugador2Mano3);
+		this.botonesManoJugador2.add(botonJugador2Mano4);
+		this.botonesManoJugador2.add(botonJugador2Mano5);
+		this.botonesManoJugador2.add(botonJugador2Mano6);
+		this.botonesManoJugador2.add(botonJugador2Mano7);
 
-		BotonCarta botonJugador2Especial1 = new BotonCarta("Especial 1");
-		BotonCarta botonJugador2Especial2 = new BotonCarta("Especial 2");
-		BotonCarta botonJugador2Especial3 = new BotonCarta("Especial 3");
-		BotonCarta botonJugador2Especial4 = new BotonCarta("Especial 4");
-		BotonCarta botonJugador2Especial5 = new BotonCarta("Especial 5");
+		BotonCarta botonJugador2Especial1 = new BotonCarta("Especial 1", imageView);
+		BotonCarta botonJugador2Especial2 = new BotonCarta("Especial 2", imageView);
+		BotonCarta botonJugador2Especial3 = new BotonCarta("Especial 3", imageView);
+		BotonCarta botonJugador2Especial4 = new BotonCarta("Especial 4", imageView);
+		BotonCarta botonJugador2Especial5 = new BotonCarta("Especial 5", imageView);
 		botonJugador2Especial1.setMaxSize(100, 200);
 		botonJugador2Especial2.setMaxSize(100, 200);
 		botonJugador2Especial3.setMaxSize(100, 200);
 		botonJugador2Especial4.setMaxSize(100, 200);
 		botonJugador2Especial5.setMaxSize(100, 200);
 
-		BotonCarta botonJugador2Monstruo1 = new BotonCarta("Monstruo 1");
-		BotonCarta botonJugador2Monstruo2 = new BotonCarta("Monstruo 2");
-		BotonCarta botonJugador2Monstruo3 = new BotonCarta("Monstruo 3");
-		BotonCarta botonJugador2Monstruo4 = new BotonCarta("Monstruo 4");
-		BotonCarta botonJugador2Monstruo5 = new BotonCarta("Monstruo 5");
+		BotonCarta botonJugador2Monstruo1 = new BotonCarta("Monstruo 1", imageView);
+		BotonCarta botonJugador2Monstruo2 = new BotonCarta("Monstruo 2", imageView);
+		BotonCarta botonJugador2Monstruo3 = new BotonCarta("Monstruo 3", imageView);
+		BotonCarta botonJugador2Monstruo4 = new BotonCarta("Monstruo 4", imageView);
+		BotonCarta botonJugador2Monstruo5 = new BotonCarta("Monstruo 5", imageView);
 		botonJugador2Monstruo1.setMaxSize(100, 200);
 		botonJugador2Monstruo2.setMaxSize(100, 200);
 		botonJugador2Monstruo3.setMaxSize(100, 200);
@@ -183,9 +201,25 @@ public class Grilla extends Application {
 		
 		gridPane.add(hbox, 11, 6, 1, 1);
 
-		Scene scene = new Scene(gridPane, 1000, 700);
+		this.asignarMano();
+
+		Scene scene = new Scene(gridPane, 1200, 1200);
+		primaryStage.setFullScreen(true);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	private void asignarMano() {
+		int i = 0;
+		for (BotonCarta unBoton : this.botonesManoJugador1) {
+			unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i));
+			i ++;
+		}
+		i = 0;
+		for (BotonCarta unBoton : this.botonesManoJugador2) {
+			unBoton.asignarCarta(this.jugador2.obtenerMano().obtenerCarta(i));
+			i ++;
+		}
 	}
 
 }
