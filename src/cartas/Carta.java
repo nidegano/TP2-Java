@@ -6,6 +6,7 @@ import java.util.List;
 
 import efectos.Efecto;
 import efectos.EfectoNulo;
+import javafx.scene.image.Image;
 import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.Jugador;
@@ -17,6 +18,8 @@ public abstract class Carta {
 	protected Jugador jugadorDuenio;
 	protected List<ContenedorDeCartas> contenedoresQueLaContienen;
 	protected Efecto efecto;
+	protected String nombre;
+	protected Image imagen;
 
 	public Carta() {
 		this.contenedoresQueLaContienen = new ArrayList<ContenedorDeCartas>();
@@ -28,7 +31,7 @@ public abstract class Carta {
 	// this.contenedoresQueLaContienen
 	
 	public abstract void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia);
-
+	
 	public void asignarDuenio(Jugador jugador) {
 		this.jugadorDuenio = jugador;
 	}
@@ -41,6 +44,14 @@ public abstract class Carta {
 
 	public void serAgregadaALaMano(Mano mano) {
 		this.contenedoresQueLaContienen.add(mano);
+	}
+	
+	public String obtenerNombre() {
+		return this.nombre;
+	}
+	
+	public Image obtenerImagen() {
+		return this.imagen;
 	}
 
 	private void quitarDeLosContenedoresEnLosQueEstaba() {

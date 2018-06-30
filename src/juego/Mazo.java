@@ -1,6 +1,6 @@
 package juego;
 
-import cartas.Carta;
+import cartas.*;
 import excepciones.MazoSinCartasException;
 
 public class Mazo extends ContenedorDeCartas {
