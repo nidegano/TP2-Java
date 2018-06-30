@@ -7,8 +7,9 @@ public class BotonMazo extends Button {
 
 	private Mazo mazo;
 
-	public BotonMazo(String texto) {
-		super(texto);
+	public BotonMazo() {
+		super("Mazo");
+		this.setMaxSize(100, 200);
 	}
 
 	public void asignarMazo(Mazo unMazo) {

@@ -5,8 +5,9 @@ import javafx.scene.image.ImageView;
 
 public class BotonCampo extends Button {
 
-	public BotonCampo(String texto, ImageView imageView) {
-		super(texto);
+	public BotonCampo(ImageView imageView) {
+		super("Campo");
+		this.setMaxSize(100, 200);
 	}
 
 }
