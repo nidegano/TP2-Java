@@ -2,9 +2,7 @@ package juego;
 
 import cartas.*;
 import excepciones.AtaqueIntervenidoException;
-import excepciones.MazoSinCartasException;
 import excepciones.SinVidaException;
-import excepciones.TengoTodasLasPartesDeExodiaException;
 
 public class Jugador {
 
@@ -18,7 +16,6 @@ public class Jugador {
 		this.mano = new Mano();
 		this.campo = campo;
 	}
-
 
 	public void asignarOponente(Jugador oponente) {
 		this.oponente = oponente;

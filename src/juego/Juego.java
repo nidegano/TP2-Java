@@ -11,8 +11,6 @@ public class Juego {
 	public Juego(Jugador jugadorA, Jugador jugadorB) {
 		this.jugadorA = jugadorA;
 		this.jugadorB = jugadorB;
-		jugadorA.asignarJuego(this);
-		jugadorB.asignarJuego(this);
 	}
 
 	public boolean perdioJugador(Jugador jugador) {
