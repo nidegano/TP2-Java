@@ -1,7 +1,7 @@
 package juego;
 
 import cartas.*;
-import excepciones.AtaqueIntervenidoException;
+//import excepciones.AtaqueIntervenidoException;
 import excepciones.SinVidaException;
 
 public class Jugador {
@@ -62,15 +62,15 @@ public class Jugador {
 
 	public void serAtacadoPor(CartaMonstruo cartaMonstruo) {
 		// PATRON PROXY
-		try {
+		//try {
 			ContenedorDeCartas cartasTrampa = campo.obtenerContenedorCartasTrampa();
 			if (cartasTrampa.hayCartas()) {
 				CartaTrampa trampaQueLeTocaActivarse = (CartaTrampa) cartasTrampa.obtenerPrimero();
 				trampaQueLeTocaActivarse.colocarBocaArriba(cartaMonstruo);
 			}
-		} catch (AtaqueIntervenidoException e) {
+		/*} catch (AtaqueIntervenidoException e) {
 			throw new AtaqueIntervenidoException();
-		}
+		}*/
 	}
 
 	public Mano obtenerMano() {

@@ -6,19 +6,10 @@ public class Juego {
 	private Jugador jugadorA;
 	@SuppressWarnings("unused")
 	private Jugador jugadorB;
-	private Object perdedor;
 
 	public Juego(Jugador jugadorA, Jugador jugadorB) {
 		this.jugadorA = jugadorA;
 		this.jugadorB = jugadorB;
-	}
-
-	public boolean perdioJugador(Jugador jugador) {
-		return this.perdedor.equals(jugador);
-	}
-
-	public void perdi(Jugador jugador) {
-		this.perdedor = jugador;
 	}
 
 }
