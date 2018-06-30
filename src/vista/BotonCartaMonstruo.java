@@ -10,6 +10,7 @@ public class BotonCartaMonstruo extends Button {
 
 	public BotonCartaMonstruo(String texto, ImageView imageView) {
 		super(texto);
+		this.setMaxSize(100, 200);
 		this.setOnAction(value -> {
 			imageView.setImage(this.carta.obtenerImagen());
 		});

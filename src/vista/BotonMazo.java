@@ -9,6 +9,7 @@ public class BotonMazo extends Button {
 
 	public BotonMazo(String texto) {
 		super(texto);
+		this.setMaxSize(100, 200);
 	}
 
 	public void asignarMazo(Mazo unMazo) {

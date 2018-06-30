@@ -7,6 +7,7 @@ public class BotonCementerio extends Button {
 
 	public BotonCementerio(String texto, ImageView imageView) {
 		super(texto);
+		this.setMaxSize(100, 200);
 	}
 
 }
