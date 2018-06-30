@@ -9,8 +9,8 @@ public class BotonMano extends Button {
 	private Carta carta;
 	private ImageView imageView;
 
-	public BotonMano(String texto, ImageView imageView) {
-		super(texto);
+	public BotonMano(ImageView imageView) {
+		super("-");
 		this.setMaxSize(100, 200);
 		this.imageView = imageView;
 		this.setOnAction(value -> {
@@ -23,8 +23,17 @@ public class BotonMano extends Button {
 		this.setText(unaCarta.obtenerNombre());
 		this.setOnAction(value -> {
 			this.imageView.setImage(this.carta.obtenerImagen());
-			unaGrilla.actualizarGrillaPorSeleccionDeCartaDeMano();
+			unaGrilla.actualizarGrillaPorSeleccionDeCartaDeMano(unaCarta);
 		});
+	}
+
+	public Carta obtenerCarta() {
+		return this.carta;
+	}
+	
+	public void limpiar() {
+		this.carta = null;
+		this.setText("");
 	}
 
 }
