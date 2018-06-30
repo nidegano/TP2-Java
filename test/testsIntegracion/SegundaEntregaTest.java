@@ -25,6 +25,8 @@ import cartas.PiernaIzquierdaExodia;
 import cartas.Reinforcements;
 import cartas.Sogen;
 import cartas.Wasteland;
+import excepciones.MazoSinCartasException;
+import excepciones.TengoTodasLasPartesDeExodiaException;
 import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.Juego;
@@ -46,6 +48,7 @@ public class SegundaEntregaTest {
 		
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
+		
 		
 		AncientBrain monstruoA = new AncientBrain();
 		AncientBrain monstruoB = new AncientBrain();
@@ -89,6 +92,7 @@ public class SegundaEntregaTest {
 		
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
+		
 		
 		AncientBrain monstruoA = new AncientBrain();
 		AncientBrain monstruoB = new AncientBrain();
@@ -402,7 +406,7 @@ public class SegundaEntregaTest {
 		assertEquals(vidaEsperadaDeJugadorB,jugadorB.vida());
 	}
 	
-	@Test
+	@Test (expected = MazoSinCartasException.class)
 	public void testElJugadorTieneQueTomarUnaCartaDelMazoEstandoEsteVacioPierde() {
 		Mazo mazoA = new Mazo(); //esta vacio	
 		Campo campoA = new Campo(mazoA);
@@ -411,15 +415,13 @@ public class SegundaEntregaTest {
 		Mazo mazoB = new Mazo();
 		Campo campoB = new Campo(mazoB);
 		Jugador jugadorB = new Jugador(campoB);
-		
-		Juego juego = new Juego(jugadorA,jugadorB);
+
 		
 		jugadorA.tomarCartaDelMazo();
 
-		assertTrue(juego.perdioJugador(jugadorA));	
 	}
 	
-	@Test
+	@Test (expected = TengoTodasLasPartesDeExodiaException.class)
 	public void testElJugadorTieneLasCincoPartesDelExodiaYElOtroPierde() {
 		Mazo mazoA = new Mazo();	
 		Campo campoA = new Campo(mazoA);
@@ -432,7 +434,6 @@ public class SegundaEntregaTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		Juego juego = new Juego(jugadorA,jugadorB);
 		
 		mazoA.agregar(new CabezaExodia());
 		mazoA.agregar(new BrazoIzquierdoExodia());
@@ -446,8 +447,6 @@ public class SegundaEntregaTest {
 		jugadorA.tomarCartaDelMazo();
 		jugadorA.tomarCartaDelMazo();
 		jugadorA.tomarCartaDelMazo();
-
-		assertTrue(juego.perdioJugador(jugadorB));	
 	}
 	
 	private ContenedorDeCartas prepararTantosMonstruosParaSacrificar(int cantidadDeMonstruos,Jugador duenioDeSacrificio) {
