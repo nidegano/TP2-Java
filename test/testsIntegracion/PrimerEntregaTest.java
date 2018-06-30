@@ -7,10 +7,12 @@ import org.junit.Test;
 
 import cartas.EspadachinSilencioso;
 import cartas.AgujeroOscuro;
+import cartas.AlphaTheMagnetWarrior;
 import cartas.CabezaExodia;
 import cartas.DragonArmadoOscuro;
 import cartas.DragonBlancoDeOjosAzules;
 import cartas.InsectoComeHombres;
+import excepciones.SinVidaException;
 import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.Jugador;
@@ -382,6 +384,42 @@ public class PrimerEntregaTest {
 
 		assertTrue(campoA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertTrue(campoB.estaLaCartaEnCementerio(exodiaCabeza));
+	}
+	
+	@Test (expected =  SinVidaException.class)
+	public void testJugadorSeQuedaSinVida() {
+		Mazo mazoA = new Mazo();
+		Mazo mazoB = new Mazo();
+
+		
+		AlphaTheMagnetWarrior alpha = new AlphaTheMagnetWarrior();
+
+		mazoA.agregar(alpha);
+
+		Campo campoA = new Campo(mazoA);
+		Campo campoB = new Campo(mazoB);
+
+		Jugador jugadorA = new Jugador(campoA);
+		Jugador jugadorB = new Jugador(campoB);
+
+		jugadorA.asignarOponente(jugadorB);
+		jugadorB.asignarOponente(jugadorA);
+
+		alpha.asignarDuenio(jugadorA);
+
+		jugadorA.tomarCartaDelMazo();
+
+		alpha.invocarEnModoAtaque();
+ 
+		//puntosAtaque de alpha = 1400 
+		//entonces ataco 6 veces para que el oponente se quede sin vida
+		alpha.atacarDirectamenteAlOponente();
+		alpha.atacarDirectamenteAlOponente();
+		alpha.atacarDirectamenteAlOponente();
+		alpha.atacarDirectamenteAlOponente();
+		alpha.atacarDirectamenteAlOponente();
+		alpha.atacarDirectamenteAlOponente();
+
 	}
 
 }

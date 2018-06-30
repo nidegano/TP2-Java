@@ -3,6 +3,7 @@ package juego;
 import cartas.*;
 import excepciones.AtaqueIntervenidoException;
 import excepciones.MazoSinCartasException;
+import excepciones.SinVidaException;
 import excepciones.TengoTodasLasPartesDeExodiaException;
 
 public class Jugador {
@@ -11,7 +12,6 @@ public class Jugador {
 	private Mano mano;
 	private Campo campo;
 	private Jugador oponente;
-	private Juego juego;
 
 	public Jugador(Campo campo) {
 		this.vida = 8000;
@@ -19,9 +19,6 @@ public class Jugador {
 		this.campo = campo;
 	}
 
-	public void asignarJuego(Juego juego) {
-		this.juego = juego;
-	}
 
 	public void asignarOponente(Jugador oponente) {
 		this.oponente = oponente;
@@ -33,17 +30,13 @@ public class Jugador {
 
 	public void debilitar(int puntosDeVidaADebilitar) {
 		this.vida = this.vida - puntosDeVidaADebilitar;
+		if( vida <= 0 )
+			throw new SinVidaException(this);
 	}
 
 	public void tomarCartaDelMazo() {
-		try {
 			Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
 			this.mano.agregar(unaCarta);
-		} catch (MazoSinCartasException e) {
-			juego.perdi(this);
-		} catch (TengoTodasLasPartesDeExodiaException e) {
-			juego.perdi(oponente);
-		}
 	}
 
 	public boolean esDuenioDe(Carta carta) {
@@ -73,7 +66,7 @@ public class Jugador {
 	public void serAtacadoPor(CartaMonstruo cartaMonstruo) {
 		// PATRON PROXY
 		try {
-			ContenedorDeCartas cartasTrampa = this.campo().obtenerContenedorCartasTrampa();
+			ContenedorDeCartas cartasTrampa = campo.obtenerContenedorCartasTrampa();
 			if (cartasTrampa.hayCartas()) {
 				CartaTrampa trampaQueLeTocaActivarse = (CartaTrampa) cartasTrampa.obtenerPrimero();
 				trampaQueLeTocaActivarse.colocarBocaArriba(cartaMonstruo);
@@ -87,16 +80,6 @@ public class Jugador {
 		return this.mano;
 	}
 	
-	/*
-	public boolean perdiste() {
-		return ( vida == 0 ) ||
-		!(campo.tieneCartasEnELMazo()) ||
-	 	oponente.tenesTodasLasPartesDeExodiaEnTuMano();
-	}
-	 
-	private boolean tenesTodasLasPartesDeExodiaEnTuMano() {
-		return this.mano.tenesTodasLasPartesDeExodia();
-	}
-	*/
+
 
 }
