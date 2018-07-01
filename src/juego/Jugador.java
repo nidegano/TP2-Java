@@ -10,6 +10,8 @@ public class Jugador {
 	private Mano mano;
 	private Campo campo;
 	private Jugador oponente;
+	private Fase fase = new FaseInicioDeJuego();
+	private Juego juego;
 
 	public Jugador(Campo campo) {
 		this.vida = 8000;
@@ -32,6 +34,8 @@ public class Jugador {
 	}
 
 	public void tomarCartaDelMazo() {
+		    fase.tomoCartaDelMazo();
+		    
 			Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
 			this.mano.agregar(unaCarta);
 	}
@@ -62,20 +66,44 @@ public class Jugador {
 
 	public void serAtacadoPor(CartaMonstruo cartaMonstruo) {
 		// PATRON PROXY
-		//try {
 			ContenedorDeCartas cartasTrampa = campo.obtenerContenedorCartasTrampa();
 			if (cartasTrampa.hayCartas()) {
 				CartaTrampa trampaQueLeTocaActivarse = (CartaTrampa) cartasTrampa.obtenerPrimero();
 				trampaQueLeTocaActivarse.colocarBocaArriba(cartaMonstruo);
 			}
-		/*} catch (AtaqueIntervenidoException e) {
-			throw new AtaqueIntervenidoException();
-		}*/
 	}
 
 	public Mano obtenerMano() {
 		return this.mano;
 	}
+
+	public void inicioJuego(Juego juego) {
+		
+		this.tomarCartaDelMazo();
+		this.tomarCartaDelMazo();
+		this.tomarCartaDelMazo();
+		this.tomarCartaDelMazo();
+		this.tomarCartaDelMazo();
+	
+		this.juego = juego;
+	}
+
+	public void iniciarTurno() {
+		fase = new FaseInicial();
+		
+		this.tomarCartaDelMazo();
+		juego.actualizar();
+	}
+
+	public void siguienteFase() {
+		fase = fase.faseSiguiente();
+	}
+
+	public Fase obtenerFase() {
+		return fase;
+	}
+
+
 	
 
 
