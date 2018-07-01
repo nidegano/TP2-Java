@@ -18,12 +18,11 @@ public class BotonMano extends Button {
 		});
 	}
 
-	public void asignarCarta(Carta unaCarta, Grilla unaGrilla) {
+	public void asignarCarta(Carta unaCarta, Vista unaGrilla) {
 		this.carta = unaCarta;
 		this.setText(unaCarta.obtenerNombre());
 		this.setOnAction(value -> {
 			this.imageView.setImage(this.carta.obtenerImagen());
-			unaGrilla.actualizarGrillaPorSeleccionDeCartaDeMano(unaCarta);
 		});
 	}
 

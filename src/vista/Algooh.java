@@ -24,7 +24,10 @@ public class Algooh extends Application {
 
 		Jugador jugador1 = new Jugador(campoJugador1);
 		Jugador jugador2 = new Jugador(campoJugador2);
-
+		
+		jugador1.asignarOponente(jugador2);
+		jugador2.asignarOponente(jugador1);
+		
 		jugador1.tomarCartaDelMazo();
 		jugador1.tomarCartaDelMazo();
 		jugador1.tomarCartaDelMazo();
@@ -41,8 +44,8 @@ public class Algooh extends Application {
 		jugador2.tomarCartaDelMazo();
 		jugador2.tomarCartaDelMazo();
 
-		Grilla grilla = new Grilla(jugador1, jugador2);
-		grilla.start(primaryStage);
+		Vista vista = new Vista(jugador1, jugador2);
+		vista.start(primaryStage);
 
 	}
 

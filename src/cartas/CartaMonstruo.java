@@ -37,8 +37,8 @@ public abstract class CartaMonstruo extends Carta {
 
 	public void invocarEnModoAtaque() {
 		this.colocarEnModoAtaque();
-		this.agregarEnCampo(this.jugadorDuenio.campo());
-		this.activarEfectoSiCorresponde();
+		this.agregarEnCampo(this.jugadorDuenio.campo()); //aca va a haber un problema al cambiar el modo en el campo
+		this.activarEfectoSiCorresponde(); //podria pasar que se active el mismo efecto dos veces
 	}
 
 	public void invocarEnModoDefensa() {

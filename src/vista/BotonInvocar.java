@@ -11,9 +11,8 @@ public class BotonInvocar extends Button {
 		this.setVisible(false);
 	}
 
-	public void asignarCarta(Carta unaCarta, Grilla unaGrilla) {
+	public void asignarCarta(Carta unaCarta, Vista unaGrilla) {
 		this.setOnAction(value -> {
-			unaGrilla.actualizarGrillaPorInvocacionDeMonstruo(unaCarta);
 		});
 	}
 
