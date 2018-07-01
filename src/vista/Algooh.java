@@ -1,3 +1,4 @@
+
 package vista;
 
 import javafx.application.Application;
@@ -24,28 +25,23 @@ public class Algooh extends Application {
 
 		Jugador jugador1 = new Jugador(campoJugador1);
 		Jugador jugador2 = new Jugador(campoJugador2);
-		
-		jugador1.asignarOponente(jugador2);
-		jugador2.asignarOponente(jugador1);
-		
-		jugador1.tomarCartaDelMazo();
-		jugador1.tomarCartaDelMazo();
+
 		jugador1.tomarCartaDelMazo();
 		jugador1.tomarCartaDelMazo();
 		jugador1.tomarCartaDelMazo();
 		jugador1.tomarCartaDelMazo();
 		jugador1.tomarCartaDelMazo();
 
-		jugador2.tomarCartaDelMazo();
-		jugador2.tomarCartaDelMazo();
+
 		jugador2.tomarCartaDelMazo();
 		jugador2.tomarCartaDelMazo();
 		jugador2.tomarCartaDelMazo();
 		jugador2.tomarCartaDelMazo();
 		jugador2.tomarCartaDelMazo();
 
-		Vista vista = new Vista(jugador1, jugador2);
-		vista.start(primaryStage);
+
+		Grilla grilla = new Grilla(jugador1, jugador2);
+		grilla.start(primaryStage);
 
 	}
 
