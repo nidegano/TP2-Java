@@ -3,6 +3,7 @@ package testsIntegracion;
 import static org.junit.Assert.assertEquals;
 
 
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -29,7 +30,6 @@ import excepciones.MazoSinCartasException;
 import excepciones.TengoTodasLasPartesDeExodiaException;
 import juego.Campo;
 import juego.ContenedorDeCartas;
-import juego.Juego;
 import juego.Jugador;
 import juego.Mazo;
 
@@ -411,10 +411,6 @@ public class SegundaEntregaTest {
 		Mazo mazoA = new Mazo(); //esta vacio	
 		Campo campoA = new Campo(mazoA);
 		Jugador jugadorA = new Jugador(campoA);
-		
-		Mazo mazoB = new Mazo();
-		Campo campoB = new Campo(mazoB);
-		Jugador jugadorB = new Jugador(campoB);
 
 		
 		jugadorA.tomarCartaDelMazo();

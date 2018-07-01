@@ -3,8 +3,12 @@ package vista;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
+import org.hamcrest.core.IsInstanceOf;
+
 import cartas.Carta;
+import cartas.CartaRequiereSacrificios;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -49,6 +53,7 @@ public class Grilla extends Application {
 		this.gridPane = new GridPane();
 		this.gridPane.setHgap(10);
 		this.gridPane.setVgap(10);
+		this.gridPane.setAlignment(Pos.CENTER);
 
 		FileInputStream input = new FileInputStream("resources/images/carta_dorso.png");
         Image image = new Image(input);
@@ -231,20 +236,19 @@ public class Grilla extends Application {
 	}
 
 	private void asignarMano() {
-		int i = 0;
-		for (BotonMano unBoton : this.botonesManoJugador1) {
+		
+		for (int i = 0 ; i < this.jugador1.cantidadDeCartasEnMano(); i++) {
+			BotonMano unBoton = this.botonesManoJugador1.get(i);
 			unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i), this);
-			i ++;
 		}
-		i = 0;
-		for (BotonMano unBoton : this.botonesManoJugador2) {
+		for (int i = 0 ; i < this.jugador2.cantidadDeCartasEnMano(); i++) {
+			BotonMano unBoton = this.botonesManoJugador2.get(i);
 			unBoton.asignarCarta(this.jugador2.obtenerMano().obtenerCarta(i), this);
-			i ++;
 		}
 	}
 
 	public void actualizarGrillaPorSeleccionDeCartaDeMano(Carta unaCarta) {
-		this.botonInvocar.setVisible(true);
+		this.botonInvocar.setVisible(true);		
 		this.botonSacrificar.setVisible(true);
 		this.botonAtacar.setVisible(false);
 		this.botonCambioModoAtaque.setVisible(false);
