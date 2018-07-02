@@ -13,7 +13,7 @@ public class BotonInvocar extends Button {
 
 	public void asignarCarta(Carta unaCarta, Grilla unaGrilla) {
 		this.setOnAction(value -> {
-			unaGrilla.actualizarGrillaPorInvocacionDeMonstruo(unaCarta);
+			unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
 		});
 	}
 

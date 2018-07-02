@@ -77,7 +77,6 @@ public class Jugador {
 	}
 
 	public void inicioJuego() {
-
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
@@ -103,23 +102,22 @@ public class Jugador {
 	}
 
 	public void asignarJuego(Juego juego) {
-		this.juego = juego;		
+		this.juego = juego;
 	}
 
 	public void jugar() {
 		this.fase.ejecutar(this);
-		
 		if (this.fase.termino()) {
 			this.fase = this.fase.faseSiguiente();
-			this.juego.informarQueJugadorDeTurnoTerminoSuTurno();
+			this.juego.informarQueTerminoElTurnoDe(this);
 		}
 	}
 
 	public void finalizarFase() {
-		this.fase.finalizar();
+		//this.fase.finalizar();
 		if (this.fase.termino()) {
 			this.fase = this.fase.faseSiguiente();
-			this.juego.informarQueJugadorDeTurnoTerminoSuTurno();
+			this.juego.informarQueTerminoElTurnoDe(this);
 		}
 	}
 

@@ -23,7 +23,6 @@ public class BotonMano extends Button {
 	public void asignarCarta(Carta unaCarta, Grilla unaGrilla) {
 		this.carta = unaCarta;
 		this.setText(unaCarta.obtenerNombre());
-		this.setDisable(false);
 		this.setOnAction(value -> {
 			this.imageView.setImage(this.carta.obtenerImagen());
 			unaGrilla.actualizarGrillaPorSeleccionDeCartaDeMano(unaCarta);

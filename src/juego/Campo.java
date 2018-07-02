@@ -41,11 +41,11 @@ public class Campo {
 		this.contenedorCartasTrampa.matarATodasLasCartas();
 		this.zonaCartasDeCampo.matarATodasLasCartas();
 	}
-	
+
 	public void renovarLaPosibilidadDeAtacarEnCartasMonstruo() {
-		
+
 		for (Carta cartaMonstruo : this.zonaMonstruos) {
-			((CartaMonstruo)cartaMonstruo).renovarLaPosibilidadDeAtacar();
+			((CartaMonstruo) cartaMonstruo).renovarLaPosibilidadDeAtacar();
 		}
 	}
 

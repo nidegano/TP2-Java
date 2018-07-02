@@ -33,6 +33,10 @@ public abstract class Carta {
 	public abstract void serRecolectadaPorElRecolectorDePartesDeExodia(
 			RecolectorDePartesDeExodia recolectorDePartesDeExodia);
 
+	public abstract boolean esMonstruo();
+
+	public abstract boolean esEspecial();
+
 	public void asignarDuenio(Jugador jugador) {
 		this.jugadorDuenio = jugador;
 	}
