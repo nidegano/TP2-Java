@@ -238,13 +238,9 @@ public class SegundaEntregaTest {
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
 		
-		ContenedorDeCartas sacrificios1 = this.prepararTantosMonstruosParaSacrificar(2, jugadorA);
-		ContenedorDeCartas sacrificios2 = this.prepararTantosMonstruosParaSacrificar(2, jugadorA);
-		ContenedorDeCartas sacrificios3 = this.prepararTantosMonstruosParaSacrificar(2, jugadorA);
-		
-		DragonBlancoDeOjosAzules dragon1 = new DragonBlancoDeOjosAzules(sacrificios1);
-		DragonBlancoDeOjosAzules dragon2 = new DragonBlancoDeOjosAzules(sacrificios2);
-		DragonBlancoDeOjosAzules dragon3 = new DragonBlancoDeOjosAzules(sacrificios3);
+		DragonBlancoDeOjosAzules dragon1 = new DragonBlancoDeOjosAzules();
+		DragonBlancoDeOjosAzules dragon2 = new DragonBlancoDeOjosAzules();
+		DragonBlancoDeOjosAzules dragon3 = new DragonBlancoDeOjosAzules();
 		
 		dragon1.asignarDuenio(jugadorA);
 		dragon2.asignarDuenio(jugadorA);
@@ -267,13 +263,13 @@ public class SegundaEntregaTest {
 		sacrificios.agregar(dragon2);
 		sacrificios.agregar(dragon3);
 		
-		DragonDefinitivo dragonDefinitivo = new DragonDefinitivo(sacrificios); //se pasa las referencias a los dragones
+		DragonDefinitivo dragonDefinitivo = new DragonDefinitivo(); //se pasa las referencias a los dragones
 		dragonDefinitivo.asignarDuenio(jugadorA);
 		
 		mazoA.agregar(dragonDefinitivo);
 		jugadorA.tomarCartaDelMazo();
 		
-		dragonDefinitivo.invocarEnModoAtaque(); // se sacrifica a los dragones
+		dragonDefinitivo.invocarEnModoAtaque(sacrificios); // se sacrifica a los dragones
 		
 		assertTrue(campoA.estaDentro(dragonDefinitivo));
 		assertTrue(campoA.estaLaCartaEnCementerio(dragon1));	
@@ -443,19 +439,5 @@ public class SegundaEntregaTest {
 		jugadorA.tomarCartaDelMazo();
 		jugadorA.tomarCartaDelMazo();
 		jugadorA.tomarCartaDelMazo();
-	}
-	
-	private ContenedorDeCartas prepararTantosMonstruosParaSacrificar(int cantidadDeMonstruos,Jugador duenioDeSacrificio) {
-		
-		ContenedorDeCartas sacrificios = new ContenedorDeCartas(cantidadDeMonstruos);
-		
-		for (int i = 1 ; i<=cantidadDeMonstruos ;i++) {
-			
-			Jinzo jinzo = new Jinzo();
-			sacrificios.agregar(jinzo);
-			jinzo.asignarDuenio(duenioDeSacrificio);			
-		}
-		return sacrificios;
-	}
-	
+	}	
 }

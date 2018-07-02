@@ -1,17 +1,16 @@
 package cartas;
 
 import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 
 import javafx.scene.image.Image;
-import juego.ContenedorDeCartas;
 
 public class EspadachinSilencioso extends CartaRequiereSacrificios {
 
-	public EspadachinSilencioso(ContenedorDeCartas sacrificios) {
-		super(sacrificios);
+	public EspadachinSilencioso() {
+		super();
 		this.sacrificiosRequeridos = 1;
-		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
 		this.puntosDeAtaque = new Puntos(2300);
 		this.puntosDeDefensa = new Puntos(1000);
 		this.nivel = 5;
