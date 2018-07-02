@@ -172,12 +172,12 @@ public class Grilla extends Application {
 		this.botonCambioModoAtaque = new BotonCambioModoAtaque();
 		this.botonCambioModoDefensa = new BotonCambioModoDefensa();
 		
-		this.botonInvocarEnModoAtaque;
-		private BotonInvocarEnModoDefensa botonInvocarEnModoDefensa;
-		private BotonInvocarEnModoDefensaBocaAbajo botonInvocarEnModoDefensaBocaAbajo;
-		private BotonColocarBocaAbajo botonColocarBocaAbajo;
-		private BotonColocarBocaArriba botonColocarBocaArriba;
-		private BotonColocarCartaDeCampo botonColocarCartaDeCampo;
+		this.botonInvocarEnModoAtaque = new BotonInvocarEnModoAtaque();
+		this.botonInvocarEnModoDefensa = new BotonInvocarEnModoDefensa();
+		this.botonInvocarEnModoDefensaBocaAbajo = new BotonInvocarEnModoDefensaBocaAbajo();
+		this.botonColocarBocaAbajo = new BotonColocarBocaAbajo();
+		this.botonColocarBocaArriba = new BotonColocarBocaArriba();
+		this.botonColocarCartaDeCampo = new BotonColocarCartaDeCampo();
 
 		this.agregarBotonesALaGrilla();
 	}
@@ -251,12 +251,21 @@ public class Grilla extends Application {
 
 		this.gridPane.add(this.botonFinalizarFase, 13, 5, 1, 1);
 
-		this.gridPane.add(this.botonInvocar, 13, 7, 1, 1);
-		this.gridPane.add(this.botonSacrificar, 13, 8, 1, 1);
+		//this.gridPane.add(this.botonInvocar, 13, 7, 1, 1);
+		//this.gridPane.add(this.botonSacrificar, 13, 8, 1, 1);
+		
+		this.gridPane.add(this.botonInvocarEnModoAtaque, 13, 7, 1, 1);
+		this.gridPane.add(this.botonCambioModoDefensa, 13, 8, 1, 1);
+		this.gridPane.add(this.botonInvocarEnModoDefensaBocaAbajo, 13, 9, 1, 1);
+		
+		this.gridPane.add(this.botonColocarBocaAbajo, 13, 7, 1, 1);
+		this.gridPane.add(this.botonColocarBocaArriba, 13, 8, 1, 1);
+		
+		this.gridPane.add(this.botonColocarCartaDeCampo, 13, 7, 1, 1);
 
 		this.gridPane.add(this.botonAtacar, 13, 7, 1, 1);
-		this.gridPane.add(this.botonCambioModoAtaque, 13, 8, 1, 1);
-		this.gridPane.add(this.botonCambioModoDefensa, 13, 9, 1, 1);
+		//this.gridPane.add(this.botonCambioModoAtaque, 13, 14, 1, 1);
+		//this.gridPane.add(this.botonCambioModoDefensa, 13, 15, 1, 1);
 
 		this.actualizarGrilla();
 
@@ -328,18 +337,18 @@ public class Grilla extends Application {
 		this.botonAtacar.setVisible(false);
 		this.botonCambioModoAtaque.setVisible(false);
 		this.botonCambioModoDefensa.setVisible(false);
-		this.botonInvocar.setVisible(true);
-		this.botonSacrificar.setVisible(true);
-		this.botonInvocar.asignarCarta(unaCarta, this);
-		this.botonSacrificar.asignarCarta(unaCarta, this);
+		//this.botonInvocar.setVisible(true);
+		//this.botonSacrificar.setVisible(true);
+		//this.botonInvocar.asignarCarta(unaCarta, this);
+		//this.botonSacrificar.asignarCarta(unaCarta, this);
 	}
 
 	public void actualizarGrillaPorInvocacion(Carta unaCarta) {
 		this.botonAtacar.setVisible(false);
 		this.botonCambioModoAtaque.setVisible(false);
 		this.botonCambioModoDefensa.setVisible(false);
-		this.botonInvocar.setVisible(false);
-		this.botonSacrificar.setVisible(false);
+		//this.botonInvocar.setVisible(false);
+		//this.botonSacrificar.setVisible(false);
 
 		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
 			if (unaCarta.esMonstruo()) {
@@ -378,16 +387,16 @@ public class Grilla extends Application {
 		this.botonAtacar.setVisible(true);
 		this.botonCambioModoAtaque.setVisible(true);
 		this.botonCambioModoDefensa.setVisible(true);
-		this.botonInvocar.setVisible(false);
-		this.botonSacrificar.setVisible(false);
+		//this.botonInvocar.setVisible(false);
+		//this.botonSacrificar.setVisible(false);
 	}
 
 	public void actualizarGrillaPorSeleccionDeCartaEspecial() {
 		this.botonAtacar.setVisible(false);
 		this.botonCambioModoAtaque.setVisible(false);
 		this.botonCambioModoDefensa.setVisible(false);
-		this.botonInvocar.setVisible(true);
-		this.botonSacrificar.setVisible(false);
+		//this.botonInvocar.setVisible(true);
+		//this.botonSacrificar.setVisible(false);
 	}
 
 	private void asignarMano() {
