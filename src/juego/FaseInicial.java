@@ -1,6 +1,5 @@
 package juego;
 
-import excepciones.NoSePuedeTomarMasCartasDelMazoException;
 import vista.BotonAtacar;
 import vista.BotonCambioModoAtaque;
 import vista.BotonCambioModoDefensa;
@@ -9,21 +8,16 @@ import vista.BotonSacrificar;
 
 public class FaseInicial implements Fase {
 
-	private int contador = 0;
 
 	@Override
-	public boolean finalizaste() {
-		return contador >= 1;
+	public void ejecutar(Jugador jugador) {
+		// TODO Auto-generated method stub
+		
 	}
-
+	
 	@Override
 	public Fase faseSiguiente() {
 		return new FasePreparacion();
-	}
-
-	@Override
-	public boolean cambioDeTurno() {
-		return false;
 	}
 	
 	@Override

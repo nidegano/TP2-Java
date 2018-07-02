@@ -76,15 +76,13 @@ public class Jugador {
 		return this.mano;
 	}
 
-	public void inicioJuego(Juego juego) {
+	public void inicioJuego() {
 
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
-
-		this.juego = juego;
 	}
 
 	public void iniciarTurno() {
@@ -100,6 +98,19 @@ public class Jugador {
 
 	public Fase obtenerFase() {
 		return fase;
+	}
+
+	public void asignarJuego(Juego juego) {
+		this.juego = juego;		
+	}
+
+	public void jugar() {
+		this.fase.ejecutar(this);
+		
+		if (this.fase.termino()) {
+			this.fase = this.fase.faseSiguiente();
+			this.juego.informarQueTerminoElTurnoDe(this);
+		}
 	}
 
 }

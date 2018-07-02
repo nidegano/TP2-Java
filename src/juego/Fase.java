@@ -8,11 +8,9 @@ import vista.BotonSacrificar;
 
 public interface Fase {
 	
-	void ejecutar(Jugador jugadorA, Jugador jugadorB);
+	void ejecutar(Jugador jugador);
 
 	Fase faseSiguiente();
-
-	boolean cambioDeTurno();
 
 	boolean obtenerVisibilidadDe(BotonCambioModoAtaque boton);
 	
@@ -23,5 +21,7 @@ public interface Fase {
 	boolean obtenerVisibilidadDe(BotonInvocar boton);
 	
 	boolean obtenerVisibilidadDe(BotonSacrificar boton);
+
+	boolean termino();
 
 }

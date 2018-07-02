@@ -1,6 +1,5 @@
 package juego;
 
-import excepciones.NoSePuedeTomarMasCartasDelMazoException;
 import vista.BotonAtacar;
 import vista.BotonCambioModoAtaque;
 import vista.BotonCambioModoDefensa;
@@ -8,18 +7,24 @@ import vista.BotonInvocar;
 import vista.BotonSacrificar;
 
 public class FaseInicioDeJuego implements Fase {
-
+	
+	private boolean termino = false;
+	
+	@Override
+	public boolean termino() {
+		return this.termino;
+	}
+	
+	@Override
+	public void ejecutar(Jugador jugador) {
+		jugador.inicioJuego();
+		this.termino = true;
+	}
 
 	@Override
 	public Fase faseSiguiente() {
 		return new FaseInicial();
-	}
-
-	@Override
-	public boolean cambioDeTurno() {
-		return false;
-	}
-	
+	}	
 	
 	@Override
 	public boolean obtenerVisibilidadDe(BotonCambioModoAtaque boton) {
@@ -45,11 +50,4 @@ public class FaseInicioDeJuego implements Fase {
 	public boolean obtenerVisibilidadDe(BotonSacrificar boton) {
 		return false;
 	}
-
-	@Override
-	public void ejecutar(Jugador jugadorA, Jugador jugadorB) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

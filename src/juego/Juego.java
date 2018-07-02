@@ -12,13 +12,12 @@ public class Juego {
 	public Juego(Jugador jugadorA, Jugador jugadorB) {
 		this.jugadorA = jugadorA;
 		this.jugadorB = jugadorB;
-
-		jugadorA.inicioJuego(this);
-		jugadorB.inicioJuego(this);
-
+		
+		jugadorA.asignarJuego(this);
+		jugadorB.asignarJuego(this);
+		
 		deTurno = jugadorA;
-
-		deTurno.iniciarTurno();
+		deTurno.jugar();
 	}
 
 	public void actualizar() {
@@ -30,6 +29,11 @@ public class Juego {
 			deTurno = jugadorB;
 			deTurno.iniciarTurno();
 		}
+	}
+
+	public void informarQueTerminoElTurnoDe(Jugador jugador) {
+		deTurno = jugador.oponente();
+		deTurno.jugar();
 	}
 
 }
