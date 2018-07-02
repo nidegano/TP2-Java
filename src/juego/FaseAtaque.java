@@ -17,10 +17,10 @@ public class FaseAtaque implements Fase {
 	}
 
 	public Fase faseSiguiente() {
-		return new FaseFinal();
+		return new FaseTrampas();
 	}
-
-	public boolean cambioDeTurno() {
+	
+	boolean cambioDeTurno() {
 		return false;
 	}
 
