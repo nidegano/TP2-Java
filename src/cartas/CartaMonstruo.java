@@ -25,6 +25,14 @@ public abstract class CartaMonstruo extends Carta {
 		this.yaAtaco = false;
 	}
 
+	public boolean esMonstruo() {
+		return true;
+	}
+
+	public boolean esEspecial() {
+		return false;
+	}
+
 	public int obtenerPuntosDeAtaque() {
 		return this.puntosDeAtaque.valor();
 	}
@@ -90,10 +98,12 @@ public abstract class CartaMonstruo extends Carta {
 				monstruoAtacado.perder(formaDeAfectar);
 				this.perder(formaDeAfectar);
 			}
-		} catch (AtaqueIntervenidoException e) {}
-		finally {this.yaAtaco = true;}
+		} catch (AtaqueIntervenidoException e) {
+		} finally {
+			this.yaAtaco = true;
+		}
 	}
-	
+
 	public void renovarLaPosibilidadDeAtacar() {
 		this.yaAtaco = false;
 	}

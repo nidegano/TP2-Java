@@ -21,7 +21,7 @@ public class Mazo extends ContenedorDeCartas {
 
 	public void generarCartas() {
 		// CARTAS MONSTRUO
-		for (int i = 0; i <= 3; i ++) {
+		for (int i = 0; i <= 3; i++) {
 			this.agregar(new AlphaTheMagnetWarrior());
 			this.agregar(new AncientBrain());
 			this.agregar(new DragonArmadoOscuro());

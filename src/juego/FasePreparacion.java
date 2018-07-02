@@ -1,21 +1,18 @@
 package juego;
 
-import vista.BotonAtacar;
-import vista.BotonCambioModoAtaque;
-import vista.BotonCambioModoDefensa;
-import vista.BotonInvocar;
-import vista.BotonSacrificar;
-
 public class FasePreparacion implements Fase {
 
-
-	public void tomoCartaDelMazo() {
+	public String nombre() {
+		return "Fase de Preparacion";
 	}
 
-	public boolean finalizaste() {
-		return false;
+	public void ejecutar(Jugador jugador) {
+		jugador.campo().renovarLaPosibilidadDeAtacarEnCartasMonstruo();
 	}
 
+	public boolean termino() {
+		return true;
+	}
 
 	public Fase faseSiguiente() {
 		return new FaseAtaque();
@@ -25,49 +22,10 @@ public class FasePreparacion implements Fase {
 		return false;
 	}
 
-	public boolean obtenerVisibilidadDe(BotonCambioModoAtaque boton) {
-		return false;
-	}
-
-	public boolean obtenerVisibilidadDe(BotonCambioModoDefensa boton) {
-		return false;
-	}
-
-	public boolean obtenerVisibilidadDe(BotonAtacar boton) {
-		return false;
-	}
-
-	public boolean obtenerVisibilidadDe(BotonInvocar boton) {
-		return true;
-	}
-
-	public boolean obtenerVisibilidadDe(BotonSacrificar boton) {
-		return true;
-	}
-
-	public void ejecutar(Jugador jugadorA, Jugador jugadorB) {
-		jugadorA.campo().renovarLaPosibilidadDeAtacarEnCartasMonstruo();
-		jugadorB.campo().renovarLaPosibilidadDeAtacarEnCartasMonstruo();
+	public void tomoCartaDelMazo() {
 	}
 
 	public boolean puedeTomarCarta() {
-		return false;
-	}
-
-	@Override
-	public String nombre() {
-		return "faseDePreparacion";
-	}
-
-	@Override
-	public void ejecutar(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean termino() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

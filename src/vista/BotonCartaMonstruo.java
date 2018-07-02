@@ -14,6 +14,7 @@ public class BotonCartaMonstruo extends Button {
 		this.setMaxSize(100, 25);
 		this.setMinSize(100, 25);
 		this.setDisable(true);
+		this.carta = null;
 		this.imageView = imageView;
 		this.setOnAction(value -> {
 			imageView.setImage(this.carta.obtenerImagen());
@@ -23,10 +24,14 @@ public class BotonCartaMonstruo extends Button {
 	public void asignarCarta(Carta unaCarta, Grilla unaGrilla) {
 		this.carta = unaCarta;
 		this.setText(unaCarta.obtenerNombre());
-		this.setDisable(false);
 		this.setOnAction(value -> {
 			this.imageView.setImage(this.carta.obtenerImagen());
 			unaGrilla.actualizarGrillaPorSeleccionDeCartaMonstruo();
 		});
 	}
+
+	public boolean estaLibre() {
+		return this.carta == null;
+	}
+
 }

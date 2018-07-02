@@ -13,12 +13,13 @@ public class BotonMazo extends Button {
 		super("Mazo");
 		this.setMaxSize(100, 25);
 		this.setMinSize(100, 25);
+		this.setDisable(true);
 		this.jugador = jugador;
 		this.setOnAction(value -> {
 			try {
 				if (this.jugador.puedeTomarCarta()) {
 					this.jugador.tomarCartaDelMazo();
-					unaGrilla.actualizarGrillaPorTomarCartaDelMazo();
+					unaGrilla.actualizarGrilla();
 				}
 			} catch (CapacidadMaximaException e1) {
 			} catch (NoSePuedeTomarMasCartasDelMazoException e2) {
