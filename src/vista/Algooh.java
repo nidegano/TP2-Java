@@ -25,6 +25,9 @@ public class Algooh extends Application {
 
 		Jugador jugador1 = new Jugador(campoJugador1);
 		Jugador jugador2 = new Jugador(campoJugador2);
+		
+		jugador1.asignarOponente(jugador2);
+		jugador2.asignarOponente(jugador1);
 
 		Juego juego = new Juego(jugador1, jugador2);
 

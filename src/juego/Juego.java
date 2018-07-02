@@ -30,7 +30,7 @@ public class Juego {
 		}
 	}
 	
-	public void informarQueJugadorDeTurnoFinalizoSuFase() {
+	public void informarQueJugadorDeTurnoTocoFinalizarFase() {
 		deTurno.finalizarFase();
 	}
 
