@@ -1,17 +1,16 @@
 package cartas;
 
 import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 
 import javafx.scene.image.Image;
-import juego.ContenedorDeCartas;
 
 public class DragonArmadoOscuro extends CartaRequiereSacrificios {
 
-	public DragonArmadoOscuro(ContenedorDeCartas sacrificios) {
-		super(sacrificios);
+	public DragonArmadoOscuro() {
+		super();
 		this.sacrificiosRequeridos = 2;
-		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
 		this.puntosDeAtaque = new Puntos(2800);
 		this.puntosDeDefensa = new Puntos(1000);
 		this.nivel = 7;

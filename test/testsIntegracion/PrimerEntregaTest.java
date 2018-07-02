@@ -78,13 +78,13 @@ public class PrimerEntregaTest {
 
 		ContenedorDeCartas sacrificios = new ContenedorDeCartas(1);
 		sacrificios.agregar(insectoComeHombres);
-		EspadachinSilencioso espadachinSilencioso = new EspadachinSilencioso(sacrificios);
+		EspadachinSilencioso espadachinSilencioso = new EspadachinSilencioso();
 		mazo.agregar(espadachinSilencioso);
 		espadachinSilencioso.asignarDuenio(jugador);
 
 		mazo.agregar(espadachinSilencioso);
 		jugador.tomarCartaDelMazo();
-		espadachinSilencioso.invocarEnModoAtaque();
+		espadachinSilencioso.invocarEnModoAtaque(sacrificios);
 
 		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
 	}
@@ -114,12 +114,12 @@ public class PrimerEntregaTest {
 		ContenedorDeCartas sacrificios = new ContenedorDeCartas(2);
 		sacrificios.agregar(insectoComeHombres);
 		sacrificios.agregar(otroInsectoComeHombres);
-		DragonArmadoOscuro dragonArmadoOscuro = new DragonArmadoOscuro(sacrificios);
+		DragonArmadoOscuro dragonArmadoOscuro = new DragonArmadoOscuro();
 		dragonArmadoOscuro.asignarDuenio(jugador);
 		mazo.agregar(dragonArmadoOscuro);
 
 		jugador.tomarCartaDelMazo();
-		dragonArmadoOscuro.invocarEnModoAtaque();
+		dragonArmadoOscuro.invocarEnModoAtaque(sacrificios);
 
 		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
 		assertTrue(campo.estaLaCartaEnCementerio(otroInsectoComeHombres));
@@ -150,12 +150,12 @@ public class PrimerEntregaTest {
 		ContenedorDeCartas sacrificios = new ContenedorDeCartas(2);
 		sacrificios.agregar(insectoComeHombres);
 		sacrificios.agregar(otroInsectoComeHombres);
-		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules(sacrificios);
+		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
 		dragonBlancoDeOjosAzules.asignarDuenio(jugador);
 
 		mazo.agregar(dragonBlancoDeOjosAzules);
 		jugador.tomarCartaDelMazo();
-		dragonBlancoDeOjosAzules.invocarEnModoAtaque();
+		dragonBlancoDeOjosAzules.invocarEnModoAtaque(sacrificios);
 
 		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
 		assertTrue(campo.estaLaCartaEnCementerio(otroInsectoComeHombres));
