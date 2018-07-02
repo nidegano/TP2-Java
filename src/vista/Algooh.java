@@ -32,13 +32,11 @@ public class Algooh extends Application {
 		jugador1.tomarCartaDelMazo();
 		jugador1.tomarCartaDelMazo();
 
-
 		jugador2.tomarCartaDelMazo();
 		jugador2.tomarCartaDelMazo();
 		jugador2.tomarCartaDelMazo();
 		jugador2.tomarCartaDelMazo();
 		jugador2.tomarCartaDelMazo();
-
 
 		Grilla grilla = new Grilla(jugador1, jugador2);
 		grilla.start(primaryStage);

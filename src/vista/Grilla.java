@@ -139,8 +139,13 @@ public class Grilla extends Application {
 		this.botonesCartasMonstruosJugador2.add(botonCartaMonstruo4Jugador2);
 		this.botonesCartasMonstruosJugador2.add(botonCartaMonstruo5Jugador2);
 
-		this.botonMazoJugador1 = new BotonMazo();
-		this.botonMazoJugador2 = new BotonMazo();
+		this.botonMazoJugador1 = new BotonMazo(this);
+		this.botonMazoJugador1.asignarMazo(this.jugador1.campo().mazo());
+		this.botonMazoJugador1.asignarMano(this.jugador1.obtenerMano());
+
+		this.botonMazoJugador2 = new BotonMazo(this);
+		this.botonMazoJugador2.asignarMazo(this.jugador2.campo().mazo());
+		this.botonMazoJugador2.asignarMano(this.jugador2.obtenerMano());
 
 		this.botonCementerioJugador1 = new BotonCementerio();
 		this.botonCementerioJugador2 = new BotonCementerio();
@@ -232,7 +237,6 @@ public class Grilla extends Application {
 	}
 
 	private void asignarMano() {
-
 		for (int i = 0; i < this.jugador1.cantidadDeCartasEnMano(); i++) {
 			BotonMano unBoton = this.botonesManoJugador1.get(i);
 			unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i), this);
@@ -282,6 +286,17 @@ public class Grilla extends Application {
 				return unBoton;
 		}
 		return null;
+	}
+
+	public void actualizarGrillaPorTomarCartaDelMazo() {
+		for (int i = 0; i < this.jugador1.cantidadDeCartasEnMano(); i++) {
+			BotonMano unBoton = this.botonesManoJugador1.get(i);
+			unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i), this);
+		}
+		for (int i = 0; i < this.jugador2.cantidadDeCartasEnMano(); i++) {
+			BotonMano unBoton = this.botonesManoJugador2.get(i);
+			unBoton.asignarCarta(this.jugador2.obtenerMano().obtenerCarta(i), this);
+		}
 	}
 
 }
