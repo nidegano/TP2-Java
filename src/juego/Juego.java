@@ -19,19 +19,13 @@ public class Juego {
 		this.deTurno.jugar();
 	}
 
-	/*public void actualizar() {
-		Fase fase = this.deTurno.obtenerFase();
-		if (fase.termino())
-			this.deTurno.siguienteFase();
-		if (fase.cambioDeTurno()) {
-			if (this.deTurno.equals(jugadorA))
-				this.deTurno = this.jugadorB;
-			else
-				this.deTurno = this.jugadorA;
-			this.deTurno.iniciarTurno();
-		}
-	}*/
-	
+	/*
+	 * public void actualizar() { Fase fase = this.deTurno.obtenerFase(); if
+	 * (fase.termino()) this.deTurno.siguienteFase(); if (fase.cambioDeTurno()) { if
+	 * (this.deTurno.equals(jugadorA)) this.deTurno = this.jugadorB; else
+	 * this.deTurno = this.jugadorA; this.deTurno.iniciarTurno(); } }
+	 */
+
 	public void informarQueJugadorDeTurnoTocoFinalizarFase() {
 		deTurno.finalizarFase();
 	}

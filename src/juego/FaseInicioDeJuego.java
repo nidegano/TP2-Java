@@ -34,6 +34,6 @@ public class FaseInicioDeJuego implements Fase {
 
 	@Override
 	public void finalizar() {
-		//la unica forma de finalizar esta fase es ejecutandola
+		// la unica forma de finalizar esta fase es ejecutandola
 	}
 }

@@ -6,7 +6,6 @@ import estado.ModoInactivo;
 import juego.Campo;
 import juego.Jugador;
 import juego.RecolectorDePartesDeExodia;
-import vista.Grilla;
 
 public abstract class CartaEspecial extends Carta {
 

@@ -14,13 +14,13 @@ public class BotonColocarBocaArriba extends Button {
 
 	public void asignarCarta(CartaEspecial unaCarta, Grilla unaGrilla) {
 		this.setOnAction(value -> {
-			
+
 			try {
 				unaCarta.colocarBocaArriba();
-				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);	
+				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
+			} catch (CapacidadMaximaException e) {
 			}
-			catch (CapacidadMaximaException e) {}
-			
-			});
+
+		});
 	}
 }

@@ -15,7 +15,8 @@ public class BotonCartaEspecial extends Button {
 		this.setMaxSize(100, 25);
 		this.setMinSize(100, 25);
 		this.setDisable(true);
-		this.carta = new CartaNula();;
+		this.carta = new CartaNula();
+		;
 		this.imageView = imageView;
 		this.setOnAction(value -> {
 			imageView.setImage(this.carta.obtenerImagen());

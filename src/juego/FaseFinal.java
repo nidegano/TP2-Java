@@ -3,14 +3,15 @@ package juego;
 public class FaseFinal implements Fase {
 
 	private boolean termino;
-	
+
 	@Override
 	public String nombre() {
 		return "Fase Final";
 	}
 
 	@Override
-	public void ejecutar(Jugador jugador) {}
+	public void ejecutar(Jugador jugador) {
+	}
 
 	@Override
 	public boolean termino() {
@@ -28,7 +29,8 @@ public class FaseFinal implements Fase {
 	}
 
 	@Override
-	public void tomoCartaDelMazo() {}
+	public void tomoCartaDelMazo() {
+	}
 
 	@Override
 	public void finalizar() {

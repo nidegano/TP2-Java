@@ -22,12 +22,12 @@ public abstract class CartaDeCampo extends CartaEspecial {
 		// de lo contrario se ignora la peticion de agregarla a la zona de cartas de
 		// campo
 	}
-	
+
 	@Override
 	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
 		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
 	}
-	
+
 	@Override
 	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
 		grilla.actualizarPorInvocacionDeUnaCartaDeCampo(this);

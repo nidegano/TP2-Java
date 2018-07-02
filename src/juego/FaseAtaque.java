@@ -19,7 +19,7 @@ public class FaseAtaque implements Fase {
 	public Fase faseSiguiente() {
 		return new FaseTrampas();
 	}
-	
+
 	boolean cambioDeTurno() {
 		return false;
 	}

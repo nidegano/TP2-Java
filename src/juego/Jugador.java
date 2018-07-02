@@ -19,12 +19,12 @@ public class Jugador {
 		this.mano = new Mano();
 		this.campo = campo;
 		this.sePuedeSeguirInvocandoMonstruos = true;
-		
-		this.asignarAEsteJugadorComoDueñoDeTodasLasCartasDeSuMazo();
+
+		this.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
 	}
 
-	private void asignarAEsteJugadorComoDueñoDeTodasLasCartasDeSuMazo() {
-		this.campo.mazo().asignarComoDueñoDeTodasLasCartasA(this);		
+	private void asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo() {
+		this.campo.mazo().asignarComoDuenioDeTodasLasCartasA(this);
 	}
 
 	public void asignarOponente(Jugador oponente) {
@@ -92,10 +92,10 @@ public class Jugador {
 		this.tomarCartaDelMazo();
 	}
 
-	/*public void iniciarTurno() {
-		this.fase = new FaseInicial();
-		this.juego.actualizar();
-	}*/
+	/*
+	 * public void iniciarTurno() { this.fase = new FaseInicial();
+	 * this.juego.actualizar(); }
+	 */
 
 	public void siguienteFase() {
 		this.fase = this.fase.faseSiguiente();
@@ -130,7 +130,7 @@ public class Jugador {
 	}
 
 	public boolean sePuedenSeguirInvocandoMonstruos() {
-		return 	this.sePuedeSeguirInvocandoMonstruos;
+		return this.sePuedeSeguirInvocandoMonstruos;
 	}
 
 	public void avisarALaFaseQueSeInvocaUnMonstruo() {
@@ -140,7 +140,7 @@ public class Jugador {
 	}
 
 	public void reiniciarLaPosibilidadDeInvocarMonstruos() {
-		this.sePuedeSeguirInvocandoMonstruos = true;		
+		this.sePuedeSeguirInvocandoMonstruos = true;
 	}
 
 }

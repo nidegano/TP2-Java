@@ -5,7 +5,7 @@ import excepciones.NoSePuedeTomarMasCartasDelMazoException;
 public class FaseInicial implements Fase {
 
 	private int contador;
-	
+
 	public FaseInicial() {
 		this.contador = 0;
 	}
@@ -37,7 +37,7 @@ public class FaseInicial implements Fase {
 
 	@Override
 	public void finalizar() {
-	//la unica forma de finalizar esta fase es tomando una carta del mazo
+		// la unica forma de finalizar esta fase es tomando una carta del mazo
 	}
 
 }

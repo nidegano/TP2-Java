@@ -15,7 +15,7 @@ public class FasePreparacion implements Fase {
 	}
 
 	public boolean termino() {
-		return this.termino ;
+		return this.termino;
 	}
 
 	public Fase faseSiguiente() {
@@ -27,11 +27,11 @@ public class FasePreparacion implements Fase {
 	}
 
 	@Override
-	public void tomoCartaDelMazo() {}
+	public void tomoCartaDelMazo() {
+	}
 
 	@Override
 	public void finalizar() {
 		this.termino = true;
 	}
 }
-

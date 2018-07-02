@@ -18,8 +18,8 @@ public abstract class CartaTrampa extends CartaEspecial {
 		try {
 			this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
 			this.jugadorDuenio.obtenerMano().remover(this);
+		} catch (CartaNoEstaEnContenedorDeCartasException e) {
 		}
-		catch (CartaNoEstaEnContenedorDeCartasException e) {}
 	}
 
 	public void colocarBocaArriba(CartaMonstruo monstruoEnemigo, CartaMonstruo monstruoPropio) {
@@ -36,7 +36,7 @@ public abstract class CartaTrampa extends CartaEspecial {
 	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
 		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
 	}
-	
+
 	@Override
 	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
 		grilla.actualizarPorInvocacionDeUnaCartaEspecial(this);

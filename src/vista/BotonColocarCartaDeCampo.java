@@ -14,8 +14,8 @@ public class BotonColocarCartaDeCampo extends Button {
 
 	public void asignarCarta(CartaDeCampo unaCarta, Grilla unaGrilla) {
 		this.setOnAction(value -> {
-			
-			if(!this.hayYaUnaCartaDeCampo(unaCarta,unaGrilla)) {
+
+			if (!this.hayYaUnaCartaDeCampo(unaCarta, unaGrilla)) {
 				unaCarta.colocarBocaArriba();
 				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
 			}

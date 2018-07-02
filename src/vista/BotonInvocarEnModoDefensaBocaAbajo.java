@@ -14,12 +14,12 @@ public class BotonInvocarEnModoDefensaBocaAbajo extends Button {
 
 	public void asignarCarta(CartaMonstruo unaCarta, Grilla unaGrilla) {
 		this.setOnAction(value -> {
-			
-			if(this.sePuedenSeguirInvocandoMonstruos(unaCarta)) {
+
+			if (this.sePuedenSeguirInvocandoMonstruos(unaCarta)) {
 				unaCarta.invocarEnModoDefensaBocaAbajo();
 				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
 				unaCarta.obtenerDuenio().avisarALaFaseQueSeInvocaUnMonstruo();
-			}			
+			}
 		});
 	}
 

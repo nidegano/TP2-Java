@@ -23,7 +23,7 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 		for (Carta monstruo : this.sacrificios)
 			monstruo.matar();
 	}
-	
+
 	@Override
 	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
 		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);

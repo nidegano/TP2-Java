@@ -16,9 +16,9 @@ public class BotonColocarBocaAbajo extends Button {
 		this.setOnAction(value -> {
 			try {
 				unaCarta.colocarBocaAbajo();
-				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);	
+				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
+			} catch (CapacidadMaximaException e) {
 			}
-			catch (CapacidadMaximaException e) {}
 		});
 	}
 }

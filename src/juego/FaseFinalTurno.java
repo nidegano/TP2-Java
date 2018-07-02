@@ -1,6 +1,6 @@
 package juego;
 
-public class FaseFinalTurno implements Fase{
+public class FaseFinalTurno implements Fase {
 
 	@Override
 	public String nombre() {
@@ -11,7 +11,7 @@ public class FaseFinalTurno implements Fase{
 	@Override
 	public void ejecutar(Jugador jugador) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -35,13 +35,13 @@ public class FaseFinalTurno implements Fase{
 	@Override
 	public void tomoCartaDelMazo() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void finalizar() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
