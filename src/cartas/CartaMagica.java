@@ -20,5 +20,14 @@ public abstract class CartaMagica extends CartaEspecial {
 		this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
 		this.jugadorDuenio.obtenerMano().remover(this);
 	}
-
+	
+	@Override
+	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
+		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
+	}
+	
+	@Override
+	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
+		grilla.actualizarPorInvocacionDeUnaCartaEspecial(this);
+	}
 }

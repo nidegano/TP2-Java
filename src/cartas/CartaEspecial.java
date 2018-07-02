@@ -55,14 +55,4 @@ public abstract class CartaEspecial extends Carta {
 		this.estado = new ModoInactivo();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 	}
-	
-	@Override
-	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
-		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
-	}
-	
-	@Override
-	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
-		grilla.actualizarPorInvocacionDeUnaCartaEspecial(this);
-	}
 }

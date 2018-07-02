@@ -1,6 +1,7 @@
 package vista;
 
 import cartas.CartaEspecial;
+import excepciones.CapacidadMaximaException;
 import javafx.scene.control.Button;
 
 public class BotonColocarBocaArriba extends Button {
@@ -12,7 +13,14 @@ public class BotonColocarBocaArriba extends Button {
 	}
 
 	public void asignarCarta(CartaEspecial unaCarta, Grilla unaGrilla) {
-		this.setOnAction(value -> {//no se puede poner boca arriba en fase de preparacion
+		this.setOnAction(value -> {
+			
+			try {
+				unaCarta.colocarBocaArriba();
+				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);	
+			}
+			catch (CapacidadMaximaException e) {}
+			
 			});
 	}
 }

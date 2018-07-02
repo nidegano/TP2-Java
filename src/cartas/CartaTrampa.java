@@ -1,6 +1,7 @@
 package cartas;
 
 import estado.ModoActivo;
+import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import juego.Campo;
 import vista.Grilla;
 
@@ -14,8 +15,11 @@ public abstract class CartaTrampa extends CartaEspecial {
 		campo.obtenerContenedorCartasTrampa().agregar(this);
 		this.contenedoresQueLaContienen.add(campo.obtenerContenedorCartasTrampa());
 
-		this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
-		this.jugadorDuenio.obtenerMano().remover(this);
+		try {
+			this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
+			this.jugadorDuenio.obtenerMano().remover(this);
+		}
+		catch (CartaNoEstaEnContenedorDeCartasException e) {}
 	}
 
 	public void colocarBocaArriba(CartaMonstruo monstruoEnemigo, CartaMonstruo monstruoPropio) {
@@ -28,5 +32,14 @@ public abstract class CartaTrampa extends CartaEspecial {
 		this.activar(monstruoEnemigo);
 	}
 
+	@Override
+	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
+		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
+	}
+	
+	@Override
+	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
+		grilla.actualizarPorInvocacionDeUnaCartaEspecial(this);
+	}
 
 }

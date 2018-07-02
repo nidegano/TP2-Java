@@ -17,7 +17,8 @@ public class BotonMazo extends Button {
 		this.jugador = jugador;
 		this.setOnAction(value -> {
 			try {
-				if (this.jugador.puedeTomarCarta()) {
+				
+				if (this.jugador.puedeTomarCarta()) {;
 					this.jugador.tomarCartaDelMazo();
 					unaGrilla.actualizarGrilla();
 				}

@@ -1,6 +1,7 @@
 package vista;
 
 import cartas.Carta;
+import cartas.CartaNula;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
@@ -14,6 +15,7 @@ public class BotonMano extends Button {
 		this.setMaxSize(100, 25);
 		this.setMinSize(100, 25);
 		this.setDisable(true);
+		this.carta = new CartaNula();
 		this.imageView = imageView;
 		this.setOnAction(value -> {
 			imageView.setImage(this.carta.obtenerImagen());
@@ -34,13 +36,13 @@ public class BotonMano extends Button {
 	}
 
 	public void limpiar() {
-		this.carta = null;
+		this.carta = new CartaNula();
 		this.setText("-");
 		this.setDisable(true);
 	}
 
 	public boolean estaLibre() {
-		return this.carta == null;
+		return this.carta instanceof CartaNula;
 	}
 
 }

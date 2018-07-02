@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import cartas.Carta;
 import cartas.CartaDeCampo;
 import cartas.CartaEspecial;
+import cartas.CartaMagica;
 import cartas.CartaMonstruo;
+import cartas.CartaTrampa;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -305,6 +307,14 @@ public class Grilla extends Application {
 				for (Button unBoton : this.botonesCartasMonstruosJugador2)
 					unBoton.setDisable(false);
 			}
+			
+			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FaseFinal.class) {
+				this.bloquearBotonesJugador1();
+				for (Button unBoton : this.botonesCartasEspecialesJugador1)
+					unBoton.setDisable(false);
+				for (Button unBoton : this.botonesCartasEspecialesJugador2)
+					unBoton.setDisable(false);
+			}
 
 		} else {
 			this.labelTurno.setText("TURNO: JUGADOR 2");
@@ -333,6 +343,14 @@ public class Grilla extends Application {
 				for (Button unBoton : this.botonesCartasMonstruosJugador1)
 					unBoton.setDisable(false);
 			}
+			
+			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FaseFinal.class) {
+				this.bloquearBotonesJugador2();
+				for (Button unBoton : this.botonesCartasEspecialesJugador1)
+					unBoton.setDisable(false);
+				for (Button unBoton : this.botonesCartasEspecialesJugador2)
+					unBoton.setDisable(false);
+			}
 		}
 	}
 	
@@ -349,12 +367,24 @@ public class Grilla extends Application {
 		this.botonInvocarEnModoDefensaBocaAbajo.asignarCarta(unaCarta, this);
 	}
 	
-	public void actualizarGrillaPorSeleccionDeCartaDeMano(CartaEspecial unaCarta) {
+	public void actualizarGrillaPorSeleccionDeCartaDeMano(CartaTrampa unaCarta) {
 		this.botonInvocarEnModoAtaque.setVisible(false);
 		this.botonInvocarEnModoDefensa.setVisible(false);
 		this.botonInvocarEnModoDefensaBocaAbajo.setVisible(false);
 		this.botonColocarBocaAbajo.setVisible(true);
-		this.botonColocarBocaArriba.setVisible(true);
+		this.botonColocarBocaArriba.setVisible(false);
+		this.botonColocarCartaDeCampo.setVisible(false);
+		
+		this.botonColocarBocaAbajo.asignarCarta(unaCarta, this);
+		this.botonColocarBocaArriba.asignarCarta(unaCarta, this);
+	}
+	
+	public void actualizarGrillaPorSeleccionDeCartaDeMano(CartaMagica unaCarta) {
+		this.botonInvocarEnModoAtaque.setVisible(false);
+		this.botonInvocarEnModoDefensa.setVisible(false);
+		this.botonInvocarEnModoDefensaBocaAbajo.setVisible(false);
+		this.botonColocarBocaAbajo.setVisible(true);
+		this.botonColocarBocaArriba.setVisible(this.juego.jugadorDeTurno().obtenerFase() instanceof FaseFinal);
 		this.botonColocarCartaDeCampo.setVisible(false);
 		
 		this.botonColocarBocaAbajo.asignarCarta(unaCarta, this);
@@ -400,7 +430,26 @@ public class Grilla extends Application {
 		}
 	}
 	
-	public void actualizarPorInvocacionDeUnaCartaEspecial(CartaEspecial unaCarta) {
+	public void actualizarPorInvocacionDeUnaCartaEspecial(CartaMagica unaCarta) {
+		
+		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
+		
+			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador1);
+			unBotonMano.limpiar();
+			BotonCartaEspecial unBotonEspecial = this
+					.obtenerBotonEspecialLibre(this.botonesCartasEspecialesJugador1);
+			unBotonEspecial.asignarCarta(unaCarta, this);
+		}
+		else {
+			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador2);
+			unBotonMano.limpiar();
+			BotonCartaEspecial unBotonEspecial = this
+					.obtenerBotonEspecialLibre(this.botonesCartasEspecialesJugador2);
+			unBotonEspecial.asignarCarta(unaCarta, this);
+		}
+	}
+	
+	public void actualizarPorInvocacionDeUnaCartaEspecial(CartaTrampa unaCarta) {
 		
 		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
 		
@@ -461,6 +510,7 @@ public class Grilla extends Application {
 	private void asignarMano() {
 		for (int i = 0; i < this.jugador1.cantidadDeCartasEnMano(); i++) {
 			BotonMano unBoton = this.botonesManoJugador1.get(i);
+			System.out.println(unBoton.estaLibre());
 			if (unBoton.estaLibre()) {
 				unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i), this);
 			}
