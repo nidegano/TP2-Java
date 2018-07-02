@@ -27,27 +27,47 @@ public class FaseInicioDeJuego implements Fase {
 	}	
 	
 	@Override
+
+	public void tomoCartaDelMazo() {
+	}
+
+	public boolean finalizaste() {
+		return true;
+	}
+
+	public boolean cambioDeTurno() {
+		return false;
+	}
+	
 	public boolean obtenerVisibilidadDe(BotonCambioModoAtaque boton) {
 		return false;
 	}
 
-	@Override
 	public boolean obtenerVisibilidadDe(BotonCambioModoDefensa boton) {
 		return false;
 	}
 
-	@Override
 	public boolean obtenerVisibilidadDe(BotonAtacar boton) {
 		return false;
 	}
 
-	@Override
+	public boolean puedeTomarCarta() {
+		return false;
+	}
+
 	public boolean obtenerVisibilidadDe(BotonInvocar boton) {
 		return false;
 	}
 
-	@Override
 	public boolean obtenerVisibilidadDe(BotonSacrificar boton) {
 		return false;
+	}
+
+	public void ejecutar(Jugador jugadorA, Jugador jugadorB) {
+	}
+
+	@Override
+	public String nombre() {
+		return "faseInicioDeJuego";
 	}
 }

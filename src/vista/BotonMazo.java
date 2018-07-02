@@ -1,36 +1,29 @@
 package vista;
 
-import cartas.Carta;
 import excepciones.CapacidadMaximaException;
+import excepciones.NoSePuedeTomarMasCartasDelMazoException;
 import javafx.scene.control.Button;
-import juego.Mano;
-import juego.Mazo;
+import juego.Jugador;
 
 public class BotonMazo extends Button {
 
-	private Mazo mazo;
-	private Mano mano;
+	private Jugador jugador;
 
-	public BotonMazo(Grilla unaGrilla) {
+	public BotonMazo(Jugador jugador, Grilla unaGrilla) {
 		super("Mazo");
 		this.setMaxSize(100, 25);
 		this.setMinSize(100, 25);
+		this.jugador = jugador;
 		this.setOnAction(value -> {
 			try {
-				Carta unaCarta = this.mazo.tomarUnaCarta();
-				this.mano.agregar(unaCarta);
-				unaGrilla.actualizarGrillaPorTomarCartaDelMazo();
-			} catch (CapacidadMaximaException e) {
+				if (this.jugador.puedeTomarCarta()) {
+					this.jugador.tomarCartaDelMazo();
+					unaGrilla.actualizarGrillaPorTomarCartaDelMazo();
+				}
+			} catch (CapacidadMaximaException e1) {
+			} catch (NoSePuedeTomarMasCartasDelMazoException e2) {
 			}
 		});
-	}
-
-	public void asignarMazo(Mazo unMazo) {
-		this.mazo = unMazo;
-	}
-
-	public void asignarMano(Mano unaMano) {
-		this.mano = unaMano;
 	}
 
 }

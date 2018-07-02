@@ -2,11 +2,8 @@ package juego;
 
 public class Juego {
 
-	@SuppressWarnings("unused")
 	private Jugador jugadorA;
-	@SuppressWarnings("unused")
 	private Jugador jugadorB;
-
 	private Jugador deTurno;
 
 	public Juego(Jugador jugadorA, Jugador jugadorB) {
@@ -21,19 +18,26 @@ public class Juego {
 	}
 
 	public void actualizar() {
-		Fase fase = deTurno.obtenerFase();
+		Fase fase = this.deTurno.obtenerFase();
 		if (fase.finalizaste())
-			deTurno.siguienteFase();
-
+			this.deTurno.siguienteFase();
 		if (fase.cambioDeTurno()) {
-			deTurno = jugadorB;
-			deTurno.iniciarTurno();
+			if (this.deTurno.equals(jugadorA))
+				this.deTurno = this.jugadorB;
+			else
+				this.deTurno = this.jugadorA;
+			this.deTurno.iniciarTurno();
 		}
 	}
 
 	public void informarQueTerminoElTurnoDe(Jugador jugador) {
 		deTurno = jugador.oponente();
 		deTurno.jugar();
+	}
+	
+	public Jugador jugadorDeTurno() {
+		return this.deTurno;
+
 	}
 
 }

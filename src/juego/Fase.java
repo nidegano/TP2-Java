@@ -8,20 +8,30 @@ import vista.BotonSacrificar;
 
 public interface Fase {
 	
-	void ejecutar(Jugador jugador);
+	public abstract String nombre();
+	
+	public abstract void ejecutar(Jugador jugador);
+	
+	public abstract boolean termino();
 
-	Fase faseSiguiente();
+	public abstract Fase faseSiguiente();
 
-	boolean obtenerVisibilidadDe(BotonCambioModoAtaque boton);
+	public abstract boolean cambioDeTurno();
 	
-	boolean obtenerVisibilidadDe(BotonCambioModoDefensa boton);
-	
-	boolean obtenerVisibilidadDe(BotonAtacar boton);
-	
-	boolean obtenerVisibilidadDe(BotonInvocar boton);
-	
-	boolean obtenerVisibilidadDe(BotonSacrificar boton);
+	public abstract void tomoCartaDelMazo();
 
-	boolean termino();
+	public abstract boolean puedeTomarCarta();
+	
+	public abstract boolean finalizaste();
+
+	public abstract boolean obtenerVisibilidadDe(BotonCambioModoAtaque boton);
+	
+	public abstract boolean obtenerVisibilidadDe(BotonCambioModoDefensa boton);
+	
+	public abstract boolean obtenerVisibilidadDe(BotonAtacar boton);
+	
+	public abstract boolean obtenerVisibilidadDe(BotonInvocar boton);
+	
+	public abstract boolean obtenerVisibilidadDe(BotonSacrificar boton);
 
 }
