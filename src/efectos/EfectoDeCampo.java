@@ -17,7 +17,7 @@ public class EfectoDeCampo extends Efecto {
 	@Override
 	public void activar() {
 		ContenedorDeCartas zonaMonstruosDuenio = this.jugadorDuenio.campo().obtenerZonaMonstruos();
-		ContenedorDeCartas zonaMonstruosOponente = this.jugadorOponente.campo().obtenerZonaMonstruos();
+		ContenedorDeCartas zonaMonstruosOponente = this.jugadorDuenio.oponente().campo().obtenerZonaMonstruos();
 
 		for (Carta monstruo : zonaMonstruosDuenio)
 			((CartaMonstruo) monstruo).aumentarPuntosDeAtaqueEn(aumentoDePuntosDeAtaque);

@@ -2,6 +2,7 @@ package cartas;
 
 import excepciones.CantidadInadecuadaDeSacrificiosException;
 import juego.ContenedorDeCartas;
+import vista.Grilla;
 
 public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 
@@ -21,6 +22,11 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 		this.efecto.activar();
 		for (Carta monstruo : this.sacrificios)
 			monstruo.matar();
+	}
+	
+	@Override
+	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
+		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
 	}
 
 }

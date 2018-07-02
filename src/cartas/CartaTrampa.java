@@ -2,6 +2,7 @@ package cartas;
 
 import estado.ModoActivo;
 import juego.Campo;
+import vista.Grilla;
 
 public abstract class CartaTrampa extends CartaEspecial {
 
@@ -26,5 +27,6 @@ public abstract class CartaTrampa extends CartaEspecial {
 		this.estado = new ModoActivo();
 		this.activar(monstruoEnemigo);
 	}
+
 
 }

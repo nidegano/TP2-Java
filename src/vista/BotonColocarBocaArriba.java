@@ -1,6 +1,6 @@
 package vista;
 
-import cartas.Carta;
+import cartas.CartaEspecial;
 import javafx.scene.control.Button;
 
 public class BotonColocarBocaArriba extends Button {
@@ -11,17 +11,8 @@ public class BotonColocarBocaArriba extends Button {
 		this.setVisible(false);
 	}
 
-	public void asignarCarta(Carta unaCarta, Grilla unaGrilla) {
-		this.setOnAction(value -> {
-			
-			if(this.sePuedenSeguirInvocandoMonstruos(unaCarta)) {
-				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
-				unaCarta.obtenerDuenio().avisarALaFaseQueSeInvocaUnMonstruo();
-			}			
-		});
-	}
-
-	private boolean sePuedenSeguirInvocandoMonstruos(Carta unaCarta) {
-		return unaCarta.obtenerDuenio().sePuedenSeguirInvocandoMonstruos();
+	public void asignarCarta(CartaEspecial unaCarta, Grilla unaGrilla) {
+		this.setOnAction(value -> {//no se puede poner boca arriba en fase de preparacion
+			});
 	}
 }

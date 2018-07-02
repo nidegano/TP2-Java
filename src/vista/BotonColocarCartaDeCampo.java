@@ -1,6 +1,7 @@
 package vista;
 
 import cartas.Carta;
+import cartas.CartaDeCampo;
 import javafx.scene.control.Button;
 
 public class BotonColocarCartaDeCampo extends Button {
@@ -11,17 +12,17 @@ public class BotonColocarCartaDeCampo extends Button {
 		this.setVisible(false);
 	}
 
-	public void asignarCarta(Carta unaCarta, Grilla unaGrilla) {
+	public void asignarCarta(CartaDeCampo unaCarta, Grilla unaGrilla) {
 		this.setOnAction(value -> {
 			
-			if(this.sePuedenSeguirInvocandoMonstruos(unaCarta)) {
+			if(!this.hayYaUnaCartaDeCampo(unaCarta,unaGrilla)) {
+				unaCarta.colocarBocaArriba();
 				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
-				unaCarta.obtenerDuenio().avisarALaFaseQueSeInvocaUnMonstruo();
-			}			
+			}
 		});
 	}
 
-	private boolean sePuedenSeguirInvocandoMonstruos(Carta unaCarta) {
-		return unaCarta.obtenerDuenio().sePuedenSeguirInvocandoMonstruos();
+	private boolean hayYaUnaCartaDeCampo(Carta unaCarta, Grilla unaGrilla) {
+		return unaCarta.obtenerDuenio().campo().obtenerZonaCartasDeCampo().hayCartas();
 	}
 }

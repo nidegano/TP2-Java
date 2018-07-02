@@ -39,4 +39,8 @@ public class BotonMano extends Button {
 		this.setDisable(true);
 	}
 
+	public boolean estaLibre() {
+		return this.carta == null;
+	}
+
 }

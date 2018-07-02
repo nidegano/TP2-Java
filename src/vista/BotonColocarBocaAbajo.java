@@ -1,6 +1,7 @@
 package vista;
 
-import cartas.Carta;
+import cartas.CartaEspecial;
+import excepciones.CapacidadMaximaException;
 import javafx.scene.control.Button;
 
 public class BotonColocarBocaAbajo extends Button {
@@ -11,17 +12,13 @@ public class BotonColocarBocaAbajo extends Button {
 		this.setVisible(false);
 	}
 
-	public void asignarCarta(Carta unaCarta, Grilla unaGrilla) {
+	public void asignarCarta(CartaEspecial unaCarta, Grilla unaGrilla) {
 		this.setOnAction(value -> {
-			
-			if(this.sePuedenSeguirInvocandoMonstruos(unaCarta)) {
-				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
-				unaCarta.obtenerDuenio().avisarALaFaseQueSeInvocaUnMonstruo();
-			}			
+			try {
+				unaCarta.colocarBocaAbajo();
+				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);	
+			}
+			catch (CapacidadMaximaException e) {}
 		});
-	}
-
-	private boolean sePuedenSeguirInvocandoMonstruos(Carta unaCarta) {
-		return unaCarta.obtenerDuenio().sePuedenSeguirInvocandoMonstruos();
 	}
 }

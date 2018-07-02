@@ -12,6 +12,7 @@ import juego.ContenedorDeCartas;
 import juego.Jugador;
 import juego.Mano;
 import juego.RecolectorDePartesDeExodia;
+import vista.Grilla;
 
 public abstract class Carta {
 
@@ -32,10 +33,6 @@ public abstract class Carta {
 
 	public abstract void serRecolectadaPorElRecolectorDePartesDeExodia(
 			RecolectorDePartesDeExodia recolectorDePartesDeExodia);
-
-	public abstract boolean esMonstruo();
-
-	public abstract boolean esEspecial();
 
 	public void asignarDuenio(Jugador jugador) {
 		this.jugadorDuenio = jugador;
@@ -72,5 +69,9 @@ public abstract class Carta {
 	private void removerContenedoresQueLacontienen() {
 		this.contenedoresQueLaContienen = new ArrayList<ContenedorDeCartas>();
 	}
+
+	public abstract void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla);
+
+	public abstract void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla);
 
 }

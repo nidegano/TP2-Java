@@ -1,6 +1,7 @@
 package cartas;
 
 import juego.Campo;
+import vista.Grilla;
 
 public abstract class CartaMagica extends CartaEspecial {
 

@@ -17,7 +17,7 @@ public class FaseAtaque implements Fase {
 	}
 
 	public Fase faseSiguiente() {
-		return new FaseInicial();
+		return new FaseFinal();
 	}
 
 	public boolean cambioDeTurno() {

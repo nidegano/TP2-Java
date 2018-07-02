@@ -6,6 +6,7 @@ import estado.ModoInactivo;
 import juego.Campo;
 import juego.Jugador;
 import juego.RecolectorDePartesDeExodia;
+import vista.Grilla;
 
 public abstract class CartaEspecial extends Carta {
 
@@ -18,14 +19,6 @@ public abstract class CartaEspecial extends Carta {
 
 	@Override
 	public abstract void agregarEnCampo(Campo campo);
-
-	public boolean esMonstruo() {
-		return false;
-	}
-
-	public boolean esEspecial() {
-		return true;
-	}
 
 	@Override
 	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {
@@ -62,5 +55,14 @@ public abstract class CartaEspecial extends Carta {
 		this.estado = new ModoInactivo();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 	}
-
+	
+	@Override
+	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
+		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
+	}
+	
+	@Override
+	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
+		grilla.actualizarPorInvocacionDeUnaCartaEspecial(this);
+	}
 }

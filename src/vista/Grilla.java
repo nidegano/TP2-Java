@@ -4,6 +4,9 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 
 import cartas.Carta;
+import cartas.CartaDeCampo;
+import cartas.CartaEspecial;
+import cartas.CartaMonstruo;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -162,8 +165,8 @@ public class Grilla extends Application {
 		this.botonCementerioJugador1 = new BotonCementerio();
 		this.botonCementerioJugador2 = new BotonCementerio();
 
-		this.botonCampoJugador1 = new BotonCampo(this.imageView);
-		this.botonCampoJugador2 = new BotonCampo(this.imageView);
+		this.botonCampoJugador1 = new BotonCampo("Campo",this.imageView);
+		this.botonCampoJugador2 = new BotonCampo("Campo",this.imageView);
 
 		this.botonFinalizarFase = new BotonFinalizarFase(this.juego, this);
 		this.botonInvocar = new BotonInvocar();
@@ -255,7 +258,7 @@ public class Grilla extends Application {
 		//this.gridPane.add(this.botonSacrificar, 13, 8, 1, 1);
 		
 		this.gridPane.add(this.botonInvocarEnModoAtaque, 13, 7, 1, 1);
-		this.gridPane.add(this.botonCambioModoDefensa, 13, 8, 1, 1);
+		this.gridPane.add(this.botonInvocarEnModoDefensa, 13, 8, 1, 1);
 		this.gridPane.add(this.botonInvocarEnModoDefensaBocaAbajo, 13, 9, 1, 1);
 		
 		this.gridPane.add(this.botonColocarBocaAbajo, 13, 7, 1, 1);
@@ -332,55 +335,110 @@ public class Grilla extends Application {
 			}
 		}
 	}
+	
+	public void actualizarGrillaPorSeleccionDeCartaDeMano(CartaMonstruo unaCarta) {
+		this.botonInvocarEnModoAtaque.setVisible(true);
+		this.botonInvocarEnModoDefensa.setVisible(true);
+		this.botonInvocarEnModoDefensaBocaAbajo.setVisible(true);
+		this.botonColocarBocaAbajo.setVisible(false);
+		this.botonColocarBocaArriba.setVisible(false);
+		this.botonColocarCartaDeCampo.setVisible(false);
+		
+		this.botonInvocarEnModoAtaque.asignarCarta(unaCarta, this);
+		this.botonInvocarEnModoDefensa.asignarCarta(unaCarta, this);
+		this.botonInvocarEnModoDefensaBocaAbajo.asignarCarta(unaCarta, this);
+	}
+	
+	public void actualizarGrillaPorSeleccionDeCartaDeMano(CartaEspecial unaCarta) {
+		this.botonInvocarEnModoAtaque.setVisible(false);
+		this.botonInvocarEnModoDefensa.setVisible(false);
+		this.botonInvocarEnModoDefensaBocaAbajo.setVisible(false);
+		this.botonColocarBocaAbajo.setVisible(true);
+		this.botonColocarBocaArriba.setVisible(true);
+		this.botonColocarCartaDeCampo.setVisible(false);
+		
+		this.botonColocarBocaAbajo.asignarCarta(unaCarta, this);
+		this.botonColocarBocaArriba.asignarCarta(unaCarta, this);
+	}
+	
+	public void actualizarGrillaPorSeleccionDeCartaDeMano(CartaDeCampo unaCarta) {
+		this.botonInvocarEnModoAtaque.setVisible(false);
+		this.botonInvocarEnModoDefensa.setVisible(false);
+		this.botonInvocarEnModoDefensaBocaAbajo.setVisible(false);
+		this.botonColocarBocaAbajo.setVisible(false);
+		this.botonColocarBocaArriba.setVisible(false);
+		this.botonColocarCartaDeCampo.setVisible(true);;
+		
+		this.botonColocarCartaDeCampo.asignarCarta(unaCarta, this);
+	}
 
 	public void actualizarGrillaPorSeleccionDeCartaDeMano(Carta unaCarta) {
+		
+		unaCarta.provocarActualizacionDeLaGrillaSegunTipo(this);
+		
 		this.botonAtacar.setVisible(false);
 		this.botonCambioModoAtaque.setVisible(false);
 		this.botonCambioModoDefensa.setVisible(false);
-		//this.botonInvocar.setVisible(true);
-		//this.botonSacrificar.setVisible(true);
-		//this.botonInvocar.asignarCarta(unaCarta, this);
-		//this.botonSacrificar.asignarCarta(unaCarta, this);
+	}
+	
+	public void actualizarPorInvocacionDeUnMonstruo(CartaMonstruo unaCarta) {
+		
+		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
+		
+			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador1);
+			unBotonMano.limpiar();
+			BotonCartaMonstruo unBotonMonstruo = this
+					.obtenerBotonMonstruoLibre(this.botonesCartasMonstruosJugador1);
+			unBotonMonstruo.asignarCarta(unaCarta, this);
+		}
+		else {
+			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador2);
+			unBotonMano.limpiar();
+			BotonCartaMonstruo unBotonMonstruo = this
+					.obtenerBotonMonstruoLibre(this.botonesCartasMonstruosJugador2);
+			unBotonMonstruo.asignarCarta(unaCarta, this);
+		}
+	}
+	
+	public void actualizarPorInvocacionDeUnaCartaEspecial(CartaEspecial unaCarta) {
+		
+		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
+		
+			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador1);
+			unBotonMano.limpiar();
+			BotonCartaEspecial unBotonEspecial = this
+					.obtenerBotonEspecialLibre(this.botonesCartasEspecialesJugador1);
+			unBotonEspecial.asignarCarta(unaCarta, this);
+		}
+		else {
+			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador2);
+			unBotonMano.limpiar();
+			BotonCartaEspecial unBotonEspecial = this
+					.obtenerBotonEspecialLibre(this.botonesCartasEspecialesJugador2);
+			unBotonEspecial.asignarCarta(unaCarta, this);
+		}
+	}
+		
+	public void actualizarPorInvocacionDeUnaCartaDeCampo(CartaDeCampo unaCarta) {
+		
+		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
+		
+			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador1);
+			unBotonMano.limpiar();
+			BotonCampo unBotonCampo = this.botonCampoJugador1;
+			unBotonCampo.asignarCarta(unaCarta, this);
+		}
+		else {
+			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador2);
+			unBotonMano.limpiar();
+			BotonCampo unBotonCampo = this.botonCampoJugador2;
+			unBotonCampo.asignarCarta(unaCarta, this);
+		}
 	}
 
 	public void actualizarGrillaPorInvocacion(Carta unaCarta) {
-		this.botonAtacar.setVisible(false);
-		this.botonCambioModoAtaque.setVisible(false);
-		this.botonCambioModoDefensa.setVisible(false);
-		//this.botonInvocar.setVisible(false);
-		//this.botonSacrificar.setVisible(false);
 
-		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
-			if (unaCarta.esMonstruo()) {
-				BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador1);
-				unBotonMano.limpiar();
-				BotonCartaMonstruo unBotonMonstruo = this
-						.obtenerBotonMonstruoLibre(this.botonesCartasMonstruosJugador1);
-				unBotonMonstruo.asignarCarta(unaCarta, this);
-			}
-			if (unaCarta.esEspecial()) {
-				BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador1);
-				unBotonMano.limpiar();
-				BotonCartaEspecial unBotonEspecial = this
-						.obtenerBotonEspecialLibre(this.botonesCartasEspecialesJugador1);
-				unBotonEspecial.asignarCarta(unaCarta, this);
-			}
-		} else {
-			if (unaCarta.esMonstruo()) {
-				BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador2);
-				unBotonMano.limpiar();
-				BotonCartaMonstruo unBotonMonstruo = this
-						.obtenerBotonMonstruoLibre(this.botonesCartasMonstruosJugador2);
-				unBotonMonstruo.asignarCarta(unaCarta, this);
-			}
-			if (unaCarta.esEspecial()) {
-				BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador2);
-				unBotonMano.limpiar();
-				BotonCartaEspecial unBotonEspecial = this
-						.obtenerBotonEspecialLibre(this.botonesCartasEspecialesJugador2);
-				unBotonEspecial.asignarCarta(unaCarta, this);
-			}
-		}
+		unaCarta.actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(this);
 	}
 
 	public void actualizarGrillaPorSeleccionDeCartaMonstruo() {
@@ -397,16 +455,21 @@ public class Grilla extends Application {
 		this.botonCambioModoDefensa.setVisible(false);
 		//this.botonInvocar.setVisible(true);
 		//this.botonSacrificar.setVisible(false);
+		this.botonColocarBocaArriba.setVisible(true);
 	}
 
 	private void asignarMano() {
 		for (int i = 0; i < this.jugador1.cantidadDeCartasEnMano(); i++) {
 			BotonMano unBoton = this.botonesManoJugador1.get(i);
-			unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i), this);
+			if (unBoton.estaLibre()) {
+				unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i), this);
+			}
 		}
 		for (int i = 0; i < this.jugador2.cantidadDeCartasEnMano(); i++) {
 			BotonMano unBoton = this.botonesManoJugador2.get(i);
-			unBoton.asignarCarta(this.jugador2.obtenerMano().obtenerCarta(i), this);
+			if (unBoton.estaLibre()) {
+				unBoton.asignarCarta(this.jugador2.obtenerMano().obtenerCarta(i), this);
+			}
 		}
 	}
 

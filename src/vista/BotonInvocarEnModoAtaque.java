@@ -1,6 +1,7 @@
 package vista;
 
 import cartas.Carta;
+import cartas.CartaMonstruo;
 import javafx.scene.control.Button;
 
 public class BotonInvocarEnModoAtaque extends Button {
@@ -11,10 +12,11 @@ public class BotonInvocarEnModoAtaque extends Button {
 		this.setVisible(false);
 	}
 
-	public void asignarCarta(Carta unaCarta, Grilla unaGrilla) {
+	public void asignarCarta(CartaMonstruo unaCarta, Grilla unaGrilla) {
 		this.setOnAction(value -> {
-			
+
 			if(this.sePuedenSeguirInvocandoMonstruos(unaCarta)) {
+				unaCarta.invocarEnModoAtaque();
 				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
 				unaCarta.obtenerDuenio().avisarALaFaseQueSeInvocaUnMonstruo();
 			}			

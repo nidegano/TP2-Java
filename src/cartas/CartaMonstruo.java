@@ -11,6 +11,7 @@ import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.FormaDeAfectarAlJugador;
 import juego.RecolectorDePartesDeExodia;
+import vista.Grilla;
 
 public abstract class CartaMonstruo extends Carta {
 
@@ -23,14 +24,6 @@ public abstract class CartaMonstruo extends Carta {
 	public CartaMonstruo() {
 		super();
 		this.yaAtaco = false;
-	}
-
-	public boolean esMonstruo() {
-		return true;
-	}
-
-	public boolean esEspecial() {
-		return false;
 	}
 
 	public int obtenerPuntosDeAtaque() {
@@ -172,6 +165,16 @@ public abstract class CartaMonstruo extends Carta {
 
 	protected void colocarEnModoDefensa() {
 		this.estado = new ModoDefensa(this.puntosDeDefensa);
+	}
+	
+	@Override
+	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
+		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
+	}
+	
+	@Override
+	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
+		grilla.actualizarPorInvocacionDeUnMonstruo(this);
 	}
 
 }

@@ -2,20 +2,22 @@
 package vista;
 
 import cartas.Carta;
+import cartas.CartaMonstruo;
 import javafx.scene.control.Button;
 
 public class BotonInvocarEnModoDefensa extends Button {
 
 	public BotonInvocarEnModoDefensa() {
-		super("Invocar en modo defensa");
+		super("Invocar modo defensa");
 		this.setMaxSize(200, 200);
 		this.setVisible(false);
 	}
 
-	public void asignarCarta(Carta unaCarta, Grilla unaGrilla) {
+	public void asignarCarta(CartaMonstruo unaCarta, Grilla unaGrilla) {
 		this.setOnAction(value -> {
 			
 			if(this.sePuedenSeguirInvocandoMonstruos(unaCarta)) {
+				unaCarta.invocarEnModoDefensa();
 				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
 				unaCarta.obtenerDuenio().avisarALaFaseQueSeInvocaUnMonstruo();
 			}			
