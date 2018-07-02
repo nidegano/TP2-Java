@@ -77,7 +77,6 @@ public class Jugador {
 	}
 
 	public void inicioJuego(Juego juego) {
-
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
