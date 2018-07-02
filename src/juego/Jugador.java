@@ -34,7 +34,6 @@ public class Jugador {
 	}
 
 	public void tomarCartaDelMazo() {
-		fase.tomoCartaDelMazo();
 
 		Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
 		this.mano.agregar(unaCarta);

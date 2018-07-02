@@ -18,9 +18,11 @@ public abstract class CartaMonstruo extends Carta {
 	protected Puntos puntosDeAtaque;
 	protected Puntos puntosDeDefensa;
 	protected int nivel;
+	protected boolean yaAtaco;
 
 	public CartaMonstruo() {
 		super();
+		this.yaAtaco = false;
 	}
 
 	public int obtenerPuntosDeAtaque() {
@@ -88,8 +90,12 @@ public abstract class CartaMonstruo extends Carta {
 				monstruoAtacado.perder(formaDeAfectar);
 				this.perder(formaDeAfectar);
 			}
-		} catch (AtaqueIntervenidoException e) {
-		}
+		} catch (AtaqueIntervenidoException e) {}
+		finally {this.yaAtaco = true;}
+	}
+	
+	public void renovarLaPosibilidadDeAtacar() {
+		this.yaAtaco = false;
 	}
 
 	@Override
