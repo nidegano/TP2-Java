@@ -8,6 +8,13 @@ import vista.BotonSacrificar;
 
 public class FaseAtaque implements Fase {
 
+	private boolean termino = false;
+	
+	@Override
+	public void finalizar() {
+		this.termino = true;
+	}
+	
 	public void tomoCartaDelMazo() {
 	}
 
@@ -31,15 +38,15 @@ public class FaseAtaque implements Fase {
 	}
 
 	public boolean obtenerVisibilidadDe(BotonCambioModoAtaque boton) {
-		return false;
+		return true;
 	}
 
 	public boolean obtenerVisibilidadDe(BotonCambioModoDefensa boton) {
-		return false;
+		return true;
 	}
 
 	public boolean obtenerVisibilidadDe(BotonAtacar boton) {
-		return false;
+		return true;
 	}
 
 	public boolean obtenerVisibilidadDe(BotonInvocar boton) {
@@ -57,14 +64,12 @@ public class FaseAtaque implements Fase {
 
 	@Override
 	public void ejecutar(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
+		//se espera que se realicen los ataque y que luego el jugador toque finalzar turno
 	}
 
 	@Override
 	public boolean termino() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.termino;
 	}
 
 }

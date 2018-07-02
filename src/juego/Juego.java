@@ -29,9 +29,13 @@ public class Juego {
 			this.deTurno.iniciarTurno();
 		}
 	}
+	
+	public void informarQueJugadorDeTurnoFinalizoSuFase() {
+		deTurno.finalizarFase();
+	}
 
-	public void informarQueTerminoElTurnoDe(Jugador jugador) {
-		deTurno = jugador.oponente();
+	public void informarQueJugadorDeTurnoTerminoSuTurno() {
+		deTurno = deTurno.oponente();
 		deTurno.jugar();
 	}
 	

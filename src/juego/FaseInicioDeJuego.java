@@ -70,4 +70,9 @@ public class FaseInicioDeJuego implements Fase {
 	public String nombre() {
 		return "faseInicioDeJuego";
 	}
+
+	@Override
+	public void finalizar() {
+		this.termino = true;
+	}
 }

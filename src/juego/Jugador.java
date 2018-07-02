@@ -111,7 +111,15 @@ public class Jugador {
 		
 		if (this.fase.termino()) {
 			this.fase = this.fase.faseSiguiente();
-			this.juego.informarQueTerminoElTurnoDe(this);
+			this.juego.informarQueJugadorDeTurnoTerminoSuTurno();
+		}
+	}
+
+	public void finalizarFase() {
+		this.fase.finalizar();
+		if (this.fase.termino()) {
+			this.fase = this.fase.faseSiguiente();
+			this.juego.informarQueJugadorDeTurnoTerminoSuTurno();
 		}
 	}
 

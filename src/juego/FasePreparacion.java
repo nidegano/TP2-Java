@@ -8,7 +8,24 @@ import vista.BotonSacrificar;
 
 public class FasePreparacion implements Fase {
 
+	private boolean termino = false;
+	
+	@Override
+	public void finalizar() {
+		this.termino = true;
+	}
+	
 
+	@Override
+	public void ejecutar(Jugador jugador) {
+		jugador.campo().renovarLaPosibilidadDeAtacarEnCartasMonstruo();		
+	}
+
+	@Override
+	public boolean termino() {
+		return this.termino;
+	}
+	
 	public void tomoCartaDelMazo() {
 	}
 
@@ -57,18 +74,6 @@ public class FasePreparacion implements Fase {
 	@Override
 	public String nombre() {
 		return "faseDePreparacion";
-	}
-
-	@Override
-	public void ejecutar(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean termino() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

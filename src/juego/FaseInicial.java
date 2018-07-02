@@ -10,11 +10,16 @@ import vista.BotonSacrificar;
 public class FaseInicial implements Fase {
 	
 	private int contador = 0;
+	private boolean termino = false;
+	
+	@Override
+	public void finalizar() {
+		this.termino = true;
+	}
 
 	@Override
 	public void ejecutar(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
+		//se espera que el jugador tome una carta del mazo y toque finalizar turno
 	}
 	
 	@Override

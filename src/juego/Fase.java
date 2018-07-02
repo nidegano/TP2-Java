@@ -12,6 +12,8 @@ public interface Fase {
 	
 	public abstract void ejecutar(Jugador jugador);
 	
+	public abstract void finalizar();
+	
 	public abstract boolean termino();
 
 	public abstract Fase faseSiguiente();
