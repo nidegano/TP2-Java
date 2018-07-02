@@ -10,7 +10,7 @@ public class BotonFinalizarFase extends Button {
 		this.setMaxSize(200, 200);
 		this.setVisible(true);
 		this.setOnAction(value -> {
-			juego.actualizar();
+			juego.informarQueJugadorDeTurnoTocoFinalizarFase();
 			unaGrilla.actualizarGrilla();
 		});
 	}

@@ -3,6 +3,8 @@ package juego;
 
 public class FaseAtaque implements Fase {
 
+	private boolean termino = false;
+
 	public String nombre() {
 		return "Fase de Ataque";
 	}
@@ -11,11 +13,11 @@ public class FaseAtaque implements Fase {
 	}
 
 	public boolean termino() {
-		return false;
+		return this.termino;
 	}
 
 	public Fase faseSiguiente() {
-		return null;
+		return new FaseInicial();
 	}
 
 	public boolean cambioDeTurno() {
@@ -27,6 +29,11 @@ public class FaseAtaque implements Fase {
 
 	public boolean puedeTomarCarta() {
 		return false;
+	}
+
+	@Override
+	public void finalizar() {
+		this.termino = true;
 	}
 
 }

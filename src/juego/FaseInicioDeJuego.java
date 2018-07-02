@@ -31,4 +31,9 @@ public class FaseInicioDeJuego implements Fase {
 	public boolean puedeTomarCarta() {
 		return false;
 	}
+
+	@Override
+	public void finalizar() {
+		//la unica forma de finalizar esta fase es ejecutandola
+	}
 }

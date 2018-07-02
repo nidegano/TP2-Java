@@ -53,4 +53,10 @@ public class Mazo extends ContenedorDeCartas {
 		Collections.shuffle(this.cartas);
 	}
 
+	public void asignarComoDueñoDeTodasLasCartasA(Jugador jugador) {
+		for (Carta carta : this.cartas) {
+			carta.asignarDuenio(jugador);
+		}
+	}
+
 }

@@ -13,8 +13,15 @@ public class BotonInvocar extends Button {
 
 	public void asignarCarta(Carta unaCarta, Grilla unaGrilla) {
 		this.setOnAction(value -> {
-			unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
+			
+			if(this.sePuedenSeguirInvocandoMonstruos(unaCarta)) {
+				unaGrilla.actualizarGrillaPorInvocacion(unaCarta);
+				unaCarta.obtenerDuenio().avisarALaFaseQueSeInvocaUnMonstruo();
+			}			
 		});
 	}
 
+	private boolean sePuedenSeguirInvocandoMonstruos(Carta unaCarta) {
+		return unaCarta.obtenerDuenio().sePuedenSeguirInvocandoMonstruos();
+	}
 }

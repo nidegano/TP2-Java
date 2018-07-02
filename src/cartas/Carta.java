@@ -40,6 +40,10 @@ public abstract class Carta {
 	public void asignarDuenio(Jugador jugador) {
 		this.jugadorDuenio = jugador;
 	}
+	
+	public Jugador obtenerDuenio() {
+		return this.jugadorDuenio;
+	}
 
 	public void matar() {
 		ContenedorDeCartas cementerio = this.jugadorDuenio.obtenerCementerio();

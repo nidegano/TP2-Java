@@ -19,7 +19,7 @@ public class Juego {
 		this.deTurno.jugar();
 	}
 
-	public void actualizar() {
+	/*public void actualizar() {
 		Fase fase = this.deTurno.obtenerFase();
 		if (fase.termino())
 			this.deTurno.siguienteFase();
@@ -30,14 +30,14 @@ public class Juego {
 				this.deTurno = this.jugadorA;
 			this.deTurno.iniciarTurno();
 		}
-	}
+	}*/
 	
 	public void informarQueJugadorDeTurnoTocoFinalizarFase() {
 		deTurno.finalizarFase();
 	}
 
-	public void informarQueTerminoElTurnoDe(Jugador jugador) {
-		this.deTurno = jugador.oponente();
+	public void informarQueElJugadorDeTurnoTerminoSuTurno() {
+		this.deTurno = deTurno.oponente();
 		this.deTurno.jugar();
 	}
 

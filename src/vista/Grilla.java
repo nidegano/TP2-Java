@@ -46,6 +46,13 @@ public class Grilla extends Application {
 	private BotonCambioModoAtaque botonCambioModoAtaque;
 	private BotonCambioModoDefensa botonCambioModoDefensa;
 	private BotonFinalizarFase botonFinalizarFase;
+	
+	private BotonInvocarEnModoAtaque botonInvocarEnModoAtaque;
+	private BotonInvocarEnModoDefensa botonInvocarEnModoDefensa;
+	private BotonInvocarEnModoDefensaBocaAbajo botonInvocarEnModoDefensaBocaAbajo;
+	private BotonColocarBocaAbajo botonColocarBocaAbajo;
+	private BotonColocarBocaArriba botonColocarBocaArriba;
+	private BotonColocarCartaDeCampo botonColocarCartaDeCampo;
 
 	public Grilla(Jugador jugador1, Jugador jugador2, Juego juego) throws Exception {
 		this.jugador1 = jugador1;
@@ -164,6 +171,13 @@ public class Grilla extends Application {
 		this.botonAtacar = new BotonAtacar();
 		this.botonCambioModoAtaque = new BotonCambioModoAtaque();
 		this.botonCambioModoDefensa = new BotonCambioModoDefensa();
+		
+		this.botonInvocarEnModoAtaque;
+		private BotonInvocarEnModoDefensa botonInvocarEnModoDefensa;
+		private BotonInvocarEnModoDefensaBocaAbajo botonInvocarEnModoDefensaBocaAbajo;
+		private BotonColocarBocaAbajo botonColocarBocaAbajo;
+		private BotonColocarBocaArriba botonColocarBocaArriba;
+		private BotonColocarCartaDeCampo botonColocarCartaDeCampo;
 
 		this.agregarBotonesALaGrilla();
 	}
@@ -291,6 +305,7 @@ public class Grilla extends Application {
 			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FaseInicial.class) {
 				this.bloquearBotonesJugador2();
 				this.botonMazoJugador2.setDisable(false);
+				this.asignarMano();
 			}
 
 			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FasePreparacion.class) {
