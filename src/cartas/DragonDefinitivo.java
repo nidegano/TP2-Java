@@ -20,7 +20,7 @@ public class DragonDefinitivo extends CartaRequiereSacrificios {
 			input = new FileInputStream("resources/images/carta_DragonDefinitivo.png");
 		} catch (FileNotFoundException e) {
 		}
-        this.imagen = new Image(input);
+		this.imagen = new Image(input);
 	}
 
 }

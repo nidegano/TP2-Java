@@ -29,11 +29,9 @@ public class Campo {
 	}
 
 	public boolean estaDentro(Carta carta) {
-		return this.zonaCartasDeCampo.estaDentro(carta) ||
-				this.zonaCartasEspeciales.estaDentro(carta) ||
-				this.zonaMonstruos.estaDentro(carta) ||
-				this.contenedorCartasMagicas.estaDentro(carta) ||
-				this.contenedorCartasTrampa.estaDentro(carta);
+		return this.zonaCartasDeCampo.estaDentro(carta) || this.zonaCartasEspeciales.estaDentro(carta)
+				|| this.zonaMonstruos.estaDentro(carta) || this.contenedorCartasMagicas.estaDentro(carta)
+				|| this.contenedorCartasTrampa.estaDentro(carta);
 	}
 
 	public void destruirTodasLasCartas() {
@@ -90,7 +88,7 @@ public class Campo {
 	public boolean tieneCartasEnElMazo() {
 		return mazo.hayCartas();
 	}
-	
+
 	public Mazo mazo() {
 		return this.mazo;
 	}

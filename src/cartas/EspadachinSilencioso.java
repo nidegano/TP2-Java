@@ -20,7 +20,7 @@ public class EspadachinSilencioso extends CartaRequiereSacrificios {
 			input = new FileInputStream("resources/images/carta_EspadachinSilencioso.png");
 		} catch (FileNotFoundException e) {
 		}
-        this.imagen = new Image(input);
+		this.imagen = new Image(input);
 	}
 
 }

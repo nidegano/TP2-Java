@@ -28,7 +28,7 @@ public class BotonMazo extends Button {
 	public void asignarMazo(Mazo unMazo) {
 		this.mazo = unMazo;
 	}
-	
+
 	public void asignarMano(Mano unaMano) {
 		this.mano = unaMano;
 	}

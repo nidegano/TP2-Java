@@ -33,7 +33,7 @@ public class BotonMano extends Button {
 	public Carta obtenerCarta() {
 		return this.carta;
 	}
-	
+
 	public void limpiar() {
 		this.carta = null;
 		this.setText("-");

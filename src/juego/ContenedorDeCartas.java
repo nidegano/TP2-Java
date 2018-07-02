@@ -58,7 +58,7 @@ public class ContenedorDeCartas implements Iterable<Carta> {
 	public boolean hayCartas() {
 		return this.cantidad() != 0;
 	}
-	
+
 	@Override
 	public Iterator<Carta> iterator() {
 		return cartas.iterator();

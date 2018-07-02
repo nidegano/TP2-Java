@@ -12,7 +12,7 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 		if (sacrificios.cantidad() != this.sacrificiosRequeridos)
 			throw new CantidadInadecuadaDeSacrificiosException();
 	}
-	
+
 	public void invocarEnModoAtaque(ContenedorDeCartas sacrificios) {
 		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
 		this.sacrificios = sacrificios;

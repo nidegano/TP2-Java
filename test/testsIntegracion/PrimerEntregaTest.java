@@ -385,13 +385,12 @@ public class PrimerEntregaTest {
 		assertTrue(campoA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertTrue(campoB.estaLaCartaEnCementerio(exodiaCabeza));
 	}
-	
-	@Test (expected =  SinVidaException.class)
+
+	@Test(expected = SinVidaException.class)
 	public void testJugadorSeQuedaSinVida() {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
-		
 		AlphaTheMagnetWarrior alpha = new AlphaTheMagnetWarrior();
 
 		mazoA.agregar(alpha);
@@ -410,9 +409,9 @@ public class PrimerEntregaTest {
 		jugadorA.tomarCartaDelMazo();
 
 		alpha.invocarEnModoAtaque();
- 
-		//puntosAtaque de alpha = 1400 
-		//entonces ataco 6 veces para que el oponente se quede sin vida
+
+		// puntosAtaque de alpha = 1400
+		// entonces ataco 6 veces para que el oponente se quede sin vida
 		alpha.atacarDirectamenteAlOponente();
 		alpha.atacarDirectamenteAlOponente();
 		alpha.atacarDirectamenteAlOponente();

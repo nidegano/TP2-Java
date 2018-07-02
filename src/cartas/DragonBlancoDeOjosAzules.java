@@ -20,7 +20,7 @@ public class DragonBlancoDeOjosAzules extends CartaRequiereSacrificios {
 			input = new FileInputStream("resources/images/carta_DragonBlancoDeOjosAzules.png");
 		} catch (FileNotFoundException e) {
 		}
-        this.imagen = new Image(input);
+		this.imagen = new Image(input);
 	}
 
 }

@@ -29,15 +29,15 @@ public class Jugador {
 
 	public void debilitar(int puntosDeVidaADebilitar) {
 		this.vida = this.vida - puntosDeVidaADebilitar;
-		if( vida <= 0 )
+		if (vida <= 0)
 			throw new SinVidaException(this);
 	}
 
 	public void tomarCartaDelMazo() {
-		    fase.tomoCartaDelMazo();
-		    
-			Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
-			this.mano.agregar(unaCarta);
+		fase.tomoCartaDelMazo();
+
+		Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
+		this.mano.agregar(unaCarta);
 	}
 
 	public boolean esDuenioDe(Carta carta) {
@@ -66,11 +66,11 @@ public class Jugador {
 
 	public void serAtacadoPor(CartaMonstruo cartaMonstruo) {
 		// PATRON PROXY
-			ContenedorDeCartas cartasTrampa = campo.obtenerContenedorCartasTrampa();
-			if (cartasTrampa.hayCartas()) {
-				CartaTrampa trampaQueLeTocaActivarse = (CartaTrampa) cartasTrampa.obtenerPrimero();
-				trampaQueLeTocaActivarse.colocarBocaArriba(cartaMonstruo);
-			}
+		ContenedorDeCartas cartasTrampa = campo.obtenerContenedorCartasTrampa();
+		if (cartasTrampa.hayCartas()) {
+			CartaTrampa trampaQueLeTocaActivarse = (CartaTrampa) cartasTrampa.obtenerPrimero();
+			trampaQueLeTocaActivarse.colocarBocaArriba(cartaMonstruo);
+		}
 	}
 
 	public Mano obtenerMano() {
@@ -78,19 +78,19 @@ public class Jugador {
 	}
 
 	public void inicioJuego(Juego juego) {
-		
+
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
-	
+
 		this.juego = juego;
 	}
 
 	public void iniciarTurno() {
 		fase = new FaseInicial();
-		
+
 		this.tomarCartaDelMazo();
 		juego.actualizar();
 	}
@@ -102,9 +102,5 @@ public class Jugador {
 	public Fase obtenerFase() {
 		return fase;
 	}
-
-
-	
-
 
 }

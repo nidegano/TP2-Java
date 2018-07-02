@@ -29,9 +29,10 @@ public abstract class Carta {
 	public abstract void agregarEnCampo(Campo campo);
 	// Cada vez que la metamos en un contenedor, hay que agregar ese contenedor a
 	// this.contenedoresQueLaContienen
-	
-	public abstract void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia);
-	
+
+	public abstract void serRecolectadaPorElRecolectorDePartesDeExodia(
+			RecolectorDePartesDeExodia recolectorDePartesDeExodia);
+
 	public void asignarDuenio(Jugador jugador) {
 		this.jugadorDuenio = jugador;
 	}
@@ -45,11 +46,11 @@ public abstract class Carta {
 	public void serAgregadaALaMano(Mano mano) {
 		this.contenedoresQueLaContienen.add(mano);
 	}
-	
+
 	public String obtenerNombre() {
 		return this.nombre;
 	}
-	
+
 	public Image obtenerImagen() {
 		return this.imagen;
 	}

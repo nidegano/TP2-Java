@@ -21,7 +21,7 @@ public class InsectoComeHombres extends CartaMonstruo {
 			input = new FileInputStream("resources/images/carta_InsectoComeHombres.png");
 		} catch (FileNotFoundException e) {
 		}
-        this.imagen = new Image(input);
+		this.imagen = new Image(input);
 	}
 
 	public void invocarEnModoDefensaBocaAbajo() {

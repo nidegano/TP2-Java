@@ -21,10 +21,18 @@ public class Mazo extends ContenedorDeCartas {
 
 	public void generarCartas() {
 		// CARTAS MONSTRUO
-		this.agregar(new AlphaTheMagnetWarrior());
-		this.agregar(new AncientBrain());
-		this.agregar(new InsectoComeHombres());
-		this.agregar(new Jinzo());
+		for (int i = 0; i <= 3; i ++) {
+			this.agregar(new AlphaTheMagnetWarrior());
+			this.agregar(new AncientBrain());
+			this.agregar(new DragonArmadoOscuro());
+			this.agregar(new EspadachinSilencioso());
+			this.agregar(new InsectoComeHombres());
+			this.agregar(new Jinzo());
+		}
+		this.agregar(new DragonBlancoDeOjosAzules());
+		this.agregar(new DragonBlancoDeOjosAzules());
+		this.agregar(new DragonBlancoDeOjosAzules());
+		this.agregar(new DragonDefinitivo());
 		// CARTAS MAGICAS
 		this.agregar(new Fisura());
 		this.agregar(new OllaDeLaCodicia());
@@ -32,7 +40,7 @@ public class Mazo extends ContenedorDeCartas {
 		this.agregar(new CilindroMagico());
 		this.agregar(new AgujeroOscuro());
 		this.agregar(new Reinforcements());
-		//CARTAS DE CAMPO
+		// CARTAS DE CAMPO
 		this.agregar(new Sogen());
 		this.agregar(new Wasteland());
 		// CARTAS EXODIA
@@ -41,7 +49,7 @@ public class Mazo extends ContenedorDeCartas {
 		this.agregar(new BrazoIzquierdoExodia());
 		this.agregar(new PiernaDerechaExodia());
 		this.agregar(new PiernaIzquierdaExodia());
-		
+
 		Collections.shuffle(this.cartas);
 	}
 

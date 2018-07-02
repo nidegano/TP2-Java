@@ -19,7 +19,7 @@ public abstract class Efecto {
 	}
 
 	public abstract void activar();
-	
+
 	public abstract void serActivadoPor(Estado estadoDeLaCarta);
 
 	public void aisgnarJugadoresEfecto(Jugador jugadorDuenio, Jugador jugadorOponente) {

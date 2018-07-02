@@ -17,7 +17,7 @@ public class CilindroMagico extends CartaTrampa {
 			input = new FileInputStream("resources/images/carta_CilindroMagico.png");
 		} catch (FileNotFoundException e) {
 		}
-        this.imagen = new Image(input);
+		this.imagen = new Image(input);
 	}
 
 }

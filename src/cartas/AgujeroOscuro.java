@@ -17,7 +17,7 @@ public class AgujeroOscuro extends CartaMagica {
 			input = new FileInputStream("resources/images/carta_AgujeroOscuro.png");
 		} catch (FileNotFoundException e) {
 		}
-        this.imagen = new Image(input);
+		this.imagen = new Image(input);
 	}
 
 }

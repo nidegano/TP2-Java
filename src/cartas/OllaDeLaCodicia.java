@@ -17,7 +17,7 @@ public class OllaDeLaCodicia extends CartaMagica {
 			input = new FileInputStream("resources/images/carta_OllaDeLaCodicia.png");
 		} catch (FileNotFoundException e) {
 		}
-        this.imagen = new Image(input);
+		this.imagen = new Image(input);
 	}
 
 }

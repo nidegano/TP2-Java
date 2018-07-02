@@ -2,13 +2,13 @@ package juego;
 
 import excepciones.NoSePuedeTomarMasCartasDelMazoException;
 
-public class FaseInicial implements Fase{
+public class FaseInicial implements Fase {
 
 	private int contador = 0;
 
 	@Override
 	public void tomoCartaDelMazo() {
-		if( contador >= 1 )
+		if (contador >= 1)
 			throw new NoSePuedeTomarMasCartasDelMazoException();
 		contador = contador + 1;
 	}

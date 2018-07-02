@@ -19,7 +19,7 @@ public class PiernaIzquierdaExodia extends Exodia {
 			input = new FileInputStream("resources/images/carta_PiernaIzquierdaExodia.png");
 		} catch (FileNotFoundException e) {
 		}
-        this.imagen = new Image(input);
+		this.imagen = new Image(input);
 	}
 
 	@Override

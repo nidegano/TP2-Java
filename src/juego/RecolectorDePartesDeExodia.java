@@ -80,11 +80,9 @@ public class RecolectorDePartesDeExodia {
 	}
 
 	private boolean tengoTodasLasPartesDeExodia() {
-		return this.lugarParaLaCabeza.hayCartas() &&
-				this.lugarParaElBrazoDerecho.hayCartas() &&
-				this.lugarParaElBrazoIzquierdo.hayCartas() &&
-				this.lugarParaLaPiernaDerecha.hayCartas() &&
-				this.lugarParaLaPiernaIzquierda.hayCartas();
+		return this.lugarParaLaCabeza.hayCartas() && this.lugarParaElBrazoDerecho.hayCartas()
+				&& this.lugarParaElBrazoIzquierdo.hayCartas() && this.lugarParaLaPiernaDerecha.hayCartas()
+				&& this.lugarParaLaPiernaIzquierda.hayCartas();
 	}
 
 	public void remover(Carta carta) {

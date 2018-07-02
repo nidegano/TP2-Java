@@ -8,7 +8,7 @@ public class FaseInicioDeJuego implements Fase {
 
 	@Override
 	public void tomoCartaDelMazo() {
-		if( contador >= 5 )
+		if (contador >= 5)
 			throw new NoSePuedeTomarMasCartasDelMazoException();
 		contador = contador + 1;
 	}

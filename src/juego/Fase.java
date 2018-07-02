@@ -10,5 +10,4 @@ public interface Fase {
 
 	boolean cambioDeTurno();
 
-
 }

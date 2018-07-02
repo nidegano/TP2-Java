@@ -29,15 +29,14 @@ public class Mano extends ContenedorDeCartas {
 		this.cartas.remove(carta);
 		recolectorDePartesDeExodia.remover(carta);
 	}
-	
+
 	public Carta obtenerCarta(int posicion) {
 		return this.cartas.get(posicion);
 	}
 
 	/*
-	public boolean tenesTodasLasPartesDeExodia() {
-		return recolectorDePartesDeExodia.tenesTodasLasPartesDelExodia();
-	}
-	*/
+	 * public boolean tenesTodasLasPartesDeExodia() { return
+	 * recolectorDePartesDeExodia.tenesTodasLasPartesDelExodia(); }
+	 */
 
 }

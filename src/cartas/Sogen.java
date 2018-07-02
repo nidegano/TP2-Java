@@ -17,7 +17,7 @@ public class Sogen extends CartaDeCampo {
 			input = new FileInputStream("resources/images/carta_Sogen.png");
 		} catch (FileNotFoundException e) {
 		}
-        this.imagen = new Image(input);
+		this.imagen = new Image(input);
 	}
 
 }

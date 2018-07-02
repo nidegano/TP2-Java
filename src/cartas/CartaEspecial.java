@@ -18,7 +18,7 @@ public abstract class CartaEspecial extends Carta {
 
 	@Override
 	public abstract void agregarEnCampo(Campo campo);
-	
+
 	@Override
 	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {
 	}
