@@ -34,8 +34,7 @@ public class Jugador {
 	}
 
 	public void tomarCartaDelMazo() {
-		fase.tomoCartaDelMazo();
-
+		this.fase.tomoCartaDelMazo();
 		Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
 		this.mano.agregar(unaCarta);
 	}
@@ -89,18 +88,20 @@ public class Jugador {
 	}
 
 	public void iniciarTurno() {
-		fase = new FaseInicial();
-
-		this.tomarCartaDelMazo();
-		juego.actualizar();
+		this.fase = new FaseInicial();
+		this.juego.actualizar();
 	}
 
 	public void siguienteFase() {
-		fase = fase.faseSiguiente();
+		this.fase = this.fase.faseSiguiente();
 	}
 
 	public Fase obtenerFase() {
-		return fase;
+		return this.fase;
+	}
+
+	public boolean puedeTomarCarta() {
+		return this.fase.puedeTomarCarta();
 	}
 
 }

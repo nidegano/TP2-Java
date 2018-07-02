@@ -8,14 +8,14 @@ public class FaseInicioDeJuego implements Fase {
 
 	@Override
 	public void tomoCartaDelMazo() {
-		if (contador >= 5)
+		if (this.contador >= 5)
 			throw new NoSePuedeTomarMasCartasDelMazoException();
-		contador = contador + 1;
+		this.contador = this.contador + 1;
 	}
 
 	@Override
 	public boolean finalizaste() {
-		return contador >= 5;
+		return this.contador >= 5;
 	}
 
 	@Override
@@ -25,6 +25,11 @@ public class FaseInicioDeJuego implements Fase {
 
 	@Override
 	public boolean cambioDeTurno() {
+		return false;
+	}
+
+	@Override
+	public boolean puedeTomarCarta() {
 		return false;
 	}
 

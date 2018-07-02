@@ -4,13 +4,10 @@ public class FasePreparacion implements Fase {
 
 	@Override
 	public void tomoCartaDelMazo() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public boolean finalizaste() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -21,6 +18,11 @@ public class FasePreparacion implements Fase {
 
 	@Override
 	public boolean cambioDeTurno() {
+		return false;
+	}
+
+	@Override
+	public boolean puedeTomarCarta() {
 		return false;
 	}
 

@@ -13,12 +13,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import juego.Juego;
 import juego.Jugador;
 
 public class Grilla extends Application {
 
 	private Jugador jugador1;
 	private Jugador jugador2;
+	private Juego juego;
 	private GridPane gridPane;
 	private ImageView imageView;
 	private HBox hbox;
@@ -41,10 +43,13 @@ public class Grilla extends Application {
 	private BotonAtacar botonAtacar;
 	private BotonCambioModoAtaque botonCambioModoAtaque;
 	private BotonCambioModoDefensa botonCambioModoDefensa;
+	private BotonFinalizarFase botonFinalizarFase;
 
-	public Grilla(Jugador jugador1, Jugador jugador2) throws Exception {
+	public Grilla(Jugador jugador1, Jugador jugador2, Juego juego) throws Exception {
 		this.jugador1 = jugador1;
 		this.jugador2 = jugador2;
+		
+		this.juego = juego;
 
 		this.gridPane = new GridPane();
 		this.gridPane.setHgap(10);
@@ -139,13 +144,8 @@ public class Grilla extends Application {
 		this.botonesCartasMonstruosJugador2.add(botonCartaMonstruo4Jugador2);
 		this.botonesCartasMonstruosJugador2.add(botonCartaMonstruo5Jugador2);
 
-		this.botonMazoJugador1 = new BotonMazo(this);
-		this.botonMazoJugador1.asignarMazo(this.jugador1.campo().mazo());
-		this.botonMazoJugador1.asignarMano(this.jugador1.obtenerMano());
-
-		this.botonMazoJugador2 = new BotonMazo(this);
-		this.botonMazoJugador2.asignarMazo(this.jugador2.campo().mazo());
-		this.botonMazoJugador2.asignarMano(this.jugador2.obtenerMano());
+		this.botonMazoJugador1 = new BotonMazo(jugador1, this);
+		this.botonMazoJugador2 = new BotonMazo(jugador2, this);
 
 		this.botonCementerioJugador1 = new BotonCementerio();
 		this.botonCementerioJugador2 = new BotonCementerio();
@@ -153,6 +153,7 @@ public class Grilla extends Application {
 		this.botonCampoJugador1 = new BotonCampo(this.imageView);
 		this.botonCampoJugador2 = new BotonCampo(this.imageView);
 
+		this.botonFinalizarFase = new BotonFinalizarFase(this.juego);
 		this.botonInvocar = new BotonInvocar();
 		this.botonSacrificar = new BotonSacrificar();
 		this.botonAtacar = new BotonAtacar();
@@ -226,6 +227,8 @@ public class Grilla extends Application {
 		this.gridPane.add(this.labelJugador2, 0, 12, 1, 1);
 
 		this.gridPane.add(this.hbox, 13, 6, 1, 1);
+		
+		this.gridPane.add(this.botonFinalizarFase, 13, 5, 1, 1);
 
 		this.gridPane.add(this.botonInvocar, 13, 7, 1, 1);
 		this.gridPane.add(this.botonSacrificar, 13, 8, 1, 1);
@@ -237,6 +240,17 @@ public class Grilla extends Application {
 	}
 
 	private void asignarMano() {
+		for (int i = 0; i < this.jugador1.cantidadDeCartasEnMano(); i++) {
+			BotonMano unBoton = this.botonesManoJugador1.get(i);
+			unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i), this);
+		}
+		for (int i = 0; i < this.jugador2.cantidadDeCartasEnMano(); i++) {
+			BotonMano unBoton = this.botonesManoJugador2.get(i);
+			unBoton.asignarCarta(this.jugador2.obtenerMano().obtenerCarta(i), this);
+		}
+	}
+	
+	public void actualizarGrillaPorTomarCartaDelMazo() {
 		for (int i = 0; i < this.jugador1.cantidadDeCartasEnMano(); i++) {
 			BotonMano unBoton = this.botonesManoJugador1.get(i);
 			unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i), this);
@@ -271,6 +285,7 @@ public class Grilla extends Application {
 		this.botonInvocar.setVisible(false);
 		this.botonSacrificar.setVisible(false);
 
+		
 		BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador1);
 		unBotonMano.limpiar();
 
@@ -286,17 +301,6 @@ public class Grilla extends Application {
 				return unBoton;
 		}
 		return null;
-	}
-
-	public void actualizarGrillaPorTomarCartaDelMazo() {
-		for (int i = 0; i < this.jugador1.cantidadDeCartasEnMano(); i++) {
-			BotonMano unBoton = this.botonesManoJugador1.get(i);
-			unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i), this);
-		}
-		for (int i = 0; i < this.jugador2.cantidadDeCartasEnMano(); i++) {
-			BotonMano unBoton = this.botonesManoJugador2.get(i);
-			unBoton.asignarCarta(this.jugador2.obtenerMano().obtenerCarta(i), this);
-		}
 	}
 
 }

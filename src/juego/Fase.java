@@ -2,12 +2,14 @@ package juego;
 
 public interface Fase {
 
-	void tomoCartaDelMazo();
+	public abstract void tomoCartaDelMazo();
 
-	boolean finalizaste();
+	public abstract boolean finalizaste();
 
-	Fase faseSiguiente();
+	public abstract Fase faseSiguiente();
 
-	boolean cambioDeTurno();
+	public abstract boolean cambioDeTurno();
+
+	public abstract boolean puedeTomarCarta();
 
 }
