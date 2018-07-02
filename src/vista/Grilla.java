@@ -3,10 +3,7 @@ package vista;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
-import org.hamcrest.core.IsInstanceOf;
-
 import cartas.Carta;
-import cartas.CartaRequiereSacrificios;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,7 +16,7 @@ import javafx.stage.Stage;
 import juego.Jugador;
 
 public class Grilla extends Application {
-	
+
 	private Jugador jugador1;
 	private Jugador jugador2;
 	private GridPane gridPane;
@@ -41,27 +38,26 @@ public class Grilla extends Application {
 	private BotonCampo botonCampoJugador2;
 	private BotonInvocar botonInvocar;
 	private BotonSacrificar botonSacrificar;
-	private BotonAtacar	botonAtacar;
+	private BotonAtacar botonAtacar;
 	private BotonCambioModoAtaque botonCambioModoAtaque;
 	private BotonCambioModoDefensa botonCambioModoDefensa;
-	
-	
+
 	public Grilla(Jugador jugador1, Jugador jugador2) throws Exception {
 		this.jugador1 = jugador1;
 		this.jugador2 = jugador2;
-		
+
 		this.gridPane = new GridPane();
 		this.gridPane.setHgap(10);
 		this.gridPane.setVgap(10);
 		this.gridPane.setAlignment(Pos.CENTER);
 
 		FileInputStream input = new FileInputStream("resources/images/carta_dorso.png");
-        Image image = new Image(input);
-        this.imageView = new ImageView(image);
-        this.hbox = new HBox(this.imageView);
-        
-        this.labelJugador1 = new Label("JUGADOR 1");
-        this.labelJugador2 = new Label("JUGADOR 2");
+		Image image = new Image(input);
+		this.imageView = new ImageView(image);
+		this.hbox = new HBox(this.imageView);
+
+		this.labelJugador1 = new Label("JUGADOR 1");
+		this.labelJugador2 = new Label("JUGADOR 2");
 
 		this.botonesManoJugador1 = new ArrayList<BotonMano>();
 		BotonMano botonMano1Jugador1 = new BotonMano(this.imageView);
@@ -106,7 +102,7 @@ public class Grilla extends Application {
 		this.botonesCartasEspecialesJugador1.add(botonCartaEspecial3Jugador1);
 		this.botonesCartasEspecialesJugador1.add(botonCartaEspecial4Jugador1);
 		this.botonesCartasEspecialesJugador1.add(botonCartaEspecial5Jugador1);
-		
+
 		this.botonesCartasEspecialesJugador2 = new ArrayList<BotonCartaEspecial>();
 		BotonCartaEspecial botonCartaEspecial1Jugador2 = new BotonCartaEspecial("Especial 1", this.imageView);
 		BotonCartaEspecial botonCartaEspecial2Jugador2 = new BotonCartaEspecial("Especial 2", this.imageView);
@@ -130,7 +126,7 @@ public class Grilla extends Application {
 		this.botonesCartasMonstruosJugador1.add(botonCartaMonstruo3Jugador1);
 		this.botonesCartasMonstruosJugador1.add(botonCartaMonstruo4Jugador1);
 		this.botonesCartasMonstruosJugador1.add(botonCartaMonstruo5Jugador1);
-		
+
 		this.botonesCartasMonstruosJugador2 = new ArrayList<BotonCartaMonstruo>();
 		BotonCartaMonstruo botonCartaMonstruo1Jugador2 = new BotonCartaMonstruo("Monstruo 1", this.imageView);
 		BotonCartaMonstruo botonCartaMonstruo2Jugador2 = new BotonCartaMonstruo("Monstruo 2", this.imageView);
@@ -142,9 +138,9 @@ public class Grilla extends Application {
 		this.botonesCartasMonstruosJugador2.add(botonCartaMonstruo3Jugador2);
 		this.botonesCartasMonstruosJugador2.add(botonCartaMonstruo4Jugador2);
 		this.botonesCartasMonstruosJugador2.add(botonCartaMonstruo5Jugador2);
-	
-        this.botonMazoJugador1 = new BotonMazo();
-        this.botonMazoJugador2 = new BotonMazo();
+
+		this.botonMazoJugador1 = new BotonMazo();
+		this.botonMazoJugador2 = new BotonMazo();
 
 		this.botonCementerioJugador1 = new BotonCementerio();
 		this.botonCementerioJugador2 = new BotonCementerio();
@@ -157,10 +153,10 @@ public class Grilla extends Application {
 		this.botonAtacar = new BotonAtacar();
 		this.botonCambioModoAtaque = new BotonCambioModoAtaque();
 		this.botonCambioModoDefensa = new BotonCambioModoDefensa();
-		
+
 		this.agregarBotonesALaGrilla();
 	}
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Al-Go-Oh!");
@@ -174,7 +170,7 @@ public class Grilla extends Application {
 	}
 
 	private void agregarBotonesALaGrilla() {
-		//JUGADOR 1
+		// JUGADOR 1
 		this.gridPane.add(this.botonMazoJugador1, 1, 1, 1, 1);
 		this.gridPane.add(this.botonCementerioJugador1, 1, 5, 1, 1);
 		this.gridPane.add(this.botonCampoJugador1, 9, 5, 1, 1);
@@ -182,44 +178,44 @@ public class Grilla extends Application {
 		int i = 2;
 		for (BotonMano unBoton : this.botonesManoJugador1) {
 			this.gridPane.add(unBoton, i, 2, 1, 1);
-			i ++;
+			i++;
 		}
-		
+
 		i = 3;
 		for (BotonCartaEspecial unBoton : this.botonesCartasEspecialesJugador1) {
 			this.gridPane.add(unBoton, i, 3, 1, 1);
-			i ++;
+			i++;
 		}
-	
+
 		i = 3;
 		for (BotonCartaMonstruo unBoton : this.botonesCartasMonstruosJugador1) {
 			this.gridPane.add(unBoton, i, 4, 1, 1);
-			i ++;
+			i++;
 		}
 
-		//JUGADOR 2
+		// JUGADOR 2
 		this.gridPane.add(this.botonMazoJugador2, 9, 11, 1, 1);
 		this.gridPane.add(this.botonCementerioJugador2, 9, 7, 1, 1);
 		this.gridPane.add(this.botonCampoJugador2, 1, 7, 1, 1);
-		
+
 		i = 2;
 		for (BotonMano unBoton : this.botonesManoJugador2) {
 			this.gridPane.add(unBoton, i, 10, 1, 1);
-			i ++;
+			i++;
 		}
 
 		i = 3;
 		for (BotonCartaEspecial unBoton : this.botonesCartasEspecialesJugador2) {
 			this.gridPane.add(unBoton, i, 9, 1, 1);
-			i ++;
+			i++;
 		}
-		
+
 		i = 3;
 		for (BotonCartaMonstruo unBoton : this.botonesCartasMonstruosJugador2) {
 			this.gridPane.add(unBoton, i, 8, 1, 1);
-			i ++;
+			i++;
 		}
-		
+
 		// PANEL DE ACCION
 		this.gridPane.add(this.labelJugador1, 0, 0, 1, 1);
 		this.gridPane.add(this.labelJugador2, 0, 12, 1, 1);
@@ -236,26 +232,26 @@ public class Grilla extends Application {
 	}
 
 	private void asignarMano() {
-		
-		for (int i = 0 ; i < this.jugador1.cantidadDeCartasEnMano(); i++) {
+
+		for (int i = 0; i < this.jugador1.cantidadDeCartasEnMano(); i++) {
 			BotonMano unBoton = this.botonesManoJugador1.get(i);
 			unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i), this);
 		}
-		for (int i = 0 ; i < this.jugador2.cantidadDeCartasEnMano(); i++) {
+		for (int i = 0; i < this.jugador2.cantidadDeCartasEnMano(); i++) {
 			BotonMano unBoton = this.botonesManoJugador2.get(i);
 			unBoton.asignarCarta(this.jugador2.obtenerMano().obtenerCarta(i), this);
 		}
 	}
 
 	public void actualizarGrillaPorSeleccionDeCartaDeMano(Carta unaCarta) {
-		this.botonInvocar.setVisible(true);		
+		this.botonInvocar.setVisible(true);
 		this.botonSacrificar.setVisible(true);
 		this.botonAtacar.setVisible(false);
 		this.botonCambioModoAtaque.setVisible(false);
 		this.botonCambioModoDefensa.setVisible(false);
 		this.botonInvocar.asignarCarta(unaCarta, this);
 	}
-	
+
 	public void actualizarGrillaPorSeleccionDeCartaMonstruo() {
 		this.botonAtacar.setVisible(true);
 		this.botonCambioModoAtaque.setVisible(true);
@@ -270,8 +266,8 @@ public class Grilla extends Application {
 		this.botonCambioModoDefensa.setVisible(false);
 		this.botonInvocar.setVisible(false);
 		this.botonSacrificar.setVisible(false);
-		
-		BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta,this.botonesManoJugador1);
+
+		BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.botonesManoJugador1);
 		unBotonMano.limpiar();
 
 		// Tiene que ser un this.botonesCartasMonstruoJugadorX.obtenerBotonLibre()

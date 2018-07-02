@@ -34,6 +34,7 @@ public class Mazo extends ContenedorDeCartas {
 		this.agregar(new Reinforcements());
 		this.agregar(new Sogen());
 		this.agregar(new Wasteland());
+		
 	}
 
 }

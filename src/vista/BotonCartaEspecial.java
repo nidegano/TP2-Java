@@ -10,7 +10,9 @@ public class BotonCartaEspecial extends Button {
 
 	public BotonCartaEspecial(String texto, ImageView imageView) {
 		super(texto);
-		this.setMaxSize(100, 200);
+		this.setMaxSize(100, 25);
+		this.setMinSize(100, 25);
+		this.setDisable(true);
 		this.setOnAction(value -> {
 			imageView.setImage(this.carta.obtenerImagen());
 		});
@@ -19,6 +21,7 @@ public class BotonCartaEspecial extends Button {
 	public void asignarCarta(Carta unaCarta) {
 		this.carta = unaCarta;
 		this.setText(unaCarta.obtenerNombre());
+		this.setDisable(false);
 	}
 
 }
