@@ -1,9 +1,10 @@
 
-package vista;
+package v;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
 import juego.*;
+import vista.Grilla;
 
 public class Algooh extends Application {
 
@@ -15,21 +16,22 @@ public class Algooh extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		// INICIALIZACION DEL JUEGO
-		Mazo mazoJugador1 = new Mazo();
-		Mazo mazoJugador2 = new Mazo();
-		mazoJugador1.generarCartas();
-		mazoJugador2.generarCartas();
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		mazoJugadorA.generarCartas();
+		mazoJugadorB.generarCartas();
 
-		Campo campoJugador1 = new Campo(mazoJugador1);
-		Campo campoJugador2 = new Campo(mazoJugador2);
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		Jugador jugador1 = new Jugador(campoJugador1);
-		Jugador jugador2 = new Jugador(campoJugador2);
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
 
-		Juego juego = new Juego(jugador1, jugador2);
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new Vista(jugadorA,jugadorB,juego);
 
-		Grilla grilla = new Grilla(jugador1, jugador2, juego);
-		grilla.start(primaryStage);
+		vista.start(primaryStage);
 
 	}
 

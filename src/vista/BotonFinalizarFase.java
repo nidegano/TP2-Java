@@ -5,7 +5,7 @@ import juego.Juego;
 
 public class BotonFinalizarFase extends Button {
 
-	public BotonFinalizarFase(Juego juego, Grilla unaGrilla) {
+	public BotonFinalizarFase(Juego juego) {
 		super("Finalizar fase");
 		this.setMaxSize(200, 200);
 		this.setVisible(true);
