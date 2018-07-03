@@ -1,5 +1,7 @@
 package v;
 
+import cartas.Carta;
+import cartas.CartaNula;
 import juego.Juego;
 import juego.JugadorA;
 import juego.JugadorB;
@@ -16,6 +18,8 @@ public class Vista {
 	private PanelDeAccion panelDeAccion;
 	private TextoDisplay textoDisplay;
 	
+	private Carta cartaSeleccionada;
+	
 	public Vista(JugadorA jugadorA, JugadorB jugadorB, Juego juego) throws Exception {
 		
 		this.juego = juego;
@@ -26,6 +30,17 @@ public class Vista {
 		this.vistaCampoJugadores = new VistaCampoJugadores(grilla);
 		this.panelDeAccion = new PanelDeAccion(grilla);
 		this.textoDisplay = new TextoDisplay();
+		
+		this.cartaSeleccionada = new CartaNula();
+	}
+
+	public void avisarDeLaSeleccionDeUnaVistaDeCarta(Carta carta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Carta obtenerCartaSeleccionada() {
+		return this.cartaSeleccionada;
 	}
 
 }

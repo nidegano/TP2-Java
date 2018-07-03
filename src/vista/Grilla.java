@@ -1,19 +1,17 @@
 package vista;
 
 import java.io.FileInputStream;
-
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import cartas.Carta;
-import cartas.CartaDeCampo;
-import cartas.CartaEspecial;
-import cartas.CartaMagica;
-import cartas.CartaMonstruo;
-import cartas.CartaTrampa;
+import botones.VistaCarta;
+import botones.VistaCartaDeCampo;
+import botones.VistaCartaEspecial;
+import botones.VistaCartaMano;
+import botones.VistaCartaMonstruo;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -54,16 +52,16 @@ public class Grilla extends Application {
 	private Label labelDeFase;
 	
 	//Collections de botones similares de VistaCampoJugadores
-	private ArrayList<BotonMano> vistaCartaManoJugadorA;
-	private ArrayList<BotonMano> vistaCartaManoJugadorB;
-	private ArrayList<BotonCartaEspecial> vistaCartaEspecialesJugadorA;
-	private ArrayList<BotonCartaEspecial> vistaCartaEspecialesJugadorB;
-	private ArrayList<BotonCartaMonstruo> vistaCartaMonstruosJugadorA;
-	private ArrayList<BotonCartaMonstruo> vistaCartaMonstruosJugadorB;
+	private ArrayList<VistaCartaMano> vistaCartaManoJugadorA;
+	private ArrayList<VistaCartaMano> vistaCartaManoJugadorB;
+	private ArrayList<VistaCartaEspecial> vistaCartaEspecialesJugadorA;
+	private ArrayList<VistaCartaEspecial> vistaCartaEspecialesJugadorB;
+	private ArrayList<VistaCartaMonstruo> vistaCartaMonstruosJugadorA;
+	private ArrayList<VistaCartaMonstruo> vistaCartaMonstruosJugadorB;
 	
 	//Botones Cartas de Campo
-	private BotonCampo vistaCartaDeCampoJugadorA;
-	private BotonCampo vistaCartaDeCampoJugadorB;
+	private VistaCartaDeCampo vistaCartaDeCampoJugadorA;
+	private VistaCartaDeCampo vistaCartaDeCampoJugadorB;
 	
 	//Botones Mazo
 	private BotonMazo botonMazoJugadorA;
@@ -97,7 +95,7 @@ public class Grilla extends Application {
 	private Atacar opcionAtacar;
 	private Descartar opcionDescartar;
 
-	public Grilla(Jugador jugador1, Jugador jugador2, Juego juego,Vista vista) throws Exception {
+	public Grilla(JugadorA jugadorA, JugadorB jugadorB, Juego juego,Vista vista) throws Exception {
 
 		this.inicializarGridPane();
 		
@@ -107,11 +105,11 @@ public class Grilla extends Application {
 		
 		this.inicializarVistasCartaDeVistaCampoJugadores(vista);
 
-		this.vistaCartaDeCampoJugadorA = new BotonCampo("Campo", this.imagenPredeterminada);
-		this.vistaCartaDeCampoJugadorB = new BotonCampo("Campo", this.imagenPredeterminada);
+		this.vistaCartaDeCampoJugadorA = new VistaCartaDeCampo(vista);
+		this.vistaCartaDeCampoJugadorB = new VistaCartaDeCampo(vista);
 
-		this.botonMazoJugadorA = new BotonMazo(jugador1, this);
-		this.botonMazoJugadorB = new BotonMazo(jugador2, this);
+		this.botonMazoJugadorA = new BotonMazo(jugadorA);
+		this.botonMazoJugadorB = new BotonMazo(jugadorB);
 
 		this.botonCementerioJugadorA = new BotonCementerio();
 		this.botonCementerioJugadorB = new BotonCementerio();
@@ -119,115 +117,102 @@ public class Grilla extends Application {
 		this.botonDeFinalizarFase = new BotonFinalizarFase(juego);
 		this.botonDeListo = new BotonListo(vista);
 
-		this.inicializarOpciones();
+		this.inicializarOpciones(vista);
 
 		this.agregarBotonesALaGrilla();
 	}
 
-	private void inicializarOpciones() {
-		this.opcionAtacar = new BotonAtacar();
-		this.botonCambioModoAtaque = new BotonCambioModoAtaque();
-		this.opcionCambiarAModoDefensa = new BotonCambioModoDefensa();
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		primaryStage.setTitle("Al-Go-Oh!");
+		Scene scene = new Scene(this.gridPane, 1200, 1200);
+		primaryStage.setFullScreen(true);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
 
-		this.opcionInvocarEnModoAtaque = new BotonInvocarEnModoAtaque();
-		this.opcionInvocarEnModoDefensa = new BotonInvocarEnModoDefensa();
-		this.opcionInvocarEnModoDefensaBocaAbajo = new BotonInvocarEnModoDefensaBocaAbajo();
-		this.opcionColocarBocaAbajo = new BotonColocarBocaAbajo();
-		this.opcionColocarBocaArriba = new BotonColocarBocaArriba();
-		this.opcionColocarCartaDeCampo = new BotonColocarCartaDeCampo();
+	private void inicializarOpciones(Vista vista) {
 		
+		this.opcionCambiarAModoAtaque = new CambiarModoAtaque(vista);
+		this.opcionCambiarAModoDefensa = new CambiarAModoDefensa(vista);
+		this.opcionCambiarAModoDefensaBocaAbajo = new CambiarAModoDefensaBocaAbajo(vista);
+		
+		this.opcionColocarBocaAbajo = new ColocarBocaAbajo(vista);
+		this.opcionColocarBocaArriba = new ColocarBocaArriba(vista);
+		this.opcionColocarCartaDeCampo = new ColocarCartaDeCampo(vista);
+		
+		this.opcionInvocarEnModoAtaque = new InvocarEnModoAtaque(vista);
+		this.opcionInvocarEnModoDefensa = new InvocarEnModoDefensa(vista);
+		this.opcionInvocarEnModoDefensaBocaAbajo = new InvocarEnModoDefensaBocaAbajo(vista);
+		
+		this.opcionInvocarEnModoAtaqueConSacrificio = new InvocarEnModoAtaqueConSacrificio(vista);
+		this.opcionInvocarEnModoDefensaConSacrificio = new BotonInvocarEnModoDefensaConSacrificio(vista);
+		this.opcionInvocarEnModoDefensaBocaAbajoConSacrificio = new BotonInvocarEnModoDefensaBocaAbajoConSacrificio(vista);	
+		
+		this.opcionAtacar = new Atacar(vista);
+		this.opcionDescartar = new Descartar(vista);
 	}
 
 	private void inicializarVistasCartaDeVistaCampoJugadores(Vista vista) {
-		this.vistaCartaManoJugadorA = new ArrayList<BotonMano>();
-		BotonMano botonMano1Jugador1 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano2Jugador1 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano3Jugador1 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano4Jugador1 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano5Jugador1 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano6Jugador1 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano7Jugador1 = new BotonMano(this.imagenPredeterminada);
-		this.vistaCartaManoJugadorA.add(botonMano1Jugador1);
-		this.vistaCartaManoJugadorA.add(botonMano2Jugador1);
-		this.vistaCartaManoJugadorA.add(botonMano3Jugador1);
-		this.vistaCartaManoJugadorA.add(botonMano4Jugador1);
-		this.vistaCartaManoJugadorA.add(botonMano5Jugador1);
-		this.vistaCartaManoJugadorA.add(botonMano6Jugador1);
-		this.vistaCartaManoJugadorA.add(botonMano7Jugador1);
+		
+		//Se inicializa la collection de "slots" (Vistas) que se corresponden con la mano
+		this.vistaCartaManoJugadorA = new ArrayList<VistaCartaMano>();		
+		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
 
-		this.vistaCartaManoJugadorB = new ArrayList<BotonMano>();
-		BotonMano botonMano1Jugador2 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano2Jugador2 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano3Jugador2 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano4Jugador2 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano5Jugador2 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano6Jugador2 = new BotonMano(this.imagenPredeterminada);
-		BotonMano botonMano7Jugador2 = new BotonMano(this.imagenPredeterminada);
-		this.vistaCartaManoJugadorB.add(botonMano1Jugador2);
-		this.vistaCartaManoJugadorB.add(botonMano2Jugador2);
-		this.vistaCartaManoJugadorB.add(botonMano3Jugador2);
-		this.vistaCartaManoJugadorB.add(botonMano4Jugador2);
-		this.vistaCartaManoJugadorB.add(botonMano5Jugador2);
-		this.vistaCartaManoJugadorB.add(botonMano6Jugador2);
-		this.vistaCartaManoJugadorB.add(botonMano7Jugador2);
+		this.vistaCartaManoJugadorB = new ArrayList<VistaCartaMano>();		
+		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
 
-		this.vistaCartaEspecialesJugadorA = new ArrayList<BotonCartaEspecial>();
-		BotonCartaEspecial botonCartaEspecial1Jugador1 = new BotonCartaEspecial("Especial 1", this.imagenPredeterminada);
-		BotonCartaEspecial botonCartaEspecial2Jugador1 = new BotonCartaEspecial("Especial 2", this.imagenPredeterminada);
-		BotonCartaEspecial botonCartaEspecial3Jugador1 = new BotonCartaEspecial("Especial 3", this.imagenPredeterminada);
-		BotonCartaEspecial botonCartaEspecial4Jugador1 = new BotonCartaEspecial("Especial 4", this.imagenPredeterminada);
-		BotonCartaEspecial botonCartaEspecial5Jugador1 = new BotonCartaEspecial("Especial 5", this.imagenPredeterminada);
-		this.vistaCartaEspecialesJugadorA.add(botonCartaEspecial1Jugador1);
-		this.vistaCartaEspecialesJugadorA.add(botonCartaEspecial2Jugador1);
-		this.vistaCartaEspecialesJugadorA.add(botonCartaEspecial3Jugador1);
-		this.vistaCartaEspecialesJugadorA.add(botonCartaEspecial4Jugador1);
-		this.vistaCartaEspecialesJugadorA.add(botonCartaEspecial5Jugador1);
+		//Se inicializa la collection de "slots" (Vistas) que se corresponden con la zona de cartas especiales
+		this.vistaCartaEspecialesJugadorA = new ArrayList<VistaCartaEspecial>();
+		this.vistaCartaEspecialesJugadorA.add(new VistaCartaEspecial(vista));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCartaEspecial(vista));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCartaEspecial(vista));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCartaEspecial(vista));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCartaEspecial(vista));
 
-		this.vistaCartaEspecialesJugadorB = new ArrayList<BotonCartaEspecial>();
-		BotonCartaEspecial botonCartaEspecial1Jugador2 = new BotonCartaEspecial("Especial 1", this.imagenPredeterminada);
-		BotonCartaEspecial botonCartaEspecial2Jugador2 = new BotonCartaEspecial("Especial 2", this.imagenPredeterminada);
-		BotonCartaEspecial botonCartaEspecial3Jugador2 = new BotonCartaEspecial("Especial 3", this.imagenPredeterminada);
-		BotonCartaEspecial botonCartaEspecial4Jugador2 = new BotonCartaEspecial("Especial 4", this.imagenPredeterminada);
-		BotonCartaEspecial botonCartaEspecial5Jugador2 = new BotonCartaEspecial("Especial 5", this.imagenPredeterminada);
-		this.vistaCartaEspecialesJugadorB.add(botonCartaEspecial1Jugador2);
-		this.vistaCartaEspecialesJugadorB.add(botonCartaEspecial2Jugador2);
-		this.vistaCartaEspecialesJugadorB.add(botonCartaEspecial3Jugador2);
-		this.vistaCartaEspecialesJugadorB.add(botonCartaEspecial4Jugador2);
-		this.vistaCartaEspecialesJugadorB.add(botonCartaEspecial5Jugador2);
+		this.vistaCartaEspecialesJugadorB = new ArrayList<VistaCartaEspecial>();
+		this.vistaCartaEspecialesJugadorB.add(new VistaCartaEspecial(vista));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCartaEspecial(vista));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCartaEspecial(vista));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCartaEspecial(vista));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCartaEspecial(vista));
 
-		this.vistaCartaMonstruosJugadorA = new ArrayList<BotonCartaMonstruo>();
-		BotonCartaMonstruo botonCartaMonstruo1Jugador1 = new BotonCartaMonstruo("Monstruo 1", this.imagenPredeterminada);
-		BotonCartaMonstruo botonCartaMonstruo2Jugador1 = new BotonCartaMonstruo("Monstruo 2", this.imagenPredeterminada);
-		BotonCartaMonstruo botonCartaMonstruo3Jugador1 = new BotonCartaMonstruo("Monstruo 3", this.imagenPredeterminada);
-		BotonCartaMonstruo botonCartaMonstruo4Jugador1 = new BotonCartaMonstruo("Monstruo 4", this.imagenPredeterminada);
-		BotonCartaMonstruo botonCartaMonstruo5Jugador1 = new BotonCartaMonstruo("Monstruo 5", this.imagenPredeterminada);
-		this.vistaCartaMonstruosJugadorA.add(botonCartaMonstruo1Jugador1);
-		this.vistaCartaMonstruosJugadorA.add(botonCartaMonstruo2Jugador1);
-		this.vistaCartaMonstruosJugadorA.add(botonCartaMonstruo3Jugador1);
-		this.vistaCartaMonstruosJugadorA.add(botonCartaMonstruo4Jugador1);
-		this.vistaCartaMonstruosJugadorA.add(botonCartaMonstruo5Jugador1);
+		//Se inicializa la collection de "slots" (Vistas) que se corresponden con la zona de cartas monstruo
+		this.vistaCartaMonstruosJugadorA = new ArrayList<VistaCartaMonstruo>();
+		this.vistaCartaMonstruosJugadorA.add(new VistaCartaMonstruo(vista));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCartaMonstruo(vista));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCartaMonstruo(vista));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCartaMonstruo(vista));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCartaMonstruo(vista));
 
-		this.vistaCartaMonstruosJugadorB = new ArrayList<BotonCartaMonstruo>();
-		BotonCartaMonstruo botonCartaMonstruo1Jugador2 = new BotonCartaMonstruo("Monstruo 1", this.imagenPredeterminada);
-		BotonCartaMonstruo botonCartaMonstruo2Jugador2 = new BotonCartaMonstruo("Monstruo 2", this.imagenPredeterminada);
-		BotonCartaMonstruo botonCartaMonstruo3Jugador2 = new BotonCartaMonstruo("Monstruo 3", this.imagenPredeterminada);
-		BotonCartaMonstruo botonCartaMonstruo4Jugador2 = new BotonCartaMonstruo("Monstruo 4", this.imagenPredeterminada);
-		BotonCartaMonstruo botonCartaMonstruo5Jugador2 = new BotonCartaMonstruo("Monstruo 5", this.imagenPredeterminada);
-		this.vistaCartaMonstruosJugadorB.add(botonCartaMonstruo1Jugador2);
-		this.vistaCartaMonstruosJugadorB.add(botonCartaMonstruo2Jugador2);
-		this.vistaCartaMonstruosJugadorB.add(botonCartaMonstruo3Jugador2);
-		this.vistaCartaMonstruosJugadorB.add(botonCartaMonstruo4Jugador2);
-		this.vistaCartaMonstruosJugadorB.add(botonCartaMonstruo5Jugador2);		
+		this.vistaCartaMonstruosJugadorB = new ArrayList<VistaCartaMonstruo>();
+		this.vistaCartaMonstruosJugadorB.add(new VistaCartaMonstruo(vista));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCartaMonstruo(vista));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCartaMonstruo(vista));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCartaMonstruo(vista));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCartaMonstruo(vista));	
 	}
 
 	private void inicializarLabels() {
-		this.labelDeJugadorA = new Label("JUGADOR 1");
-		this.labelDeJugadorB = new Label("JUGADOR 2");
+		this.labelDeJugadorA = new Label("JUGADOR A");
+		this.labelDeJugadorB = new Label("JUGADOR B");
 		this.labelDeTurno = new Label("");
 		this.labelDeFase = new Label("");		
 	}
 
-	private void inicializarSoporteParaImagenDeCartaSeleccionada() {
+	private void inicializarSoporteParaImagenDeCartaSeleccionada() throws FileNotFoundException {
 		FileInputStream input = new FileInputStream("resources/images/carta_dorso.png");
 		Image image = new Image(input);
 		this.imagenPredeterminada = new ImageView(image);
@@ -241,18 +226,6 @@ public class Grilla extends Application {
 		this.gridPane.setAlignment(Pos.CENTER);		
 	}
 
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("Al-Go-Oh!");
-
-		this.asignarMano();
-
-		Scene scene = new Scene(this.gridPane, 1200, 1200);
-		// primaryStage.setFullScreen(true);
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
-
 	private void agregarBotonesALaGrilla() {
 		// JUGADOR 1
 		this.gridPane.add(this.botonMazoJugadorA, 1, 1, 1, 1);
@@ -260,20 +233,20 @@ public class Grilla extends Application {
 		this.gridPane.add(this.vistaCartaDeCampoJugadorA, 9, 5, 1, 1);
 
 		int i = 2;
-		for (BotonMano unBoton : this.vistaCartaManoJugadorA) {
-			this.gridPane.add(unBoton, i, 2, 1, 1);
+		for (VistaCarta unSlot : this.vistaCartaManoJugadorA) {
+			this.gridPane.add(unSlot, i, 2, 1, 1);
 			i++;
 		}
 
 		i = 3;
-		for (BotonCartaEspecial unBoton : this.vistaCartaEspecialesJugadorA) {
-			this.gridPane.add(unBoton, i, 3, 1, 1);
+		for (VistaCartaEspecial unSlot : this.vistaCartaEspecialesJugadorA) {
+			this.gridPane.add(unSlot, i, 3, 1, 1);
 			i++;
 		}
 
 		i = 3;
-		for (BotonCartaMonstruo unBoton : this.vistaCartaMonstruosJugadorA) {
-			this.gridPane.add(unBoton, i, 4, 1, 1);
+		for (VistaCartaMonstruo unSlot : this.vistaCartaMonstruosJugadorA) {
+			this.gridPane.add(unSlot, i, 4, 1, 1);
 			i++;
 		}
 
@@ -283,53 +256,54 @@ public class Grilla extends Application {
 		this.gridPane.add(this.vistaCartaDeCampoJugadorB, 1, 7, 1, 1);
 
 		i = 2;
-		for (BotonMano unBoton : this.vistaCartaManoJugadorB) {
-			this.gridPane.add(unBoton, i, 10, 1, 1);
+		for (VistaCarta unSlot : this.vistaCartaManoJugadorB) {
+			this.gridPane.add(unSlot, i, 10, 1, 1);
 			i++;
 		}
 
 		i = 3;
-		for (BotonCartaEspecial unBoton : this.vistaCartaEspecialesJugadorB) {
-			this.gridPane.add(unBoton, i, 9, 1, 1);
+		for (VistaCartaEspecial unSlot : this.vistaCartaEspecialesJugadorB) {
+			this.gridPane.add(unSlot, i, 9, 1, 1);
 			i++;
 		}
 
 		i = 3;
-		for (BotonCartaMonstruo unBoton : this.vistaCartaMonstruosJugadorB) {
-			this.gridPane.add(unBoton, i, 8, 1, 1);
+		for (VistaCartaMonstruo unSlot : this.vistaCartaMonstruosJugadorB) {
+			this.gridPane.add(unSlot, i, 8, 1, 1);
 			i++;
 		}
-
-		// PANEL DE ACCION
+		
+		//ESTRUCTURA DEL PANEL DE ACCION
 		this.gridPane.add(this.labelDeJugadorA, 0, 0, 1, 1);
 		this.gridPane.add(this.labelDeJugadorB, 0, 12, 1, 1);
 		this.gridPane.add(this.labelDeTurno, 13, 3, 1, 1);
 		this.gridPane.add(this.labelDeFase, 13, 4, 1, 1);
 
-		this.gridPane.add(this.hbox, 13, 6, 1, 1);
-
+		this.gridPane.add(this.marcoDeLaImagen, 13, 6, 1, 1);
 		this.gridPane.add(this.botonDeFinalizarFase, 13, 5, 1, 1);
-
-		// this.gridPane.add(this.botonInvocar, 13, 7, 1, 1);
-		// this.gridPane.add(this.botonSacrificar, 13, 8, 1, 1);
-
+		this.gridPane.add(this.botonDeListo, 13, 5,1,1);
+		
+		//OPCIONES
+		this.gridPane.add(this.opcionCambiarAModoAtaque, 13, 7, 1, 1);
+		this.gridPane.add(this.opcionCambiarAModoDefensa, 13, 8, 1, 1);
+		this.gridPane.add(this.opcionCambiarAModoDefensaBocaAbajo, 13, 9, 1, 1);
+		
+		this.gridPane.add(this.opcionColocarBocaAbajo, 13, 7, 1, 1);
+		this.gridPane.add(this.opcionColocarBocaArriba, 13, 7, 1, 1);
+		this.gridPane.add(this.opcionColocarCartaDeCampo, 13, 7, 1, 1);
+		
 		this.gridPane.add(this.opcionInvocarEnModoAtaque, 13, 7, 1, 1);
 		this.gridPane.add(this.opcionInvocarEnModoDefensa, 13, 8, 1, 1);
 		this.gridPane.add(this.opcionInvocarEnModoDefensaBocaAbajo, 13, 9, 1, 1);
-
-		this.gridPane.add(this.opcionColocarBocaAbajo, 13, 7, 1, 1);
-		this.gridPane.add(this.opcionColocarBocaArriba, 13, 8, 1, 1);
-
-		this.gridPane.add(this.opcionColocarCartaDeCampo, 13, 7, 1, 1);
-
+		
+		this.gridPane.add(this.opcionInvocarEnModoAtaqueConSacrificio, 13, 7, 1, 1);
+		this.gridPane.add(this.opcionInvocarEnModoDefensaConSacrificio, 13, 8, 1, 1);
+		this.gridPane.add(this.opcionInvocarEnModoDefensaBocaAbajoConSacrificio, 13, 9, 1, 1);	
+		
 		this.gridPane.add(this.opcionAtacar, 13, 7, 1, 1);
-		// this.gridPane.add(this.botonCambioModoAtaque, 13, 14, 1, 1);
-		// this.gridPane.add(this.botonCambioModoDefensa, 13, 15, 1, 1);
-
-		this.actualizarGrilla();
-
+		this.gridPane.add(this.opcionDescartar, 13, 10, 1, 1); //esta tiene que estar siempre habilitada
 	}
-
+/*
 	public void actualizarGrilla() {
 		this.labelDeFase.setText("FASE: ".concat(this.juego.jugadorDeTurno().obtenerFase().nombre()));
 
@@ -614,6 +588,6 @@ public class Grilla extends Application {
 			unBoton.setDisable(true);
 		for (Button unBoton : this.vistaCartaManoJugadorB)
 			unBoton.setDisable(true);
-	}
+	}*/
 
 }

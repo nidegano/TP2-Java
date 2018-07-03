@@ -9,7 +9,7 @@ public class BotonMazo extends Button {
 
 	private Jugador jugador;
 
-	public BotonMazo(Jugador jugador, Grilla unaGrilla) {
+	public BotonMazo(Jugador jugador) {
 		super("Mazo");
 		this.setMaxSize(100, 25);
 		this.setMinSize(100, 25);
