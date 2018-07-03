@@ -15,4 +15,6 @@ public interface Fase {
 	public abstract void tomoCartaDelMazo();
 
 	public abstract void finalizar();
+
+	public abstract void chequearSiSePuedeInvocaMonstruo();
 }

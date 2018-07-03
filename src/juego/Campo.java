@@ -42,13 +42,6 @@ public class Campo {
 		this.zonaCartasDeCampo.matarATodasLasCartas();
 	}
 
-	public void renovarLaPosibilidadDeAtacarEnCartasMonstruo() {
-
-		for (Carta cartaMonstruo : this.zonaMonstruos) {
-			((CartaMonstruo) cartaMonstruo).renovarLaPosibilidadDeAtacar();
-		}
-	}
-
 	public boolean estaLaCartaEnCementerio(Carta carta) {
 		return this.cementerio.estaDentro(carta);
 	}

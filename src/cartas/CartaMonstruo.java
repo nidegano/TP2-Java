@@ -19,11 +19,9 @@ public abstract class CartaMonstruo extends Carta {
 	protected Puntos puntosDeAtaque;
 	protected Puntos puntosDeDefensa;
 	protected int nivel;
-	protected boolean yaAtaco;
 
 	public CartaMonstruo() {
 		super();
-		this.yaAtaco = false;
 	}
 
 	public int obtenerPuntosDeAtaque() {
@@ -39,20 +37,21 @@ public abstract class CartaMonstruo extends Carta {
 	}
 
 	public void invocarEnModoAtaque() {
-
+		this.jugadorDuenio.obtenerFase().chequearSiSePuedeInvocaMonstruo();
 		this.colocarEnModoAtaque();
 		this.agregarEnCampo(this.jugadorDuenio.campo()); // aca va a haber un problema al cambiar el modo en el campo
 		this.activarEfectoSiCorresponde(); // podria pasar que se active el mismo efecto dos veces
 	}
 
 	public void invocarEnModoDefensa() {
-
+		this.jugadorDuenio.obtenerFase().chequearSiSePuedeInvocaMonstruo();
 		this.colocarEnModoDefensa();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.activarEfectoSiCorresponde();
 	}
 
 	public void invocarEnModoDefensaBocaAbajo() {
+		this.jugadorDuenio.obtenerFase().chequearSiSePuedeInvocaMonstruo();
 		this.colocarEnModoDefensaBocaAbajo();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 	}
@@ -94,13 +93,7 @@ public abstract class CartaMonstruo extends Carta {
 				this.perder(formaDeAfectar);
 			}
 		} catch (AtaqueIntervenidoException e) {
-		} finally {
-			this.yaAtaco = true;
 		}
-	}
-
-	public void renovarLaPosibilidadDeAtacar() {
-		this.yaAtaco = false;
 	}
 
 	@Override

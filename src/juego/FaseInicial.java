@@ -1,6 +1,7 @@
 package juego;
 
 import excepciones.NoSePuedeTomarMasCartasDelMazoException;
+import excpeciones.NoSePuedeInvocarMonstruosEnEstaFase;
 
 public class FaseInicial implements Fase {
 
@@ -38,6 +39,11 @@ public class FaseInicial implements Fase {
 	@Override
 	public void finalizar() {
 		// la unica forma de finalizar esta fase es tomando una carta del mazo
+	}
+	
+	@Override
+	public void chequearSiSePuedeInvocaMonstruo() {
+		throw new NoSePuedeInvocarMonstruosEnEstaFase();		
 	}
 
 }

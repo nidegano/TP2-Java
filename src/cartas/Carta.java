@@ -2,10 +2,12 @@ package cartas;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 
 import efectos.Efecto;
 import efectos.EfectoNulo;
+import estado.Estado;
 import javafx.scene.image.Image;
 import juego.Campo;
 import juego.ContenedorDeCartas;

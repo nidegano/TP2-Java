@@ -1,17 +1,20 @@
 
 package juego;
 
+import excepciones.SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
+
 public class FasePreparacion implements Fase {
 
 	private boolean termino = false;
+	private boolean yaSeInvocoUnMonstruo = false;
 
 	public String nombre() {
 		return "Fase de Preparacion";
 	}
 
 	public void ejecutar(Jugador jugador) {
-		jugador.campo().renovarLaPosibilidadDeAtacarEnCartasMonstruo();
-		jugador.reiniciarLaPosibilidadDeInvocarMonstruos();
+		//jugador.campo().renovarLaPosibilidadDeAtacarEnCartasMonstruo();
+		//jugador.reiniciarLaPosibilidadDeInvocarMonstruos();
 	}
 
 	public boolean termino() {
@@ -33,5 +36,13 @@ public class FasePreparacion implements Fase {
 	@Override
 	public void finalizar() {
 		this.termino = true;
+	}
+	
+	@Override
+	public void chequearSiSePuedeInvocaMonstruo() {
+		if (this.yaSeInvocoUnMonstruo) {
+			throw new SoloSePuedeInvocarUnSoloMonstruoEnEstaFase();
+		}
+		this.yaSeInvocoUnMonstruo = true;
 	}
 }

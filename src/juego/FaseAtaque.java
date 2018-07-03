@@ -1,6 +1,8 @@
 
 package juego;
 
+import excpeciones.NoSePuedeInvocarMonstruosEnEstaFase;
+
 public class FaseAtaque implements Fase {
 
 	private boolean termino = false;
@@ -17,7 +19,7 @@ public class FaseAtaque implements Fase {
 	}
 
 	public Fase faseSiguiente() {
-		return new FaseTrampas();
+		return new FaseFinal();
 	}
 
 	boolean cambioDeTurno() {
@@ -36,4 +38,8 @@ public class FaseAtaque implements Fase {
 		this.termino = true;
 	}
 
+	@Override
+	public void chequearSiSePuedeInvocaMonstruo() {
+		throw new NoSePuedeInvocarMonstruosEnEstaFase();		
+	}
 }

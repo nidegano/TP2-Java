@@ -1,5 +1,7 @@
 package juego;
 
+import excpeciones.NoSePuedeInvocarMonstruosEnEstaFase;
+
 public class FaseInicioDeJuego implements Fase {
 
 	private boolean termino = false;
@@ -35,5 +37,10 @@ public class FaseInicioDeJuego implements Fase {
 	@Override
 	public void finalizar() {
 		// la unica forma de finalizar esta fase es ejecutandola
+	}
+
+	@Override
+	public void chequearSiSePuedeInvocaMonstruo() {
+		throw new NoSePuedeInvocarMonstruosEnEstaFase();		
 	}
 }
