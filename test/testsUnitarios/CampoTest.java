@@ -20,14 +20,14 @@ import juego.Mazo;
 public class CampoTest {
 	
 	@Test (expected = MazoSinCartasException.class)
-	public void TestTomarUnaCartaDelMazoCuandoNoTieneCartaDevuelveExcepcion() {
+	public void testTomarUnaCartaDelMazoCuandoNoTieneCartaDevuelveExcepcion() {
 		Campo campo = new Campo(new Mazo());
 		
 		campo.tomarUnaCartaDelMazo();
 	}
 	
 	@Test 
-	public void TestTomarUnaCartaDelMazoCuandoTieneUnaUnicaCartaDevuelveLaMisma() {
+	public void testTomarUnaCartaDelMazoCuandoTieneUnaUnicaCartaDevuelveLaMisma() {
 		Mazo mazo = new Mazo();
 		mazo.agregar(new InsectoComeHombres());
 		Campo campo = new Campo(mazo);
@@ -37,7 +37,7 @@ public class CampoTest {
 	}
 	
 	@Test
-	public void TestEstaDentroDevuelveTrueCuandoEstaLaCartaEnELCampo() {
+	public void testEstaDentroDevuelveTrueCuandoEstaLaCartaEnELCampo() {
 		Campo campo = new Campo( new Mazo() );
 		ContenedorDeCartas zonaMonstruos = campo.obtenerZonaMonstruos();
 		
@@ -48,14 +48,14 @@ public class CampoTest {
 	}
 	
 	@Test
-	public void TestEstaDentroDevuelveFalseCuandoNoEstaLaCartaEnELCampo() {
+	public void testEstaDentroDevuelveFalseCuandoNoEstaLaCartaEnELCampo() {
 		Campo campo = new Campo( new Mazo() );
 		
 		assertFalse(campo.estaDentro(new InsectoComeHombres()));
 	}
 	
 	@Test
-	public void TestTieneCartasEnElMazoDevuelveTrueCuandoHayUnaCarta() {
+	public void testTieneCartasEnElMazoDevuelveTrueCuandoHayUnaCarta() {
 		Mazo mazo = new Mazo();
 		mazo.agregar(new InsectoComeHombres());
 		
@@ -65,7 +65,7 @@ public class CampoTest {
 	}
 	
 	@Test
-	public void TestTieneCartasEnElMazoDevuelveTrueCuandoHayMasde1Carta() {
+	public void testTieneCartasEnElMazoDevuelveTrueCuandoHayMasde1Carta() {
 		Mazo mazo = new Mazo();
 		mazo.agregar(new InsectoComeHombres());
 		mazo.agregar(new OllaDeLaCodicia());
@@ -78,14 +78,14 @@ public class CampoTest {
 
 	
 	@Test
-	public void TestTieneCartasEnElMazoDevuelveFalseCuandoNoHayCartas() {
+	public void testTieneCartasEnElMazoDevuelveFalseCuandoNoHayCartas() {
 		Campo campo = new Campo( new Mazo() );
 		
         assertFalse(campo.tieneCartasEnElMazo());
 	}
 	
 	@Test
-	public void TestObtenerElMonstruoDeMenorAtaqueEntreExodiaCabezaEInsectoComeHombresDevuelveAlInsecto() {
+	public void testObtenerElMonstruoDeMenorAtaqueEntreExodiaCabezaEInsectoComeHombresDevuelveAlInsecto() {
 		Campo campo = new Campo( new Mazo() );
 		
 		ContenedorDeCartas zonaMonstruos = campo.obtenerZonaMonstruos();

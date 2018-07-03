@@ -13,6 +13,7 @@ public class AlphaTheMagnetWarrior extends CartaMonstruo {
 		this.puntosDeDefensa = new Puntos(1700);
 		this.nivel = 4;
 		this.nombre = "Alpha The Magnet Warrior";
+		
 		FileInputStream input = null;
 		try {
 			input = new FileInputStream("resources/images/carta_AlphaTheMagnetWarrior.png");

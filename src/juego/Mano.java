@@ -34,9 +34,4 @@ public class Mano extends ContenedorDeCartas {
 		return this.cartas.get(posicion);
 	}
 
-	/*
-	 * public boolean tenesTodasLasPartesDeExodia() { return
-	 * recolectorDePartesDeExodia.tenesTodasLasPartesDelExodia(); }
-	 */
-
 }
