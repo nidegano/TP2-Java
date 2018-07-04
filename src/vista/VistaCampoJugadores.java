@@ -48,11 +48,11 @@ public class VistaCampoJugadores {
 	
 	public void actualizarPorModoSeleccionParaAtacar() {
 		this.grilla.deshabilitarTodosLasVistasCarta();
-		this.activarSoloLasVistasCartaMonstruosDeJugadorDeTurno(this.vista.jugadorDeTurno());
+		this.activarSoloLasVistasCartaMonstruosDelOponenteDeJugadorDeTurno(this.vista.jugadorDeTurno());
 		//aca falta lo de si no hay monstruos se activa para atacar al jugador
 	}
 
-	private void activarSoloLasVistasCartaMonstruosDeJugadorDeTurno(Jugador jugadorDeTurno) {
+	private void activarSoloLasVistasCartaMonstruosDelOponenteDeJugadorDeTurno(Jugador jugadorDeTurno) {
 		jugadorDeTurno.determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(this.grilla);
 	}
 
@@ -62,6 +62,7 @@ public class VistaCampoJugadores {
 	}
 
 	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
+		this.actualizarVidaJugadores();
 		ConfiguracionDeLaVistaCampoJugador configuracion = jugadorDeTurno.determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
 		configuracion.configurar(this.grilla);
 	}

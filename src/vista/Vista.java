@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import cartas.Carta;
 import cartas.CartaMonstruo;
 import cartas.CartaNula;
-import fases.Fase;
 import javafx.stage.Stage;
 import juego.Juego;
 import juego.Jugador;
@@ -110,16 +109,18 @@ public class Vista {
 		this.cambiarAModoNormal();
 	}
 
-	public void actualizarPorCambioDeFaseALaFase(Fase faseNueva) {
-		this.panelDeAccion.actualizarPorCambioDeFaseALaFase(faseNueva);
-	}
-
 	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
 		this.vistaCampoJugadores.actualizarPorCambioDeTurno(jugadorDeTurno);
 		this.panelDeAccion.actualizarPorCambioDeTurno(jugadorDeTurno);
+		this.panelDeAccion.actualizarPorCambioDeFaseALaFase(jugadorDeTurno.obtenerFase());
 	}
 
 	public void seTomoEstaCartaDelMazo(Carta unaCarta) {
 		this.vistaCampoJugadores.seTomoEstaCartaDelMazo(unaCarta);
+	}
+	
+
+	public Vista() {
+		//solo para tests
 	}
 }

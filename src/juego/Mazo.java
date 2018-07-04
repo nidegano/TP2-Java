@@ -60,9 +60,9 @@ public class Mazo extends ContenedorDeCartas {
 		}
 	}
 
-	public void asignarVistaACartas(Vista vista) {
+	public void asignarVistaCartaACartas(Vista vista) {
 		for (Carta carta : this.cartas) {
-			carta.asignarVista(vista);
+			carta.asignarVistaCarta(vista);
 		}
 	}
 

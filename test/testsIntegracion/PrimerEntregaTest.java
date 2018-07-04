@@ -17,7 +17,6 @@ import cartas.DragonBlancoDeOjosAzules;
 import cartas.InsectoComeHombres;
 import excepciones.SinVidaException;
 import juego.Campo;
-import juego.ContenedorDeCartas;
 import juego.Jugador;
 import juego.JugadorA;
 import juego.JugadorB;

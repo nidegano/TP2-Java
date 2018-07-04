@@ -12,10 +12,12 @@ import cartas.Carta;
 import cartas.Jinzo;
 import cartas.CabezaExodia;
 import juego.Campo;
+import juego.Juego;
 import juego.Jugador;
 import juego.JugadorA;
 import juego.JugadorB;
 import juego.Mazo;
+import vista.Vista;
 
 public class JugadorTest {
 
@@ -70,21 +72,34 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void testEsDuenioDevuelveTrueCuandoJugadorPoneLaCartaMagicaEnLaZonaEspeciales() {
-		Mazo mazo = new Mazo();
+	public void testEsDuenioDevuelveTrueCuandoJugadorPoneLaCartaMagicaEnLaZonaEspeciales() throws Exception {
+		
+		// INICIALIZACION DEL JUEGO
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		
+		// Aca van las cartas a agregar al mazo para testeo
+		
 		AgujeroOscuro magica = new AgujeroOscuro();
-		mazo.agregar(magica);
+		mazoJugadorA.agregar(magica);
+		
+		//------------------------------------------------
 
-		Campo campo = new Campo(mazo);
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		Jugador jugadorA = new JugadorA(campo);
-		Jugador jugadorB = new JugadorB(campo);
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
 
-		jugadorA.asignarOponente(jugadorB);
-		jugadorB.asignarOponente(jugadorA);
-
-		magica.asignarDuenio(jugadorA);
-
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new Vista(jugadorA,jugadorB,juego);
+		
+		juego.asignarVista(vista);
+		mazoJugadorA.asignarVistaCartaACartas(vista);
+		mazoJugadorB.asignarVistaCartaACartas(vista);
+		//------------------------------------------------
+		
 		jugadorA.tomarCartaDelMazo();
 		magica.colocarBocaAbajo(); // coloca la carta en la zona de especiales
 

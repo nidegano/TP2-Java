@@ -27,7 +27,7 @@ public class JugadorB extends Jugador {
 	
 	@Override
 	public void determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(Grilla grilla) {
-		grilla.activarSoloLasVistasCartaMonstruosDeJugadorB();
+		grilla.activarSoloLasVistasCartaMonstruosDeJugadorA();
 	}
 
 	@Override

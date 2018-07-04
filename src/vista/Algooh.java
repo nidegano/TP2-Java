@@ -31,12 +31,18 @@ public class Algooh extends Application {
 		Vista vista = new Vista(jugadorA,jugadorB,juego);
 		
 		juego.asignarVista(vista);
-		mazoJugadorA.asignarVistaACartas(vista);
-		mazoJugadorB.asignarVistaACartas(vista);
+		mazoJugadorA.asignarVistaCartaACartas(vista);
+		mazoJugadorB.asignarVistaCartaACartas(vista);
 		
-		vista.start(primaryStage);
-		
-		juego.jugadorDeTurno().jugar();
+		try {
+			vista.start(primaryStage);
+			
+			juego.iniciar();
+		}
+		catch (Exception e){
+			
+		}
+
 	}
 
 }

@@ -30,7 +30,6 @@ import cartas.Wasteland;
 import excepciones.MazoSinCartasException;
 import excepciones.TengoTodasLasPartesDeExodiaException;
 import juego.Campo;
-import juego.ContenedorDeCartas;
 import juego.Jugador;
 import juego.JugadorA;
 import juego.JugadorB;

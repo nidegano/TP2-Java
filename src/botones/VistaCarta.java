@@ -10,16 +10,6 @@ public class VistaCarta extends Button {
 	
 	protected Carta carta;
 	protected Vista vista;
-	
-	public VistaCarta() {
-		
-		super("-");
-		
-		this.setMaxSize(100, 25);
-		this.setMinSize(100, 25);
-		this.setVisible(true);
-		this.setDisable(true);
-	}
 
 	public VistaCarta(Vista vista) {
 		
@@ -87,14 +77,5 @@ public class VistaCarta extends Button {
 
 	public Vista vista() {
 		return this.vista;
-	}
-
-	public void asignarVista(Vista vista) {
-		this.vista = vista;
-		
-		this.setOnAction(value -> {
-			this.vista.avisarDeLaSeleccionDeUnaVistaDeCarta(this.carta);
-		});
-		//lo de set on action esta porque lo tengo que poner ni bien se tenga referencia a la vista
 	}
 }

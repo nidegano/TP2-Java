@@ -33,8 +33,6 @@ public abstract class Carta {
 	public Carta() {
 		this.contenedoresQueLaContienen = new ArrayList<ContenedorDeCartas>();
 		this.efecto = new EfectoNulo(this);
-		this.crearVistaCarta();
-		//mas adelante se le asigna la vista a la VistaCarta de la carta
 	}
 
 	public abstract void agregarEnCampo(Campo campo);
@@ -91,8 +89,9 @@ public abstract class Carta {
 		this.vistaCarta = vistaNueva;
 	}
 
-	public void asignarVista(Vista vista) {
-		this.vistaCarta.asignarVista(vista);
+	public void asignarVistaCarta(Vista vista) {
+		this.vistaCarta = new VistaCarta(vista);
+		this.vistaCarta.asignarCarta(this);
 	}
 	
 	protected void colocarImagenEnCartaDesdeArchivoDeRuta(String ruta) {
@@ -102,11 +101,6 @@ public abstract class Carta {
 		} catch (FileNotFoundException e) {
 		}
 		this.imagen = new ImageView(new Image(input));
-	}
-
-	protected void crearVistaCarta() {
-		this.vistaCarta = new VistaCarta();
-		this.vistaCarta.asignarCarta(this);
 	}
 
 	public abstract ConfiguracionDeOpciones obtenerConfiguracionDeOpcionesSegunTipoYEstado();

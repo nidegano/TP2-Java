@@ -21,6 +21,11 @@ public class Juego {
 
 		this.deTurno = jugadorA;
 	}
+	
+	public void iniciar(){
+		this.deTurno.jugar();
+		this.vista.actualizarPorCambioDeTurno(this.deTurno);
+	}
 
 	public void asignarVista(Vista vista) {
 		this.vista = vista;
@@ -28,12 +33,11 @@ public class Juego {
 
 	public void informarQueJugadorDeTurnoTocoFinalizarFase() {
 		deTurno.finalizarFase();
-		this.vista.actualizarPorCambioDeFaseALaFase(deTurno.obtenerFase());
 	}
 
 	public void informarQueElJugadorDeTurnoTerminoSuTurno() {
-		this.vista.actualizarPorCambioDeTurno(this.deTurno);
 		this.deTurno = deTurno.oponente();
+		this.vista.actualizarPorCambioDeTurno(this.deTurno);
 		this.deTurno.jugar();
 	}
 

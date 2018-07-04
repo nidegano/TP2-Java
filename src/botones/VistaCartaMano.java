@@ -7,12 +7,12 @@ public class VistaCartaMano extends VistaCarta {
 
 	public VistaCartaMano(Vista vista) {
 		super(vista);
-		this.setText("Mano");
+		this.setText("-");
 	}
 
 	@Override
 	public void vaciar() {
 		this.carta = new CartaNula();
-		this.setText("Mano");
+		this.setText("-");
 	}
 }

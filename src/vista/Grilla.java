@@ -132,7 +132,7 @@ public class Grilla extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Al-Go-Oh!");
 		Scene scene = new Scene(this.gridPane, 1200, 1200);
-		primaryStage.setFullScreen(false);
+		primaryStage.setFullScreen(true);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -221,7 +221,7 @@ public class Grilla extends Application {
 		this.labelVidaDeJugadorA = new Label("-");
 		this.labelVidaDeJugadorB = new Label("-");
 		this.labelDeTurno = new Label("");
-		this.labelDeFase = new Label("");		
+		this.labelDeFase = new Label("");	
 	}
 
 	private void inicializarSoporteParaImagenDeCartaSeleccionada() throws FileNotFoundException {
@@ -240,7 +240,7 @@ public class Grilla extends Application {
 	}
 
 	private void agregarBotonesALaGrilla() {
-		// JUGADOR 1
+		// JUGADOR A
 		this.gridPane.add(this.botonMazoJugadorA, 1, 1, 1, 1);
 		this.gridPane.add(this.botonCementerioJugadorA, 1, 5, 1, 1);
 		this.gridPane.add(this.vistaCartaDeCampoJugadorA, 9, 5, 1, 1);
@@ -263,7 +263,7 @@ public class Grilla extends Application {
 			i++;
 		}
 
-		// JUGADOR 2
+		// JUGADOR B
 		this.gridPane.add(this.botonMazoJugadorB, 9, 11, 1, 1);
 		this.gridPane.add(this.botonCementerioJugadorB, 9, 7, 1, 1);
 		this.gridPane.add(this.vistaCartaDeCampoJugadorB, 1, 7, 1, 1);
@@ -288,7 +288,9 @@ public class Grilla extends Application {
 		
 		//ESTRUCTURA DEL PANEL DE ACCION
 		this.gridPane.add(this.labelDeJugadorA, 0, 0, 1, 1);
+		this.gridPane.add(this.labelVidaDeJugadorA, 0, 1, 1, 1);
 		this.gridPane.add(this.labelDeJugadorB, 0, 12, 1, 1);
+		this.gridPane.add(this.labelVidaDeJugadorB, 0, 13, 1, 1);
 		this.gridPane.add(this.labelDeTurno, 13, 3, 1, 1);
 		this.gridPane.add(this.labelDeFase, 13, 4, 1, 1);
 
@@ -563,11 +565,11 @@ public class Grilla extends Application {
 	}
 	
 	public void activarSoloLasVistasCartaMonstruosDeJugadorA() {
-		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorA);
+		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorA);
 	}
 
 	public void activarSoloLasVistasCartaMonstruosDeJugadorB() {
-		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorB);		
+		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);		
 	}
 
 	public void cambiarLabelDeFasePor(String nombreFaseNueva) {
@@ -575,11 +577,11 @@ public class Grilla extends Application {
 	}
 
 	public void cambiarLabelDeTurnoActualPorJugadorA() {
-		this.labelDeTurno.setText(this.labelDeJugadorA.getText());
+		this.labelDeTurno.setText("TURNO: ".concat(this.labelDeJugadorA.getText()));
 	}
 	
 	public void cambiarLabelDeTurnoActualPorJugadorB() {
-		this.labelDeTurno.setText(this.labelDeJugadorB.getText());
+		this.labelDeTurno.setText("TURNO: ".concat(this.labelDeJugadorB.getText()));
 	}
 
 	

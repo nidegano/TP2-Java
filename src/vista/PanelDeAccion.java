@@ -240,7 +240,7 @@ public class PanelDeAccion {
 	}
 
 	public void actualizarPorCambioDeFaseALaFase(Fase faseNueva) {
-		this.grilla.cambiarLabelDeFasePor(faseNueva.nombre());
+		this.grilla.cambiarLabelDeFasePor("FASE: ".concat(faseNueva.nombre()));
 	}
 
 	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
