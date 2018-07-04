@@ -2,7 +2,7 @@ package cartas;
 
 import botones.VistaCarta;
 import configuraciones.ConfiguracionDeOpciones;
-import estado.ModoCartaDeCampoInvocada;
+import estados.ModoCartaDeCampoInvocada;
 import excepciones.YaHayUnaCartaDeCampoColocadaException;
 import juego.Campo;
 import v.VistaCampoJugadores;

@@ -1,9 +1,13 @@
 package juego;
 
+import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import botones.VistaCarta;
 import cartas.*;
 //import excepciones.AtaqueIntervenidoException;
 import excepciones.SinVidaException;
+import fases.Fase;
+import fases.FaseInicioDeJuego;
+import fases.FasePreparacion;
 import vista.Grilla;
 
 public abstract class Jugador {
@@ -12,7 +16,7 @@ public abstract class Jugador {
 	private Mano mano;
 	private Campo campo;
 	private Jugador oponente;
-	private Fase fase = new FaseInicioDeJuego();
+	protected Fase fase = new FaseInicioDeJuego();
 	private Juego juego;
 	private boolean sePuedeSeguirInvocandoMonstruos;
 
@@ -163,4 +167,8 @@ public abstract class Jugador {
 	}
 
 	public abstract void determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(Grilla grilla);
+
+	public abstract void determinarComoCambiarElLabelDelTurnoDependiendoDeQueJugadorEsElTurnoATravezDeGrilla(Grilla grilla);
+
+	public abstract ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
 }

@@ -2,10 +2,10 @@ package cartas;
 
 import botones.VistaCarta;
 import configuraciones.ConfiguracionDeOpciones;
-import estado.EstadoDeCartaEspecial;
-import estado.ModoBocaArriba;
-import estado.ModoCartaEspecialSinInvocar;
-import estado.ModoBocaAbajo;
+import estados.EstadoDeCartaEspecial;
+import estados.ModoBocaAbajo;
+import estados.ModoBocaArriba;
+import estados.ModoCartaEspecialSinInvocar;
 import juego.Campo;
 import juego.Jugador;
 import juego.RecolectorDePartesDeExodia;

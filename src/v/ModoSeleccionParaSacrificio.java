@@ -10,8 +10,7 @@ public class ModoSeleccionParaSacrificio extends ModoVista {
 
 	@Override
 	public void avisarDeLaSeleccionDeUnaVistaDeCarta(Carta cartaNuevaSeleccion) {
-		// TODO Auto-generated method stub
-		
+		this.vista.agregarSeleccionALasSeleccionesSecundarias(cartaNuevaSeleccion);
 	}
 
 }

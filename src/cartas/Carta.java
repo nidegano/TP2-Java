@@ -96,6 +96,12 @@ public abstract class Carta {
 		}
 		this.imagen = new ImageView(new Image(input));
 	}
+	
+
+	protected void crearVistaCarta() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	public abstract ConfiguracionDeOpciones obtenerConfiguracionDeOpcionesSegunTipoYEstado();
 

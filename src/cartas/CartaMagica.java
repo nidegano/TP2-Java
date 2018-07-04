@@ -1,8 +1,8 @@
 package cartas;
 
 import configuraciones.ConfiguracionDeOpciones;
-import estado.EstadoColocableBocaArriba;
-import estado.ModoBocaAbajo;
+import estados.EstadoColocableBocaArriba;
+import estados.ModoBocaAbajo;
 import juego.Campo;
 
 public abstract class CartaMagica extends CartaEspecial {

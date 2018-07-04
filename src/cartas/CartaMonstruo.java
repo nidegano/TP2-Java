@@ -2,11 +2,11 @@ package cartas;
 
 import botones.VistaCarta;
 import configuraciones.ConfiguracionDeOpciones;
-import estado.EstadoDeCartaMonstruo;
-import estado.EstadoMonstruoSinInvocar;
-import estado.ModoAtaque;
-import estado.ModoDefensa;
-import estado.ModoDefensaBocaAbajo;
+import estados.EstadoDeCartaMonstruo;
+import estados.EstadoMonstruoSinInvocar;
+import estados.ModoAtaque;
+import estados.ModoDefensa;
+import estados.ModoDefensaBocaAbajo;
 import excepciones.AtaqueIntervenidoException;
 import excepciones.ParaAtacarDirectamenteAlJugadorNoTieneQueHaberMonstruosInvocadosException;
 import juego.Campo;

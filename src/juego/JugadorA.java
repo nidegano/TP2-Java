@@ -1,5 +1,6 @@
 package juego;
 
+import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import botones.VistaCarta;
 import vista.Grilla;
 
@@ -27,5 +28,15 @@ public class JugadorA extends Jugador {
 	@Override
 	public void determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(Grilla grilla) {
 		grilla.activarSoloLasVistasCartaMonstruosDeJugadorA();
+	}
+
+	@Override
+	public void determinarComoCambiarElLabelDelTurnoDependiendoDeQueJugadorEsElTurnoATravezDeGrilla(Grilla grilla) {
+		grilla.cambiarLabelDeTurnoActualPorJugadorA();
+	}
+
+	@Override
+	public ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase() {
+		return this.fase.determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno();
 	}
 }

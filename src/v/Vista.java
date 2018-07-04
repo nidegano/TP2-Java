@@ -1,14 +1,19 @@
 package v;
 
+import java.util.ArrayList;
+
+import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import cartas.Carta;
 import cartas.CartaMonstruo;
 import cartas.CartaNula;
+import fases.Fase;
 import javafx.stage.Stage;
 import juego.Juego;
 import juego.Jugador;
 import juego.JugadorA;
 import juego.JugadorB;
 import opciones.Atacar;
+import opciones.InvocarConSacrificio;
 import opciones.Opcion;
 import vista.Grilla;
 
@@ -26,6 +31,7 @@ public class Vista {
 	private Carta cartaSeleccionada;
 	private ModoVista modoVista;
 	private Opcion opcionQuePidioElCambioDeModo;
+	private ArrayList<CartaMonstruo> seleccionesSecundarias;
 	
 	public Vista(JugadorA jugadorA, JugadorB jugadorB, Juego juego) throws Exception {
 		
@@ -40,6 +46,7 @@ public class Vista {
 		
 		this.cartaSeleccionada = new CartaNula();
 		this.modoVista = new ModoNormal(this);
+		this.seleccionesSecundarias = new ArrayList<CartaMonstruo>();
 	}
 
 	public void avisarDeLaSeleccionDeUnaVistaDeCarta(Carta cartaNuevaSeleccion) {
@@ -94,5 +101,25 @@ public class Vista {
 
 	public Jugador jugadorDeTurno() {
 		return this.juego.jugadorDeTurno();
+	}
+
+	public void agregarSeleccionALasSeleccionesSecundarias(Carta cartaNuevaSeleccion) {
+		this.seleccionesSecundarias.add((CartaMonstruo) cartaNuevaSeleccion); //cast seguro por contexto
+		cartaNuevaSeleccion.vista().deshabilitar();
+	}
+
+	public void finalizarInvocacionPorSacrificio() {
+		((InvocarConSacrificio) this.opcionQuePidioElCambioDeModo).finalizarInvocacionPorSacrificio(this.cartaSeleccionada,this.seleccionesSecundarias);
+		this.grilla.botonDeListoHacerVisible(false);
+		this.cambiarAModoNormal();
+	}
+
+	public void actualizarPorCambioDeFaseALaFase(Fase faseNueva) {
+		this.panelDeAccion.actualizarPorCambioDeFaseALaFase(faseNueva);
+	}
+
+	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
+		this.vistaCampoJugadores.actualizarPorCambioDeTurno(jugadorDeTurno);
+		this.panelDeAccion.actualizarPorCambioDeTurno(jugadorDeTurno);
 	}
 }

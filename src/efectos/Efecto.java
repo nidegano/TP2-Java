@@ -2,7 +2,7 @@ package efectos;
 
 import cartas.Carta;
 import cartas.CartaMonstruo;
-import estado.Estado;
+import estados.Estado;
 import excepciones.AtaqueIntervenidoException;
 import juego.Jugador;
 

@@ -1,10 +1,13 @@
 package juego;
 
+import v.Vista;
+
 public class Juego {
 
 	private Jugador jugadorA;
 	private Jugador jugadorB;
 	private Jugador deTurno;
+	private Vista vista;
 
 	public Juego(Jugador jugadorA, Jugador jugadorB) {
 		this.jugadorA = jugadorA;
@@ -19,18 +22,17 @@ public class Juego {
 		this.deTurno.jugar();
 	}
 
-	/*
-	 * public void actualizar() { Fase fase = this.deTurno.obtenerFase(); if
-	 * (fase.termino()) this.deTurno.siguienteFase(); if (fase.cambioDeTurno()) { if
-	 * (this.deTurno.equals(jugadorA)) this.deTurno = this.jugadorB; else
-	 * this.deTurno = this.jugadorA; this.deTurno.iniciarTurno(); } }
-	 */
+	public void asignarVista(Vista vista) {
+		this.vista = vista;
+	}
 
 	public void informarQueJugadorDeTurnoTocoFinalizarFase() {
 		deTurno.finalizarFase();
+		this.vista.actualizarPorCambioDeFaseALaFase(deTurno.obtenerFase());
 	}
 
 	public void informarQueElJugadorDeTurnoTerminoSuTurno() {
+		this.vista.actualizarPorCambioDeTurno(this.deTurno);
 		this.deTurno = deTurno.oponente();
 		this.deTurno.jugar();
 	}

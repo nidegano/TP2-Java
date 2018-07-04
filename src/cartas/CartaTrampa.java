@@ -1,6 +1,6 @@
 package cartas;
 
-import estado.ModoBocaArriba;
+import estados.ModoBocaArriba;
 import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import juego.Campo;
 

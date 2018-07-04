@@ -1,13 +1,14 @@
 package cartas;
 
+import java.util.ArrayList;
+
 import configuraciones.ConfiguracionDeOpciones;
-import estado.EstadoMonstruoRequiereSacrificioSinInvocar;
+import estados.EstadoMonstruoRequiereSacrificioSinInvocar;
 import excepciones.CantidadInadecuadaDeSacrificiosException;
-import juego.ContenedorDeCartas;
 
 public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 
-	protected ContenedorDeCartas sacrificios;
+	protected ArrayList<CartaMonstruo> sacrificios;
 	protected int sacrificiosRequeridos;
 	
 	public CartaRequiereSacrificios() {
@@ -15,8 +16,8 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 		this.estado = new EstadoMonstruoRequiereSacrificioSinInvocar();
 	}
 
-	protected void chequearQueLaCantidadDeSacrificiosSeaCorrecta(ContenedorDeCartas sacrificios) {
-		if (sacrificios.cantidad() != this.sacrificiosRequeridos)
+	protected void chequearQueLaCantidadDeSacrificiosSeaCorrecta(ArrayList<CartaMonstruo> sacrificios) {
+		if (sacrificios.size() != this.sacrificiosRequeridos)
 			throw new CantidadInadecuadaDeSacrificiosException();
 	}
 	
@@ -35,7 +36,7 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 		throw new CantidadInadecuadaDeSacrificiosException();
 	}
 
-	public void invocarEnModoAtaque(ContenedorDeCartas sacrificios) {
+	public void invocarEnModoAtaque(ArrayList<CartaMonstruo> sacrificios) {
 		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
 		this.sacrificios = sacrificios;
 		this.colocarEnModoAtaque();
@@ -45,7 +46,7 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 			monstruo.matar();
 	}
 	
-	public void invocarEnModoDefensa(ContenedorDeCartas sacrificios) {
+	public void invocarEnModoDefensa(ArrayList<CartaMonstruo> sacrificios) {
 		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
 		this.sacrificios = sacrificios;
 		this.colocarEnModoDefensa();
@@ -55,7 +56,7 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 			monstruo.matar();
 	}
 	
-	public void invocarEnModoDefensaBocaAbajo(ContenedorDeCartas sacrificios) {
+	public void invocarEnModoDefensaBocaAbajo(ArrayList<CartaMonstruo> sacrificios) {
 		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
 		this.sacrificios = sacrificios;
 		this.colocarEnModoDefensaBocaAbajo();

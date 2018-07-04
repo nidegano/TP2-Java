@@ -2,6 +2,8 @@ package v;
 
 import cartas.Carta;
 import configuraciones.ConfiguracionDeOpciones;
+import fases.Fase;
+import juego.Jugador;
 import vista.Grilla;
 
 public class PanelDeAccion {
@@ -236,5 +238,13 @@ public class PanelDeAccion {
 		
 		this.grilla.opcionAtacarHacerVisible(false);
 		this.grilla.opcionDescartarHacerVisible(false);
+	}
+
+	public void actualizarPorCambioDeFaseALaFase(Fase faseNueva) {
+		this.grilla.cambiarLabelDeFasePor(faseNueva.nombre());
+	}
+
+	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
+		jugadorDeTurno.determinarComoCambiarElLabelDelTurnoDependiendoDeQueJugadorEsElTurnoATravezDeGrilla(this.grilla);
 	}
 }

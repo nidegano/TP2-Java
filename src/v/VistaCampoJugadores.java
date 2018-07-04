@@ -1,5 +1,6 @@
 package v;
 
+import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import botones.VistaCarta;
 import cartas.Carta;
 import cartas.CartaDeCampo;
@@ -55,5 +56,10 @@ public class VistaCampoJugadores {
 	public void actualizarVidaJugadores() {
 		this.grilla.asignarNuevaVidaALabelDeJugadorA(this.jugadorA.vida());
 		this.grilla.asignarNuevaVidaALabelDeJugadorB(this.jugadorB.vida());
+	}
+
+	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
+		ConfiguracionDeLaVistaCampoJugador configuracion = jugadorDeTurno.determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
+		configuracion.configurar(this.grilla);
 	}
 }

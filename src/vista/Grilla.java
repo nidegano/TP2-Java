@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import botones.BotonFinalizarFase;
 import botones.VistaCarta;
 import botones.VistaCartaDeCampo;
 import botones.VistaCartaEspecial;
@@ -20,8 +21,9 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import juego.*;
 import opciones.Atacar;
-import opciones.BotonInvocarEnModoDefensaBocaAbajoConSacrificio;
-import opciones.BotonInvocarEnModoDefensaConSacrificio;
+import opciones.InvocarEnModoDefensaBocaAbajoConSacrificio;
+import opciones.InvocarEnModoDefensaConSacrificio;
+import opciones.Listo;
 import opciones.CambiarAModoDefensa;
 import opciones.CambiarAModoDefensaBocaAbajo;
 import opciones.CambiarModoAtaque;
@@ -33,7 +35,6 @@ import opciones.InvocarEnModoAtaque;
 import opciones.InvocarEnModoAtaqueConSacrificio;
 import opciones.InvocarEnModoDefensa;
 import opciones.InvocarEnModoDefensaBocaAbajo;
-import v.BotonListo;
 import v.Vista;
 
 public class Grilla extends Application {
@@ -76,7 +77,7 @@ public class Grilla extends Application {
 	
 	//Botones que son propios del juego y no de un Campo especifico de un jugador	
 	private BotonFinalizarFase botonDeFinalizarFase;
-	private BotonListo botonDeListo;
+	private Listo botonDeListo;
 	
 	//Opciones	
 	private CambiarModoAtaque opcionCambiarAModoAtaque;
@@ -92,8 +93,8 @@ public class Grilla extends Application {
 	private InvocarEnModoDefensaBocaAbajo opcionInvocarEnModoDefensaBocaAbajo;
 	
 	private InvocarEnModoAtaqueConSacrificio opcionInvocarEnModoAtaqueConSacrificio;
-	private BotonInvocarEnModoDefensaConSacrificio opcionInvocarEnModoDefensaConSacrificio;
-	private BotonInvocarEnModoDefensaBocaAbajoConSacrificio opcionInvocarEnModoDefensaBocaAbajoConSacrificio;
+	private InvocarEnModoDefensaConSacrificio opcionInvocarEnModoDefensaConSacrificio;
+	private InvocarEnModoDefensaBocaAbajoConSacrificio opcionInvocarEnModoDefensaBocaAbajoConSacrificio;
 	
 	private Atacar opcionAtacar;
 	private Descartar opcionDescartar;
@@ -118,7 +119,7 @@ public class Grilla extends Application {
 		this.botonCementerioJugadorB = new BotonCementerio();
 
 		this.botonDeFinalizarFase = new BotonFinalizarFase(juego);
-		this.botonDeListo = new BotonListo(vista);
+		this.botonDeListo = new Listo(vista);
 
 		this.inicializarOpciones(vista);
 
@@ -134,6 +135,10 @@ public class Grilla extends Application {
 		primaryStage.show();
 	}
 
+	
+	
+// Inicialziar
+	
 	private void inicializarOpciones(Vista vista) {
 		
 		this.opcionCambiarAModoAtaque = new CambiarModoAtaque(vista);
@@ -149,15 +154,13 @@ public class Grilla extends Application {
 		this.opcionInvocarEnModoDefensaBocaAbajo = new InvocarEnModoDefensaBocaAbajo(vista);
 		
 		this.opcionInvocarEnModoAtaqueConSacrificio = new InvocarEnModoAtaqueConSacrificio(vista);
-		this.opcionInvocarEnModoDefensaConSacrificio = new BotonInvocarEnModoDefensaConSacrificio(vista);
-		this.opcionInvocarEnModoDefensaBocaAbajoConSacrificio = new BotonInvocarEnModoDefensaBocaAbajoConSacrificio(vista);	
+		this.opcionInvocarEnModoDefensaConSacrificio = new InvocarEnModoDefensaConSacrificio(vista);
+		this.opcionInvocarEnModoDefensaBocaAbajoConSacrificio = new InvocarEnModoDefensaBocaAbajoConSacrificio(vista);	
 		
 		this.opcionAtacar = new Atacar(vista);
 		this.opcionDescartar = new Descartar(vista);
 	}
 
-// Inicialziar
-	
 	private void inicializarVistasCartaDeVistaCampoJugadores(Vista vista) {
 		
 		//Se inicializa la collection de "slots" (Vistas) que se corresponden con la mano
@@ -374,7 +377,6 @@ public class Grilla extends Application {
 
 	
 
-	
 // Settear Visibilidad de Opciones
 	
 	public void botonDeListoHacerVisible(boolean b) {
@@ -439,8 +441,52 @@ public class Grilla extends Application {
 	}
 
 	
-// Cambios de Estado Interno
 	
+// Configuraciones especificas de botones asociadas a una fase y jugador en turno
+	
+	public void configurarBotonesFaseInicialTunoJugadorB() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void configurarBotonesFaseInicialTunoJugadorA() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void configurarBotonesFasePreparacionTurnoJugadorA() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void configurarBotonesFasePreparacionTurnoJugadorB() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void configurarBotonesFaseAtaqueTurnoJugadorA() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void configurarBotonesFaseAtaqueTurnoJugadorB() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void configurarBotonesFaseFinalTurnoJugadorA() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void configurarBotonesFaseFinalTurnoJugadorB() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+// Cambios de Estado Interno
 	
 	public void asignarNuevaVidaALabelDeJugadorA(int nuevaVida) {
 		this.labelVidaDeJugadorA.setText(Integer.toString(nuevaVida));
@@ -473,13 +519,6 @@ public class Grilla extends Application {
 		this.deshabilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);		
 	}
 	
-
-	private void deshabilitarTodasLasVistasDe(ArrayList<? extends VistaCarta> collectionDeVistasCarta) {
-		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
-			vistaCarta.setDisable(true);
-		}
-	}
-
 	public void activarSoloLasVistasCartaMonstruosDeJugadorA() {
 		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorA);
 	}
@@ -487,299 +526,34 @@ public class Grilla extends Application {
 	public void activarSoloLasVistasCartaMonstruosDeJugadorB() {
 		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorB);		
 	}
+
+	public void cambiarLabelDeFasePor(String nombreFaseNueva) {
+		this.labelDeFase.setText(nombreFaseNueva);
+	}
+
+	public void cambiarLabelDeTurnoActualPorJugadorA() {
+		this.labelDeTurno.setText(this.labelDeJugadorA.getText());
+	}
+	
+	public void cambiarLabelDeTurnoActualPorJugadorB() {
+		this.labelDeTurno.setText(this.labelDeJugadorB.getText());
+	}
+
+	
+	
+// Metodos privados que no son de inicializacion
 	
 	private void habilitarTodasLasVistasDe(ArrayList<? extends VistaCarta> collectionDeVistasCarta) {
 		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
 			vistaCarta.setDisable(false);
 		}
 	}
-
 	
-	
-	/*
-	public void actualizarGrilla() {
-		this.labelDeFase.setText("FASE: ".concat(this.juego.jugadorDeTurno().obtenerFase().nombre()));
-
-		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
-
-			this.labelDeTurno.setText("TURNO: JUGADOR 1");
-			this.bloquearBotonesJugador2();
-			for (Button unBoton : this.vistaCartaManoJugadorA)
-				unBoton.setVisible(true);
-			for (Button unBoton : this.vistaCartaManoJugadorB)
-				unBoton.setVisible(false);
-
-			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FaseInicial.class) {
-				this.bloquearBotonesJugador1();
-				this.botonMazoJugadorA.setDisable(false);
-				this.asignarMano();
-			}
-
-			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FasePreparacion.class) {
-				this.bloquearBotonesJugador1();
-				for (Button unBoton : this.vistaCartaManoJugadorA)
-					unBoton.setDisable(false);
-			}
-
-			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FaseAtaque.class) {
-				this.bloquearBotonesJugador1();
-				for (Button unBoton : this.vistaCartaMonstruosJugadorA)
-					unBoton.setDisable(false);
-				for (Button unBoton : this.vistaCartaMonstruosJugadorB)
-					unBoton.setDisable(false);
-			}
-
-			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FaseFinal.class) {
-				this.bloquearBotonesJugador1();
-				for (Button unBoton : this.vistaCartaEspecialesJugadorA)
-					unBoton.setDisable(false);
-				for (Button unBoton : this.vistaCartaEspecialesJugadorB)
-					unBoton.setDisable(false);
-			}
-
-		} else {
-			this.labelDeTurno.setText("TURNO: JUGADOR 2");
-			this.bloquearBotonesJugador1();
-			for (Button unBoton : this.vistaCartaManoJugadorA)
-				unBoton.setVisible(false);
-			for (Button unBoton : this.vistaCartaManoJugadorB)
-				unBoton.setVisible(true);
-
-			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FaseInicial.class) {
-				this.bloquearBotonesJugador2();
-				this.botonMazoJugadorB.setDisable(false);
-				this.asignarMano();
-			}
-
-			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FasePreparacion.class) {
-				this.bloquearBotonesJugador2();
-				for (Button unBoton : this.vistaCartaManoJugadorB)
-					unBoton.setDisable(false);
-			}
-
-			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FaseAtaque.class) {
-				this.bloquearBotonesJugador2();
-				for (Button unBoton : this.vistaCartaMonstruosJugadorB)
-					unBoton.setDisable(false);
-				for (Button unBoton : this.vistaCartaMonstruosJugadorA)
-					unBoton.setDisable(false);
-			}
-
-			if (this.juego.jugadorDeTurno().obtenerFase().getClass() == FaseFinal.class) {
-				this.bloquearBotonesJugador2();
-				for (Button unBoton : this.vistaCartaEspecialesJugadorA)
-					unBoton.setDisable(false);
-				for (Button unBoton : this.vistaCartaEspecialesJugadorB)
-					unBoton.setDisable(false);
-			}
+	private void deshabilitarTodasLasVistasDe(ArrayList<? extends VistaCarta> collectionDeVistasCarta) {
+		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
+			vistaCarta.setDisable(true);
 		}
 	}
 
-	public void actualizarGrillaPorSeleccionDeCartaDeMano(CartaMonstruo unaCarta) {
-		this.opcionInvocarEnModoAtaque.setVisible(true);
-		this.opcionInvocarEnModoDefensa.setVisible(true);
-		this.opcionInvocarEnModoDefensaBocaAbajo.setVisible(true);
-		this.opcionColocarBocaAbajo.setVisible(false);
-		this.opcionColocarBocaArriba.setVisible(false);
-		this.opcionColocarCartaDeCampo.setVisible(false);
 
-		this.opcionInvocarEnModoAtaque.asignarCarta(unaCarta, this);
-		this.opcionInvocarEnModoDefensa.asignarCarta(unaCarta, this);
-		this.opcionInvocarEnModoDefensaBocaAbajo.asignarCarta(unaCarta, this);
-	}
-
-	public void actualizarGrillaPorSeleccionDeCartaDeMano(CartaTrampa unaCarta) {
-		this.opcionInvocarEnModoAtaque.setVisible(false);
-		this.opcionInvocarEnModoDefensa.setVisible(false);
-		this.opcionInvocarEnModoDefensaBocaAbajo.setVisible(false);
-		this.opcionColocarBocaAbajo.setVisible(true);
-		this.opcionColocarBocaArriba.setVisible(false);
-		this.opcionColocarCartaDeCampo.setVisible(false);
-
-		this.opcionColocarBocaAbajo.asignarCarta(unaCarta, this);
-		this.opcionColocarBocaArriba.asignarCarta(unaCarta, this);
-	}
-
-	public void actualizarGrillaPorSeleccionDeCartaDeMano(CartaMagica unaCarta) {
-		this.opcionInvocarEnModoAtaque.setVisible(false);
-		this.opcionInvocarEnModoDefensa.setVisible(false);
-		this.opcionInvocarEnModoDefensaBocaAbajo.setVisible(false);
-		this.opcionColocarBocaAbajo.setVisible(true);
-		this.opcionColocarBocaArriba.setVisible(this.juego.jugadorDeTurno().obtenerFase() instanceof FaseFinal);
-		this.opcionColocarCartaDeCampo.setVisible(false);
-
-		this.opcionColocarBocaAbajo.asignarCarta(unaCarta, this);
-		this.opcionColocarBocaArriba.asignarCarta(unaCarta, this);
-	}
-
-	public void actualizarGrillaPorSeleccionDeCartaDeMano(CartaDeCampo unaCarta) {
-		this.opcionInvocarEnModoAtaque.setVisible(false);
-		this.opcionInvocarEnModoDefensa.setVisible(false);
-		this.opcionInvocarEnModoDefensaBocaAbajo.setVisible(false);
-		this.opcionColocarBocaAbajo.setVisible(false);
-		this.opcionColocarBocaArriba.setVisible(false);
-		this.opcionColocarCartaDeCampo.setVisible(true);
-		;
-
-		this.opcionColocarCartaDeCampo.asignarCarta(unaCarta, this);
-	}
-
-	public void actualizarGrillaPorSeleccionDeCartaDeMano(Carta unaCarta) {
-
-		unaCarta.provocarActualizacionDeLaGrillaSegunTipo(this);
-
-		this.opcionAtacar.setVisible(false);
-		this.botonCambioModoAtaque.setVisible(false);
-		this.opcionCambiarAModoDefensa.setVisible(false);
-	}
-
-	public void actualizarPorInvocacionDeUnMonstruo(CartaMonstruo unaCarta) {
-
-		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
-
-			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.vistaCartaManoJugadorA);
-			unBotonMano.limpiar();
-			BotonCartaMonstruo unBotonMonstruo = this.obtenerBotonMonstruoLibre(this.vistaCartaMonstruosJugadorA);
-			unBotonMonstruo.asignarCarta(unaCarta, this);
-		} else {
-			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.vistaCartaManoJugadorB);
-			unBotonMano.limpiar();
-			BotonCartaMonstruo unBotonMonstruo = this.obtenerBotonMonstruoLibre(this.vistaCartaMonstruosJugadorB);
-			unBotonMonstruo.asignarCarta(unaCarta, this);
-		}
-	}
-
-	public void actualizarPorInvocacionDeUnaCartaEspecial(CartaMagica unaCarta) {
-
-		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
-
-			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.vistaCartaManoJugadorA);
-			unBotonMano.limpiar();
-			BotonCartaEspecial unBotonEspecial = this.obtenerBotonEspecialLibre(this.vistaCartaEspecialesJugadorA);
-			unBotonEspecial.asignarCarta(unaCarta, this);
-		} else {
-			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.vistaCartaManoJugadorB);
-			unBotonMano.limpiar();
-			BotonCartaEspecial unBotonEspecial = this.obtenerBotonEspecialLibre(this.vistaCartaEspecialesJugadorB);
-			unBotonEspecial.asignarCarta(unaCarta, this);
-		}
-	}
-
-	public void actualizarPorInvocacionDeUnaCartaEspecial(CartaTrampa unaCarta) {
-
-		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
-
-			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.vistaCartaManoJugadorA);
-			unBotonMano.limpiar();
-			BotonCartaEspecial unBotonEspecial = this.obtenerBotonEspecialLibre(this.vistaCartaEspecialesJugadorA);
-			unBotonEspecial.asignarCarta(unaCarta, this);
-		} else {
-			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.vistaCartaManoJugadorB);
-			unBotonMano.limpiar();
-			BotonCartaEspecial unBotonEspecial = this.obtenerBotonEspecialLibre(this.vistaCartaEspecialesJugadorB);
-			unBotonEspecial.asignarCarta(unaCarta, this);
-		}
-	}
-
-	public void actualizarPorInvocacionDeUnaCartaDeCampo(CartaDeCampo unaCarta) {
-
-		if (this.juego.jugadorDeTurno().equals(this.jugador1)) {
-
-			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.vistaCartaManoJugadorA);
-			unBotonMano.limpiar();
-			BotonCampo unBotonCampo = this.vistaCartaDeCampoJugadorA;
-			unBotonCampo.asignarCarta(unaCarta, this);
-		} else {
-			BotonMano unBotonMano = this.obtenerBotonDeCarta(unaCarta, this.vistaCartaManoJugadorB);
-			unBotonMano.limpiar();
-			BotonCampo unBotonCampo = this.vistaCartaDeCampoJugadorB;
-			unBotonCampo.asignarCarta(unaCarta, this);
-		}
-	}
-
-	public void actualizarGrillaPorInvocacion(Carta unaCarta) {
-
-		unaCarta.actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(this);
-	}
-
-	public void actualizarGrillaPorSeleccionDeCartaMonstruo() {
-		this.opcionAtacar.setVisible(true);
-		this.botonCambioModoAtaque.setVisible(true);
-		this.opcionCambiarAModoDefensa.setVisible(true);
-		// this.botonInvocar.setVisible(false);
-		// this.botonSacrificar.setVisible(false);
-	}
-
-	public void actualizarGrillaPorSeleccionDeCartaEspecial() {
-		this.opcionAtacar.setVisible(false);
-		this.botonCambioModoAtaque.setVisible(false);
-		this.opcionCambiarAModoDefensa.setVisible(false);
-		// this.botonInvocar.setVisible(true);
-		// this.botonSacrificar.setVisible(false);
-		this.opcionColocarBocaArriba.setVisible(true);
-	}
-
-	private void asignarMano() {
-		for (int i = 0; i < this.jugador1.cantidadDeCartasEnMano(); i++) {
-			BotonMano unBoton = this.vistaCartaManoJugadorA.get(i);
-			System.out.println(unBoton.estaLibre());
-			if (unBoton.estaLibre()) {
-				unBoton.asignarCarta(this.jugador1.obtenerMano().obtenerCarta(i), this);
-			}
-		}
-		for (int i = 0; i < this.jugador2.cantidadDeCartasEnMano(); i++) {
-			BotonMano unBoton = this.vistaCartaManoJugadorB.get(i);
-			if (unBoton.estaLibre()) {
-				unBoton.asignarCarta(this.jugador2.obtenerMano().obtenerCarta(i), this);
-			}
-		}
-	}
-
-	private BotonMano obtenerBotonDeCarta(Carta unaCarta, ArrayList<BotonMano> botones) {
-		for (BotonMano unBoton : botones) {
-			if (unBoton.obtenerCarta().equals(unaCarta))
-				return unBoton;
-		}
-		return null;
-	}
-
-	private BotonCartaMonstruo obtenerBotonMonstruoLibre(ArrayList<BotonCartaMonstruo> botones) {
-		for (BotonCartaMonstruo unBoton : botones) {
-			if (unBoton.estaLibre())
-				return unBoton;
-		}
-		return null;
-	}
-
-	private BotonCartaEspecial obtenerBotonEspecialLibre(ArrayList<BotonCartaEspecial> botones) {
-		for (BotonCartaEspecial unBoton : botones) {
-			if (unBoton.estaLibre())
-				return unBoton;
-		}
-		return null;
-	}
-
-	private void bloquearBotonesJugador1() {
-		this.vistaCartaDeCampoJugadorA.setDisable(true);
-		this.botonCementerioJugadorA.setDisable(true);
-		this.botonMazoJugadorA.setDisable(true);
-		for (Button unBoton : this.vistaCartaEspecialesJugadorA)
-			unBoton.setDisable(true);
-		for (Button unBoton : this.vistaCartaMonstruosJugadorA)
-			unBoton.setDisable(true);
-		for (Button unBoton : this.vistaCartaManoJugadorA)
-			unBoton.setDisable(true);
-	}
-
-	private void bloquearBotonesJugador2() {
-		this.vistaCartaDeCampoJugadorB.setDisable(true);
-		this.botonCementerioJugadorB.setDisable(true);
-		this.botonMazoJugadorB.setDisable(true);
-		for (Button unBoton : this.vistaCartaEspecialesJugadorB)
-			unBoton.setDisable(true);
-		for (Button unBoton : this.vistaCartaMonstruosJugadorB)
-			unBoton.setDisable(true);
-		for (Button unBoton : this.vistaCartaManoJugadorB)
-			unBoton.setDisable(true);
-	}*/
 }

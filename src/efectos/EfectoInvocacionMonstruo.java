@@ -1,7 +1,7 @@
 package efectos;
 
 import cartas.Carta;
-import estado.Estado;
+import estados.Estado;
 
 public abstract class EfectoInvocacionMonstruo extends Efecto {
 

@@ -1,7 +1,7 @@
 package cartas;
 
 import efectos.EfectoInsectoComeHombres;
-import estado.ModoDefensaBocaAbajo;
+import estados.ModoDefensaBocaAbajo;
 
 public class InsectoComeHombres extends CartaMonstruo {
 

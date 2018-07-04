@@ -9,6 +9,6 @@ public class AgujeroOscuro extends CartaMagica {
 		this.efecto = new EfectoAgujeroOscuro(this);
 		this.nombre = "Agujero Oscuro";
 		this.colocarImagenEnCartaDesdeArchivoDeRuta("resources/images/carta_AgujeroOscuro.png");
+		this.crearVistaCarta();
 	}
-
 }

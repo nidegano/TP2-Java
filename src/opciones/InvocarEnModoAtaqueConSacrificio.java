@@ -1,9 +1,13 @@
 package opciones;
 
+import java.util.ArrayList;
+
+import cartas.Carta;
 import cartas.CartaMonstruo;
+import cartas.CartaRequiereSacrificios;
 import v.Vista;
 
-public class InvocarEnModoAtaqueConSacrificio extends Opcion {
+public class InvocarEnModoAtaqueConSacrificio extends InvocarConSacrificio {
 
 	public InvocarEnModoAtaqueConSacrificio(Vista vista) {
 		super(vista);
@@ -21,4 +25,11 @@ public class InvocarEnModoAtaqueConSacrificio extends Opcion {
 		cartaSeleccionada.chequearSiSePuedeInvocarMonstruo();
 		this.vista.cambiarAModoSeleccionParaSacrificio(this);
 	}
+
+	@Override
+	public void finalizarInvocacionPorSacrificio(Carta cartaSeleccionada, ArrayList<CartaMonstruo> sacrificios) {
+		((CartaRequiereSacrificios) cartaSeleccionada).invocarEnModoAtaque(sacrificios); 
+		//aca cheque si la cantidad es valida y si no tira excepcion	
+	}
 }
+
