@@ -1,4 +1,4 @@
-package v;
+package vista;
 
 public class TextoDisplay {
 

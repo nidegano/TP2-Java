@@ -1,10 +1,9 @@
 
-package v;
+package vista;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
 import juego.*;
-import vista.Grilla;
 
 public class Algooh extends Application {
 
@@ -32,6 +31,8 @@ public class Algooh extends Application {
 		Vista vista = new Vista(jugadorA,jugadorB,juego);
 		
 		juego.asignarVista(vista);
+		mazoJugadorA.asignarVistaACartas(vista);
+		mazoJugadorB.asignarVistaACartas(vista);
 
 		vista.start(primaryStage);
 

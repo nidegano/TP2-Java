@@ -1,15 +1,14 @@
-package v;
+package vista;
 
-import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import botones.VistaCarta;
 import cartas.Carta;
 import cartas.CartaDeCampo;
 import cartas.CartaEspecial;
 import cartas.CartaMonstruo;
+import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import juego.Jugador;
 import juego.JugadorA;
 import juego.JugadorB;
-import vista.Grilla;
 
 public class VistaCampoJugadores {
 	
@@ -43,6 +42,10 @@ public class VistaCampoJugadores {
 		return carta.obtenerDuenio().obtenerLugarParaVistaCartaDeCampoDependiendoDelJugadorATravezDeGrilla(this.grilla);
 	}
 
+	public VistaCarta obtenerUnLugarVacioDeLaZonaDeManoDependiendoDelJugadorATravezDeLaGrilla(Carta carta) {
+		return carta.obtenerDuenio().obtenerLugarVacioDeLaZonaDeManoATravezDeLaGrilla(this.grilla);
+	}
+	
 	public void actualizarPorModoSeleccionParaAtacar() {
 		this.grilla.deshabilitarTodosLasVistasCarta();
 		this.activarSoloLasVistasCartaMonstruosDeJugadorDeTurno(this.vista.jugadorDeTurno());
@@ -61,5 +64,9 @@ public class VistaCampoJugadores {
 	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
 		ConfiguracionDeLaVistaCampoJugador configuracion = jugadorDeTurno.determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
 		configuracion.configurar(this.grilla);
+	}
+
+	public void seTomoEstaCartaDelMazo(Carta unaCarta) {
+		unaCarta.vistaCarta().agregarALaZonaDeLaManoDelJugadorCorrespondiente();
 	}
 }

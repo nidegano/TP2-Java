@@ -4,7 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import botones.BotonCementerio;
 import botones.BotonFinalizarFase;
+import botones.BotonMazo;
 import botones.VistaCarta;
 import botones.VistaCartaDeCampo;
 import botones.VistaCartaEspecial;
@@ -35,7 +37,6 @@ import opciones.InvocarEnModoAtaque;
 import opciones.InvocarEnModoAtaqueConSacrificio;
 import opciones.InvocarEnModoDefensa;
 import opciones.InvocarEnModoDefensaBocaAbajo;
-import v.Vista;
 
 public class Grilla extends Application {
 
@@ -112,8 +113,8 @@ public class Grilla extends Application {
 		this.vistaCartaDeCampoJugadorA = new VistaCartaDeCampo(vista);
 		this.vistaCartaDeCampoJugadorB = new VistaCartaDeCampo(vista);
 
-		this.botonMazoJugadorA = new BotonMazo(jugadorA);
-		this.botonMazoJugadorB = new BotonMazo(jugadorB);
+		this.botonMazoJugadorA = new BotonMazo(juego);
+		this.botonMazoJugadorB = new BotonMazo(juego);
 
 		this.botonCementerioJugadorA = new BotonCementerio();
 		this.botonCementerioJugadorB = new BotonCementerio();
@@ -122,8 +123,8 @@ public class Grilla extends Application {
 		this.botonDeListo = new Listo(vista);
 
 		this.inicializarOpciones(vista);
-
 		this.agregarBotonesALaGrilla();
+		this.configurarBotonesFaseInicioDeJuego();
 	}
 
 	@Override
@@ -444,44 +445,65 @@ public class Grilla extends Application {
 	
 // Configuraciones especificas de botones asociadas a una fase y jugador en turno
 	
-	public void configurarBotonesFaseInicialTunoJugadorB() {
-		// TODO Auto-generated method stub
+	public void configurarBotonesFaseInicioDeJuego() {
+		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
 		
+		this.marcoDeLaImagen.setDisable(false);
+		
+		//Labels
+		this.labelDeJugadorA.setDisable(false);
+		this.labelDeJugadorB.setDisable(false);
+		this.labelVidaDeJugadorA.setDisable(false);
+		this.labelVidaDeJugadorB.setDisable(false);
+		this.labelDeTurno.setDisable(false);
+		this.labelDeFase.setDisable(false);
+		
+		//Botones Cementerio
+		this.botonCementerioJugadorA.setDisable(true);
+		this.botonCementerioJugadorB.setDisable(true);
+		
+		//Botones que son propios del juego y no de un Campo especifico de un jugador	
+		this.botonDeFinalizarFase.setDisable(false);
+	}
+	
+	public void configurarBotonesFaseInicialTunoJugadorB() {
+		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
+		this.botonMazoJugadorB.setDisable(false);
 	}
 
 	public void configurarBotonesFaseInicialTunoJugadorA() {
-		// TODO Auto-generated method stub
-		
+		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
+		this.botonMazoJugadorA.setDisable(false);
 	}
 
 	public void configurarBotonesFasePreparacionTurnoJugadorA() {
-		// TODO Auto-generated method stub
-		
+		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
+		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorA);
 	}
 
 	public void configurarBotonesFasePreparacionTurnoJugadorB() {
-		// TODO Auto-generated method stub
-		
+		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
+		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorB);
 	}
 
 	public void configurarBotonesFaseAtaqueTurnoJugadorA() {
-		// TODO Auto-generated method stub
-		
+		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
+		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorA);
 	}
 
 	public void configurarBotonesFaseAtaqueTurnoJugadorB() {
-		// TODO Auto-generated method stub
-		
+		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
+		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);
 	}
 
 	public void configurarBotonesFaseFinalTurnoJugadorA() {
-		// TODO Auto-generated method stub
-		
+		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
+		this.habilitarTodasLasVistasDe(this.vistaCartaEspecialesJugadorA);
 	}
 
 	public void configurarBotonesFaseFinalTurnoJugadorB() {
-		// TODO Auto-generated method stub
-		
+		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
+		this.habilitarTodasLasVistasDe(this.vistaCartaEspecialesJugadorB);
 	}
 	
 	
@@ -493,7 +515,7 @@ public class Grilla extends Application {
 	}
 	
 	public void asignarNuevaVidaALabelDeJugadorB(int nuevaVida) {
-		this.labelVidaDeJugadorA.setText(Integer.toString(nuevaVida));
+		this.labelVidaDeJugadorB.setText(Integer.toString(nuevaVida));
 	}
 
 	public void cambiarImagenPor(ImageView nuevaImagenAMostrar) {
@@ -555,5 +577,36 @@ public class Grilla extends Application {
 		}
 	}
 
+	private void deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores() {
+		
+		//Collections de botones similares de VistaCampoJugadores
+		this.deshabilitarTodasLasVistasDe(vistaCartaManoJugadorA);
+		this.deshabilitarTodasLasVistasDe(vistaCartaManoJugadorB);
+		this.deshabilitarTodasLasVistasDe(vistaCartaEspecialesJugadorA);
+		this.deshabilitarTodasLasVistasDe(vistaCartaEspecialesJugadorB);
+		this.deshabilitarTodasLasVistasDe(vistaCartaMonstruosJugadorA);
+		this.deshabilitarTodasLasVistasDe(vistaCartaMonstruosJugadorB);
+		
+		//Botones Cartas de Campo
+		this.vistaCartaDeCampoJugadorA.setDisable(true);
+		this.vistaCartaDeCampoJugadorB.setDisable(true);
+		
+		//Botones Mazo
+		this.botonMazoJugadorA.setDisable(true);
+		this.botonMazoJugadorB.setDisable(true);
+		
+		//Botones Cementerio
+		this.botonCementerioJugadorA.setDisable(true);
+		this.botonCementerioJugadorB.setDisable(true);
+	}
 
+	public VistaCarta obtenerUnLugarVacioDeZonaManoJugadorB() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public VistaCarta obtenerUnLugarVacioDeZonaManoJugadorA() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

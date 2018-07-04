@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import cartas.Carta;
 import cartas.CartaMonstruo;
 import cartas.CartaRequiereSacrificios;
-import v.Vista;
+import vista.Vista;
 
 public class InvocarEnModoDefensaConSacrificio extends InvocarConSacrificio {
 
@@ -28,6 +28,8 @@ public class InvocarEnModoDefensaConSacrificio extends InvocarConSacrificio {
 	
 	@Override
 	public void finalizarInvocacionPorSacrificio(Carta cartaSeleccionada, ArrayList<CartaMonstruo> sacrificios) {
+		cartaSeleccionada.desasignarVistaALugarDeManoEnVistaCampoJugadores();
+		cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
 		((CartaRequiereSacrificios) cartaSeleccionada).invocarEnModoDefensa(sacrificios); 
 		//aca cheque si la cantidad es valida y si no tira excepcion	
 	}

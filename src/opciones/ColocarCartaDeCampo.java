@@ -1,7 +1,7 @@
 package opciones;
 
 import cartas.CartaDeCampo;
-import v.Vista;
+import vista.Vista;
 
 public class ColocarCartaDeCampo extends Opcion {
 
@@ -18,7 +18,7 @@ public class ColocarCartaDeCampo extends Opcion {
 
 	public void aplicarComando(CartaDeCampo cartaSeleccionada) {
 		//no chequeo si se puede porque si no se puede se eleva una excepcion
-		cartaSeleccionada.vista().agregarAVistaCampoJugadores();
+		cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
 		cartaSeleccionada.colocarCartaDeCampo();
 	}
 }

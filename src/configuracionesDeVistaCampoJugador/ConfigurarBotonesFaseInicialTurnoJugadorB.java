@@ -1,6 +1,5 @@
 package configuracionesDeVistaCampoJugador;
 
-import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import vista.Grilla;
 
 public class ConfigurarBotonesFaseInicialTurnoJugadorB implements ConfiguracionDeLaVistaCampoJugador {

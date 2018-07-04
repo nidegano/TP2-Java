@@ -1,6 +1,6 @@
 package configuraciones;
 
-import v.PanelDeAccion;
+import vista.PanelDeAccion;
 
 public class MostrarOpcionesDeModoBocaAbajo implements ConfiguracionDeOpciones {
 

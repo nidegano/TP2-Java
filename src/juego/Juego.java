@@ -1,6 +1,7 @@
 package juego;
 
-import v.Vista;
+import cartas.Carta;
+import vista.Vista;
 
 public class Juego {
 
@@ -40,6 +41,10 @@ public class Juego {
 	public Jugador jugadorDeTurno() {
 		return this.deTurno;
 
+	}
+
+	public void seTomoEstaCartaDelMazo(Carta unaCarta) {
+		this.vista.seTomoEstaCartaDelMazo(unaCarta);
 	}
 
 }

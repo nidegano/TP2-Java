@@ -1,7 +1,7 @@
 package juego;
 
-import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import botones.VistaCarta;
+import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import vista.Grilla;
 
 public class JugadorA extends Jugador {
@@ -38,5 +38,11 @@ public class JugadorA extends Jugador {
 	@Override
 	public ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase() {
 		return this.fase.determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno();
+	}
+
+	@Override
+	public VistaCarta obtenerLugarVacioDeLaZonaDeManoATravezDeLaGrilla(Grilla grilla) {
+		return grilla.obtenerUnLugarVacioDeZonaManoJugadorA();
+		//se chequea antes de pedir lugar si se puede o no
 	}
 }

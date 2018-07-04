@@ -1,4 +1,4 @@
-package ConfiguracionesDeVistaCampoJugador;
+package configuracionesDeVistaCampoJugador;
 
 import vista.Grilla;
 

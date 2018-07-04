@@ -1,7 +1,7 @@
 package opciones;
 
 import cartas.CartaMonstruo;
-import v.Vista;
+import vista.Vista;
 
 public class CambiarModoAtaque extends Opcion {
 	

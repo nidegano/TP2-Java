@@ -18,7 +18,8 @@ import juego.ContenedorDeCartas;
 import juego.Jugador;
 import juego.Mano;
 import juego.RecolectorDePartesDeExodia;
-import v.VistaCampoJugadores;
+import vista.Vista;
+import vista.VistaCampoJugadores;
 
 public abstract class Carta {
 
@@ -68,7 +69,7 @@ public abstract class Carta {
 		return this.imagen;
 	}
 
-	public VistaCarta vista() {
+	public VistaCarta vistaCarta() {
 		return this.vistaCarta;
 	}
 
@@ -84,8 +85,12 @@ public abstract class Carta {
 
 	public abstract VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores);
 
-	public void asignarVista(VistaCarta vistaNueva) {
+	public void asignarVistaCarta(VistaCarta vistaNueva) {
 		this.vistaCarta = vistaNueva;
+	}
+
+	public void asignarVista(Vista vista) {
+		this.vistaCarta.asignarVista(vista);
 	}
 	
 	protected void colocarImagenEnCartaDesdeArchivoDeRuta(String ruta) {
@@ -96,11 +101,10 @@ public abstract class Carta {
 		}
 		this.imagen = new ImageView(new Image(input));
 	}
-	
 
 	protected void crearVistaCarta() {
-		// TODO Auto-generated method stub
-		
+		this.vistaCarta = new VistaCarta();
+		this.vistaCarta.asignarCarta(this);
 	}
 
 	public abstract ConfiguracionDeOpciones obtenerConfiguracionDeOpcionesSegunTipoYEstado();
@@ -108,5 +112,7 @@ public abstract class Carta {
 	public VistaCarta obtenerVistaCarta() {
 		return this.vistaCarta;
 	}
+
+	public abstract void desasignarVistaALugarDeManoEnVistaCampoJugadores();
 
 }

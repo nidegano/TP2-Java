@@ -4,6 +4,7 @@ import java.util.Collections;
 
 import cartas.*;
 import excepciones.MazoSinCartasException;
+import vista.Vista;
 
 public class Mazo extends ContenedorDeCartas {
 
@@ -56,6 +57,12 @@ public class Mazo extends ContenedorDeCartas {
 	public void asignarComoDuenioDeTodasLasCartasA(Jugador jugador) {
 		for (Carta carta : this.cartas) {
 			carta.asignarDuenio(jugador);
+		}
+	}
+
+	public void asignarVistaACartas(Vista vista) {
+		for (Carta carta : this.cartas) {
+			carta.asignarVista(vista);
 		}
 	}
 

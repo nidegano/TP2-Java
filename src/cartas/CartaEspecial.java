@@ -1,6 +1,7 @@
 package cartas;
 
 import botones.VistaCarta;
+import botones.VistaCartaEspecial;
 import configuraciones.ConfiguracionDeOpciones;
 import estados.EstadoDeCartaEspecial;
 import estados.ModoBocaAbajo;
@@ -9,7 +10,7 @@ import estados.ModoCartaEspecialSinInvocar;
 import juego.Campo;
 import juego.Jugador;
 import juego.RecolectorDePartesDeExodia;
-import v.VistaCampoJugadores;
+import vista.VistaCampoJugadores;
 
 public abstract class CartaEspecial extends Carta {
 
@@ -67,5 +68,14 @@ public abstract class CartaEspecial extends Carta {
 	@Override
 	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
 		return vistaCampoJugadores.obtenerUnLugarVacio(this);
+	}
+	
+	@Override
+	public void desasignarVistaALugarDeManoEnVistaCampoJugadores() {
+		VistaCarta vistaCartaActual = this.vistaCarta;
+		VistaCarta vistaCartaNueva = new VistaCartaEspecial(vistaCartaActual.vista());
+		vistaCartaNueva.reemplazarPor(vistaCartaActual);
+		vistaCartaActual.vaciar();
+		this.vistaCarta = vistaCartaNueva;
 	}
 }

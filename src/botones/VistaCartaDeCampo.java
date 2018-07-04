@@ -1,7 +1,7 @@
 package botones;
 
 import cartas.CartaNula;
-import v.Vista;
+import vista.Vista;
 
 public class VistaCartaDeCampo extends VistaCarta {
 

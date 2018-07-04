@@ -3,13 +3,23 @@ package botones;
 import cartas.Carta;
 import cartas.CartaNula;
 import javafx.scene.control.Button;
-import v.Vista;
-import v.VistaCampoJugadores;
+import vista.Vista;
+import vista.VistaCampoJugadores;
 
-public abstract class VistaCarta extends Button {
+public class VistaCarta extends Button {
 	
 	protected Carta carta;
 	protected Vista vista;
+	
+	public VistaCarta() {
+		
+		super("-");
+		this.carta = new CartaNula();
+		
+		this.setMaxSize(100, 25);
+		this.setMinSize(100, 25);
+		this.setDisable(true);
+	}
 
 	public VistaCarta(Vista vista) {
 		
@@ -31,7 +41,8 @@ public abstract class VistaCarta extends Button {
 		this.setText(this.carta.obtenerNombre());
 	}
 	
-	public abstract void vaciar();
+	public void vaciar() {
+	}
 
 	public void agregarAVistaCampoJugadores() {
 		
@@ -40,7 +51,18 @@ public abstract class VistaCarta extends Button {
 		//dependiendo del tipo de la carta busca en la zona correcta
 		
 		lugar.reemplazarPor(this);
-		this.carta.asignarVista(lugar);
+		this.carta.asignarVistaCarta(lugar);
+		//la vista en la que estamos (la que no es lugar) al finalizar el metodo queda desreferenciada de programa
+	}
+	
+	public void agregarALaZonaDeLaManoDelJugadorCorrespondiente() {
+		
+		VistaCampoJugadores vistaCampoJugadores = this.vista.obtenerVistaCampoJugadores();
+		VistaCarta lugar = vistaCampoJugadores.obtenerUnLugarVacioDeLaZonaDeManoDependiendoDelJugadorATravezDeLaGrilla(this.carta); 
+		//dependiendo del tipo de la carta busca en la zona correcta
+		
+		lugar.reemplazarPor(this);
+		this.carta.asignarVistaCarta(lugar);
 		//la vista en la que estamos (la que no es lugar) al finalizar el metodo queda desreferenciada de programa
 	}
 	
@@ -48,7 +70,7 @@ public abstract class VistaCarta extends Button {
 		return this.carta.getClass().equals(CartaNula.class); //no encontramos otra forma de hacerlo
 	}
 
-	private void reemplazarPor(VistaCarta vistaCarta) {
+	public void reemplazarPor(VistaCarta vistaCarta) {
 		this.carta = vistaCarta.carta;
 		this.setText(vistaCarta.getText());
 	}
@@ -60,5 +82,18 @@ public abstract class VistaCarta extends Button {
 
 	public void deshabilitar() {
 		this.setDisable(true);
+	}
+
+	public Vista vista() {
+		return this.vista;
+	}
+
+	public void asignarVista(Vista vista) {
+		this.vista = vista;
+		
+		this.setOnAction(value -> {
+			this.vista.avisarDeLaSeleccionDeUnaVistaDeCarta(this.carta);
+		});
+		//lo de set on action esta porque lo tengo que poner ni bien se tenga referencia a la vista
 	}
 }

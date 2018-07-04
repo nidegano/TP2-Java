@@ -1,6 +1,6 @@
 package fases;
 
-import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
+import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import configuracionesDeVistaCampoJugador.NoHacerNada;
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import juego.Jugador;

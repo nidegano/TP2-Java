@@ -1,7 +1,7 @@
 package opciones;
 
 import cartas.CartaEspecial;
-import v.Vista;
+import vista.Vista;
 
 public class ColocarBocaAbajo extends Opcion {
 
@@ -18,7 +18,7 @@ public class ColocarBocaAbajo extends Opcion {
 
 	public void aplicarComando(CartaEspecial cartaSeleccionada) {
 		//no chequeo si se puede porque si no se puede al ejecutarse colocarBocaAbajo() tira una excepcion
-		cartaSeleccionada.vista().agregarAVistaCampoJugadores();
+		cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
 		cartaSeleccionada.colocarBocaAbajo();
 	}
 }

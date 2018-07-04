@@ -1,7 +1,7 @@
 package opciones;
 
 import cartas.CartaEspecial;
-import v.Vista;
+import vista.Vista;
 
 public class ColocarBocaArriba extends Opcion {
 

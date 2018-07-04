@@ -1,6 +1,6 @@
 package opciones;
 
-import v.Vista;
+import vista.Vista;
 
 public class Listo extends Opcion {
 

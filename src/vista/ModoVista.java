@@ -1,4 +1,4 @@
-package v;
+package vista;
 
 import cartas.Carta;
 

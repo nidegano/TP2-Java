@@ -1,8 +1,7 @@
-package v;
+package vista;
 
 import java.util.ArrayList;
 
-import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import cartas.Carta;
 import cartas.CartaMonstruo;
 import cartas.CartaNula;
@@ -15,18 +14,15 @@ import juego.JugadorB;
 import opciones.Atacar;
 import opciones.InvocarConSacrificio;
 import opciones.Opcion;
-import vista.Grilla;
 
 public class Vista {
 	
 	private Juego juego;
-	private JugadorA jugadorA;
-	private JugadorB jugadorB;
 	
 	private Grilla grilla;
 	private VistaCampoJugadores vistaCampoJugadores;
 	private PanelDeAccion panelDeAccion;
-	private TextoDisplay textoDisplay;
+	//private TextoDisplay textoDisplay;
 	
 	private Carta cartaSeleccionada;
 	private ModoVista modoVista;
@@ -36,13 +32,11 @@ public class Vista {
 	public Vista(JugadorA jugadorA, JugadorB jugadorB, Juego juego) throws Exception {
 		
 		this.juego = juego;
-		this.jugadorA = jugadorA;
-		this.jugadorB = jugadorB;
 		
 		this.grilla = new Grilla(jugadorA,jugadorB,juego,this); //se contruye y coloca todo lo necesario (botones y labels)
 		this.vistaCampoJugadores = new VistaCampoJugadores(jugadorA,jugadorB,grilla,this);
 		this.panelDeAccion = new PanelDeAccion(grilla);
-		this.textoDisplay = new TextoDisplay();
+		//this.textoDisplay = new TextoDisplay();
 		
 		this.cartaSeleccionada = new CartaNula();
 		this.modoVista = new ModoNormal(this);
@@ -96,7 +90,9 @@ public class Vista {
 	}
 
 	private void cambiarAModoNormal() {
-		this.modoVista = new ModoNormal(this);		
+		this.modoVista = new ModoNormal(this);	
+		this.vistaCampoJugadores.actualizarPorCambioDeTurno(this.juego.jugadorDeTurno());
+		//para que cualquier configuracion de botones vuelva a como estaba antes
 	}
 
 	public Jugador jugadorDeTurno() {
@@ -105,7 +101,7 @@ public class Vista {
 
 	public void agregarSeleccionALasSeleccionesSecundarias(Carta cartaNuevaSeleccion) {
 		this.seleccionesSecundarias.add((CartaMonstruo) cartaNuevaSeleccion); //cast seguro por contexto
-		cartaNuevaSeleccion.vista().deshabilitar();
+		cartaNuevaSeleccion.vistaCarta().deshabilitar();
 	}
 
 	public void finalizarInvocacionPorSacrificio() {
@@ -121,5 +117,9 @@ public class Vista {
 	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
 		this.vistaCampoJugadores.actualizarPorCambioDeTurno(jugadorDeTurno);
 		this.panelDeAccion.actualizarPorCambioDeTurno(jugadorDeTurno);
+	}
+
+	public void seTomoEstaCartaDelMazo(Carta unaCarta) {
+		this.vistaCampoJugadores.seTomoEstaCartaDelMazo(unaCarta);
 	}
 }

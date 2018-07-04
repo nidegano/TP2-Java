@@ -1,6 +1,6 @@
 package fases;
 
-import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
+import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import juego.Jugador;
 
 public interface Fase {

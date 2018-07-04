@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import cartas.Carta;
 import cartas.CartaMonstruo;
-import v.Vista;
+import vista.Vista;
 
 public abstract class InvocarConSacrificio extends Opcion {
 

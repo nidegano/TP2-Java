@@ -1,6 +1,7 @@
 package cartas;
 
 import botones.VistaCarta;
+import botones.VistaCartaMonstruo;
 import configuraciones.ConfiguracionDeOpciones;
 import estados.EstadoDeCartaMonstruo;
 import estados.EstadoMonstruoSinInvocar;
@@ -13,7 +14,7 @@ import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.FormaDeAfectarAlJugador;
 import juego.RecolectorDePartesDeExodia;
-import v.VistaCampoJugadores;
+import vista.VistaCampoJugadores;
 
 public abstract class CartaMonstruo extends Carta {
 
@@ -173,6 +174,15 @@ public abstract class CartaMonstruo extends Carta {
 	@Override
 	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
 		return vistaCampoJugadores.obtenerUnLugarVacio(this);
+	}
+
+	@Override
+	public void desasignarVistaALugarDeManoEnVistaCampoJugadores() {
+		VistaCarta vistaCartaActual = this.vistaCarta;
+		VistaCarta vistaCartaNueva = new VistaCartaMonstruo(vistaCartaActual.vista());
+		vistaCartaNueva.reemplazarPor(vistaCartaActual);
+		vistaCartaActual.vaciar();
+		this.vistaCarta = vistaCartaNueva;
 	}
 
 }

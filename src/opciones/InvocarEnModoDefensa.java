@@ -1,7 +1,7 @@
 package opciones;
 
 import cartas.CartaMonstruo;
-import v.Vista;
+import vista.Vista;
 
 public class InvocarEnModoDefensa extends Opcion {
 
@@ -19,7 +19,8 @@ public class InvocarEnModoDefensa extends Opcion {
 	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
 		//no chequeo si se puede porque si no se puede se eleva una excepcion
 		cartaSeleccionada.chequearSiSePuedeInvocarMonstruo();
-		cartaSeleccionada.vista().agregarAVistaCampoJugadores();
+		cartaSeleccionada.desasignarVistaALugarDeManoEnVistaCampoJugadores();
+		cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
 		cartaSeleccionada.invocarEnModoDefensa();
 	}
 }

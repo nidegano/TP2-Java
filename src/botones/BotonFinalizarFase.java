@@ -14,5 +14,4 @@ public class BotonFinalizarFase extends Button {
 			juego.informarQueJugadorDeTurnoTocoFinalizarFase();
 		});
 	}
-
 }

@@ -1,7 +1,7 @@
 package opciones;
 
 import cartas.Carta;
-import v.Vista;
+import vista.Vista;
 
 public class Descartar extends Opcion {
 

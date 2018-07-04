@@ -1,10 +1,9 @@
-package v;
+package vista;
 
 import cartas.Carta;
 import configuraciones.ConfiguracionDeOpciones;
 import fases.Fase;
 import juego.Jugador;
-import vista.Grilla;
 
 public class PanelDeAccion {
 	

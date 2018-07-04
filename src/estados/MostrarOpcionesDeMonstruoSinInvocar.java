@@ -1,7 +1,7 @@
 package estados;
 
 import configuraciones.ConfiguracionDeOpciones;
-import v.PanelDeAccion;
+import vista.PanelDeAccion;
 
 public class MostrarOpcionesDeMonstruoSinInvocar implements ConfiguracionDeOpciones {
 

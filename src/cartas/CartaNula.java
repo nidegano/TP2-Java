@@ -6,7 +6,7 @@ import configuraciones.MostrarOpcionesDeCartaNula;
 import excepciones.NoSePuedeColocarUnaCartaNulaEnCampoException;
 import juego.Campo;
 import juego.RecolectorDePartesDeExodia;
-import v.VistaCampoJugadores;
+import vista.VistaCampoJugadores;
 
 public class CartaNula extends Carta {
 
@@ -31,5 +31,10 @@ public class CartaNula extends Carta {
 	@Override
 	public ConfiguracionDeOpciones obtenerConfiguracionDeOpcionesSegunTipoYEstado() {
 		return new MostrarOpcionesDeCartaNula();
+	}
+
+	@Override
+	public void desasignarVistaALugarDeManoEnVistaCampoJugadores() {
+		//una carta nula no se asigna a un lugar de mano
 	}
 }

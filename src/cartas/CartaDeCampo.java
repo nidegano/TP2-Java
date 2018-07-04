@@ -1,11 +1,12 @@
 package cartas;
 
 import botones.VistaCarta;
+import botones.VistaCartaDeCampo;
 import configuraciones.ConfiguracionDeOpciones;
 import estados.ModoCartaDeCampoInvocada;
 import excepciones.YaHayUnaCartaDeCampoColocadaException;
 import juego.Campo;
-import v.VistaCampoJugadores;
+import vista.VistaCampoJugadores;
 
 public abstract class CartaDeCampo extends CartaEspecial {
 
@@ -42,5 +43,14 @@ public abstract class CartaDeCampo extends CartaEspecial {
 	@Override
 	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
 		return vistaCampoJugadores.obtenerUnLugarVacio(this);
+	}
+	
+	@Override
+	public void desasignarVistaALugarDeManoEnVistaCampoJugadores() {
+		VistaCarta vistaCartaActual = this.vistaCarta;
+		VistaCarta vistaCartaNueva = new VistaCartaDeCampo(vistaCartaActual.vista());
+		vistaCartaNueva.reemplazarPor(vistaCartaActual);
+		vistaCartaActual.vaciar();
+		this.vistaCarta = vistaCartaNueva;
 	}
 }

@@ -1,8 +1,8 @@
 package juego;
 
-import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import botones.VistaCarta;
 import cartas.*;
+import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 //import excepciones.AtaqueIntervenidoException;
 import excepciones.SinVidaException;
 import fases.Fase;
@@ -51,6 +51,7 @@ public abstract class Jugador {
 		this.fase.tomoCartaDelMazo();
 		Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
 		this.mano.agregar(unaCarta);
+		this.juego.seTomoEstaCartaDelMazo(unaCarta);
 	}
 
 	public boolean esDuenioDe(Carta carta) {
@@ -171,4 +172,6 @@ public abstract class Jugador {
 	public abstract void determinarComoCambiarElLabelDelTurnoDependiendoDeQueJugadorEsElTurnoATravezDeGrilla(Grilla grilla);
 
 	public abstract ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
+
+	public abstract VistaCarta obtenerLugarVacioDeLaZonaDeManoATravezDeLaGrilla(Grilla grilla);
 }

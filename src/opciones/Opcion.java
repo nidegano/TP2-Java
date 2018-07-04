@@ -1,7 +1,7 @@
 package opciones;
 
 import javafx.scene.control.Button;
-import v.Vista;
+import vista.Vista;
 
 public abstract class Opcion extends Button {
 	

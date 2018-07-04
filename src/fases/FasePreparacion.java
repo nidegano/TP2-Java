@@ -1,7 +1,7 @@
 
 package fases;
 
-import ConfiguracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
+import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import configuracionesDeVistaCampoJugador.ConfigurarBotonesFasePreparacionTurnoJugadorA;
 import configuracionesDeVistaCampoJugador.ConfigurarBotonesFasePreparacionTurnoJugadorB;
 import excepciones.SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
