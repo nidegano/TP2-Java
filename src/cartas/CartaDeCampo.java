@@ -1,7 +1,6 @@
 package cartas;
 
 import botones.VistaCarta;
-import botones.VistaCartaDeCampo;
 import configuraciones.ConfiguracionDeOpciones;
 import estados.ModoCartaDeCampoInvocada;
 import excepciones.YaHayUnaCartaDeCampoColocadaException;
@@ -48,7 +47,7 @@ public abstract class CartaDeCampo extends CartaEspecial {
 	@Override
 	public void desasignarVistaALugarDeManoEnVistaCampoJugadores() {
 		VistaCarta vistaCartaActual = this.vistaCarta;
-		VistaCarta vistaCartaNueva = new VistaCartaDeCampo(vistaCartaActual.vista());
+		VistaCarta vistaCartaNueva = new VistaCarta(vistaCartaActual.vista());
 		vistaCartaNueva.reemplazarPor(vistaCartaActual);
 		vistaCartaActual.vaciar();
 		this.vistaCarta = vistaCartaNueva;

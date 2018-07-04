@@ -1,7 +1,6 @@
 package cartas;
 
 import botones.VistaCarta;
-import botones.VistaCartaEspecial;
 import configuraciones.ConfiguracionDeOpciones;
 import estados.EstadoDeCartaEspecial;
 import estados.ModoBocaAbajo;
@@ -73,7 +72,7 @@ public abstract class CartaEspecial extends Carta {
 	@Override
 	public void desasignarVistaALugarDeManoEnVistaCampoJugadores() {
 		VistaCarta vistaCartaActual = this.vistaCarta;
-		VistaCarta vistaCartaNueva = new VistaCartaEspecial(vistaCartaActual.vista());
+		VistaCarta vistaCartaNueva = new VistaCarta(vistaCartaActual.vista());
 		vistaCartaNueva.reemplazarPor(vistaCartaActual);
 		vistaCartaActual.vaciar();
 		this.vistaCarta = vistaCartaNueva;

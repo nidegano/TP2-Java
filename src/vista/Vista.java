@@ -62,6 +62,7 @@ public class Vista {
 		this.modoVista = new ModoSeleccionParaSacrificio(this);
 		this.grilla.botonDeListoHacerVisible(true);
 		this.opcionQuePidioElCambioDeModo = opcionQuePidioElCambioDeModo;
+		this.vistaCampoJugadores.actualizarPorModoSeleccionParaSacrificar();
 	}
 	
 	public void cambiarAModoSeleccionParaAtacar(Atacar atacar) {

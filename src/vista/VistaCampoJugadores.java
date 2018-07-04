@@ -52,10 +52,6 @@ public class VistaCampoJugadores {
 		//aca falta lo de si no hay monstruos se activa para atacar al jugador
 	}
 
-	private void activarSoloLasVistasCartaMonstruosDelOponenteDeJugadorDeTurno(Jugador jugadorDeTurno) {
-		jugadorDeTurno.determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(this.grilla);
-	}
-
 	public void actualizarVidaJugadores() {
 		this.grilla.asignarNuevaVidaALabelDeJugadorA(this.jugadorA.vida());
 		this.grilla.asignarNuevaVidaALabelDeJugadorB(this.jugadorB.vida());
@@ -69,5 +65,18 @@ public class VistaCampoJugadores {
 
 	public void seTomoEstaCartaDelMazo(Carta unaCarta) {
 		unaCarta.vistaCarta().agregarALaZonaDeLaManoDelJugadorCorrespondiente();
+	}
+
+	public void actualizarPorModoSeleccionParaSacrificar() {
+		this.grilla.deshabilitarTodosLasVistasCarta();
+		this.activarSoloLasVistasCartaMonstruosDeJugadorDeTurno(this.vista.jugadorDeTurno());
+	}
+
+	private void activarSoloLasVistasCartaMonstruosDeJugadorDeTurno(Jugador jugadorDeTurno) {
+		jugadorDeTurno.oponente().determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(this.grilla);
+	}
+	
+	private void activarSoloLasVistasCartaMonstruosDelOponenteDeJugadorDeTurno(Jugador jugadorDeTurno) {
+		jugadorDeTurno.determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(this.grilla);
 	}
 }

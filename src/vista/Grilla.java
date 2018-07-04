@@ -8,10 +8,6 @@ import botones.BotonCementerio;
 import botones.BotonFinalizarFase;
 import botones.BotonMazo;
 import botones.VistaCarta;
-import botones.VistaCartaDeCampo;
-import botones.VistaCartaEspecial;
-import botones.VistaCartaMano;
-import botones.VistaCartaMonstruo;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -57,16 +53,16 @@ public class Grilla extends Application {
 	private Label labelDeFase;
 	
 	//Collections de botones similares de VistaCampoJugadores
-	private ArrayList<VistaCartaMano> vistaCartaManoJugadorA;
-	private ArrayList<VistaCartaMano> vistaCartaManoJugadorB;
-	private ArrayList<VistaCartaEspecial> vistaCartaEspecialesJugadorA;
-	private ArrayList<VistaCartaEspecial> vistaCartaEspecialesJugadorB;
-	private ArrayList<VistaCartaMonstruo> vistaCartaMonstruosJugadorA;
-	private ArrayList<VistaCartaMonstruo> vistaCartaMonstruosJugadorB;
+	private ArrayList<VistaCarta> vistaCartaManoJugadorA;
+	private ArrayList<VistaCarta> vistaCartaManoJugadorB;
+	private ArrayList<VistaCarta> vistaCartaEspecialesJugadorA;
+	private ArrayList<VistaCarta> vistaCartaEspecialesJugadorB;
+	private ArrayList<VistaCarta> vistaCartaMonstruosJugadorA;
+	private ArrayList<VistaCarta> vistaCartaMonstruosJugadorB;
 	
 	//Botones Cartas de Campo
-	private VistaCartaDeCampo vistaCartaDeCampoJugadorA;
-	private VistaCartaDeCampo vistaCartaDeCampoJugadorB;
+	private VistaCarta vistaCartaDeCampoJugadorA;
+	private VistaCarta vistaCartaDeCampoJugadorB;
 	
 	//Botones Mazo
 	private BotonMazo botonMazoJugadorA;
@@ -110,8 +106,8 @@ public class Grilla extends Application {
 		
 		this.inicializarVistasCartaDeVistaCampoJugadores(vista);
 
-		this.vistaCartaDeCampoJugadorA = new VistaCartaDeCampo(vista);
-		this.vistaCartaDeCampoJugadorB = new VistaCartaDeCampo(vista);
+		this.vistaCartaDeCampoJugadorA = new VistaCarta(vista);
+		this.vistaCartaDeCampoJugadorB = new VistaCarta(vista);
 
 		this.botonMazoJugadorA = new BotonMazo(juego);
 		this.botonMazoJugadorB = new BotonMazo(juego);
@@ -166,53 +162,53 @@ public class Grilla extends Application {
 	private void inicializarVistasCartaDeVistaCampoJugadores(Vista vista) {
 		
 		//Se inicializa la collection de "slots" (Vistas) que se corresponden con la mano
-		this.vistaCartaManoJugadorA = new ArrayList<VistaCartaMano>();		
-		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorA = new ArrayList<VistaCarta>();		
+		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
 
-		this.vistaCartaManoJugadorB = new ArrayList<VistaCartaMano>();		
-		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCartaMano(vista));
+		this.vistaCartaManoJugadorB = new ArrayList<VistaCarta>();		
+		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
 
 		//Se inicializa la collection de "slots" (Vistas) que se corresponden con la zona de cartas especiales
-		this.vistaCartaEspecialesJugadorA = new ArrayList<VistaCartaEspecial>();
-		this.vistaCartaEspecialesJugadorA.add(new VistaCartaEspecial(vista));
-		this.vistaCartaEspecialesJugadorA.add(new VistaCartaEspecial(vista));
-		this.vistaCartaEspecialesJugadorA.add(new VistaCartaEspecial(vista));
-		this.vistaCartaEspecialesJugadorA.add(new VistaCartaEspecial(vista));
-		this.vistaCartaEspecialesJugadorA.add(new VistaCartaEspecial(vista));
+		this.vistaCartaEspecialesJugadorA = new ArrayList<VistaCarta>();
+		this.vistaCartaEspecialesJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCarta(vista));
 
-		this.vistaCartaEspecialesJugadorB = new ArrayList<VistaCartaEspecial>();
-		this.vistaCartaEspecialesJugadorB.add(new VistaCartaEspecial(vista));
-		this.vistaCartaEspecialesJugadorB.add(new VistaCartaEspecial(vista));
-		this.vistaCartaEspecialesJugadorB.add(new VistaCartaEspecial(vista));
-		this.vistaCartaEspecialesJugadorB.add(new VistaCartaEspecial(vista));
-		this.vistaCartaEspecialesJugadorB.add(new VistaCartaEspecial(vista));
+		this.vistaCartaEspecialesJugadorB = new ArrayList<VistaCarta>();
+		this.vistaCartaEspecialesJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCarta(vista));
 
 		//Se inicializa la collection de "slots" (Vistas) que se corresponden con la zona de cartas monstruo
-		this.vistaCartaMonstruosJugadorA = new ArrayList<VistaCartaMonstruo>();
-		this.vistaCartaMonstruosJugadorA.add(new VistaCartaMonstruo(vista));
-		this.vistaCartaMonstruosJugadorA.add(new VistaCartaMonstruo(vista));
-		this.vistaCartaMonstruosJugadorA.add(new VistaCartaMonstruo(vista));
-		this.vistaCartaMonstruosJugadorA.add(new VistaCartaMonstruo(vista));
-		this.vistaCartaMonstruosJugadorA.add(new VistaCartaMonstruo(vista));
+		this.vistaCartaMonstruosJugadorA = new ArrayList<VistaCarta>();
+		this.vistaCartaMonstruosJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCarta(vista));
 
-		this.vistaCartaMonstruosJugadorB = new ArrayList<VistaCartaMonstruo>();
-		this.vistaCartaMonstruosJugadorB.add(new VistaCartaMonstruo(vista));
-		this.vistaCartaMonstruosJugadorB.add(new VistaCartaMonstruo(vista));
-		this.vistaCartaMonstruosJugadorB.add(new VistaCartaMonstruo(vista));
-		this.vistaCartaMonstruosJugadorB.add(new VistaCartaMonstruo(vista));
-		this.vistaCartaMonstruosJugadorB.add(new VistaCartaMonstruo(vista));	
+		this.vistaCartaMonstruosJugadorB = new ArrayList<VistaCarta>();
+		this.vistaCartaMonstruosJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCarta(vista));	
 	}
 
 	private void inicializarLabels() {
@@ -252,13 +248,13 @@ public class Grilla extends Application {
 		}
 
 		i = 3;
-		for (VistaCartaEspecial unSlot : this.vistaCartaEspecialesJugadorA) {
+		for (VistaCarta unSlot : this.vistaCartaEspecialesJugadorA) {
 			this.gridPane.add(unSlot, i, 3, 1, 1);
 			i++;
 		}
 
 		i = 3;
-		for (VistaCartaMonstruo unSlot : this.vistaCartaMonstruosJugadorA) {
+		for (VistaCarta unSlot : this.vistaCartaMonstruosJugadorA) {
 			this.gridPane.add(unSlot, i, 4, 1, 1);
 			i++;
 		}
@@ -275,13 +271,13 @@ public class Grilla extends Application {
 		}
 
 		i = 3;
-		for (VistaCartaEspecial unSlot : this.vistaCartaEspecialesJugadorB) {
+		for (VistaCarta unSlot : this.vistaCartaEspecialesJugadorB) {
 			this.gridPane.add(unSlot, i, 9, 1, 1);
 			i++;
 		}
 
 		i = 3;
-		for (VistaCartaMonstruo unSlot : this.vistaCartaMonstruosJugadorB) {
+		for (VistaCarta unSlot : this.vistaCartaMonstruosJugadorB) {
 			this.gridPane.add(unSlot, i, 8, 1, 1);
 			i++;
 		}
@@ -324,7 +320,7 @@ public class Grilla extends Application {
 // Buscar un Lugar vacio para VistaCarta que se quiere colocar en VistaCampoJugadores
 	
 	public VistaCarta obtenerUnLugarVacioParaCartaMonstruoDeJugadorA() {
-		for (VistaCartaMonstruo lugar : this.vistaCartaMonstruosJugadorA) {
+		for (VistaCarta lugar : this.vistaCartaMonstruosJugadorA) {
 			if(lugar.estaLibre()) {
 				return lugar;
 			}
@@ -334,7 +330,7 @@ public class Grilla extends Application {
 	}
 
 	public VistaCarta obtenerUnLugarVacioParaCartaEspecialDeJugadorA() {
-		for (VistaCartaEspecial lugar : this.vistaCartaEspecialesJugadorA) {
+		for (VistaCarta lugar : this.vistaCartaEspecialesJugadorA) {
 			if(lugar.estaLibre()) {
 				return lugar;
 			}
@@ -352,7 +348,7 @@ public class Grilla extends Application {
 	}
 	
 	public VistaCarta obtenerUnLugarVacioParaCartaMonstruoDeJugadorB() {
-		for (VistaCartaMonstruo lugar : this.vistaCartaMonstruosJugadorB) {
+		for (VistaCarta lugar : this.vistaCartaMonstruosJugadorB) {
 			if(lugar.estaLibre()) {
 				return lugar;
 			}
@@ -362,7 +358,7 @@ public class Grilla extends Application {
 	}
 
 	public VistaCarta obtenerUnLugarVacioParaCartaEspecialDeJugadorB() {
-		for (VistaCartaEspecial lugar : this.vistaCartaEspecialesJugadorB) {
+		for (VistaCarta lugar : this.vistaCartaEspecialesJugadorB) {
 			if(lugar.estaLibre()) {
 				return lugar;
 			}
@@ -588,13 +584,13 @@ public class Grilla extends Application {
 	
 // Metodos privados que no son de inicializacion
 	
-	private void habilitarTodasLasVistasDe(ArrayList<? extends VistaCarta> collectionDeVistasCarta) {
+	private void habilitarTodasLasVistasDe(ArrayList<VistaCarta> collectionDeVistasCarta) {
 		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
 			vistaCarta.setDisable(false);
 		}
 	}
 	
-	private void deshabilitarTodasLasVistasDe(ArrayList<? extends VistaCarta> collectionDeVistasCarta) {
+	private void deshabilitarTodasLasVistasDe(ArrayList<VistaCarta> collectionDeVistasCarta) {
 		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
 			vistaCarta.setDisable(true);
 		}

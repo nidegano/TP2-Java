@@ -1,7 +1,6 @@
 package cartas;
 
 import botones.VistaCarta;
-import botones.VistaCartaMonstruo;
 import configuraciones.ConfiguracionDeOpciones;
 import estados.EstadoDeCartaMonstruo;
 import estados.EstadoMonstruoSinInvocar;
@@ -178,10 +177,9 @@ public abstract class CartaMonstruo extends Carta {
 
 	@Override
 	public void desasignarVistaALugarDeManoEnVistaCampoJugadores() {
-		VistaCarta vistaCartaActual = this.vistaCarta;
-		VistaCarta vistaCartaNueva = new VistaCartaMonstruo(vistaCartaActual.vista());
-		vistaCartaNueva.reemplazarPor(vistaCartaActual);
-		vistaCartaActual.vaciar();
+		VistaCarta vistaCartaNueva = new VistaCarta(this.vistaCarta.vista());
+		vistaCartaNueva.reemplazarPor(this.vistaCarta);
+		this.vistaCarta.vaciar();
 		this.vistaCarta = vistaCartaNueva;
 	}
 
