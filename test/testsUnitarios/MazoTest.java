@@ -1,23 +1,31 @@
 package testsUnitarios;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import cartas.Carta;
 import cartas.Jinzo;
+import excepciones.MazoSinCartasException;
 import juego.Mazo;
 
 public class MazoTest {
 
-	@Test
-	public void testTomarUnaCartaSeRemueveUnaCartaDeMazoYAlPreguntarSiEsaCartaEstaDentroDevuelveFalse() {
-		Carta unaCarta = new Jinzo();
+	@Test(expected = MazoSinCartasException.class)
+	public void testTomarUnaCartaDelMazoVacioDevelveExcepcion() {
 		Mazo mazo = new Mazo();
-		mazo.agregar(unaCarta);
 		mazo.tomarUnaCarta();
 
-		assertFalse(mazo.estaDentro(unaCarta));
+	}
+	
+	@Test
+	public void testTomarUnaCartaDelMazoConUnaUnicaCartaDevuelveLaMisma() {
+		Mazo mazo = new Mazo();
+		
+		mazo.agregar(new Jinzo());
+		Carta carta = mazo.tomarUnaCarta();
+		
+		assertEquals("Jinzo", carta.obtenerNombre());
 	}
 
 }

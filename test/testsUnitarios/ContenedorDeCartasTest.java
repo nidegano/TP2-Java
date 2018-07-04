@@ -26,33 +26,26 @@ public class ContenedorDeCartasTest {
 		assertTrue(contenedor.estaDentro(unaCarta));
 	}
 
-	@Test
+	@Test(expected = CapacidadMaximaException.class)
 	public void testAgregarSeAgreganMasCartasQueLaCapacidadYTiraUnaCapacidadMaximaException() {
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(3);
 
-		try {
-			contenedor.agregar(new Jinzo());
-			contenedor.agregar(new Jinzo());
-			contenedor.agregar(new Jinzo());
-			contenedor.agregar(new Jinzo());
-			assertTrue(false);
-		} catch (CapacidadMaximaException e) {
-			assertTrue(true);
-		}
+		contenedor.agregar(new Jinzo());
+		contenedor.agregar(new Jinzo());
+		contenedor.agregar(new Jinzo());
+		contenedor.agregar(new Jinzo());
 	}
 
-	@Test
+	@Test 
 	public void testAgregarSeAgreganTantasCartasComoLaCapacidadYNoTiraUnaCapacidadMaximaException() {
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(3);
 
-		try {
-			contenedor.agregar(new Jinzo());
-			contenedor.agregar(new Jinzo());
-			contenedor.agregar(new Jinzo());
-			assertTrue(true);
-		} catch (CapacidadMaximaException e) {
-			assertTrue(false);
-		}
+	
+		contenedor.agregar(new Jinzo());
+		contenedor.agregar(new Jinzo());
+		contenedor.agregar(new Jinzo());
+		
+		assertTrue(true);
 	}
 
 	@Test
@@ -67,16 +60,11 @@ public class ContenedorDeCartasTest {
 		assertEquals(unaCarta, contenedor.obtenerPrimero());
 	}
 
-	@Test
+	@Test(expected = ContenedorDeCartasVacioException.class)
 	public void testObtenerPrimeroConContenedorVacioTiraUnaContenedorDeCartasVacioException() {
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(3);
 
-		try {
-			contenedor.obtenerPrimero();
-			assertTrue(false);
-		} catch (ContenedorDeCartasVacioException e) {
-			assertTrue(true);
-		}
+		contenedor.obtenerPrimero();
 	}
 
 	@Test
@@ -116,17 +104,12 @@ public class ContenedorDeCartasTest {
 		assertFalse(contenedor.estaDentro(unaCarta));
 	}
 
-	@Test
+	@Test (expected = CartaNoEstaEnContenedorDeCartasException.class)
 	public void testRemoverCuandoSeQuiereRemoverUnaCartaQueNoEstaTiraCartaNoEstaException() {
 		ContenedorDeCartas contenedor = new ContenedorDeCartas(3);
 		Carta unaCarta = new Jinzo();
 
-		try {
-			contenedor.remover(unaCarta);
-			assertTrue(false);
-		} catch (CartaNoEstaEnContenedorDeCartasException e) {
-			assertTrue(true);
-		}
+		contenedor.remover(unaCarta);
 	}
 
 }
