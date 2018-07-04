@@ -538,7 +538,7 @@ public class Grilla extends Application {
 	}
 
 	public void cambiarImagenPor(ImageView nuevaImagenAMostrar) {
-		this.imagenAMostrar = nuevaImagenAMostrar;
+		this.imagenAMostrar.setImage(nuevaImagenAMostrar.getImage());
 	}
 	
 	public void deshabilitarTodosLasVistasCarta() {

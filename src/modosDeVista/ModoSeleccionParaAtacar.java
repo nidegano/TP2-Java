@@ -1,6 +1,7 @@
-package vista;
+package modosDeVista;
 
 import cartas.Carta;
+import vista.Vista;
 
 public class ModoSeleccionParaAtacar extends ModoVista {
 
