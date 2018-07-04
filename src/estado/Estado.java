@@ -1,5 +1,6 @@
 package estado;
 
+import configuraciones.ConfiguracionDeOpciones;
 import efectos.Efecto;
 import efectos.EfectoDeCampo;
 import efectos.EfectoDeVolteo;
@@ -22,5 +23,6 @@ public abstract class Estado {
 	public void activar(Efecto efecto) {
 		efecto.serActivadoPor(this);
 	}
-
+	
+	public abstract ConfiguracionDeOpciones obtenerConfiguracionDeOpciones();
 }

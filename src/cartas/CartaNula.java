@@ -1,12 +1,21 @@
 package cartas;
 
+import botones.VistaCarta;
+import configuraciones.ConfiguracionDeOpciones;
+import configuraciones.MostrarOpcionesDeCartaNula;
+import excepciones.NoSePuedeColocarUnaCartaNulaEnCampoException;
 import juego.Campo;
 import juego.RecolectorDePartesDeExodia;
-import vista.Grilla;
+import v.VistaCampoJugadores;
 
 public class CartaNula extends Carta {
 
-	@Override
+	public CartaNula() {
+		super();
+		this.nombre = "-";
+		this.colocarImagenEnCartaDesdeArchivoDeRuta("resources/images/carta_dorso.png");
+	}
+	
 	public void agregarEnCampo(Campo campo) {
 	}
 
@@ -15,11 +24,12 @@ public class CartaNula extends Carta {
 	}
 
 	@Override
-	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
+	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
+		throw new NoSePuedeColocarUnaCartaNulaEnCampoException();
 	}
 
 	@Override
-	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
+	public ConfiguracionDeOpciones obtenerConfiguracionDeOpcionesSegunTipoYEstado() {
+		return new MostrarOpcionesDeCartaNula();
 	}
-
 }

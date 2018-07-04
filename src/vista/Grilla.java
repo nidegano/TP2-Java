@@ -42,12 +42,15 @@ public class Grilla extends Application {
 	private GridPane gridPane;
 	
 	//Soporte para mostrar la imagen de la carta seleccionada
+	private ImageView imagenAMostrar;
 	private ImageView imagenPredeterminada;
 	private HBox marcoDeLaImagen;
 	
 	//Labels
 	private Label labelDeJugadorA;
 	private Label labelDeJugadorB;
+	private Label labelVidaDeJugadorA;
+	private Label labelVidaDeJugadorB;
 	private Label labelDeTurno;
 	private Label labelDeFase;
 	
@@ -153,6 +156,8 @@ public class Grilla extends Application {
 		this.opcionDescartar = new Descartar(vista);
 	}
 
+// Inicialziar
+	
 	private void inicializarVistasCartaDeVistaCampoJugadores(Vista vista) {
 		
 		//Se inicializa la collection de "slots" (Vistas) que se corresponden con la mano
@@ -208,6 +213,8 @@ public class Grilla extends Application {
 	private void inicializarLabels() {
 		this.labelDeJugadorA = new Label("JUGADOR A");
 		this.labelDeJugadorB = new Label("JUGADOR B");
+		this.labelVidaDeJugadorA = new Label("-");
+		this.labelVidaDeJugadorB = new Label("-");
 		this.labelDeTurno = new Label("");
 		this.labelDeFase = new Label("");		
 	}
@@ -216,7 +223,8 @@ public class Grilla extends Application {
 		FileInputStream input = new FileInputStream("resources/images/carta_dorso.png");
 		Image image = new Image(input);
 		this.imagenPredeterminada = new ImageView(image);
-		this.marcoDeLaImagen = new HBox(this.imagenPredeterminada);		
+		this.imagenAMostrar = this.imagenPredeterminada;
+		this.marcoDeLaImagen = new HBox(this.imagenAMostrar);		
 	}
 
 	private void inicializarGridPane() {
@@ -303,7 +311,192 @@ public class Grilla extends Application {
 		this.gridPane.add(this.opcionAtacar, 13, 7, 1, 1);
 		this.gridPane.add(this.opcionDescartar, 13, 10, 1, 1); //esta tiene que estar siempre habilitada
 	}
-/*
+
+	
+	
+// Buscar un Lugar vacio para VistaCarta que se quiere colocar en VistaCampoJugadores
+	
+	public VistaCarta obtenerUnLugarVacioParaCartaMonstruoDeJugadorA() {
+		for (VistaCartaMonstruo lugar : this.vistaCartaMonstruosJugadorA) {
+			if(lugar.estaLibre()) {
+				return lugar;
+			}
+		}
+		return null;
+		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
+	}
+
+	public VistaCarta obtenerUnLugarVacioParaCartaEspecialDeJugadorA() {
+		for (VistaCartaEspecial lugar : this.vistaCartaEspecialesJugadorA) {
+			if(lugar.estaLibre()) {
+				return lugar;
+			}
+		}
+		return null;
+		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
+	}
+
+	public VistaCarta obtenerUnLugarVacioParaCartaDeCampoDeJugadorA() {
+		if(this.vistaCartaDeCampoJugadorA.estaLibre()) {
+			return this.vistaCartaDeCampoJugadorA;
+		}
+		return null;
+		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
+	}
+	
+	public VistaCarta obtenerUnLugarVacioParaCartaMonstruoDeJugadorB() {
+		for (VistaCartaMonstruo lugar : this.vistaCartaMonstruosJugadorB) {
+			if(lugar.estaLibre()) {
+				return lugar;
+			}
+		}
+		return null;
+		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
+	}
+
+	public VistaCarta obtenerUnLugarVacioParaCartaEspecialDeJugadorB() {
+		for (VistaCartaEspecial lugar : this.vistaCartaEspecialesJugadorB) {
+			if(lugar.estaLibre()) {
+				return lugar;
+			}
+		}
+		return null;
+		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
+	}
+
+	public VistaCarta obtenerUnLugarVacioParaCartaDeCampoDeJugadorB() {
+		if(this.vistaCartaDeCampoJugadorB.estaLibre()) {
+			return this.vistaCartaDeCampoJugadorA;
+		}
+		return null;
+		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
+	}
+
+	
+
+	
+// Settear Visibilidad de Opciones
+	
+	public void botonDeListoHacerVisible(boolean b) {
+		this.botonDeListo.setVisible(b);
+	}
+	
+	public void opcionCambiarAModoAtaqueHacerVisible(boolean b) {
+		this.opcionCambiarAModoAtaque.setVisible(b);
+	}
+
+	public void opcionCambiarAModoDefensaHacerVisible(boolean b) {
+		this.opcionCambiarAModoDefensa.setVisible(b);
+	}
+
+	public void opcionCambiarAModoDefensaBocaAbajoHacerVisible(boolean b) {
+		this.opcionCambiarAModoDefensaBocaAbajo.setVisible(b);
+	}
+
+	public void opcionColocarBocaAbajoHacerVisible(boolean b) {
+		this.opcionColocarBocaAbajo.setVisible(b);
+		
+	}
+
+	public void opcionColocarBocaArribaHacerVisible(boolean b) {
+		this.opcionColocarBocaArriba.setVisible(b);
+	}
+
+	public void opcionColocarCartaDeCampoHacerVisible(boolean b) {
+		this.opcionColocarCartaDeCampo.setVisible(b);	
+	}
+
+	public void opcionInvocarEnModoAtaqueHacerVisible(boolean b) {
+		this.opcionInvocarEnModoAtaque.setVisible(b);
+	}
+
+	public void opcionInvocarEnModoDefensaHacerVisible(boolean b) {
+		this.opcionInvocarEnModoDefensa.setVisible(b);
+	}
+
+	public void opcionInvocarEnModoDefensaBocaAbajoHacerVisible(boolean b) {
+		this.opcionInvocarEnModoDefensaBocaAbajo.setVisible(b);	
+	}
+
+	public void opcionInvocarEnModoAtaqueConSacrificioHacerVisible(boolean b) {
+		this.opcionInvocarEnModoAtaqueConSacrificio.setVisible(b);
+	}
+
+	public void opcionInvocarEnModoDefensaConSacrificioHacerVisible(boolean b) {
+		this.opcionInvocarEnModoDefensaConSacrificio.setVisible(b);
+	}
+
+	public void opcionInvocarEnModoDefensaBocaAbajoConSacrificioHacerVisible(boolean b) {
+		this.opcionInvocarEnModoDefensaBocaAbajoConSacrificio.setVisible(b);
+	}
+
+	public void opcionAtacarHacerVisible(boolean b) {
+		this.opcionAtacar.setVisible(b);
+	}
+
+	public void opcionDescartarHacerVisible(boolean b) {
+		this.opcionDescartar.setVisible(b);
+	}
+
+	
+// Cambios de Estado Interno
+	
+	
+	public void asignarNuevaVidaALabelDeJugadorA(int nuevaVida) {
+		this.labelVidaDeJugadorA.setText(Integer.toString(nuevaVida));
+	}
+	
+	public void asignarNuevaVidaALabelDeJugadorB(int nuevaVida) {
+		this.labelVidaDeJugadorA.setText(Integer.toString(nuevaVida));
+	}
+
+	public void cambiarImagenPor(ImageView nuevaImagenAMostrar) {
+		this.imagenAMostrar = nuevaImagenAMostrar;
+	}
+	
+	public void deshabilitarTodosLasVistasCarta() {
+		
+		this.botonCementerioJugadorA.setDisable(true);
+		this.botonCementerioJugadorB.setDisable(true);
+		
+		this.botonMazoJugadorA.setDisable(true);
+		this.botonMazoJugadorB.setDisable(true);
+		
+		this.vistaCartaDeCampoJugadorA.setDisable(true);
+		this.vistaCartaDeCampoJugadorB.setDisable(true);
+		
+		this.deshabilitarTodasLasVistasDe(this.vistaCartaManoJugadorA);
+		this.deshabilitarTodasLasVistasDe(this.vistaCartaManoJugadorB);
+		this.deshabilitarTodasLasVistasDe(this.vistaCartaEspecialesJugadorA);
+		this.deshabilitarTodasLasVistasDe(this.vistaCartaEspecialesJugadorB);
+		this.deshabilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorA);
+		this.deshabilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);		
+	}
+	
+
+	private void deshabilitarTodasLasVistasDe(ArrayList<? extends VistaCarta> collectionDeVistasCarta) {
+		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
+			vistaCarta.setDisable(true);
+		}
+	}
+
+	public void activarSoloLasVistasCartaMonstruosDeJugadorA() {
+		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorA);
+	}
+
+	public void activarSoloLasVistasCartaMonstruosDeJugadorB() {
+		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorB);		
+	}
+	
+	private void habilitarTodasLasVistasDe(ArrayList<? extends VistaCarta> collectionDeVistasCarta) {
+		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
+			vistaCarta.setDisable(false);
+		}
+	}
+
+	
+	
+	/*
 	public void actualizarGrilla() {
 		this.labelDeFase.setText("FASE: ".concat(this.juego.jugadorDeTurno().obtenerFase().nombre()));
 
@@ -589,5 +782,4 @@ public class Grilla extends Application {
 		for (Button unBoton : this.vistaCartaManoJugadorB)
 			unBoton.setDisable(true);
 	}*/
-
 }

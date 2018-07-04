@@ -17,5 +17,4 @@ public abstract class EstadoDeCartaEspecial extends Estado {
 	@Override
 	public void activar(EfectoInvocacionMonstruo efectoInvocacionMonstruo) {
 	}
-
 }

@@ -1,10 +1,5 @@
 package cartas;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-import javafx.scene.image.Image;
-
 public class AncientBrain extends CartaMonstruo {
 
 	public AncientBrain() {
@@ -13,12 +8,7 @@ public class AncientBrain extends CartaMonstruo {
 		this.puntosDeDefensa = new Puntos(700);
 		this.nivel = 3;
 		this.nombre = "Ancient Brain";
-		FileInputStream input = null;
-		try {
-			input = new FileInputStream("resources/images/carta_AncientBrain.png");
-		} catch (FileNotFoundException e) {
-		}
-		this.imagen = new Image(input);
+		this.colocarImagenEnCartaDesdeArchivoDeRuta("resources/images/carta_AncientBrain.png");
 	}
 
 }

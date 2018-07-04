@@ -1,6 +1,8 @@
 package estado;
 
 import cartas.Puntos;
+import configuraciones.ConfiguracionDeOpciones;
+import configuraciones.MostrarOpcionesDeModoDefensaBocaAbajo;
 import efectos.EfectoDeVolteo;
 import efectos.EfectoInvocacionMonstruo;
 import juego.FormaDeAfectarAlJugador;
@@ -25,6 +27,11 @@ public class ModoDefensaBocaAbajo extends EstadoDeCartaMonstruo {
 
 	@Override
 	public void activar(EfectoInvocacionMonstruo efectoInvocacionMonstruo) {
+	}
+
+	@Override
+	public ConfiguracionDeOpciones obtenerConfiguracionDeOpciones() {
+		return new MostrarOpcionesDeModoDefensaBocaAbajo();
 	}
 
 }

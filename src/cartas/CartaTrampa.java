@@ -1,9 +1,8 @@
 package cartas;
 
-import estado.ModoActivo;
+import estado.ModoBocaArriba;
 import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import juego.Campo;
-import vista.Grilla;
 
 public abstract class CartaTrampa extends CartaEspecial {
 
@@ -23,23 +22,12 @@ public abstract class CartaTrampa extends CartaEspecial {
 	}
 
 	public void colocarBocaArriba(CartaMonstruo monstruoEnemigo, CartaMonstruo monstruoPropio) {
-		this.estado = new ModoActivo();
+		this.estado = new ModoBocaArriba();
 		this.activar(monstruoEnemigo, monstruoPropio);
 	}
 
 	public void colocarBocaArriba(CartaMonstruo monstruoEnemigo) {
-		this.estado = new ModoActivo();
+		this.estado = new ModoBocaArriba();
 		this.activar(monstruoEnemigo);
 	}
-
-	@Override
-	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
-		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
-	}
-
-	@Override
-	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
-		grilla.actualizarPorInvocacionDeUnaCartaEspecial(this);
-	}
-
 }

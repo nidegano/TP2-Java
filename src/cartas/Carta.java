@@ -1,20 +1,24 @@
 package cartas;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 
 import java.util.List;
 
+import botones.VistaCarta;
+import configuraciones.ConfiguracionDeOpciones;
 import efectos.Efecto;
 import efectos.EfectoNulo;
-import estado.Estado;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.Jugador;
 import juego.Mano;
 import juego.RecolectorDePartesDeExodia;
-import vista.Grilla;
+import v.VistaCampoJugadores;
 
 public abstract class Carta {
 
@@ -22,7 +26,8 @@ public abstract class Carta {
 	protected List<ContenedorDeCartas> contenedoresQueLaContienen;
 	protected Efecto efecto;
 	protected String nombre;
-	protected Image imagen;
+	protected ImageView imagen;
+	protected VistaCarta vistaCarta;
 
 	public Carta() {
 		this.contenedoresQueLaContienen = new ArrayList<ContenedorDeCartas>();
@@ -45,6 +50,7 @@ public abstract class Carta {
 	}
 
 	public void matar() {
+		this.vistaCarta.liberarPorMuerteDeCarta(); //tambien limpia la de la vistaCampoJugadores
 		ContenedorDeCartas cementerio = this.jugadorDuenio.obtenerCementerio();
 		cementerio.agregar(this);
 		this.quitarDeLosContenedoresEnLosQueEstaba();
@@ -58,8 +64,12 @@ public abstract class Carta {
 		return this.nombre;
 	}
 
-	public Image obtenerImagen() {
+	public ImageView obtenerImagen() {
 		return this.imagen;
+	}
+
+	public VistaCarta vista() {
+		return this.vistaCarta;
 	}
 
 	private void quitarDeLosContenedoresEnLosQueEstaba() {
@@ -72,8 +82,25 @@ public abstract class Carta {
 		this.contenedoresQueLaContienen = new ArrayList<ContenedorDeCartas>();
 	}
 
-	public abstract void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla);
+	public abstract VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores);
 
-	public abstract void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla);
+	public void asignarVista(VistaCarta vistaNueva) {
+		this.vistaCarta = vistaNueva;
+	}
+	
+	protected void colocarImagenEnCartaDesdeArchivoDeRuta(String ruta) {
+		FileInputStream input = null;
+		try {
+			input = new FileInputStream(ruta);
+		} catch (FileNotFoundException e) {
+		}
+		this.imagen = new ImageView(new Image(input));
+	}
+
+	public abstract ConfiguracionDeOpciones obtenerConfiguracionDeOpcionesSegunTipoYEstado();
+
+	public VistaCarta obtenerVistaCarta() {
+		return this.vistaCarta;
+	}
 
 }

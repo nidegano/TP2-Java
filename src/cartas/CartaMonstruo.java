@@ -1,7 +1,9 @@
 package cartas;
 
+import botones.VistaCarta;
+import configuraciones.ConfiguracionDeOpciones;
 import estado.EstadoDeCartaMonstruo;
-
+import estado.EstadoMonstruoSinInvocar;
 import estado.ModoAtaque;
 import estado.ModoDefensa;
 import estado.ModoDefensaBocaAbajo;
@@ -11,7 +13,7 @@ import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.FormaDeAfectarAlJugador;
 import juego.RecolectorDePartesDeExodia;
-import vista.Grilla;
+import v.VistaCampoJugadores;
 
 public abstract class CartaMonstruo extends Carta {
 
@@ -22,6 +24,7 @@ public abstract class CartaMonstruo extends Carta {
 
 	public CartaMonstruo() {
 		super();
+		this.estado = new EstadoMonstruoSinInvocar();
 	}
 
 	public int obtenerPuntosDeAtaque() {
@@ -37,21 +40,23 @@ public abstract class CartaMonstruo extends Carta {
 	}
 
 	public void invocarEnModoAtaque() {
-		this.jugadorDuenio.obtenerFase().chequearSiSePuedeInvocaMonstruo();
 		this.colocarEnModoAtaque();
 		this.agregarEnCampo(this.jugadorDuenio.campo()); // aca va a haber un problema al cambiar el modo en el campo
 		this.activarEfectoSiCorresponde(); // podria pasar que se active el mismo efecto dos veces
 	}
+	
+	public void chequearSiSePuedeInvocarMonstruo() {
+		this.jugadorDuenio.obtenerFase().chequearSiSePuedeInvocaMonstruo(); 
+		//tira SoloSePuedeInvocarUnSoloMonstruoEnEstaFase si ya hay invocado
+	}
 
 	public void invocarEnModoDefensa() {
-		this.jugadorDuenio.obtenerFase().chequearSiSePuedeInvocaMonstruo();
 		this.colocarEnModoDefensa();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.activarEfectoSiCorresponde();
 	}
 
 	public void invocarEnModoDefensaBocaAbajo() {
-		this.jugadorDuenio.obtenerFase().chequearSiSePuedeInvocaMonstruo();
 		this.colocarEnModoDefensaBocaAbajo();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 	}
@@ -148,26 +153,26 @@ public abstract class CartaMonstruo extends Carta {
 		this.estado.activar(this.efecto);
 	}
 
-	protected void colocarEnModoDefensaBocaAbajo() {
+	public void colocarEnModoDefensaBocaAbajo() {
 		this.estado = new ModoDefensaBocaAbajo(this.puntosDeDefensa);
 	}
 
-	protected void colocarEnModoAtaque() {
+	public void colocarEnModoAtaque() {
 		this.estado = new ModoAtaque(this.puntosDeAtaque);
 	}
 
-	protected void colocarEnModoDefensa() {
+	public void colocarEnModoDefensa() {
 		this.estado = new ModoDefensa(this.puntosDeDefensa);
 	}
-
+	
 	@Override
-	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
-		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
+	public ConfiguracionDeOpciones obtenerConfiguracionDeOpcionesSegunTipoYEstado() {
+		return this.estado.obtenerConfiguracionDeOpciones();
 	}
-
+	
 	@Override
-	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
-		grilla.actualizarPorInvocacionDeUnMonstruo(this);
+	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
+		return vistaCampoJugadores.obtenerUnLugarVacio(this);
 	}
 
 }

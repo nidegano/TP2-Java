@@ -1,5 +1,6 @@
 package estado;
 
+import configuraciones.ConfiguracionDeOpciones;
 import efectos.EfectoDeCampo;
 import efectos.EfectoDeVolteo;
 import efectos.EfectoEspeciales;
@@ -32,4 +33,8 @@ public class EstadoMonstruoSinInvocar extends EstadoDeCartaMonstruo {
 		return new NoRestar();
 	}
 
+	@Override
+	public ConfiguracionDeOpciones obtenerConfiguracionDeOpciones() {
+		return new MostrarOpcionesDeMonstruoSinInvocar();
+	}
 }

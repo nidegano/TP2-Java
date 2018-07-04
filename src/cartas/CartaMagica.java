@@ -1,7 +1,9 @@
 package cartas;
 
+import configuraciones.ConfiguracionDeOpciones;
+import estado.EstadoColocableBocaArriba;
+import estado.ModoBocaAbajo;
 import juego.Campo;
-import vista.Grilla;
 
 public abstract class CartaMagica extends CartaEspecial {
 
@@ -21,13 +23,16 @@ public abstract class CartaMagica extends CartaEspecial {
 		this.jugadorDuenio.obtenerMano().remover(this);
 	}
 
-	@Override
-	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
-		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
+	public void asignarEstadoDeColocableBocaArriba() {
+		this.estado = new EstadoColocableBocaArriba();
 	}
-
+	
+	public void asignarEstadoDeBocaAbajo() {
+		this.estado = new ModoBocaAbajo();
+	}
+	
 	@Override
-	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
-		grilla.actualizarPorInvocacionDeUnaCartaEspecial(this);
+	public ConfiguracionDeOpciones obtenerConfiguracionDeOpcionesSegunTipoYEstado() {
+		return this.estado.obtenerConfiguracionDeOpciones();
 	}
 }

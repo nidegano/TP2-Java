@@ -1,7 +1,7 @@
 package juego;
 
+import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import excepciones.NoSePuedeTomarMasCartasDelMazoException;
-import excpeciones.NoSePuedeInvocarMonstruosEnEstaFase;
 
 public class FaseInicial implements Fase {
 
@@ -16,6 +16,7 @@ public class FaseInicial implements Fase {
 	}
 
 	public void ejecutar(Jugador jugador) {
+		jugador.asignarATodasLasCartasMagicasUnEstadoDeBocaAbajo(); //osea no colocableBocaArriba
 	}
 
 	public boolean termino() {

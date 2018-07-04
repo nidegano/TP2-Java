@@ -1,6 +1,6 @@
 package juego;
 
-import excpeciones.NoSePuedeInvocarMonstruosEnEstaFase;
+import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 
 public class FaseInicioDeJuego implements Fase {
 

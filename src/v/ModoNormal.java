@@ -1,10 +1,16 @@
 package v;
 
-import vista.Grilla;
+import cartas.Carta;
 
-public class ModoNormal implements ModoVista {
+public class ModoNormal extends ModoVista {
 
-	public ModoNormal() {
+	public ModoNormal(Vista vista) {
+		super(vista);
+	}
+
+	@Override
+	public void avisarDeLaSeleccionDeUnaVistaDeCarta(Carta cartaNuevaSeleccion) {
+		this.vista.cambiarCartaSeleccionActualPor(cartaNuevaSeleccion);	
 	}
 
 }

@@ -1,6 +1,6 @@
 package opciones;
 
-import cartas.Carta;
+import cartas.CartaMonstruo;
 import v.Vista;
 
 public class CambiarModoAtaque extends Opcion {
@@ -11,14 +11,12 @@ public class CambiarModoAtaque extends Opcion {
 		
 		this.setOnAction(value -> {
 			
-			Carta cartaSeleccionada = this.vista.obtenerCartaSeleccionada();
+			CartaMonstruo cartaSeleccionada = (CartaMonstruo) this.vista.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
 			this.aplicarComando(cartaSeleccionada);
 		});
 	}
 
-	@Override
-	public void aplicarComando(Carta cartaSeleccionada) {
-		// TODO Auto-generated method stub
-		
+	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
+		cartaSeleccionada.colocarEnModoAtaque();
 	}
 }

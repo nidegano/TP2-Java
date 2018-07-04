@@ -1,6 +1,6 @@
 package juego;
 
-import excpeciones.NoSePuedeInvocarMonstruosEnEstaFase;
+import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 
 public class FaseFinal implements Fase {
 
@@ -13,6 +13,7 @@ public class FaseFinal implements Fase {
 
 	@Override
 	public void ejecutar(Jugador jugador) {
+		jugador.asignarATodasLasCartasMagicasUnEstadoDeColocablesBocaArriba();
 	}
 
 	@Override

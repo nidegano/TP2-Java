@@ -1,10 +1,12 @@
 package juego;
 
+import botones.VistaCarta;
 import cartas.*;
 //import excepciones.AtaqueIntervenidoException;
 import excepciones.SinVidaException;
+import vista.Grilla;
 
-public class Jugador {
+public abstract class Jugador {
 
 	private int vida;
 	private Mano mano;
@@ -143,4 +145,22 @@ public class Jugador {
 		this.sePuedeSeguirInvocandoMonstruos = true;
 	}
 
+	public abstract VistaCarta obtenerLugarParaVistaCartaMonstruoDependiendoDelJugadorATravezDeGrilla(
+			Grilla grilla);
+
+	public abstract VistaCarta obtenerLugarParaVistaCartaEspecialDependiendoDelJugadorATravezDeGrilla(
+			Grilla grilla);
+
+	public abstract VistaCarta obtenerLugarParaVistaCartaDeCampoDependiendoDelJugadorATravezDeGrilla(
+			Grilla grilla);
+
+	public void asignarATodasLasCartasMagicasUnEstadoDeColocablesBocaArriba() {
+		this.campo.asignarATodasLasCartasMagicasUnEstadoDeColocablesBocaArriba();
+	}
+
+	public void asignarATodasLasCartasMagicasUnEstadoDeBocaAbajo() {
+		this.campo.asignarATodasLasCartasMagicasUnEstadoDeDeBocaAbajo();
+	}
+
+	public abstract void determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(Grilla grilla);
 }

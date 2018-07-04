@@ -1,7 +1,11 @@
 package cartas;
 
+import botones.VistaCarta;
+import configuraciones.ConfiguracionDeOpciones;
+import estado.ModoCartaDeCampoInvocada;
+import excepciones.YaHayUnaCartaDeCampoColocadaException;
 import juego.Campo;
-import vista.Grilla;
+import v.VistaCampoJugadores;
 
 public abstract class CartaDeCampo extends CartaEspecial {
 
@@ -9,6 +13,12 @@ public abstract class CartaDeCampo extends CartaEspecial {
 	public void agregarEnCampo(Campo campo) {
 
 		this.agregarSiempreYCuandoNoHayaUnaCartaDeCampoYa(campo);
+	}
+	
+	public void colocarCartaDeCampo() {
+		this.agregarEnCampo(this.jugadorDuenio.campo());
+		this.estado = new ModoCartaDeCampoInvocada();
+		this.activar();
 	}
 
 	private void agregarSiempreYCuandoNoHayaUnaCartaDeCampoYa(Campo campo) {
@@ -19,17 +29,18 @@ public abstract class CartaDeCampo extends CartaEspecial {
 			this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
 			this.jugadorDuenio.obtenerMano().remover(this);
 		}
-		// de lo contrario se ignora la peticion de agregarla a la zona de cartas de
-		// campo
+		else {
+			throw new YaHayUnaCartaDeCampoColocadaException();
+		}
 	}
-
+	
 	@Override
-	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
-		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
+	public ConfiguracionDeOpciones obtenerConfiguracionDeOpcionesSegunTipoYEstado() {
+		return this.estado.obtenerConfiguracionDeOpciones();
 	}
-
+	
 	@Override
-	public void actualizarGrillaPorinvocacionSegunCorrespondaPorElTipo(Grilla grilla) {
-		grilla.actualizarPorInvocacionDeUnaCartaDeCampo(this);
+	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
+		return vistaCampoJugadores.obtenerUnLugarVacio(this);
 	}
 }

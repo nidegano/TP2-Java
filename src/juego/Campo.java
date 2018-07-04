@@ -1,6 +1,7 @@
 package juego;
 
 import cartas.Carta;
+import cartas.CartaMagica;
 import cartas.CartaMonstruo;
 
 public class Campo {
@@ -91,6 +92,18 @@ public class Campo {
 
 	public Mazo mazo() {
 		return this.mazo;
+	}
+
+	public void asignarATodasLasCartasMagicasUnEstadoDeColocablesBocaArriba() {
+		for (Carta cartaMagica : this.contenedorCartasMagicas) {
+			((CartaMagica)cartaMagica).asignarEstadoDeColocableBocaArriba();
+		}
+	}
+
+	public void asignarATodasLasCartasMagicasUnEstadoDeDeBocaAbajo() {
+		for (Carta cartaMagica : this.contenedorCartasMagicas) {
+			((CartaMagica)cartaMagica).asignarEstadoDeBocaAbajo();
+		}
 	}
 
 }

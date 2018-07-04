@@ -1,11 +1,5 @@
 package cartas;
 
-import java.io.FileInputStream;
-
-import java.io.FileNotFoundException;
-
-import javafx.scene.image.Image;
-
 public class DragonBlancoDeOjosAzules extends CartaRequiereSacrificios {
 
 	public DragonBlancoDeOjosAzules() {
@@ -15,12 +9,7 @@ public class DragonBlancoDeOjosAzules extends CartaRequiereSacrificios {
 		this.puntosDeDefensa = new Puntos(2500);
 		this.nivel = 8;
 		this.nombre = "Dragon Blanco de Ojos Azules";
-		FileInputStream input = null;
-		try {
-			input = new FileInputStream("resources/images/carta_DragonBlancoDeOjosAzules.png");
-		} catch (FileNotFoundException e) {
-		}
-		this.imagen = new Image(input);
+		this.colocarImagenEnCartaDesdeArchivoDeRuta("resources/images/carta_DragonBlancoDeOjosAzules.png");
 	}
 
 }

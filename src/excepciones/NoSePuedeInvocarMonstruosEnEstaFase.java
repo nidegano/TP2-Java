@@ -1,4 +1,4 @@
-package excpeciones;
+package excepciones;
 
 public class NoSePuedeInvocarMonstruosEnEstaFase extends RuntimeException {
 

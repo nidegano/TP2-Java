@@ -1,13 +1,19 @@
 package cartas;
 
+import configuraciones.ConfiguracionDeOpciones;
+import estado.EstadoMonstruoRequiereSacrificioSinInvocar;
 import excepciones.CantidadInadecuadaDeSacrificiosException;
 import juego.ContenedorDeCartas;
-import vista.Grilla;
 
 public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 
 	protected ContenedorDeCartas sacrificios;
 	protected int sacrificiosRequeridos;
+	
+	public CartaRequiereSacrificios() {
+		super();
+		this.estado = new EstadoMonstruoRequiereSacrificioSinInvocar();
+	}
 
 	protected void chequearQueLaCantidadDeSacrificiosSeaCorrecta(ContenedorDeCartas sacrificios) {
 		if (sacrificios.cantidad() != this.sacrificiosRequeridos)
@@ -60,8 +66,8 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 	}
 
 	@Override
-	public void provocarActualizacionDeLaGrillaSegunTipo(Grilla grilla) {
-		grilla.actualizarGrillaPorSeleccionDeCartaDeMano(this);
+	public ConfiguracionDeOpciones obtenerConfiguracionDeOpcionesSegunTipoYEstado() {
+		return this.estado.obtenerConfiguracionDeOpciones();
 	}
 
 }

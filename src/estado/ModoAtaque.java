@@ -1,7 +1,8 @@
 package estado;
 
 import cartas.Puntos;
-
+import configuraciones.ConfiguracionDeOpciones;
+import configuraciones.MostrarOpcionesDeModoAtaque;
 import efectos.EfectoDeVolteo;
 import efectos.EfectoInvocacionMonstruo;
 import juego.FormaDeAfectarAlJugador;
@@ -26,6 +27,11 @@ public class ModoAtaque extends EstadoDeCartaMonstruo {
 	@Override
 	public void activar(EfectoInvocacionMonstruo efectoInvocacionMonstruo) {
 		efectoInvocacionMonstruo.activar();
+	}
+
+	@Override
+	public ConfiguracionDeOpciones obtenerConfiguracionDeOpciones() {
+		return new MostrarOpcionesDeModoAtaque();
 	}
 
 }

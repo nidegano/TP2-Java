@@ -1,11 +1,15 @@
 package cartas;
 
+import botones.VistaCarta;
+import configuraciones.ConfiguracionDeOpciones;
 import estado.EstadoDeCartaEspecial;
-import estado.ModoActivo;
-import estado.ModoInactivo;
+import estado.ModoBocaArriba;
+import estado.ModoCartaEspecialSinInvocar;
+import estado.ModoBocaAbajo;
 import juego.Campo;
 import juego.Jugador;
 import juego.RecolectorDePartesDeExodia;
+import v.VistaCampoJugadores;
 
 public abstract class CartaEspecial extends Carta {
 
@@ -13,7 +17,7 @@ public abstract class CartaEspecial extends Carta {
 
 	public CartaEspecial() {
 		super();
-		this.estado = new ModoInactivo();
+		this.estado = new ModoCartaEspecialSinInvocar();
 	}
 
 	@Override
@@ -45,13 +49,23 @@ public abstract class CartaEspecial extends Carta {
 	}
 
 	public void colocarBocaArriba() {
-		this.estado = new ModoActivo();
-		this.agregarEnCampo(this.jugadorDuenio.campo());
+		this.estado = new ModoBocaArriba();
+		//this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.activar();
 	}
 
 	public void colocarBocaAbajo() {
-		this.estado = new ModoInactivo();
+		this.estado = new ModoBocaAbajo();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
+	}
+	
+	@Override
+	public ConfiguracionDeOpciones obtenerConfiguracionDeOpcionesSegunTipoYEstado() {
+		return this.estado.obtenerConfiguracionDeOpciones();
+	}
+	
+	@Override
+	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
+		return vistaCampoJugadores.obtenerUnLugarVacio(this);
 	}
 }

@@ -138,7 +138,8 @@ public class SegundaEntregaTest {
 		ollaDeLaCodicia.asignarDuenio(jugadorA);
 
 		jugadorA.tomarCartaDelMazo();
-
+		
+		ollaDeLaCodicia.colocarBocaAbajo();
 		ollaDeLaCodicia.colocarBocaArriba();
 
 		int cartasEsperadasEnMano = 2;
@@ -180,6 +181,7 @@ public class SegundaEntregaTest {
 		monstruo1.invocarEnModoAtaque();
 		monstruo2.invocarEnModoAtaque();
 
+		fisura.colocarBocaAbajo();
 		fisura.colocarBocaArriba();
 
 		assertTrue(campoB.estaLaCartaEnCementerio(monstruo1));
