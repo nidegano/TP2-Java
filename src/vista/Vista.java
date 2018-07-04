@@ -56,7 +56,7 @@ public class Vista {
 	}
 
 	public void start(Stage primaryStage) throws Exception {
-		grilla.start(primaryStage);
+		this.grilla.start(primaryStage);
 	}
 
 	public void cambiarAModoSeleccionParaSacrificio(Opcion opcionQuePidioElCambioDeModo) {

@@ -3,12 +3,15 @@ package testsIntegracion;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import cartas.EspadachinSilencioso;
 import cartas.AgujeroOscuro;
 import cartas.AlphaTheMagnetWarrior;
 import cartas.CabezaExodia;
+import cartas.CartaMonstruo;
 import cartas.DragonArmadoOscuro;
 import cartas.DragonBlancoDeOjosAzules;
 import cartas.InsectoComeHombres;
@@ -16,6 +19,8 @@ import excepciones.SinVidaException;
 import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.Jugador;
+import juego.JugadorA;
+import juego.JugadorB;
 import juego.Mazo;
 
 public class PrimerEntregaTest {
@@ -26,7 +31,7 @@ public class PrimerEntregaTest {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		mazo.agregar(insectoComeHombres);
 		Campo campo = new Campo(mazo);
-		Jugador jugador = new Jugador(campo);
+		Jugador jugador = new JugadorA(campo);
 		insectoComeHombres.asignarDuenio(jugador);
 
 		jugador.tomarCartaDelMazo();
@@ -41,7 +46,7 @@ public class PrimerEntregaTest {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		mazo.agregar(insectoComeHombres);
 		Campo campo = new Campo(mazo);
-		Jugador jugador = new Jugador(campo);
+		Jugador jugador = new JugadorA(campo);
 		insectoComeHombres.asignarDuenio(jugador);
 
 		jugador.tomarCartaDelMazo();
@@ -56,7 +61,7 @@ public class PrimerEntregaTest {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		mazo.agregar(insectoComeHombres);
 		Campo campo = new Campo(mazo);
-		Jugador jugador = new Jugador(campo);
+		Jugador jugador = new JugadorA(campo);
 		insectoComeHombres.asignarDuenio(jugador);
 
 		insectoComeHombres.matar();
@@ -70,14 +75,14 @@ public class PrimerEntregaTest {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		mazo.agregar(insectoComeHombres);
 		Campo campo = new Campo(mazo);
-		Jugador jugador = new Jugador(campo);
+		Jugador jugador = new JugadorA(campo);
 		insectoComeHombres.asignarDuenio(jugador);
 
 		jugador.tomarCartaDelMazo();
 		insectoComeHombres.invocarEnModoAtaque();
 
-		ContenedorDeCartas sacrificios = new ContenedorDeCartas(1);
-		sacrificios.agregar(insectoComeHombres);
+		ArrayList<CartaMonstruo> sacrificios = new ArrayList<CartaMonstruo>();
+		sacrificios.add(insectoComeHombres);
 		EspadachinSilencioso espadachinSilencioso = new EspadachinSilencioso();
 		mazo.agregar(espadachinSilencioso);
 		espadachinSilencioso.asignarDuenio(jugador);
@@ -101,7 +106,7 @@ public class PrimerEntregaTest {
 
 		Campo campo = new Campo(mazo);
 
-		Jugador jugador = new Jugador(campo);
+		Jugador jugador = new JugadorA(campo);
 		insectoComeHombres.asignarDuenio(jugador);
 		otroInsectoComeHombres.asignarDuenio(jugador);
 
@@ -111,9 +116,9 @@ public class PrimerEntregaTest {
 		insectoComeHombres.invocarEnModoAtaque();
 		otroInsectoComeHombres.invocarEnModoAtaque();
 
-		ContenedorDeCartas sacrificios = new ContenedorDeCartas(2);
-		sacrificios.agregar(insectoComeHombres);
-		sacrificios.agregar(otroInsectoComeHombres);
+		ArrayList<CartaMonstruo> sacrificios = new ArrayList<CartaMonstruo>();
+		sacrificios.add(insectoComeHombres);
+		sacrificios.add(otroInsectoComeHombres);
 		DragonArmadoOscuro dragonArmadoOscuro = new DragonArmadoOscuro();
 		dragonArmadoOscuro.asignarDuenio(jugador);
 		mazo.agregar(dragonArmadoOscuro);
@@ -137,7 +142,7 @@ public class PrimerEntregaTest {
 
 		Campo campo = new Campo(mazo);
 
-		Jugador jugador = new Jugador(campo);
+		Jugador jugador = new JugadorA(campo);
 		insectoComeHombres.asignarDuenio(jugador);
 		otroInsectoComeHombres.asignarDuenio(jugador);
 
@@ -147,9 +152,9 @@ public class PrimerEntregaTest {
 		insectoComeHombres.invocarEnModoAtaque();
 		otroInsectoComeHombres.invocarEnModoAtaque();
 
-		ContenedorDeCartas sacrificios = new ContenedorDeCartas(2);
-		sacrificios.agregar(insectoComeHombres);
-		sacrificios.agregar(otroInsectoComeHombres);
+		ArrayList<CartaMonstruo> sacrificios = new ArrayList<CartaMonstruo>();
+		sacrificios.add(insectoComeHombres);
+		sacrificios.add(otroInsectoComeHombres);
 		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
 		dragonBlancoDeOjosAzules.asignarDuenio(jugador);
 
@@ -175,8 +180,8 @@ public class PrimerEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -212,8 +217,8 @@ public class PrimerEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -249,8 +254,8 @@ public class PrimerEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -287,8 +292,8 @@ public class PrimerEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -324,8 +329,8 @@ public class PrimerEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -363,8 +368,8 @@ public class PrimerEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -398,8 +403,8 @@ public class PrimerEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);

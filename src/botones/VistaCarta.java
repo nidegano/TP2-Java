@@ -14,10 +14,10 @@ public class VistaCarta extends Button {
 	public VistaCarta() {
 		
 		super("-");
-		this.carta = new CartaNula();
 		
 		this.setMaxSize(100, 25);
 		this.setMinSize(100, 25);
+		this.setVisible(true);
 		this.setDisable(true);
 	}
 
@@ -29,6 +29,7 @@ public class VistaCarta extends Button {
 		
 		this.setMaxSize(100, 25);
 		this.setMinSize(100, 25);
+		this.setVisible(true);
 		this.setDisable(true);
 		
 		this.setOnAction(value -> {

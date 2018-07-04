@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import cartas.AlphaTheMagnetWarrior;
@@ -15,6 +17,7 @@ import cartas.CilindroMagico;
 import cartas.DragonBlancoDeOjosAzules;
 import cartas.DragonDefinitivo;
 import cartas.CabezaExodia;
+import cartas.CartaMonstruo;
 import cartas.Fisura;
 import cartas.InsectoComeHombres;
 import cartas.Jinzo;
@@ -29,6 +32,8 @@ import excepciones.TengoTodasLasPartesDeExodiaException;
 import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.Jugador;
+import juego.JugadorA;
+import juego.JugadorB;
 import juego.Mazo;
 
 public class SegundaEntregaTest {
@@ -41,8 +46,8 @@ public class SegundaEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -85,8 +90,8 @@ public class SegundaEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -133,7 +138,7 @@ public class SegundaEntregaTest {
 
 		Campo campoA = new Campo(mazoA);
 
-		Jugador jugadorA = new Jugador(campoA);
+		Jugador jugadorA = new JugadorA(campoA);
 
 		ollaDeLaCodicia.asignarDuenio(jugadorA);
 
@@ -155,8 +160,8 @@ public class SegundaEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -195,8 +200,8 @@ public class SegundaEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -231,8 +236,8 @@ public class SegundaEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -257,10 +262,10 @@ public class SegundaEntregaTest {
 		dragon2.invocarEnModoAtaque();
 		dragon3.invocarEnModoAtaque();
 
-		ContenedorDeCartas sacrificios = new ContenedorDeCartas(3);
-		sacrificios.agregar(dragon1);
-		sacrificios.agregar(dragon2);
-		sacrificios.agregar(dragon3);
+		ArrayList<CartaMonstruo> sacrificios = new ArrayList<CartaMonstruo>();
+		sacrificios.add(dragon1);
+		sacrificios.add(dragon2);
+		sacrificios.add(dragon3);
 
 		DragonDefinitivo dragonDefinitivo = new DragonDefinitivo(); // se pasa las referencias a los dragones
 		dragonDefinitivo.asignarDuenio(jugadorA);
@@ -284,8 +289,8 @@ public class SegundaEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -324,8 +329,8 @@ public class SegundaEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -362,8 +367,8 @@ public class SegundaEntregaTest {
 		Campo campoA = new Campo(mazoA);
 		Campo campoB = new Campo(mazoB);
 
-		Jugador jugadorA = new Jugador(campoA);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorA = new JugadorA(campoA);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -405,7 +410,7 @@ public class SegundaEntregaTest {
 	public void testElJugadorTieneQueTomarUnaCartaDelMazoEstandoEsteVacioPierde() {
 		Mazo mazoA = new Mazo(); // esta vacio
 		Campo campoA = new Campo(mazoA);
-		Jugador jugadorA = new Jugador(campoA);
+		Jugador jugadorA = new JugadorA(campoA);
 
 		jugadorA.tomarCartaDelMazo();
 
@@ -415,11 +420,11 @@ public class SegundaEntregaTest {
 	public void testElJugadorTieneLasCincoPartesDelExodiaYElOtroPierde() {
 		Mazo mazoA = new Mazo();
 		Campo campoA = new Campo(mazoA);
-		Jugador jugadorA = new Jugador(campoA);
+		Jugador jugadorA = new JugadorA(campoA);
 
 		Mazo mazoB = new Mazo();
 		Campo campoB = new Campo(mazoB);
-		Jugador jugadorB = new Jugador(campoB);
+		Jugador jugadorB = new JugadorB(campoB);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);

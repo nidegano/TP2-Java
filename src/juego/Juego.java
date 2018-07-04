@@ -20,7 +20,6 @@ public class Juego {
 		jugadorB.asignarJuego(this);
 
 		this.deTurno = jugadorA;
-		this.deTurno.jugar();
 	}
 
 	public void asignarVista(Vista vista) {

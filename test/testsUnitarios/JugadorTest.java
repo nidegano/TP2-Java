@@ -13,13 +13,15 @@ import cartas.Jinzo;
 import cartas.CabezaExodia;
 import juego.Campo;
 import juego.Jugador;
+import juego.JugadorA;
+import juego.JugadorB;
 import juego.Mazo;
 
 public class JugadorTest {
 
 	@Test
 	public void testDebilitar100PuntosDejaAlJugadorCon7900DeVida() {
-		Jugador jugador = new Jugador(new Campo(new Mazo()));
+		Jugador jugador = new JugadorA(new Campo(new Mazo()));
 		int vidaAlPrincipio = jugador.vida();
 		jugador.debilitar(100);
 		int vidaAlFinal = vidaAlPrincipio - 100;
@@ -29,7 +31,7 @@ public class JugadorTest {
 
 	@Test
 	public void testDebilitar0PuntosDejaAlJugadorConLaMismaVidaDelPrincipio() {
-		Jugador jugador = new Jugador(new Campo(new Mazo()));
+		Jugador jugador = new JugadorA(new Campo(new Mazo()));
 		int vidaAlPrincipio = jugador.vida();
 		jugador.debilitar(0);
 
@@ -44,7 +46,7 @@ public class JugadorTest {
 
 		Campo campo = new Campo(mazo);
 
-		Jugador jugador = new Jugador(campo);
+		Jugador jugador = new JugadorA(campo);
 		jugador.tomarCartaDelMazo();
 
 		assertTrue(jugador.esDuenioDe(carta));
@@ -58,7 +60,7 @@ public class JugadorTest {
 
 		Campo campo = new Campo(mazo);
 
-		Jugador jugador = new Jugador(campo);
+		Jugador jugador = new JugadorA(campo);
 		monstruo.asignarDuenio(jugador);
 
 		jugador.tomarCartaDelMazo();
@@ -75,8 +77,8 @@ public class JugadorTest {
 
 		Campo campo = new Campo(mazo);
 
-		Jugador jugadorA = new Jugador(campo);
-		Jugador jugadorB = new Jugador(campo);
+		Jugador jugadorA = new JugadorA(campo);
+		Jugador jugadorB = new JugadorB(campo);
 
 		jugadorA.asignarOponente(jugadorB);
 		jugadorB.asignarOponente(jugadorA);
@@ -97,7 +99,7 @@ public class JugadorTest {
 
 		Campo campo = new Campo(mazo);
 
-		Jugador jugador = new Jugador(campo);
+		Jugador jugador = new JugadorA(campo);
 
 		assertFalse(jugador.esDuenioDe(carta));
 	}

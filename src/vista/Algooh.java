@@ -33,9 +33,10 @@ public class Algooh extends Application {
 		juego.asignarVista(vista);
 		mazoJugadorA.asignarVistaACartas(vista);
 		mazoJugadorB.asignarVistaACartas(vista);
-
+		
 		vista.start(primaryStage);
-
+		
+		juego.jugadorDeTurno().jugar();
 	}
 
 }

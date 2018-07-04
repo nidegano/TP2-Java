@@ -127,11 +127,12 @@ public class Grilla extends Application {
 		this.configurarBotonesFaseInicioDeJuego();
 	}
 
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Al-Go-Oh!");
 		Scene scene = new Scene(this.gridPane, 1200, 1200);
-		primaryStage.setFullScreen(true);
+		primaryStage.setFullScreen(false);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -376,6 +377,26 @@ public class Grilla extends Application {
 		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
 	}
 
+	public VistaCarta obtenerUnLugarVacioDeZonaManoJugadorB() {
+		for (VistaCarta lugar : this.vistaCartaManoJugadorB) {
+			if(lugar.estaLibre()) {
+				return lugar;
+			}
+		}
+		return null;
+		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
+	}
+
+	public VistaCarta obtenerUnLugarVacioDeZonaManoJugadorA() {
+		for (VistaCarta lugar : this.vistaCartaManoJugadorA) {
+			if(lugar.estaLibre()) {
+				return lugar;
+			}
+		}
+		return null;
+		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
+	}
+	
 	
 
 // Settear Visibilidad de Opciones
@@ -600,13 +621,5 @@ public class Grilla extends Application {
 		this.botonCementerioJugadorB.setDisable(true);
 	}
 
-	public VistaCarta obtenerUnLugarVacioDeZonaManoJugadorB() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	public VistaCarta obtenerUnLugarVacioDeZonaManoJugadorA() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -33,6 +33,8 @@ public abstract class Carta {
 	public Carta() {
 		this.contenedoresQueLaContienen = new ArrayList<ContenedorDeCartas>();
 		this.efecto = new EfectoNulo(this);
+		this.crearVistaCarta();
+		//mas adelante se le asigna la vista a la VistaCarta de la carta
 	}
 
 	public abstract void agregarEnCampo(Campo campo);
