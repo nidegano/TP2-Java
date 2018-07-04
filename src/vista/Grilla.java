@@ -45,6 +45,7 @@ public class Grilla extends Application {
 	private HBox marcoDeLaImagen;
 	
 	//Labels
+	private Label displayDeTexto;
 	private Label labelDeJugadorA;
 	private Label labelDeJugadorB;
 	private Label labelVidaDeJugadorA;
@@ -212,6 +213,7 @@ public class Grilla extends Application {
 	}
 
 	private void inicializarLabels() {
+		this.displayDeTexto = new Label("");
 		this.labelDeJugadorA = new Label("JUGADOR A");
 		this.labelDeJugadorB = new Label("JUGADOR B");
 		this.labelVidaDeJugadorA = new Label("-");
@@ -293,6 +295,9 @@ public class Grilla extends Application {
 		this.gridPane.add(this.marcoDeLaImagen, 13, 6, 1, 1);
 		this.gridPane.add(this.botonDeFinalizarFase, 13, 5, 1, 1);
 		this.gridPane.add(this.botonDeListo, 13, 5,1,1);
+		
+		//Display
+		this.gridPane.add(this.displayDeTexto, 1, 2, 1, 1);
 		
 		//OPCIONES
 		this.gridPane.add(this.opcionCambiarAModoAtaque, 13, 7, 1, 1);
@@ -580,6 +585,10 @@ public class Grilla extends Application {
 		this.labelDeTurno.setText("TURNO: ".concat(this.labelDeJugadorB.getText()));
 	}
 
+	public void cambiarLabelDeTextoDisplayPor(String texto) {
+		this.displayDeTexto.setText(texto);
+	}
+	
 	
 	
 // Metodos privados que no son de inicializacion
@@ -618,6 +627,7 @@ public class Grilla extends Application {
 		this.botonCementerioJugadorA.setDisable(true);
 		this.botonCementerioJugadorB.setDisable(true);
 	}
+
 
 
 }

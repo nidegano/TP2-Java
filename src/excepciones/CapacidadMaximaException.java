@@ -1,6 +1,6 @@
 package excepciones;
 
-public class CapacidadMaximaException extends RuntimeException {
+public class CapacidadMaximaException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 

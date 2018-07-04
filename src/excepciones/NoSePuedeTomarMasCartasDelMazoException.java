@@ -1,6 +1,6 @@
 package excepciones;
 
-public class NoSePuedeTomarMasCartasDelMazoException extends RuntimeException {
+public class NoSePuedeTomarMasCartasDelMazoException extends Exception {
 
 	/**
 	 * 

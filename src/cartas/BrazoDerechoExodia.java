@@ -1,5 +1,6 @@
 package cartas;
 
+import excepciones.TengoTodasLasPartesDeExodiaException;
 import juego.RecolectorDePartesDeExodia;
 
 public class BrazoDerechoExodia extends Exodia {
@@ -14,7 +15,7 @@ public class BrazoDerechoExodia extends Exodia {
 	}
 
 	@Override
-	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {
+	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) throws TengoTodasLasPartesDeExodiaException {
 		recolectorDePartesDeExodia.recolectarBrazoDerecho(this);
 	}
 

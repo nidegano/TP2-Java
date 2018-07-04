@@ -8,7 +8,6 @@ import excepciones.CantidadInadecuadaDeSacrificiosException;
 
 public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 
-	protected ArrayList<CartaMonstruo> sacrificios;
 	protected int sacrificiosRequeridos;
 	
 	public CartaRequiereSacrificios() {
@@ -16,53 +15,36 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 		this.estado = new EstadoMonstruoRequiereSacrificioSinInvocar();
 	}
 
-	protected void chequearQueLaCantidadDeSacrificiosSeaCorrecta(ArrayList<CartaMonstruo> sacrificios) {
+	protected void chequearQueLaCantidadDeSacrificiosSeaCorrecta(ArrayList<CartaMonstruo> sacrificios) throws CantidadInadecuadaDeSacrificiosException{
 		if (sacrificios.size() != this.sacrificiosRequeridos)
 			throw new CantidadInadecuadaDeSacrificiosException();
 	}
-	
-	@Override
-	public void invocarEnModoAtaque() {
-		throw new CantidadInadecuadaDeSacrificiosException();
-	}
-	
-	@Override
-	public void invocarEnModoDefensa() {
-		throw new CantidadInadecuadaDeSacrificiosException();
-	}
-	
-	@Override
-	public void invocarEnModoDefensaBocaAbajo() {
-		throw new CantidadInadecuadaDeSacrificiosException();
-	}
 
-	public void invocarEnModoAtaque(ArrayList<CartaMonstruo> sacrificios) {
+	public void invocarEnModoAtaque(ArrayList<CartaMonstruo> sacrificios) throws CantidadInadecuadaDeSacrificiosException  {
 		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
-		this.sacrificios = sacrificios;
 		this.colocarEnModoAtaque();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.efecto.activar();
-		for (Carta monstruo : this.sacrificios)
+		for (Carta monstruo : sacrificios)
 			monstruo.matar();
+
 	}
 	
-	public void invocarEnModoDefensa(ArrayList<CartaMonstruo> sacrificios) {
+	public void invocarEnModoDefensa(ArrayList<CartaMonstruo> sacrificios) throws CantidadInadecuadaDeSacrificiosException {
 		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
-		this.sacrificios = sacrificios;
 		this.colocarEnModoDefensa();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.efecto.activar();
-		for (Carta monstruo : this.sacrificios)
+		for (Carta monstruo : sacrificios)
 			monstruo.matar();
 	}
 	
-	public void invocarEnModoDefensaBocaAbajo(ArrayList<CartaMonstruo> sacrificios) {
+	public void invocarEnModoDefensaBocaAbajo(ArrayList<CartaMonstruo> sacrificios) throws CantidadInadecuadaDeSacrificiosException  {
 		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
-		this.sacrificios = sacrificios;
 		this.colocarEnModoDefensaBocaAbajo();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.efecto.activar();
-		for (Carta monstruo : this.sacrificios)
+		for (Carta monstruo : sacrificios)
 			monstruo.matar();
 	}
 

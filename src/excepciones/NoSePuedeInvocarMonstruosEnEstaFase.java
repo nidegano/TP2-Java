@@ -1,6 +1,6 @@
 package excepciones;
 
-public class NoSePuedeInvocarMonstruosEnEstaFase extends RuntimeException {
+public class NoSePuedeInvocarMonstruosEnEstaFase extends Exception {
 
 	/**
 	 * 

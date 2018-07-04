@@ -3,6 +3,8 @@ package cartas;
 import configuraciones.ConfiguracionDeOpciones;
 import estados.EstadoColocableBocaArriba;
 import estados.ModoBocaAbajo;
+import excepciones.CapacidadMaximaException;
+import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import juego.Campo;
 
 public abstract class CartaMagica extends CartaEspecial {
@@ -13,14 +15,20 @@ public abstract class CartaMagica extends CartaEspecial {
 
 	@Override
 	public void agregarEnCampo(Campo campo) {
-		campo.obtenerZonaEspeciales().agregar(this);
-		this.contenedoresQueLaContienen.add(campo.obtenerZonaEspeciales());
-
-		campo.obtenerContenedorCartasMagicas().agregar(this);
-		this.contenedoresQueLaContienen.add(campo.obtenerContenedorCartasMagicas());
-
-		this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
-		this.jugadorDuenio.obtenerMano().remover(this);
+		try {
+			campo.obtenerZonaEspeciales().agregar(this);
+			this.contenedoresQueLaContienen.add(campo.obtenerZonaEspeciales());
+	
+			campo.obtenerContenedorCartasMagicas().agregar(this);
+			this.contenedoresQueLaContienen.add(campo.obtenerContenedorCartasMagicas());
+	
+			this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
+			this.jugadorDuenio.obtenerMano().remover(this);
+		}
+		catch (CapacidadMaximaException | CartaNoEstaEnContenedorDeCartasException e) {
+			e.printStackTrace();
+			
+		}
 	}
 
 	public void asignarEstadoDeColocableBocaArriba() {

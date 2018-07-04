@@ -25,7 +25,12 @@ public class CartaNula extends Carta {
 
 	@Override
 	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
-		throw new NoSePuedeColocarUnaCartaNulaEnCampoException();
+		try {
+			throw new NoSePuedeColocarUnaCartaNulaEnCampoException();
+		} catch (NoSePuedeColocarUnaCartaNulaEnCampoException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override

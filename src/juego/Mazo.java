@@ -3,6 +3,7 @@ package juego;
 import java.util.Collections;
 
 import cartas.*;
+import excepciones.CapacidadMaximaException;
 import excepciones.MazoSinCartasException;
 import vista.Vista;
 
@@ -12,7 +13,7 @@ public class Mazo extends ContenedorDeCartas {
 		super(40);
 	}
 
-	public Carta tomarUnaCarta() {
+	public Carta tomarUnaCarta() throws MazoSinCartasException {
 		try {
 			return this.cartas.remove(0);
 		} catch (IndexOutOfBoundsException e) {
@@ -20,7 +21,7 @@ public class Mazo extends ContenedorDeCartas {
 		}
 	}
 
-	public void generarCartas() {
+	public void generarCartas() throws CapacidadMaximaException {
 		// CARTAS MONSTRUO
 		for (int i = 0; i <= 3; i++) {
 			this.agregar(new AlphaTheMagnetWarrior());

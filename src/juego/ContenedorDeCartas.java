@@ -18,14 +18,14 @@ public class ContenedorDeCartas implements Iterable<Carta> {
 		this.capacidad = capacidad;
 	}
 
-	public void agregar(Carta carta) {
+	public void agregar(Carta carta) throws CapacidadMaximaException {
 		if (this.cartas.size() == this.capacidad)
 			throw new CapacidadMaximaException();
 		if (!this.estaDentro(carta))
 			this.cartas.add(carta);
 	}
 
-	public Carta obtenerPrimero() {
+	public Carta obtenerPrimero() throws ContenedorDeCartasVacioException {
 		try {
 			return this.cartas.get(0);
 		} catch (IndexOutOfBoundsException e) {
@@ -37,7 +37,7 @@ public class ContenedorDeCartas implements Iterable<Carta> {
 		return this.cartas.contains(carta);
 	}
 
-	public void remover(Carta carta) {
+	public void remover(Carta carta) throws CartaNoEstaEnContenedorDeCartasException {
 		if (!this.estaDentro(carta))
 			throw new CartaNoEstaEnContenedorDeCartasException();
 		this.cartas.remove(carta);

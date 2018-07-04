@@ -3,6 +3,7 @@ package juego;
 import cartas.Carta;
 import excepciones.CapacidadMaximaException;
 import excepciones.CartaNoEstaEnContenedorDeCartasException;
+import excepciones.TengoTodasLasPartesDeExodiaException;
 
 public class Mano extends ContenedorDeCartas {
 
@@ -13,8 +14,7 @@ public class Mano extends ContenedorDeCartas {
 		this.recolectorDePartesDeExodia = new RecolectorDePartesDeExodia();
 	}
 
-	@Override
-	public void agregar(Carta carta) {
+	public void agregarAMano(Carta carta) throws CapacidadMaximaException, TengoTodasLasPartesDeExodiaException {
 		if (this.cartas.size() == this.capacidad)
 			throw new CapacidadMaximaException();
 		this.cartas.add(carta);
@@ -23,7 +23,7 @@ public class Mano extends ContenedorDeCartas {
 	}
 
 	@Override
-	public void remover(Carta carta) {
+	public void remover(Carta carta) throws CartaNoEstaEnContenedorDeCartasException {
 		if (!this.estaDentro(carta))
 			throw new CartaNoEstaEnContenedorDeCartasException();
 		this.cartas.remove(carta);

@@ -3,8 +3,11 @@ package juego;
 import botones.VistaCarta;
 import cartas.*;
 import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
-//import excepciones.AtaqueIntervenidoException;
-import excepciones.SinVidaException;
+import excepciones.CapacidadMaximaException;
+import excepciones.ContenedorDeCartasVacioException;
+import excepciones.MazoSinCartasException;
+import excepciones.NoSePuedeTomarMasCartasDelMazoException;
+import excepciones.TengoTodasLasPartesDeExodiaException;
 import fases.Fase;
 import fases.FaseInicioDeJuego;
 import fases.FasePreparacion;
@@ -12,13 +15,14 @@ import vista.Grilla;
 
 public abstract class Jugador {
 
-	private int vida;
-	private Mano mano;
-	private Campo campo;
-	private Jugador oponente;
+	protected int vida;
+	protected Mano mano;
+	protected Campo campo;
+	protected Jugador oponente;
 	protected Fase fase = new FaseInicioDeJuego();
-	private Juego juego;
-	private boolean sePuedeSeguirInvocandoMonstruos;
+	protected Juego juego;
+	protected boolean sePuedeSeguirInvocandoMonstruos;
+	protected String nombre;
 
 	public Jugador(Campo campo) {
 		this.vida = 8000;
@@ -44,14 +48,26 @@ public abstract class Jugador {
 	public void debilitar(int puntosDeVidaADebilitar) {
 		this.vida = this.vida - puntosDeVidaADebilitar;
 		if (vida <= 0)
-			throw new SinVidaException(this);
+			this.juego.perdioJugador(this);
 	}
 
-	public void tomarCartaDelMazo() {
-		this.fase.tomoCartaDelMazo();
-		Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
-		this.mano.agregar(unaCarta);
-		this.juego.seTomoEstaCartaDelMazo(unaCarta);
+	public void tomarCartaDelMazo(){
+		try {
+			this.fase.tomoCartaDelMazo();
+			Carta unaCarta = this.campo.tomarUnaCartaDelMazo();
+			this.mano.agregarAMano(unaCarta);
+			this.juego.seTomoEstaCartaDelMazo(unaCarta);
+		}
+		catch (CapacidadMaximaException | NoSePuedeTomarMasCartasDelMazoException e) {
+			e.printStackTrace();
+		} 
+		catch (TengoTodasLasPartesDeExodiaException e) {
+			this.juego.perdioJugador(this.oponente);
+			
+		} 
+		catch (MazoSinCartasException e) {
+			this.juego.perdioJugador(this);
+		}
 	}
 
 	public boolean esDuenioDe(Carta carta) {
@@ -78,7 +94,7 @@ public abstract class Jugador {
 		return this.oponente;
 	}
 
-	public void serAtacadoPor(CartaMonstruo cartaMonstruo) {
+	public void serAtacadoPor(CartaMonstruo cartaMonstruo) throws ContenedorDeCartasVacioException {
 		// PATRON PROXY
 		ContenedorDeCartas cartasTrampa = campo.obtenerContenedorCartasTrampa();
 		if (cartasTrampa.hayCartas()) {
@@ -91,7 +107,7 @@ public abstract class Jugador {
 		return this.mano;
 	}
 
-	public void inicioJuego() {
+	public void inicioJuego() throws CapacidadMaximaException {
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
 		this.tomarCartaDelMazo();
@@ -121,7 +137,11 @@ public abstract class Jugador {
 	}
 
 	public void jugar() {
-		this.fase.ejecutar(this);
+		try {
+			this.fase.ejecutar(this);
+		} catch (CapacidadMaximaException e) {
+			e.printStackTrace();
+		}
 		if (this.fase.termino()) {
 			this.fase = this.fase.faseSiguiente();
 			this.juego.informarQueElJugadorDeTurnoTerminoSuTurno();
@@ -174,4 +194,8 @@ public abstract class Jugador {
 	public abstract ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
 
 	public abstract VistaCarta obtenerLugarVacioDeLaZonaDeManoATravezDeLaGrilla(Grilla grilla);
-}
+
+	public String nombre() {
+		return this.nombre; 
+	}
+	}

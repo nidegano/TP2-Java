@@ -5,9 +5,10 @@ import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
 import vista.Grilla;
 
 public class JugadorA extends Jugador {
-
+	
 	public JugadorA(Campo campo) {
 		super(campo);
+		this.nombre = "JUGADOR A";
 	}
 
 	@Override

@@ -17,8 +17,6 @@ public class FasePreparacion implements Fase {
 	}
 
 	public void ejecutar(Jugador jugador) {
-		//jugador.campo().renovarLaPosibilidadDeAtacarEnCartasMonstruo();
-		//jugador.reiniciarLaPosibilidadDeInvocarMonstruos();
 	}
 
 	public boolean termino() {
@@ -43,7 +41,7 @@ public class FasePreparacion implements Fase {
 	}
 	
 	@Override
-	public void chequearSiSePuedeInvocaMonstruo() {
+	public void chequearSiSePuedeInvocaMonstruo() throws SoloSePuedeInvocarUnSoloMonstruoEnEstaFase {
 		if (this.yaSeInvocoUnMonstruo) {
 			throw new SoloSePuedeInvocarUnSoloMonstruoEnEstaFase();
 		}

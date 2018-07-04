@@ -3,6 +3,8 @@ package juego;
 import cartas.Carta;
 import cartas.CartaMagica;
 import cartas.CartaMonstruo;
+import excepciones.ContenedorDeCartasVacioException;
+import excepciones.MazoSinCartasException;
 
 public class Campo {
 
@@ -25,7 +27,7 @@ public class Campo {
 		this.contenedorCartasTrampa = new ContenedorDeCartas(12);
 	}
 
-	public Carta tomarUnaCartaDelMazo() {
+	public Carta tomarUnaCartaDelMazo() throws MazoSinCartasException {
 		return this.mazo.tomarUnaCarta();
 	}
 
@@ -63,7 +65,7 @@ public class Campo {
 		return this.zonaCartasDeCampo;
 	}
 
-	public CartaMonstruo obtenerElMonstruoDeMenorAtaque() {
+	public CartaMonstruo obtenerElMonstruoDeMenorAtaque() throws ContenedorDeCartasVacioException {
 		Carta monstruoDeMenorAtaque = this.zonaMonstruos.obtenerPrimero();
 		int puntosDelDeMenorAtaque = ((CartaMonstruo) monstruoDeMenorAtaque).obtenerPuntosDeAtaque();
 		int puntosAEvaluar;

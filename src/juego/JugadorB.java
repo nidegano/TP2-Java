@@ -8,6 +8,7 @@ public class JugadorB extends Jugador {
 
 	public JugadorB(Campo campo) {
 		super(campo);
+		this.nombre = "JUGADOR B";
 	}
 
 	@Override

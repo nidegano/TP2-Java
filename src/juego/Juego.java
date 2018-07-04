@@ -50,4 +50,8 @@ public class Juego {
 		this.vista.seTomoEstaCartaDelMazo(unaCarta);
 	}
 
+	public void perdioJugador(Jugador jugador) {
+		this.vista.informarJugadorPerdio(jugador.nombre());
+	}
+
 }

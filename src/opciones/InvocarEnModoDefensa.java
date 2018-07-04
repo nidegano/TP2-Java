@@ -1,6 +1,8 @@
 package opciones;
 
 import cartas.CartaMonstruo;
+import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
+import excepciones.SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
 import vista.Vista;
 
 public class InvocarEnModoDefensa extends Opcion {
@@ -18,9 +20,14 @@ public class InvocarEnModoDefensa extends Opcion {
 
 	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
 		//no chequeo si se puede porque si no se puede se eleva una excepcion
-		cartaSeleccionada.chequearSiSePuedeInvocarMonstruo();
-		cartaSeleccionada.desasignarVistaALugarDeManoEnVistaCampoJugadores();
-		cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
-		cartaSeleccionada.invocarEnModoDefensa();
+		try {
+			cartaSeleccionada.chequearSiSePuedeInvocarMonstruo();
+			cartaSeleccionada.desasignarVistaALugarDeManoEnVistaCampoJugadores();
+			cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
+			cartaSeleccionada.invocarEnModoDefensa();
+		} catch (NoSePuedeInvocarMonstruosEnEstaFase | SoloSePuedeInvocarUnSoloMonstruoEnEstaFase e) {
+			e.printStackTrace();
+		}
+
 	}
 }

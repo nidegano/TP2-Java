@@ -25,7 +25,7 @@ public class Vista {
 	private Grilla grilla;
 	private VistaCampoJugadores vistaCampoJugadores;
 	private PanelDeAccion panelDeAccion;
-	//private TextoDisplay textoDisplay;
+	private TextoDisplay textoDisplay;
 	
 	private Carta cartaSeleccionada;
 	private ModoVista modoVista;
@@ -39,7 +39,7 @@ public class Vista {
 		this.grilla = new Grilla(jugadorA,jugadorB,juego,this); //se contruye y coloca todo lo necesario (botones y labels)
 		this.vistaCampoJugadores = new VistaCampoJugadores(jugadorA,jugadorB,grilla,this);
 		this.panelDeAccion = new PanelDeAccion(grilla);
-		//this.textoDisplay = new TextoDisplay();
+		this.textoDisplay = new TextoDisplay(grilla);
 		
 		this.cartaSeleccionada = new CartaNula();
 		this.modoVista = new ModoNormal(this);
@@ -123,9 +123,8 @@ public class Vista {
 	public void seTomoEstaCartaDelMazo(Carta unaCarta) {
 		this.vistaCampoJugadores.seTomoEstaCartaDelMazo(unaCarta);
 	}
-	
 
-	public Vista() {
-		//solo para tests
+	public void informarJugadorPerdio(String nombre) {
+		this.textoDisplay.informarJugadorPerdio(nombre);
 	}
 }

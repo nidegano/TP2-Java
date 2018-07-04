@@ -40,7 +40,7 @@ public abstract class Efecto {
 		this.monstruoPropioObjetivo = null;
 	}
 
-	protected void interrumpirAtaque() {
+	protected void interrumpirAtaque() throws AtaqueIntervenidoException {
 		throw new AtaqueIntervenidoException();
 	}
 

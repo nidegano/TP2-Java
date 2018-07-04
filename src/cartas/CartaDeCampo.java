@@ -3,6 +3,8 @@ package cartas;
 import botones.VistaCarta;
 import configuraciones.ConfiguracionDeOpciones;
 import estados.ModoCartaDeCampoInvocada;
+import excepciones.CapacidadMaximaException;
+import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import excepciones.YaHayUnaCartaDeCampoColocadaException;
 import juego.Campo;
 import vista.VistaCampoJugadores;
@@ -11,8 +13,12 @@ public abstract class CartaDeCampo extends CartaEspecial {
 
 	@Override
 	public void agregarEnCampo(Campo campo) {
-
-		this.agregarSiempreYCuandoNoHayaUnaCartaDeCampoYa(campo);
+		try {
+			this.agregarSiempreYCuandoNoHayaUnaCartaDeCampoYa(campo);
+		}
+		catch (YaHayUnaCartaDeCampoColocadaException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void colocarCartaDeCampo() {
@@ -21,15 +27,14 @@ public abstract class CartaDeCampo extends CartaEspecial {
 		this.activar();
 	}
 
-	private void agregarSiempreYCuandoNoHayaUnaCartaDeCampoYa(Campo campo) {
-
-		if (!campo.obtenerZonaCartasDeCampo().hayCartas()) {
+	private void agregarSiempreYCuandoNoHayaUnaCartaDeCampoYa(Campo campo) throws YaHayUnaCartaDeCampoColocadaException {
+		try {
 			campo.obtenerZonaCartasDeCampo().agregar(this);
 			this.contenedoresQueLaContienen.add(campo.obtenerZonaCartasDeCampo());
 			this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
 			this.jugadorDuenio.obtenerMano().remover(this);
 		}
-		else {
+		catch (CapacidadMaximaException | CartaNoEstaEnContenedorDeCartasException e) {
 			throw new YaHayUnaCartaDeCampoColocadaException();
 		}
 	}

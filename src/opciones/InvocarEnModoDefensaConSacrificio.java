@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import cartas.Carta;
 import cartas.CartaMonstruo;
 import cartas.CartaRequiereSacrificios;
+import excepciones.CantidadInadecuadaDeSacrificiosException;
+import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
+import excepciones.SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
 import vista.Vista;
 
 public class InvocarEnModoDefensaConSacrificio extends InvocarConSacrificio {
@@ -21,16 +24,24 @@ public class InvocarEnModoDefensaConSacrificio extends InvocarConSacrificio {
 	}
 
 	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
-		//no chequeo si se puede porque si no se puede se eleva una excepcion
-		cartaSeleccionada.chequearSiSePuedeInvocarMonstruo();
-		this.vista.cambiarAModoSeleccionParaSacrificio(this);
+		try {
+			cartaSeleccionada.chequearSiSePuedeInvocarMonstruo();
+			this.vista.cambiarAModoSeleccionParaSacrificio(this);
+		} catch (NoSePuedeInvocarMonstruosEnEstaFase | SoloSePuedeInvocarUnSoloMonstruoEnEstaFase e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
 	public void finalizarInvocacionPorSacrificio(Carta cartaSeleccionada, ArrayList<CartaMonstruo> sacrificios) {
-		cartaSeleccionada.desasignarVistaALugarDeManoEnVistaCampoJugadores();
-		cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
-		((CartaRequiereSacrificios) cartaSeleccionada).invocarEnModoDefensa(sacrificios); 
-		//aca cheque si la cantidad es valida y si no tira excepcion	
+		
+		try {
+			((CartaRequiereSacrificios) cartaSeleccionada).invocarEnModoDefensa(sacrificios); 
+			cartaSeleccionada.desasignarVistaALugarDeManoEnVistaCampoJugadores();
+			cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
+		}
+		catch (CantidadInadecuadaDeSacrificiosException e) {
+			e.printStackTrace();
+		}	
 	}
 }

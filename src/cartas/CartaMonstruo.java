@@ -8,7 +8,13 @@ import estados.ModoAtaque;
 import estados.ModoDefensa;
 import estados.ModoDefensaBocaAbajo;
 import excepciones.AtaqueIntervenidoException;
+import excepciones.CapacidadMaximaException;
+import excepciones.CartaNoEstaEnContenedorDeCartasException;
+import excepciones.ContenedorDeCartasVacioException;
+import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import excepciones.ParaAtacarDirectamenteAlJugadorNoTieneQueHaberMonstruosInvocadosException;
+import excepciones.SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
+import excepciones.TengoTodasLasPartesDeExodiaException;
 import juego.Campo;
 import juego.ContenedorDeCartas;
 import juego.FormaDeAfectarAlJugador;
@@ -39,15 +45,15 @@ public abstract class CartaMonstruo extends Carta {
 		this.puntosDeDefensa.aumentar(aumentoDePuntosDeDefensa);
 	}
 
-	public void invocarEnModoAtaque() {
+	public void invocarEnModoAtaque(){
 		this.colocarEnModoAtaque();
 		this.agregarEnCampo(this.jugadorDuenio.campo()); // aca va a haber un problema al cambiar el modo en el campo
 		this.activarEfectoSiCorresponde(); // podria pasar que se active el mismo efecto dos veces
 	}
 	
-	public void chequearSiSePuedeInvocarMonstruo() {
+	public void chequearSiSePuedeInvocarMonstruo() throws NoSePuedeInvocarMonstruosEnEstaFase, SoloSePuedeInvocarUnSoloMonstruoEnEstaFase {
 		this.jugadorDuenio.obtenerFase().chequearSiSePuedeInvocaMonstruo(); 
-		//tira SoloSePuedeInvocarUnSoloMonstruoEnEstaFase si ya hay invocado
+		//tira SoloSePuedeInvocarUnSoloMonstruoEnEstaFase si ya se invoco uno en la fase
 	}
 
 	public void invocarEnModoDefensa() {
@@ -67,17 +73,23 @@ public abstract class CartaMonstruo extends Carta {
 
 	@Override
 	public void agregarEnCampo(Campo campo) {
-		campo.obtenerZonaMonstruos().agregar(this);
-		this.contenedoresQueLaContienen.add(campo.obtenerZonaMonstruos());
-		this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
-		this.jugadorDuenio.obtenerMano().remover(this);
+		try {
+			campo.obtenerZonaMonstruos().agregar(this);
+			this.contenedoresQueLaContienen.add(campo.obtenerZonaMonstruos());
+			this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
+			this.jugadorDuenio.obtenerMano().remover(this);
+		}
+		catch (CapacidadMaximaException | CartaNoEstaEnContenedorDeCartasException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void atacarDirectamenteAlOponente() {
 		try {
 			this.jugadorDuenio.oponente().serAtacadoPor(this);
 			this.jugadorDuenio.oponente().debilitar(this.obtenerPuntosDeAtaque());
-		} catch (AtaqueIntervenidoException e) {
+		} catch (AtaqueIntervenidoException | ContenedorDeCartasVacioException e) {
+			
 		}
 	}
 
@@ -102,10 +114,10 @@ public abstract class CartaMonstruo extends Carta {
 	}
 
 	@Override
-	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) {
+	public void serRecolectadaPorElRecolectorDePartesDeExodia(RecolectorDePartesDeExodia recolectorDePartesDeExodia) throws TengoTodasLasPartesDeExodiaException {
 	}
 
-	protected void serAtacadoPor(CartaMonstruo cartaMonstruo) {
+	protected void serAtacadoPor(CartaMonstruo cartaMonstruo) throws AtaqueIntervenidoException {
 		// PATRON PROXY
 		try {
 			this.efecto.asignarMonstruoEnemigoObjetivo(cartaMonstruo);
@@ -117,7 +129,7 @@ public abstract class CartaMonstruo extends Carta {
 				CartaTrampa trampaQueTocaActivar = (CartaTrampa) cartasTrampa.obtenerPrimero();
 				trampaQueTocaActivar.colocarBocaArriba(cartaMonstruo, this);
 			}
-		} catch (AtaqueIntervenidoException e) {
+		} catch (AtaqueIntervenidoException | ContenedorDeCartasVacioException e) {
 			throw new AtaqueIntervenidoException();
 		} finally {
 			this.efecto.desasignarObjetivo();// no quiero que quede guardada una referencia que no tiene nada que ver
@@ -142,7 +154,7 @@ public abstract class CartaMonstruo extends Carta {
 		return this.estado.puntosAsociadosAlEstado() - monstruoAtacado.estado.puntosAsociadosAlEstado();
 	}
 
-	protected void chequearQueNoHayaMonstruosDelOponenteInvocados() {
+	protected void chequearQueNoHayaMonstruosDelOponenteInvocados() throws ParaAtacarDirectamenteAlJugadorNoTieneQueHaberMonstruosInvocadosException {
 		ContenedorDeCartas ContenedorDeMonstruosInvocados = this.jugadorDuenio.oponente().campo()
 				.obtenerZonaMonstruos();
 		if (ContenedorDeMonstruosInvocados.hayCartas())

@@ -1,6 +1,6 @@
 package excepciones;
 
-public class SoloSePuedeInvocarUnSoloMonstruoEnEstaFase extends RuntimeException {
+public class SoloSePuedeInvocarUnSoloMonstruoEnEstaFase extends Exception {
 
 	/**
 	 * 

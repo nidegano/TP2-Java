@@ -2,6 +2,7 @@ package efectos;
 
 import cartas.Carta;
 import cartas.CartaMonstruo;
+import excepciones.ContenedorDeCartasVacioException;
 
 public class EfectoFisura extends EfectoEspeciales {
 
@@ -11,9 +12,14 @@ public class EfectoFisura extends EfectoEspeciales {
 
 	@Override
 	public void activar() {
-		CartaMonstruo monstruo = this.jugadorOponente.campo().obtenerElMonstruoDeMenorAtaque();
-		monstruo.matar();
-		this.cartaDuenia.matar();
+		try {
+			CartaMonstruo monstruo = this.jugadorOponente.campo().obtenerElMonstruoDeMenorAtaque();
+			monstruo.matar();
+			this.cartaDuenia.matar();
+		}
+		catch (ContenedorDeCartasVacioException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

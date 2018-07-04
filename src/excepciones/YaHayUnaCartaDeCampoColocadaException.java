@@ -1,6 +1,6 @@
 package excepciones;
 
-public class YaHayUnaCartaDeCampoColocadaException extends RuntimeException {
+public class YaHayUnaCartaDeCampoColocadaException extends Exception {
 
 	/**
 	 * 

@@ -11,6 +11,9 @@ import botones.VistaCarta;
 import configuraciones.ConfiguracionDeOpciones;
 import efectos.Efecto;
 import efectos.EfectoNulo;
+import excepciones.CapacidadMaximaException;
+import excepciones.CartaNoEstaEnContenedorDeCartasException;
+import excepciones.TengoTodasLasPartesDeExodiaException;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import juego.Campo;
@@ -40,7 +43,7 @@ public abstract class Carta {
 	// this.contenedoresQueLaContienen
 
 	public abstract void serRecolectadaPorElRecolectorDePartesDeExodia(
-			RecolectorDePartesDeExodia recolectorDePartesDeExodia);
+			RecolectorDePartesDeExodia recolectorDePartesDeExodia) throws TengoTodasLasPartesDeExodiaException;
 
 	public void asignarDuenio(Jugador jugador) {
 		this.jugadorDuenio = jugador;
@@ -53,7 +56,11 @@ public abstract class Carta {
 	public void matar() {
 		this.vistaCarta.liberarPorMuerteDeCarta(); //tambien limpia la de la vistaCampoJugadores
 		ContenedorDeCartas cementerio = this.jugadorDuenio.obtenerCementerio();
-		cementerio.agregar(this);
+		try {
+			cementerio.agregar(this);
+		} catch (CapacidadMaximaException e) {
+			e.printStackTrace();
+		}
 		this.quitarDeLosContenedoresEnLosQueEstaba();
 	}
 
@@ -75,7 +82,11 @@ public abstract class Carta {
 
 	private void quitarDeLosContenedoresEnLosQueEstaba() {
 		for (ContenedorDeCartas contenedor : this.contenedoresQueLaContienen)
-			contenedor.remover(this);
+			try {
+				contenedor.remover(this);
+			} catch (CartaNoEstaEnContenedorDeCartasException e) {
+				e.printStackTrace();
+			}
 		this.removerContenedoresQueLacontienen();
 	}
 

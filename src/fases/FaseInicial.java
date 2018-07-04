@@ -31,7 +31,7 @@ public class FaseInicial implements Fase {
 		return new FasePreparacion();
 	}
 
-	public void tomoCartaDelMazo() {
+	public void tomoCartaDelMazo() throws NoSePuedeTomarMasCartasDelMazoException {
 		if (this.contador >= 1)
 			throw new NoSePuedeTomarMasCartasDelMazoException();
 		this.contador = this.contador + 1;
@@ -47,7 +47,7 @@ public class FaseInicial implements Fase {
 	}
 	
 	@Override
-	public void chequearSiSePuedeInvocaMonstruo() {
+	public void chequearSiSePuedeInvocaMonstruo() throws NoSePuedeInvocarMonstruosEnEstaFase {
 		throw new NoSePuedeInvocarMonstruosEnEstaFase();		
 	}
 

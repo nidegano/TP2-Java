@@ -1,6 +1,6 @@
 package excepciones;
 
-public class NoSePuedeColocarUnaCartaNulaEnCampoException extends RuntimeException {
+public class NoSePuedeColocarUnaCartaNulaEnCampoException extends Exception {
 
 	/**
 	 * 

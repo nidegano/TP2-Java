@@ -45,7 +45,7 @@ public class FaseFinal implements Fase {
 	}
 	
 	@Override
-	public void chequearSiSePuedeInvocaMonstruo() {
+	public void chequearSiSePuedeInvocaMonstruo() throws NoSePuedeInvocarMonstruosEnEstaFase {
 		throw new NoSePuedeInvocarMonstruosEnEstaFase();		
 	}
 

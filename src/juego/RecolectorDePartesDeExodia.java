@@ -9,6 +9,8 @@ import cartas.CabezaExodia;
 import cartas.Carta;
 import cartas.PiernaDerechaExodia;
 import cartas.PiernaIzquierdaExodia;
+import excepciones.CapacidadMaximaException;
+import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import excepciones.TengoTodasLasPartesDeExodiaException;
 
 public class RecolectorDePartesDeExodia {
@@ -35,45 +37,65 @@ public class RecolectorDePartesDeExodia {
 		lugares.add(this.lugarParaLaPiernaIzquierda);
 	}
 
-	public void siEsUnaParteDelExodiaQueNoTeniaRecolectar(Carta carta) {
+	public void siEsUnaParteDelExodiaQueNoTeniaRecolectar(Carta carta) throws TengoTodasLasPartesDeExodiaException {
 		carta.serRecolectadaPorElRecolectorDePartesDeExodia(this);
 	}
 
-	public void recolectarBrazoIzquierdo(BrazoIzquierdoExodia brazoIzquierdoExodia) {
+	public void recolectarBrazoIzquierdo(BrazoIzquierdoExodia brazoIzquierdoExodia) throws TengoTodasLasPartesDeExodiaException {
 		if (!this.lugarParaElBrazoIzquierdo.hayCartas())
-			this.lugarParaElBrazoIzquierdo.agregar(brazoIzquierdoExodia);
+			try {
+				this.lugarParaElBrazoIzquierdo.agregar(brazoIzquierdoExodia);
+			} catch (CapacidadMaximaException e) {
+				e.printStackTrace();
+			}
 
 		if (this.tengoTodasLasPartesDeExodia())
 			throw new TengoTodasLasPartesDeExodiaException();
 	}
 
-	public void recolectarBrazoDerecho(BrazoDerechoExodia brazoDerechoExodia) {
+	public void recolectarBrazoDerecho(BrazoDerechoExodia brazoDerechoExodia) throws TengoTodasLasPartesDeExodiaException {
 		if (!this.lugarParaElBrazoDerecho.hayCartas())
-			this.lugarParaElBrazoDerecho.agregar(brazoDerechoExodia);
+			try {
+				this.lugarParaElBrazoDerecho.agregar(brazoDerechoExodia);
+			} catch (CapacidadMaximaException e) {
+				e.printStackTrace();
+			}
 
 		if (this.tengoTodasLasPartesDeExodia())
 			throw new TengoTodasLasPartesDeExodiaException();
 	}
 
-	public void recolectarPiernaDerecha(PiernaDerechaExodia piernaDerechaExodia) {
+	public void recolectarPiernaDerecha(PiernaDerechaExodia piernaDerechaExodia) throws TengoTodasLasPartesDeExodiaException {
 		if (!this.lugarParaLaPiernaDerecha.hayCartas())
-			this.lugarParaLaPiernaDerecha.agregar(piernaDerechaExodia);
+			try {
+				this.lugarParaLaPiernaDerecha.agregar(piernaDerechaExodia);
+			} catch (CapacidadMaximaException e) {
+				e.printStackTrace();
+			}
 
 		if (this.tengoTodasLasPartesDeExodia())
 			throw new TengoTodasLasPartesDeExodiaException();
 	}
 
-	public void recolectarPiernaIzquierda(PiernaIzquierdaExodia piernaIzquierdaExodia) {
+	public void recolectarPiernaIzquierda(PiernaIzquierdaExodia piernaIzquierdaExodia) throws TengoTodasLasPartesDeExodiaException {
 		if (!this.lugarParaLaPiernaIzquierda.hayCartas())
-			this.lugarParaLaPiernaIzquierda.agregar(piernaIzquierdaExodia);
+			try {
+				this.lugarParaLaPiernaIzquierda.agregar(piernaIzquierdaExodia);
+			} catch (CapacidadMaximaException e) {
+				e.printStackTrace();
+			}
 
 		if (this.tengoTodasLasPartesDeExodia())
 			throw new TengoTodasLasPartesDeExodiaException();
 	}
 
-	public void recolectarCabeza(CabezaExodia cabezaExodia) {
+	public void recolectarCabeza(CabezaExodia cabezaExodia) throws TengoTodasLasPartesDeExodiaException {
 		if (!this.lugarParaLaCabeza.hayCartas())
-			this.lugarParaLaCabeza.agregar(cabezaExodia);
+			try {
+				this.lugarParaLaCabeza.agregar(cabezaExodia);
+			} catch (CapacidadMaximaException e) {
+				e.printStackTrace();
+			}
 
 		if (this.tengoTodasLasPartesDeExodia())
 			throw new TengoTodasLasPartesDeExodiaException();
@@ -88,7 +110,11 @@ public class RecolectorDePartesDeExodia {
 	public void remover(Carta carta) {
 		for (ContenedorDeCartas lugar : this.lugares) {
 			if (lugar.estaDentro(carta))
-				lugar.remover(carta);
+				try {
+					lugar.remover(carta);
+				} catch (CartaNoEstaEnContenedorDeCartasException e) {
+					e.printStackTrace();
+				}
 		}
 	}
 
