@@ -12,4 +12,7 @@ public abstract class ModoVista {
 	}
 
 	public abstract void avisarDeLaSeleccionDeUnaVistaDeCarta(Carta cartaNuevaSeleccion);
+
+	public abstract void avisarDeLaSeleccionDeJugador();
+
 }

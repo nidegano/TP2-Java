@@ -1,7 +1,7 @@
 package juego;
 
 import botones.VistaCarta;
-import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
+import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
 import vista.Grilla;
 
 public class JugadorB extends Jugador {
@@ -27,8 +27,8 @@ public class JugadorB extends Jugador {
 	}
 	
 	@Override
-	public void determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(Grilla grilla) {
-		grilla.habilitarSoloLasVistasCartaNoVaciaslDeLaZonaMonstruosDeJugadorA();
+	public void determinarQueHabilitarAlMomentoDeElegirMonstruosSegunQueJugadorEsATravezDeGrilla(Grilla grilla) {
+		grilla.habilitarDeFormaAdecuadaLasVistasDeLaZonaDeMonstruosDelJugadorA();
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class JugadorB extends Jugador {
 	}
 	
 	@Override
-	public ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase() {
+	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase() {
 		return this.fase.determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno();
 	}
 	

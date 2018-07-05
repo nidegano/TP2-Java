@@ -2,6 +2,7 @@ package efectos;
 
 import cartas.Carta;
 
+
 public class EfectoOllaDeLaCodicia extends EfectoEspeciales {
 
 	public EfectoOllaDeLaCodicia(Carta cartaDuenia) {
@@ -9,7 +10,7 @@ public class EfectoOllaDeLaCodicia extends EfectoEspeciales {
 	}
 
 	@Override
-	public void activar() {
+	public void activar(){
 		this.jugadorDuenio.tomarCartaDelMazo();
 		this.jugadorDuenio.tomarCartaDelMazo();
 		this.cartaDuenia.matar();

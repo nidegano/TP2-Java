@@ -108,4 +108,9 @@ public class Campo {
 		}
 	}
 
+	public void renovarLaPosibilidadDeAtacarDeTodasLasCartasMonstruo() {
+		for (Carta carta : this.zonaMonstruos) {
+			((CartaMonstruo) carta).renovarLaPosibilidadDeAtacar();
+		}
+	}
 }

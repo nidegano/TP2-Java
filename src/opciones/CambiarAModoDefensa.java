@@ -17,6 +17,6 @@ public class CambiarAModoDefensa extends Opcion {
 	}
 
 	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
-		cartaSeleccionada.colocarEnModoDefensa();
+		cartaSeleccionada.cambiarAModoDefensa();
 	}
 }

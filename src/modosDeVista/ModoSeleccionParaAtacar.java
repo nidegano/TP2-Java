@@ -14,4 +14,8 @@ public class ModoSeleccionParaAtacar extends ModoVista {
 		this.vista.finalizarComandoDeAtacar(cartaNuevaSeleccion);
 	}
 
+	@Override
+	public void avisarDeLaSeleccionDeJugador() {
+		this.vista.finalizarComandoDeAtacarAJugador();
+	}
 }

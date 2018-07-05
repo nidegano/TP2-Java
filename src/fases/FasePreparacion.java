@@ -1,9 +1,9 @@
 
 package fases;
 
-import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
-import configuracionesDeVistaCampoJugador.ConfigurarBotonesFasePreparacionTurnoJugadorA;
-import configuracionesDeVistaCampoJugador.ConfigurarBotonesFasePreparacionTurnoJugadorB;
+import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
+import configuracionesDeVistaCampoJugadores.ConfigurarBotonesFasePreparacionTurnoJugadorA;
+import configuracionesDeVistaCampoJugadores.ConfigurarBotonesFasePreparacionTurnoJugadorB;
 import excepciones.SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
 import juego.Jugador;
 
@@ -49,12 +49,12 @@ public class FasePreparacion implements Fase {
 	}
 
 	@Override
-	public ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
+	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
 		return new ConfigurarBotonesFasePreparacionTurnoJugadorB();
 	}
 
 	@Override
-	public ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
+	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
 		return new ConfigurarBotonesFasePreparacionTurnoJugadorA();
 	}
 }

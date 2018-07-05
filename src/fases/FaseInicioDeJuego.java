@@ -1,8 +1,9 @@
 package fases;
 
-import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
-import configuracionesDeVistaCampoJugador.NoHacerNada;
+import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
+import configuracionesDeVistaCampoJugadores.NoHacerNada;
 import excepciones.CapacidadMaximaException;
+
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import juego.Jugador;
 
@@ -14,7 +15,7 @@ public class FaseInicioDeJuego implements Fase {
 		return "Fase Inicio de Juego";
 	}
 
-	public void ejecutar(Jugador jugador) throws CapacidadMaximaException {
+	public void ejecutar(Jugador jugador) throws CapacidadMaximaException{
 		jugador.inicioJuego();
 		this.termino = true;
 	}
@@ -49,12 +50,12 @@ public class FaseInicioDeJuego implements Fase {
 	}
 
 	@Override
-	public ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
+	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
 		return new NoHacerNada();
 	}
 
 	@Override
-	public ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
+	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
 		return new NoHacerNada();
 	}
 }

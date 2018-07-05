@@ -8,8 +8,8 @@ public class TextoDisplay {
 		this.grilla = grilla;
 	}
 	
-	public void informarJugadorPerdio(String nombre) {
-		this.grilla.cambiarLabelDeTextoDisplayPor(nombre);
+	public void informarQueTalJugadorPerdio(String nombre) {
+		this.grilla.cambiarLabelDeTextoDisplayPor("PERDIO: ".concat(nombre));
 	}
 
 }

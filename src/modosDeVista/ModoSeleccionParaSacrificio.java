@@ -14,4 +14,8 @@ public class ModoSeleccionParaSacrificio extends ModoVista {
 		this.vista.agregarSeleccionALasSeleccionesSecundarias(cartaNuevaSeleccion);
 	}
 
+	@Override
+	public void avisarDeLaSeleccionDeJugador() {
+		//en modo sacrificio seleccionar al jugador no implica nada
+	}
 }

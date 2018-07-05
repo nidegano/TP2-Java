@@ -5,6 +5,7 @@ import configuraciones.MostrarOpcionesDeCartaNula;
 import efectos.EfectoDeCampo;
 import efectos.EfectoEspeciales;
 
+
 public class ModoBocaArriba extends EstadoDeCartaEspecial {
 
 	@Override
@@ -13,7 +14,7 @@ public class ModoBocaArriba extends EstadoDeCartaEspecial {
 	}
 
 	@Override
-	public void activar(EfectoEspeciales efectoEspeciales) {
+	public void activar(EfectoEspeciales efectoEspeciales){
 		efectoEspeciales.activar();
 	}
 

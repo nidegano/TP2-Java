@@ -1,6 +1,7 @@
 package juego;
 
 import cartas.Carta;
+
 import vista.Vista;
 
 public class Juego {
@@ -31,11 +32,11 @@ public class Juego {
 		this.vista = vista;
 	}
 
-	public void informarQueJugadorDeTurnoTocoFinalizarFase() {
+	public void informarQueJugadorDeTurnoTocoFinalizarFase(){
 		deTurno.finalizarFase();
 	}
 
-	public void informarQueElJugadorDeTurnoTerminoSuTurno() {
+	public void informarQueElJugadorDeTurnoTerminoSuTurno(){
 		this.deTurno = deTurno.oponente();
 		this.vista.actualizarPorCambioDeTurno(this.deTurno);
 		this.deTurno.jugar();
@@ -50,8 +51,8 @@ public class Juego {
 		this.vista.seTomoEstaCartaDelMazo(unaCarta);
 	}
 
-	public void perdioJugador(Jugador jugador) {
-		this.vista.informarJugadorPerdio(jugador.nombre());
+	public void perdioJugador(Jugador jugador){
+		this.vista.terminarJuego(jugador.nombre());
 	}
 
 }

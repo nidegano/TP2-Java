@@ -3,6 +3,7 @@ package efectos;
 import cartas.Carta;
 import estados.Estado;
 
+
 public abstract class EfectoDeVolteo extends Efecto {
 
 	public EfectoDeVolteo(Carta cartaDuenia) {
@@ -10,7 +11,7 @@ public abstract class EfectoDeVolteo extends Efecto {
 	}
 
 	@Override
-	public void serActivadoPor(Estado estadoDeLaCarta) {
+	public void serActivadoPor(Estado estadoDeLaCarta){
 		estadoDeLaCarta.activar(this);
 	}
 

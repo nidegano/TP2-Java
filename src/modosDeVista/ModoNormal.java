@@ -14,4 +14,10 @@ public class ModoNormal extends ModoVista {
 		this.vista.cambiarCartaSeleccionActualPor(cartaNuevaSeleccion);	
 	}
 
+	@Override
+	public void avisarDeLaSeleccionDeJugador() {
+		//en modo normal seleccionar al jugador no implica nada
+	}
+
+
 }

@@ -1,5 +1,7 @@
 package juego;
 
+
+
 public class Restar implements FormaDeAfectarAlJugador {
 
 	private int puntosDeVidaARestar;
@@ -9,7 +11,7 @@ public class Restar implements FormaDeAfectarAlJugador {
 	}
 
 	@Override
-	public void afectar(Jugador jugador) {
+	public void afectar(Jugador jugador){
 		jugador.debilitar(this.puntosDeVidaARestar);
 	}
 

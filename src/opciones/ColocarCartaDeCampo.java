@@ -1,13 +1,14 @@
 package opciones;
 
 import cartas.CartaDeCampo;
+import excepciones.YaHayUnaCartaDeCampoColocadaException;
 import vista.Vista;
 
 public class ColocarCartaDeCampo extends Opcion {
 
 	public ColocarCartaDeCampo(Vista vista) {
 		super(vista);
-		this.setText("colocar boca arriba");
+		this.setText("colocar carta de campo");
 		
 		this.setOnAction(value -> {
 			
@@ -17,8 +18,15 @@ public class ColocarCartaDeCampo extends Opcion {
 	}
 
 	public void aplicarComando(CartaDeCampo cartaSeleccionada) {
-		cartaSeleccionada.desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba();
-		cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
-		cartaSeleccionada.colocarCartaDeCampo();
+		try {
+			cartaSeleccionada.chequearQueNoHayaCartaDeCampoColocada();
+			cartaSeleccionada.desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba();
+			cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
+			cartaSeleccionada.colocarCartaDeCampo();
+		}
+		catch (YaHayUnaCartaDeCampoColocadaException e) {
+			e.printStackTrace();
+		}
+
 	}
 }

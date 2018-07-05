@@ -1,9 +1,10 @@
 package fases;
 
-import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
+import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
 import excepciones.CapacidadMaximaException;
+
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
-import excepciones.NoSePuedeTomarMasCartasDelMazoException;
+import excepciones.NoSePuedeTomarMasCartasDelMazoExceptionPorqueYaSeTomoUnaEnFaseInicial;
 import excepciones.SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
 import juego.Jugador;
 
@@ -19,13 +20,13 @@ public interface Fase {
 
 	public abstract boolean puedeTomarCarta();
 
-	public abstract void tomoCartaDelMazo() throws NoSePuedeTomarMasCartasDelMazoException;
+	public abstract void tomoCartaDelMazo() throws NoSePuedeTomarMasCartasDelMazoExceptionPorqueYaSeTomoUnaEnFaseInicial;
 
 	public abstract void finalizar();
 
 	public abstract void chequearSiSePuedeInvocaMonstruo() throws NoSePuedeInvocarMonstruosEnEstaFase, SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
 
-	public abstract ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno();
+	public abstract ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno();
 
-	public abstract ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno();
+	public abstract ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno();
 }

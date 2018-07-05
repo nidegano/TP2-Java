@@ -6,6 +6,7 @@ import configuraciones.ConfiguracionDeOpciones;
 import estados.EstadoMonstruoRequiereSacrificioSinInvocar;
 import excepciones.CantidadInadecuadaDeSacrificiosException;
 
+
 public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 
 	protected int sacrificiosRequeridos;
@@ -29,7 +30,7 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 
 	}
 	
-	public void invocarEnModoDefensa(ArrayList<CartaMonstruo> sacrificios) {
+	public void invocarEnModoDefensa(ArrayList<CartaMonstruo> sacrificios){
 		this.colocarEnModoDefensa();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.efecto.activar();

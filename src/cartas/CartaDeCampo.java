@@ -3,6 +3,7 @@ package cartas;
 import botones.VistaCarta;
 import configuraciones.ConfiguracionDeOpciones;
 import estados.ModoCartaDeCampoInvocada;
+import estados.ModoCartaDeCampoSinInvocar;
 import excepciones.CapacidadMaximaException;
 import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import excepciones.YaHayUnaCartaDeCampoColocadaException;
@@ -10,32 +11,41 @@ import juego.Campo;
 import vista.VistaCampoJugadores;
 
 public abstract class CartaDeCampo extends CartaEspecial {
+	
+	public CartaDeCampo() {
+		super();
+		this.estado = new ModoCartaDeCampoSinInvocar();
+	}
 
 	@Override
 	public void agregarEnCampo(Campo campo) {
-		try {
-			this.agregarSiempreYCuandoNoHayaUnaCartaDeCampoYa(campo);
-		}
-		catch (YaHayUnaCartaDeCampoColocadaException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void colocarCartaDeCampo() {
-		this.agregarEnCampo(this.jugadorDuenio.campo());
-		this.estado = new ModoCartaDeCampoInvocada();
-		this.activar();
-	}
-
-	private void agregarSiempreYCuandoNoHayaUnaCartaDeCampoYa(Campo campo) throws YaHayUnaCartaDeCampoColocadaException {
 		try {
 			campo.obtenerZonaCartasDeCampo().agregar(this);
 			this.contenedoresQueLaContienen.add(campo.obtenerZonaCartasDeCampo());
 			this.contenedoresQueLaContienen.remove(this.jugadorDuenio.obtenerMano());
 			this.jugadorDuenio.obtenerMano().remover(this);
 		}
-		catch (CapacidadMaximaException | CartaNoEstaEnContenedorDeCartasException e) {
+		catch (CapacidadMaximaException e) {
 			throw new YaHayUnaCartaDeCampoColocadaException();
+		} catch (CartaNoEstaEnContenedorDeCartasException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void chequearQueNoHayaCartaDeCampoColocada() {
+		if (this.jugadorDuenio.campo().obtenerZonaCartasDeCampo().hayCartas()) {
+			throw new YaHayUnaCartaDeCampoColocadaException();
+		}
+	}
+	
+	public void colocarCartaDeCampo() {
+		try {
+			this.agregarEnCampo(this.jugadorDuenio.campo());
+			this.estado = new ModoCartaDeCampoInvocada();
+			this.activar();
+		}
+		catch (YaHayUnaCartaDeCampoColocadaException e) {
+			e.printStackTrace();
 		}
 	}
 	

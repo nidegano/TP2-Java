@@ -42,6 +42,7 @@ public class InvocarEnModoAtaqueConSacrificio extends InvocarConSacrificio {
 			((CartaRequiereSacrificios) cartaSeleccionada).invocarEnModoAtaque(sacrificios); 
 		}
 		catch (CantidadInadecuadaDeSacrificiosException e) {
+			
 			e.printStackTrace();
 		}
 	}

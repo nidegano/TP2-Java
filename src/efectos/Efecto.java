@@ -4,6 +4,7 @@ import cartas.Carta;
 import cartas.CartaMonstruo;
 import estados.Estado;
 import excepciones.AtaqueIntervenidoException;
+
 import juego.Jugador;
 
 public abstract class Efecto {

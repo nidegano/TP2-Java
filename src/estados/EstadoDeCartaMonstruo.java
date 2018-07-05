@@ -5,6 +5,7 @@ import cartas.Puntos;
 import efectos.EfectoDeCampo;
 import efectos.EfectoEspeciales;
 import efectos.EfectoNulo;
+
 import juego.FormaDeAfectarAlJugador;
 
 public abstract class EstadoDeCartaMonstruo extends Estado {
@@ -26,7 +27,7 @@ public abstract class EstadoDeCartaMonstruo extends Estado {
 	}
 
 	@Override
-	public void activar(EfectoEspeciales efectoEspeciales) {
+	public void activar(EfectoEspeciales efectoEspeciales){
 	}
 
 }

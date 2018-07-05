@@ -6,6 +6,7 @@ import efectos.EfectoDeVolteo;
 import efectos.EfectoEspeciales;
 import efectos.EfectoInvocacionMonstruo;
 import efectos.EfectoNulo;
+
 import juego.FormaDeAfectarAlJugador;
 import juego.NoRestar;
 
@@ -24,7 +25,7 @@ public class EstadoMonstruoSinInvocar extends EstadoDeCartaMonstruo {
 	public void activar(EfectoDeCampo efectoDeCampo) {}
 
 	@Override
-	public void activar(EfectoEspeciales efectoEspeciales) {
+	public void activar(EfectoEspeciales efectoEspeciales){
 		efectoEspeciales.activar();
 	}
 

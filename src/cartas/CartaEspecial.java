@@ -6,6 +6,7 @@ import estados.EstadoDeCartaEspecial;
 import estados.ModoBocaAbajo;
 import estados.ModoBocaArriba;
 import estados.ModoCartaEspecialSinInvocar;
+
 import juego.Campo;
 import juego.Jugador;
 import juego.RecolectorDePartesDeExodia;
@@ -33,7 +34,7 @@ public abstract class CartaEspecial extends Carta {
 		this.efecto.aisgnarJugadoresEfecto(jugador, jugador.oponente());
 	}
 
-	public void activar() {
+	public void activar(){
 		this.estado.activar(this.efecto);
 	}
 
@@ -50,7 +51,6 @@ public abstract class CartaEspecial extends Carta {
 
 	public void colocarBocaArriba() {
 		this.estado = new ModoBocaArriba();
-		//this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.activar();
 	}
 

@@ -8,6 +8,7 @@ import efectos.EfectoEspeciales;
 import efectos.EfectoInvocacionMonstruo;
 import efectos.EfectoNulo;
 
+
 public abstract class Estado {
 
 	public abstract void activar(EfectoDeVolteo efectoDeVolteo);
@@ -20,7 +21,7 @@ public abstract class Estado {
 
 	public abstract void activar(EfectoEspeciales efectoEspeciales);
 
-	public void activar(Efecto efecto) {
+	public void activar(Efecto efecto){
 		efecto.serActivadoPor(this);
 	}
 	

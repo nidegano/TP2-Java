@@ -2,14 +2,16 @@ package juego;
 
 import botones.VistaCarta;
 import cartas.*;
-import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
+import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
 import excepciones.CapacidadMaximaException;
 import excepciones.ContenedorDeCartasVacioException;
+
 import excepciones.MazoSinCartasException;
-import excepciones.NoSePuedeTomarMasCartasDelMazoException;
+import excepciones.NoSePuedeTomarMasCartasDelMazoExceptionPorqueYaSeTomoUnaEnFaseInicial;
 import excepciones.TengoTodasLasPartesDeExodiaException;
 import fases.Fase;
 import fases.FaseInicioDeJuego;
+import fases.FaseJuegoTerminado;
 import fases.FasePreparacion;
 import vista.Grilla;
 
@@ -45,10 +47,13 @@ public abstract class Jugador {
 		return this.vida;
 	}
 
-	public void debilitar(int puntosDeVidaADebilitar) {
+	public void debilitar(int puntosDeVidaADebilitar){
 		this.vida = this.vida - puntosDeVidaADebilitar;
-		if (vida <= 0)
+		if (vida <= 0) {
+			this.fase = new FaseJuegoTerminado();
+			this.oponente.fase = new FaseJuegoTerminado();
 			this.juego.perdioJugador(this);
+		}
 	}
 
 	public void tomarCartaDelMazo(){
@@ -58,15 +63,19 @@ public abstract class Jugador {
 			this.mano.agregarAMano(unaCarta);
 			this.juego.seTomoEstaCartaDelMazo(unaCarta);
 		}
-		catch (CapacidadMaximaException | NoSePuedeTomarMasCartasDelMazoException e) {
+		catch (CapacidadMaximaException | NoSePuedeTomarMasCartasDelMazoExceptionPorqueYaSeTomoUnaEnFaseInicial e) {
 			e.printStackTrace();
 		} 
 		catch (TengoTodasLasPartesDeExodiaException e) {
+			this.fase = new FaseJuegoTerminado();
+			this.oponente.fase = new FaseJuegoTerminado();
 			this.juego.perdioJugador(this.oponente);
-			
 		} 
 		catch (MazoSinCartasException e) {
+			this.fase = new FaseJuegoTerminado();
+			this.oponente.fase = new FaseJuegoTerminado();
 			this.juego.perdioJugador(this);
+
 		}
 	}
 
@@ -136,7 +145,7 @@ public abstract class Jugador {
 		this.juego = juego;
 	}
 
-	public void jugar() {
+	public void jugar(){
 		try {
 			this.fase.ejecutar(this);
 		} catch (CapacidadMaximaException e) {
@@ -148,7 +157,7 @@ public abstract class Jugador {
 		}
 	}
 
-	public void finalizarFase() {
+	public void finalizarFase(){
 		this.fase.finalizar();
 		if (this.fase.termino()) {
 			this.fase = this.fase.faseSiguiente();
@@ -187,15 +196,19 @@ public abstract class Jugador {
 		this.campo.asignarATodasLasCartasMagicasUnEstadoDeDeBocaAbajo();
 	}
 
-	public abstract void determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(Grilla grilla);
+	public abstract void determinarQueHabilitarAlMomentoDeElegirMonstruosSegunQueJugadorEsATravezDeGrilla(Grilla grilla);
 
 	public abstract void determinarComoCambiarElLabelDelTurnoDependiendoDeQueJugadorEsElTurnoATravezDeGrilla(Grilla grilla);
 
-	public abstract ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
+	public abstract ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
 
 	public abstract VistaCarta obtenerLugarVacioDeLaZonaDeManoATravezDeLaGrilla(Grilla grilla);
 
 	public String nombre() {
 		return this.nombre; 
 	}
+
+	public void renovarLaPosibilidadDeAtacarDeTodasLasCartasMonstruo() {
+		this.campo.renovarLaPosibilidadDeAtacarDeTodasLasCartasMonstruo();
 	}
+}

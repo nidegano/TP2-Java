@@ -85,4 +85,8 @@ public class VistaCarta extends Button {
 	public Vista vista() {
 		return this.vista;
 	}
+
+	public Carta carta() {
+		return this.carta;
+	}
 }

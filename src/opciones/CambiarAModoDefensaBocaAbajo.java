@@ -17,6 +17,6 @@ public class CambiarAModoDefensaBocaAbajo extends Opcion {
 	}
 
 	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
-		cartaSeleccionada.colocarEnModoDefensaBocaAbajo();
+		cartaSeleccionada.cambiarAModoDefensaBocaAbajo();
 	}
 }

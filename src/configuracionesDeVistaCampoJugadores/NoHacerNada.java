@@ -1,8 +1,8 @@
-package configuracionesDeVistaCampoJugador;
+package configuracionesDeVistaCampoJugadores;
 
 import vista.Grilla;
 
-public class NoHacerNada implements ConfiguracionDeLaVistaCampoJugador {
+public class NoHacerNada implements ConfiguracionDeLaVistaCampoJugadores {
 
 	@Override
 	public void configurar(Grilla grilla) {

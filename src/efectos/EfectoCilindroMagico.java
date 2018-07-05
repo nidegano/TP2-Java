@@ -2,6 +2,7 @@ package efectos;
 
 import cartas.Carta;
 
+
 public class EfectoCilindroMagico extends EfectoEspeciales {
 
 	public EfectoCilindroMagico(Carta cartaDuenia) {

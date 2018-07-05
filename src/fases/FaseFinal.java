@@ -1,8 +1,8 @@
 package fases;
 
-import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
-import configuracionesDeVistaCampoJugador.ConfigurarBotonesFaseFinalTurnoJugadorA;
-import configuracionesDeVistaCampoJugador.ConfigurarBotonesFaseFinalTurnoJugadorB;
+import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
+import configuracionesDeVistaCampoJugadores.ConfigurarBotonesFaseFinalTurnoJugadorA;
+import configuracionesDeVistaCampoJugadores.ConfigurarBotonesFaseFinalTurnoJugadorB;
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import juego.Jugador;
 
@@ -18,6 +18,7 @@ public class FaseFinal implements Fase {
 	@Override
 	public void ejecutar(Jugador jugador) {
 		jugador.asignarATodasLasCartasMagicasUnEstadoDeColocablesBocaArriba();
+		jugador.renovarLaPosibilidadDeAtacarDeTodasLasCartasMonstruo();
 	}
 
 	@Override
@@ -50,12 +51,12 @@ public class FaseFinal implements Fase {
 	}
 
 	@Override
-	public ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
+	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
 		return new ConfigurarBotonesFaseFinalTurnoJugadorB();
 	}
 
 	@Override
-	public ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
+	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
 		return new ConfigurarBotonesFaseFinalTurnoJugadorA();
 	}
 

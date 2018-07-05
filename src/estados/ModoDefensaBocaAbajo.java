@@ -5,6 +5,7 @@ import configuraciones.ConfiguracionDeOpciones;
 import configuraciones.MostrarOpcionesDeModoDefensaBocaAbajo;
 import efectos.EfectoDeVolteo;
 import efectos.EfectoInvocacionMonstruo;
+
 import juego.FormaDeAfectarAlJugador;
 import juego.NoRestar;
 
@@ -21,7 +22,7 @@ public class ModoDefensaBocaAbajo extends EstadoDeCartaMonstruo {
 	}
 
 	@Override
-	public void activar(EfectoDeVolteo efecto) {
+	public void activar(EfectoDeVolteo efecto){
 		efecto.activar();
 	}
 

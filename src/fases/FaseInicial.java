@@ -1,10 +1,10 @@
 package fases;
 
-import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
-import configuracionesDeVistaCampoJugador.ConfigurarBotonesFaseInicialTurnoJugadorA;
-import configuracionesDeVistaCampoJugador.ConfigurarBotonesFaseInicialTurnoJugadorB;
+import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
+import configuracionesDeVistaCampoJugadores.ConfigurarBotonesFaseInicialTurnoJugadorA;
+import configuracionesDeVistaCampoJugadores.ConfigurarBotonesFaseInicialTurnoJugadorB;
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
-import excepciones.NoSePuedeTomarMasCartasDelMazoException;
+import excepciones.NoSePuedeTomarMasCartasDelMazoExceptionPorqueYaSeTomoUnaEnFaseInicial;
 import juego.Jugador;
 
 public class FaseInicial implements Fase {
@@ -31,9 +31,9 @@ public class FaseInicial implements Fase {
 		return new FasePreparacion();
 	}
 
-	public void tomoCartaDelMazo() throws NoSePuedeTomarMasCartasDelMazoException {
+	public void tomoCartaDelMazo() throws NoSePuedeTomarMasCartasDelMazoExceptionPorqueYaSeTomoUnaEnFaseInicial {
 		if (this.contador >= 1)
-			throw new NoSePuedeTomarMasCartasDelMazoException();
+			throw new NoSePuedeTomarMasCartasDelMazoExceptionPorqueYaSeTomoUnaEnFaseInicial();
 		this.contador = this.contador + 1;
 	}
 
@@ -52,12 +52,12 @@ public class FaseInicial implements Fase {
 	}
 
 	@Override
-	public ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
+	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
 		return new ConfigurarBotonesFaseInicialTurnoJugadorB();
 	}
 
 	@Override
-	public ConfiguracionDeLaVistaCampoJugador determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
+	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
 		return new ConfigurarBotonesFaseInicialTurnoJugadorA();
 	}
 

@@ -13,5 +13,9 @@ public class BotonJugadorB extends Button {
 		this.setVisible(true);
 		
 		this.vista = vista;
+		
+		this.setOnAction(value -> {
+			this.vista.avisarDeLaSeleccionDeJugador();
+		});
 	}
 }

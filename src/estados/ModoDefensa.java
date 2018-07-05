@@ -5,6 +5,7 @@ import configuraciones.ConfiguracionDeOpciones;
 import configuraciones.MostrarOpcionesDeModoDefensa;
 import efectos.EfectoDeVolteo;
 import efectos.EfectoInvocacionMonstruo;
+
 import juego.FormaDeAfectarAlJugador;
 import juego.NoRestar;
 
@@ -25,7 +26,7 @@ public class ModoDefensa extends EstadoDeCartaMonstruo {
 	}
 
 	@Override
-	public void activar(EfectoInvocacionMonstruo efectoInvocacionMonstruo) {
+	public void activar(EfectoInvocacionMonstruo efectoInvocacionMonstruo){
 		efectoInvocacionMonstruo.activar();
 	}
 

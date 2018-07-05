@@ -46,10 +46,6 @@ public class Vista {
 		this.seleccionesSecundarias = new ArrayList<CartaMonstruo>();
 	}
 
-	public void avisarDeLaSeleccionDeUnaVistaDeCarta(Carta cartaNuevaSeleccion) {
-		this.modoVista.avisarDeLaSeleccionDeUnaVistaDeCarta(cartaNuevaSeleccion);
-	}
-
 	public Carta obtenerCartaSeleccionada() {
 		return this.cartaSeleccionada;
 	}
@@ -62,57 +58,13 @@ public class Vista {
 		this.grilla.start(primaryStage);
 	}
 
-	public void cambiarAModoSeleccionParaSacrificio(Opcion opcionQuePidioElCambioDeModo) {
-		this.modoVista = new ModoSeleccionParaSacrificio(this);
-		this.grilla.botonDeListoHacerVisible(true);
-		this.opcionQuePidioElCambioDeModo = opcionQuePidioElCambioDeModo;
-		this.vistaCampoJugadores.actualizarPorModoSeleccionParaSacrificar();
-	}
-	
-	public void cambiarAModoSeleccionParaAtacar(Atacar atacar) {
-		this.modoVista = new ModoSeleccionParaAtacar(this);
-		this.vistaCampoJugadores.actualizarPorModoSeleccionParaAtacar();
-	}
-
-	public void liberarSeleccion() {
-		this.cartaSeleccionada = new CartaNula();
-		this.panelDeAccion.actualizarPorCambioDeCartaSeleccionada(this.cartaSeleccionada);
-	}
-
 	public void cambiarCartaSeleccionActualPor(Carta cartaNuevaSeleccion) {
 		this.cartaSeleccionada = cartaNuevaSeleccion;
 		this.panelDeAccion.actualizarPorCambioDeCartaSeleccionada(cartaNuevaSeleccion);
 	}
 
-	public void finalizarComandoDeAtacar(Carta cartaNuevaSeleccion) {
-		this.cartaSeleccionada.vistaCarta().deshabilitar(); 
-		// para que la carta que esta atacando no se pueda volver a elegir para atacar
-		((CartaMonstruo) this.cartaSeleccionada).atacar((CartaMonstruo) cartaNuevaSeleccion);
-		//los casts son seguros por que en este contexto las unicas selecciones de cartas posibles son monstruos
-		//aca va a haber problema con lo de atacar directamente al jugador
-		this.vistaCampoJugadores.actualizarVidaJugadores();
-		this.cambiarAModoNormal();
-	}
-
-	private void cambiarAModoNormal() {
-		this.modoVista = new ModoNormal(this);	
-		this.vistaCampoJugadores.actualizarPorCambioDeTurno(this.juego.jugadorDeTurno());
-		//para que cualquier configuracion de botones vuelva a como estaba antes (dado que el turno es el mismo que antes)
-	}
-
 	public Jugador jugadorDeTurno() {
 		return this.juego.jugadorDeTurno();
-	}
-
-	public void agregarSeleccionALasSeleccionesSecundarias(Carta cartaNuevaSeleccion) {
-		this.seleccionesSecundarias.add((CartaMonstruo) cartaNuevaSeleccion); //cast seguro por contexto
-		cartaNuevaSeleccion.vistaCarta().deshabilitar();
-	}
-
-	public void finalizarInvocacionPorSacrificio() {
-		((InvocarConSacrificio) this.opcionQuePidioElCambioDeModo).finalizarInvocacionPorSacrificio(this.cartaSeleccionada,this.seleccionesSecundarias);
-		this.grilla.botonDeListoHacerVisible(false);
-		this.cambiarAModoNormal();
 	}
 
 	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
@@ -126,7 +78,77 @@ public class Vista {
 		this.vistaCampoJugadores.seTomoEstaCartaDelMazo(unaCarta);
 	}
 
-	public void informarJugadorPerdio(String nombre) {
-		this.textoDisplay.informarJugadorPerdio(nombre);
+	public void terminarJuego(String nombre){
+		this.textoDisplay.informarQueTalJugadorPerdio(nombre);
+		this.vistaCampoJugadores.actualizarPorFinDeJuego();
+		this.liberarSeleccion();
+	}
+
+	public void liberarSeleccion() {
+		this.cartaSeleccionada = new CartaNula();
+		this.panelDeAccion.actualizarPorCambioDeCartaSeleccionada(this.cartaSeleccionada);
+	}
+	
+	public void avisarDeLaSeleccionDeUnaVistaDeCarta(Carta cartaNuevaSeleccion) {
+		this.modoVista.avisarDeLaSeleccionDeUnaVistaDeCarta(cartaNuevaSeleccion);
+	}
+	
+	public void avisarDeLaSeleccionDeJugador() {
+		this.modoVista.avisarDeLaSeleccionDeJugador();
+	}
+	
+	private void cambiarAModoNormal() {
+		this.modoVista = new ModoNormal(this);
+		this.colocarLaConfiguracionDeLosBotonesEnElEstadoPrevioAlCambioDeModo();
+		this.grilla.deshabilitarBotonesQueRepresentanALosJugadores();
+		
+		//reinicio al estado inicial atributos
+		this.opcionQuePidioElCambioDeModo = null;
+		this.seleccionesSecundarias = new ArrayList<CartaMonstruo>();
+		
+		this.liberarSeleccion();
+	}
+	
+	private void colocarLaConfiguracionDeLosBotonesEnElEstadoPrevioAlCambioDeModo() {
+		this.vistaCampoJugadores.actualizarPorCambioDeTurno(this.juego.jugadorDeTurno());		
+	}
+
+	public void cambiarAModoSeleccionParaSacrificio(Opcion opcionQuePidioElCambioDeModo) {
+		this.modoVista = new ModoSeleccionParaSacrificio(this);
+		this.grilla.botonDeListoHacerVisible(true);
+		this.opcionQuePidioElCambioDeModo = opcionQuePidioElCambioDeModo;
+		this.vistaCampoJugadores.actualizarPorModoSeleccionParaSacrificar();
+	}
+
+	
+	public void agregarSeleccionALasSeleccionesSecundarias(Carta cartaNuevaSeleccion) {
+		this.seleccionesSecundarias.add((CartaMonstruo) cartaNuevaSeleccion); //cast seguro por contexto
+		cartaNuevaSeleccion.vistaCarta().deshabilitar();
+	}
+	
+	public void finalizarInvocacionPorSacrificio() {
+		((InvocarConSacrificio) this.opcionQuePidioElCambioDeModo).finalizarInvocacionPorSacrificio(this.cartaSeleccionada,this.seleccionesSecundarias);
+		this.grilla.botonDeListoHacerVisible(false);
+		this.cambiarAModoNormal();
+	}
+	
+	public void cambiarAModoSeleccionParaAtacar(Atacar atacar) {
+		this.modoVista = new ModoSeleccionParaAtacar(this);
+		this.vistaCampoJugadores.actualizarPorModoSeleccionParaAtacar();
+	}
+	
+	public void finalizarComandoDeAtacar(Carta cartaNuevaSeleccion) {
+		((CartaMonstruo) this.cartaSeleccionada).atacar((CartaMonstruo) cartaNuevaSeleccion);
+		this.vistaCampoJugadores.actualizarVidaJugadores();
+		this.cambiarAModoNormal();
+		this.liberarSeleccion();
+	}
+
+	public void finalizarComandoDeAtacarAJugador() {
+
+		((CartaMonstruo) this.cartaSeleccionada).atacarDirectamenteAlOponente();
+		this.vistaCampoJugadores.actualizarVidaJugadores();
+		this.cambiarAModoNormal();
+		this.liberarSeleccion();
 	}
 }

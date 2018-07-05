@@ -10,6 +10,7 @@ import botones.BotonJugadorA;
 import botones.BotonJugadorB;
 import botones.BotonMazo;
 import botones.VistaCarta;
+import cartas.CartaMonstruo;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -385,7 +386,7 @@ public class Grilla extends Application {
 
 	public VistaCarta obtenerUnLugarVacioParaCartaDeCampoDeJugadorB() {
 		if(this.vistaCartaDeCampoJugadorB.estaLibre()) {
-			return this.vistaCartaDeCampoJugadorA;
+			return this.vistaCartaDeCampoJugadorB;
 		}
 		return null;
 		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
@@ -528,12 +529,12 @@ public class Grilla extends Application {
 
 	public void configurarBotonesFaseAtaqueTurnoJugadorA() {
 		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.habilitarTodasLasVistasNoVaciasDe(this.vistaCartaMonstruosJugadorA);
+		this.habilitarTodasLasVistasNoVaciasDeCartasMonstruoQueNoAtacaron(this.vistaCartaMonstruosJugadorA);
 	}
 
 	public void configurarBotonesFaseAtaqueTurnoJugadorB() {
 		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.habilitarTodasLasVistasNoVaciasDe(this.vistaCartaMonstruosJugadorB);
+		this.habilitarTodasLasVistasNoVaciasDeCartasMonstruoQueNoAtacaron(this.vistaCartaMonstruosJugadorB);
 	}
 
 	public void configurarBotonesFaseFinalTurnoJugadorA() {
@@ -562,7 +563,9 @@ public class Grilla extends Application {
 		this.imagenAMostrar.setImage(nuevaImagenAMostrar.getImage());
 	}
 	
-	public void deshabilitarTodosLasVistasCarta() {
+	public void deshabilitarTodosLosBotones() {
+		
+		this.botonDeFinalizarFase.setDisable(true);
 		
 		this.botonCementerioJugadorA.setDisable(true);
 		this.botonCementerioJugadorB.setDisable(true);
@@ -573,6 +576,8 @@ public class Grilla extends Application {
 		this.vistaCartaDeCampoJugadorA.setDisable(true);
 		this.vistaCartaDeCampoJugadorB.setDisable(true);
 		
+		this.deshabilitarBotonesQueRepresentanALosJugadores();
+		
 		this.deshabilitarTodasLasVistasDe(this.vistaCartaManoJugadorA);
 		this.deshabilitarTodasLasVistasDe(this.vistaCartaManoJugadorB);
 		this.deshabilitarTodasLasVistasDe(this.vistaCartaEspecialesJugadorA);
@@ -581,14 +586,20 @@ public class Grilla extends Application {
 		this.deshabilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);		
 	}
 	
-	public void habilitarSoloLasVistasCartaNoVaciaslDeLaZonaMonstruosDeJugadorA() {
+	public void habilitarDeFormaAdecuadaLasVistasDeLaZonaDeMonstruosDelJugadorA() {
 		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorA);
 		this.deshabilitarTodasLasVistasVaciasDe(this.vistaCartaMonstruosJugadorA);
+		if (this.todasLasVistaCartaEstanVacias(this.vistaCartaMonstruosJugadorA)) {
+			this.botonJugadorA.setDisable(false);
+		}
 	}
 
-	public void habilitarSoloLasVistasCartaNoVaciaslDeLaZonaMonstruosDeJugadorB() {
+	public void habilitarDeFormaAdecuadaLasVistasDeLaZonaDeMonstruosDelJugadorB() {
 		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);
 		this.deshabilitarTodasLasVistasVaciasDe(this.vistaCartaMonstruosJugadorB);
+		if (this.todasLasVistaCartaEstanVacias(this.vistaCartaMonstruosJugadorB)) {
+			this.botonJugadorB.setDisable(false);
+		}
 	}
 
 	public void cambiarLabelDeFasePor(String nombreFaseNueva) {
@@ -607,9 +618,23 @@ public class Grilla extends Application {
 		this.displayDeTexto.setText(texto);
 	}
 	
+	public void deshabilitarBotonesQueRepresentanALosJugadores() {
+		this.botonJugadorA.setDisable(true);
+		this.botonJugadorB.setDisable(true);
+	}
+	
 	
 	
 // Metodos privados que no son de inicializacion
+
+	private void habilitarTodasLasVistasNoVaciasDeCartasMonstruoQueNoAtacaron(ArrayList<VistaCarta> collectionDeVistasCarta) {
+		for (VistaCarta vistaCarta : collectionDeVistasCarta) 
+			if(!vistaCarta.estaLibre()) {
+				if (!((CartaMonstruo) vistaCarta.carta()).yaAtaco()) {
+					vistaCarta.setDisable(false);
+				}
+			}
+		}
 	
 	private void habilitarTodasLasVistasDe(ArrayList<VistaCarta> collectionDeVistasCarta) {
 		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
@@ -639,7 +664,7 @@ public class Grilla extends Application {
 		}
 	}
 
-	private void deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores() {
+	public void deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores() {
 		
 		//Collections de botones similares de VistaCampoJugadores
 		this.deshabilitarTodasLasVistasDe(vistaCartaManoJugadorA);
@@ -662,6 +687,12 @@ public class Grilla extends Application {
 		this.botonCementerioJugadorB.setDisable(true);
 	}
 
-
-
+	private boolean todasLasVistaCartaEstanVacias(ArrayList<VistaCarta> collectionDeVistasCarta) {
+		for (VistaCarta lugar : collectionDeVistasCarta) {
+			if (!lugar.estaLibre()) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

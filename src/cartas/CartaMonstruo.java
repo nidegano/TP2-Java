@@ -11,6 +11,7 @@ import excepciones.AtaqueIntervenidoException;
 import excepciones.CapacidadMaximaException;
 import excepciones.CartaNoEstaEnContenedorDeCartasException;
 import excepciones.ContenedorDeCartasVacioException;
+
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import excepciones.ParaAtacarDirectamenteAlJugadorNoTieneQueHaberMonstruosInvocadosException;
 import excepciones.SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
@@ -27,10 +28,20 @@ public abstract class CartaMonstruo extends Carta {
 	protected Puntos puntosDeAtaque;
 	protected Puntos puntosDeDefensa;
 	protected int nivel;
+	protected boolean yaAtaco;
 
 	public CartaMonstruo() {
 		super();
 		this.estado = new EstadoMonstruoSinInvocar();
+		this.yaAtaco = false;
+	}
+	
+	public void renovarLaPosibilidadDeAtacar() {
+		this.yaAtaco = false;
+	}
+	
+	public boolean yaAtaco() {
+		return this.yaAtaco;
 	}
 
 	public int obtenerPuntosDeAtaque() {
@@ -47,8 +58,8 @@ public abstract class CartaMonstruo extends Carta {
 
 	public void invocarEnModoAtaque(){
 		this.colocarEnModoAtaque();
-		this.agregarEnCampo(this.jugadorDuenio.campo()); // aca va a haber un problema al cambiar el modo en el campo
-		this.activarEfectoSiCorresponde(); // podria pasar que se active el mismo efecto dos veces
+		this.agregarEnCampo(this.jugadorDuenio.campo());
+		this.activarEfectoSiCorresponde();
 	}
 	
 	public void chequearSiSePuedeInvocarMonstruo() throws NoSePuedeInvocarMonstruosEnEstaFase, SoloSePuedeInvocarUnSoloMonstruoEnEstaFase {
@@ -84,16 +95,17 @@ public abstract class CartaMonstruo extends Carta {
 		}
 	}
 
-	public void atacarDirectamenteAlOponente() {
+	public void atacarDirectamenteAlOponente(){
 		try {
 			this.jugadorDuenio.oponente().serAtacadoPor(this);
 			this.jugadorDuenio.oponente().debilitar(this.obtenerPuntosDeAtaque());
+			this.yaAtaco = true;
 		} catch (AtaqueIntervenidoException | ContenedorDeCartasVacioException e) {
 			
 		}
 	}
 
-	public void atacar(CartaMonstruo monstruoAtacado) {
+	public void atacar(CartaMonstruo monstruoAtacado){
 		// PATRON PROXY
 		try {
 			monstruoAtacado.serAtacadoPor(this);
@@ -103,8 +115,11 @@ public abstract class CartaMonstruo extends Carta {
 
 			if (diferencia > 0) {
 				monstruoAtacado.perder(formaDeAfectar);
+				this.yaAtaco = true;
+				this.vistaCarta.deshabilitar(); //para que no vuelva a atacar
 			} else if (diferencia < 0) {
 				this.perder(formaDeAfectar);
+				monstruoAtacado.vistaCarta().deshabilitar(); //para que no vuelva a atacar
 			} else {
 				monstruoAtacado.perder(formaDeAfectar);
 				this.perder(formaDeAfectar);
@@ -145,7 +160,7 @@ public abstract class CartaMonstruo extends Carta {
 		return monstruoAtacado.formaDeAfectar(diferencia);
 	}
 
-	protected void perder(FormaDeAfectarAlJugador formaDeAfectar) {
+	protected void perder(FormaDeAfectarAlJugador formaDeAfectar){
 		formaDeAfectar.afectar(this.jugadorDuenio);
 		this.matar();
 	}
@@ -185,5 +200,17 @@ public abstract class CartaMonstruo extends Carta {
 	@Override
 	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
 		return vistaCampoJugadores.obtenerUnLugarVacio(this);
+	}
+
+	public void cambiarAModoDefensa() {
+		this.colocarEnModoDefensa();
+	}
+
+	public void cambiarAModoAtaque() {
+		this.colocarEnModoAtaque();
+	}
+
+	public void cambiarAModoDefensaBocaAbajo() {
+		this.colocarEnModoDefensaBocaAbajo();
 	}
 }

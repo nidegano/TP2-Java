@@ -5,7 +5,7 @@ import cartas.Carta;
 import cartas.CartaDeCampo;
 import cartas.CartaEspecial;
 import cartas.CartaMonstruo;
-import configuracionesDeVistaCampoJugador.ConfiguracionDeLaVistaCampoJugador;
+import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
 import juego.Jugador;
 import juego.JugadorA;
 import juego.JugadorB;
@@ -47,7 +47,7 @@ public class VistaCampoJugadores {
 	}
 	
 	public void actualizarPorModoSeleccionParaAtacar() {
-		this.grilla.deshabilitarTodosLasVistasCarta();
+		this.grilla.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
 		this.activarSoloLasVistasCartaMonstruosNoVaciasDelOponenteDeJugadorDeTurno(this.vista.jugadorDeTurno());
 	}
 
@@ -58,7 +58,7 @@ public class VistaCampoJugadores {
 
 	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
 		this.actualizarVidaJugadores();
-		ConfiguracionDeLaVistaCampoJugador configuracion = jugadorDeTurno.determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
+		ConfiguracionDeLaVistaCampoJugadores configuracion = jugadorDeTurno.determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
 		configuracion.configurar(this.grilla);
 	}
 
@@ -67,15 +67,19 @@ public class VistaCampoJugadores {
 	}
 
 	public void actualizarPorModoSeleccionParaSacrificar() {
-		this.grilla.deshabilitarTodosLasVistasCarta();
+		this.grilla.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
 		this.activarSoloLasVistasCartaMonstruosDeJugadorDeTurno(this.vista.jugadorDeTurno());
 	}
 
 	private void activarSoloLasVistasCartaMonstruosDeJugadorDeTurno(Jugador jugadorDeTurno) {
-		jugadorDeTurno.oponente().determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(this.grilla);
+		jugadorDeTurno.oponente().determinarQueHabilitarAlMomentoDeElegirMonstruosSegunQueJugadorEsATravezDeGrilla(this.grilla);
 	}
 	
 	private void activarSoloLasVistasCartaMonstruosNoVaciasDelOponenteDeJugadorDeTurno(Jugador jugadorDeTurno) {
-		jugadorDeTurno.determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(this.grilla);
+		jugadorDeTurno.determinarQueHabilitarAlMomentoDeElegirMonstruosSegunQueJugadorEsATravezDeGrilla(this.grilla);
+	}
+
+	public void actualizarPorFinDeJuego() {
+		this.grilla.deshabilitarTodosLosBotones();
 	}
 }
