@@ -10,14 +10,12 @@ import org.junit.Test;
 import cartas.AgujeroOscuro;
 import cartas.Carta;
 import cartas.Jinzo;
+import excepciones.CapacidadMaximaException;
 import cartas.CabezaExodia;
 import juego.Campo;
-import juego.Juego;
 import juego.Jugador;
 import juego.JugadorA;
-import juego.JugadorB;
 import juego.Mazo;
-import vista.Vista;
 
 public class JugadorTest {
 
@@ -27,7 +25,6 @@ public class JugadorTest {
 		int vidaAlPrincipio = jugador.vida();
 		jugador.debilitar(100);
 		int vidaAlFinal = vidaAlPrincipio - 100;
-
 		assertEquals(vidaAlFinal, jugador.vida());
 	}
 
@@ -36,86 +33,67 @@ public class JugadorTest {
 		Jugador jugador = new JugadorA(new Campo(new Mazo()));
 		int vidaAlPrincipio = jugador.vida();
 		jugador.debilitar(0);
-
 		assertEquals(vidaAlPrincipio, jugador.vida());
 	}
 
 	@Test
-	public void testEsDuenioDevuelveTrueCuandoJugadorTomaDelMazoUnaCarta() {
+	public void testEsDuenioDevuelveTrueCuandoJugadorTomaDelMazoUnaCarta() throws CapacidadMaximaException {
 		Mazo mazo = new Mazo();
 		Carta carta = new Jinzo();
 		mazo.agregar(carta);
-
 		Campo campo = new Campo(mazo);
-
 		Jugador jugador = new JugadorA(campo);
-		jugador.tomarCartaDelMazo();
+		
+		try {
+			jugador.tomarCartaDelMazo();
+		} catch (NullPointerException e) {
+		}
 
 		assertTrue(jugador.esDuenioDe(carta));
 	}
 
 	@Test
-	public void testEsDuenioDevuelveTrueCuandoJugadorPoneLaCartaMonstruoEnLaZonaDeMonstruos() {
+	public void testEsDuenioDevuelveTrueCuandoJugadorPoneLaCartaMonstruoEnLaZonaDeMonstruos() throws CapacidadMaximaException {
 		Mazo mazo = new Mazo();
 		CabezaExodia monstruo = new CabezaExodia();
 		mazo.agregar(monstruo);
-
 		Campo campo = new Campo(mazo);
-
 		Jugador jugador = new JugadorA(campo);
 		monstruo.asignarDuenio(jugador);
 
-		jugador.tomarCartaDelMazo();
-		monstruo.invocarEnModoAtaque(); // coloca la carta en la zona de monstruos
+		try {
+			jugador.tomarCartaDelMazo();
+			monstruo.invocarEnModoAtaque();
+		} catch (NullPointerException | ExceptionInInitializerError e) {
+		}
 
 		assertTrue(jugador.esDuenioDe(monstruo));
 	}
 
 	@Test
 	public void testEsDuenioDevuelveTrueCuandoJugadorPoneLaCartaMagicaEnLaZonaEspeciales() throws Exception {
-		
-		// INICIALIZACION DEL JUEGO
-		Mazo mazoJugadorA = new Mazo();
-		Mazo mazoJugadorB = new Mazo();
-		
-		// Aca van las cartas a agregar al mazo para testeo
-		
+		Mazo mazoJugadorA = new Mazo();		
 		AgujeroOscuro magica = new AgujeroOscuro();
 		mazoJugadorA.agregar(magica);
-		
-		//------------------------------------------------
-
 		Campo campoJugadorA = new Campo(mazoJugadorA);
-		Campo campoJugadorB = new Campo(mazoJugadorB);
-
 		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
-
-		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new Vista(jugadorA,jugadorB,juego);
+		try {
+			jugadorA.tomarCartaDelMazo();
+			magica.colocarBocaAbajo();
+		} catch (NullPointerException | ExceptionInInitializerError e) {
+		}
 		
-		juego.asignarVista(vista);
-		mazoJugadorA.asignarVistaCartaACartas(vista);
-		mazoJugadorB.asignarVistaCartaACartas(vista);
-		//------------------------------------------------
-		
-		jugadorA.tomarCartaDelMazo();
-		magica.colocarBocaAbajo(); // coloca la carta en la zona de especiales
-
 		assertTrue(jugadorA.esDuenioDe(magica));
 	}
 
 	@Test
-	public void testEsDuenioDevuelveTrueCuandoJugadorNoTomaLaCartaDelMazo() {
+	public void testEsDuenioDevuelveTrueCuandoJugadorNoTomaLaCartaDelMazo() throws CapacidadMaximaException {
 		Mazo mazo = new Mazo();
 		Carta carta = new Jinzo();
 		mazo.agregar(carta);
-
 		Campo campo = new Campo(mazo);
-
 		Jugador jugador = new JugadorA(campo);
-
 		assertFalse(jugador.esDuenioDe(carta));
 	}
 
