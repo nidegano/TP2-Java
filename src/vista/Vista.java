@@ -46,6 +46,10 @@ public class Vista {
 		this.seleccionesSecundarias = new ArrayList<CartaMonstruo>();
 	}
 
+	public Vista() {
+		// para testear
+	}
+
 	public Carta obtenerCartaSeleccionada() {
 		return this.cartaSeleccionada;
 	}
@@ -151,4 +155,5 @@ public class Vista {
 		this.cambiarAModoNormal();
 		this.liberarSeleccion();
 	}
+
 }
