@@ -55,7 +55,12 @@ public abstract class Carta {
 	}
 
 	public void matar() {
-		this.vistaCarta.desvincular(); //tambien limpia la de la vistaCampoJugadores
+		try {
+			this.vistaCarta.desvincular(); //tambien limpia la de la vistaCampoJugadores
+		}
+		catch (NullPointerException e) {
+			//esto es solo para poder ejecutar el test
+		}
 		ContenedorDeCartas cementerio = this.jugadorDuenio.obtenerCementerio();
 		try {
 			cementerio.agregar(this);

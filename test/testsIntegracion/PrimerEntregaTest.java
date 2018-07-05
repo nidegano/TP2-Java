@@ -11,6 +11,7 @@ import cartas.*;
 import excepciones.*;
 import juego.*;
 import vista.Vista;
+import vista.VistaMock;
 
 public class PrimerEntregaTest {
 
@@ -77,48 +78,84 @@ public class PrimerEntregaTest {
 	}
 
 	@Test
-	public void testInvocarUnaCartaMonstruoDe5EstrellasSacrificaAUnMonstruoDelJugadorQueLoInvoca() throws CapacidadMaximaException {
-		Mazo mazo = new Mazo();
-		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
-		mazo.agregar(insectoComeHombres);
-		Campo campo = new Campo(mazo);
-		Jugador jugador = new JugadorA(campo);
-		insectoComeHombres.asignarDuenio(jugador);
+	public void testInvocarUnaCartaMonstruoDe5EstrellasSacrificaAUnMonstruoDelJugadorQueLoInvoca() throws Exception {
+		// INICIALIZACION DEL JUEGO
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		//////Aca se agregan y crean las cartas///////
+		
 
-		jugador.tomarCartaDelMazo();
+		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
+		
+		mazoJugadorA.agregar(insectoComeHombres);
+		
+		//////////////////////////////////////////////
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
+
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
+
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new VistaMock();
+		
+		juego.asignarVista(vista);
+		
+		jugadorA.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		jugadorB.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		
+		//////Fin de inicializacion de contexto///////
+
+		jugadorA.tomarCartaDelMazo();
 		insectoComeHombres.invocarEnModoAtaque();
 
 		ArrayList<CartaMonstruo> sacrificios = new ArrayList<CartaMonstruo>();
 		sacrificios.add(insectoComeHombres);
 		EspadachinSilencioso espadachinSilencioso = new EspadachinSilencioso();
-		mazo.agregar(espadachinSilencioso);
-		espadachinSilencioso.asignarDuenio(jugador);
+		mazoJugadorA.agregar(espadachinSilencioso);
+		espadachinSilencioso.asignarDuenio(jugadorA);
 
-		mazo.agregar(espadachinSilencioso);
-		jugador.tomarCartaDelMazo();
+		mazoJugadorA.agregar(espadachinSilencioso);
+		jugadorA.tomarCartaDelMazo();
 		espadachinSilencioso.invocarEnModoAtaque(sacrificios);
 
-		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campoJugadorA.estaLaCartaEnCementerio(insectoComeHombres));
 	}
 
 	@Test
-	public void testInvocarUnaCartaMonstruoDe7EstrellasSacrificaADosMonstruosDelJugadorQueLoInvoca() throws CapacidadMaximaException {
-		Mazo mazo = new Mazo();
-
+	public void testInvocarUnaCartaMonstruoDe7EstrellasSacrificaADosMonstruosDelJugadorQueLoInvoca() throws Exception {
+		// INICIALIZACION DEL JUEGO
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		//////Aca se agregan y crean las cartas///////
+		
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		InsectoComeHombres otroInsectoComeHombres = new InsectoComeHombres();
 
-		mazo.agregar(insectoComeHombres);
-		mazo.agregar(otroInsectoComeHombres);
+		mazoJugadorA.agregar(insectoComeHombres);
+		mazoJugadorA.agregar(otroInsectoComeHombres);
+		
+		//////////////////////////////////////////////
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		Campo campo = new Campo(mazo);
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
 
-		Jugador jugador = new JugadorA(campo);
-		insectoComeHombres.asignarDuenio(jugador);
-		otroInsectoComeHombres.asignarDuenio(jugador);
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new VistaMock();
+		
+		juego.asignarVista(vista);
+		
+		jugadorA.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		jugadorB.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		
+		//////Fin de inicializacion de contexto///////
 
-		jugador.tomarCartaDelMazo();
-		jugador.tomarCartaDelMazo();
+		jugadorA.tomarCartaDelMazo();
+		jugadorA.tomarCartaDelMazo();
 
 		insectoComeHombres.invocarEnModoAtaque();
 		otroInsectoComeHombres.invocarEnModoAtaque();
@@ -127,34 +164,50 @@ public class PrimerEntregaTest {
 		sacrificios.add(insectoComeHombres);
 		sacrificios.add(otroInsectoComeHombres);
 		DragonArmadoOscuro dragonArmadoOscuro = new DragonArmadoOscuro();
-		dragonArmadoOscuro.asignarDuenio(jugador);
-		mazo.agregar(dragonArmadoOscuro);
+		dragonArmadoOscuro.asignarDuenio(jugadorA);
+		mazoJugadorA.agregar(dragonArmadoOscuro);
 
-		jugador.tomarCartaDelMazo();
+		jugadorA.tomarCartaDelMazo();
 		dragonArmadoOscuro.invocarEnModoAtaque(sacrificios);
 
-		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
-		assertTrue(campo.estaLaCartaEnCementerio(otroInsectoComeHombres));
+		assertTrue(campoJugadorA.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campoJugadorA.estaLaCartaEnCementerio(otroInsectoComeHombres));
 	}
 
 	@Test
-	public void testInvocarUnaCartaMonstruoDe8EstrellasSacrificaADosMonstruosDelJugadorQueLoInvoca() throws CapacidadMaximaException {
-		Mazo mazo = new Mazo();
+	public void testInvocarUnaCartaMonstruoDe8EstrellasSacrificaADosMonstruosDelJugadorQueLoInvoca() throws Exception {
+		// INICIALIZACION DEL JUEGO
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		//////Aca se agregan y crean las cartas///////
+		
 
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		InsectoComeHombres otroInsectoComeHombres = new InsectoComeHombres();
 
-		mazo.agregar(insectoComeHombres);
-		mazo.agregar(otroInsectoComeHombres);
+		mazoJugadorA.agregar(insectoComeHombres);
+		mazoJugadorA.agregar(otroInsectoComeHombres);
+		
+		//////////////////////////////////////////////
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		Campo campo = new Campo(mazo);
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
 
-		Jugador jugador = new JugadorA(campo);
-		insectoComeHombres.asignarDuenio(jugador);
-		otroInsectoComeHombres.asignarDuenio(jugador);
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new VistaMock();
+		
+		juego.asignarVista(vista);
+		
+		jugadorA.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		jugadorB.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		
+		//////Fin de inicializacion de contexto///////
 
-		jugador.tomarCartaDelMazo();
-		jugador.tomarCartaDelMazo();
+		jugadorA.tomarCartaDelMazo();
+		jugadorA.tomarCartaDelMazo();
 
 		insectoComeHombres.invocarEnModoAtaque();
 		otroInsectoComeHombres.invocarEnModoAtaque();
@@ -163,38 +216,46 @@ public class PrimerEntregaTest {
 		sacrificios.add(insectoComeHombres);
 		sacrificios.add(otroInsectoComeHombres);
 		DragonBlancoDeOjosAzules dragonBlancoDeOjosAzules = new DragonBlancoDeOjosAzules();
-		dragonBlancoDeOjosAzules.asignarDuenio(jugador);
+		dragonBlancoDeOjosAzules.asignarDuenio(jugadorA);
 
-		mazo.agregar(dragonBlancoDeOjosAzules);
-		jugador.tomarCartaDelMazo();
+		mazoJugadorA.agregar(dragonBlancoDeOjosAzules);
+		jugadorA.tomarCartaDelMazo();
 		dragonBlancoDeOjosAzules.invocarEnModoAtaque(sacrificios);
 
-		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
-		assertTrue(campo.estaLaCartaEnCementerio(otroInsectoComeHombres));
+		assertTrue(campoJugadorA.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campoJugadorA.estaLaCartaEnCementerio(otroInsectoComeHombres));
 	}
 
 	@Test
-	public void testJugadorAAtacaConUnMonstruoMasFuerteQueElDeBAmbosEnModoAtaqueSeDestruyeElDeBYSeLastimaB() throws CapacidadMaximaException {
-		Mazo mazoA = new Mazo();
-		Mazo mazoB = new Mazo();
-
+	public void testJugadorAAtacaConUnMonstruoMasFuerteQueElDeBAmbosEnModoAtaqueSeDestruyeElDeBYSeLastimaB() throws Exception {
+		// INICIALIZACION DEL JUEGO
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		//////Aca se agregan y crean las cartas///////
+		
 		CabezaExodia exodiaCabeza = new CabezaExodia();
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 
-		mazoA.agregar(exodiaCabeza);
-		mazoB.agregar(insectoComeHombres);
+		mazoJugadorA.agregar(exodiaCabeza);
+		mazoJugadorB.agregar(insectoComeHombres);
+		
+		//////////////////////////////////////////////
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		Campo campoA = new Campo(mazoA);
-		Campo campoB = new Campo(mazoB);
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
 
-		Jugador jugadorA = new JugadorA(campoA);
-		Jugador jugadorB = new JugadorB(campoB);
-
-		jugadorA.asignarOponente(jugadorB);
-		jugadorB.asignarOponente(jugadorA);
-
-		exodiaCabeza.asignarDuenio(jugadorA);
-		insectoComeHombres.asignarDuenio(jugadorB);
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new VistaMock();
+		
+		juego.asignarVista(vista);
+		
+		jugadorA.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		jugadorB.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		
+		//////Fin de inicializacion de contexto///////
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
@@ -206,32 +267,41 @@ public class PrimerEntregaTest {
 
 		// VIDA DEL JUGADOR B - (ATAQUE DE EXODIA - ATAQUE DE INSECTO)
 		int vida = 8000 - (1000 - 450);
-		assertTrue(campoB.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campoJugadorB.estaLaCartaEnCementerio(insectoComeHombres));
 		assertEquals(vida, jugadorB.vida());
 	}
 
 	@Test
-	public void testJugadorAAtacaConUnMonstruoMasDebilQueElDeBAmbosEnModoAtaqueSeDestruyeSuPropioMonstruoYSeLastimaA() throws CapacidadMaximaException {
-		Mazo mazoA = new Mazo();
-		Mazo mazoB = new Mazo();
+	public void testJugadorAAtacaConUnMonstruoMasDebilQueElDeBAmbosEnModoAtaqueSeDestruyeSuPropioMonstruoYSeLastimaA() throws Exception {
+		// INICIALIZACION DEL JUEGO
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		//////Aca se agregan y crean las cartas///////
+		
 
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		CabezaExodia exodiaCabeza = new CabezaExodia();
 
-		mazoA.agregar(insectoComeHombres);
-		mazoB.agregar(exodiaCabeza);
+		mazoJugadorA.agregar(insectoComeHombres);
+		mazoJugadorB.agregar(exodiaCabeza);
+		
+		//////////////////////////////////////////////
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		Campo campoA = new Campo(mazoA);
-		Campo campoB = new Campo(mazoB);
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
 
-		Jugador jugadorA = new JugadorA(campoA);
-		Jugador jugadorB = new JugadorB(campoB);
-
-		jugadorA.asignarOponente(jugadorB);
-		jugadorB.asignarOponente(jugadorA);
-
-		insectoComeHombres.asignarDuenio(jugadorA);
-		exodiaCabeza.asignarDuenio(jugadorB);
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new VistaMock();
+		
+		juego.asignarVista(vista);
+		
+		jugadorA.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		jugadorB.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		
+		//////Fin de inicializacion de contexto///////
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
@@ -243,33 +313,41 @@ public class PrimerEntregaTest {
 
 		// VIDA DEL JUGADOR A - (ATAQUE DE DRAGON - ATAQUE DE INSECTO)
 		int vida = 8000 - (1000 - 450);
-		assertTrue(campoA.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campoJugadorA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertEquals(vida, jugadorA.vida());
 	}
 
 	@Test
-	public void testJugadorAAtacaConUnMonstruoIgualDeFuerteQueElDeBEnModoAtaqueSeDestruyenAmbosMonstruosYNadieSeLastima() throws CapacidadMaximaException {
-		Mazo mazoA = new Mazo();
-		Mazo mazoB = new Mazo();
-
+	public void testJugadorAAtacaConUnMonstruoIgualDeFuerteQueElDeBEnModoAtaqueSeDestruyenAmbosMonstruosYNadieSeLastima() throws Exception {
+		// INICIALIZACION DEL JUEGO
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		//////Aca se agregan y crean las cartas///////
+		
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		InsectoComeHombres otroInsectoComeHombres = new InsectoComeHombres();
 
-		mazoA.agregar(insectoComeHombres);
-		mazoB.agregar(otroInsectoComeHombres);
+		mazoJugadorA.agregar(insectoComeHombres);
+		mazoJugadorB.agregar(otroInsectoComeHombres);
+		
+		//////////////////////////////////////////////
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		Campo campoA = new Campo(mazoA);
-		Campo campoB = new Campo(mazoB);
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
 
-		Jugador jugadorA = new JugadorA(campoA);
-		Jugador jugadorB = new JugadorB(campoB);
-
-		jugadorA.asignarOponente(jugadorB);
-		jugadorB.asignarOponente(jugadorA);
-
-		insectoComeHombres.asignarDuenio(jugadorA);
-		otroInsectoComeHombres.asignarDuenio(jugadorB);
-
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new VistaMock();
+		
+		juego.asignarVista(vista);
+		
+		jugadorA.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		jugadorB.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		
+		//////Fin de inicializacion de contexto///////
+		
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
 
@@ -279,34 +357,42 @@ public class PrimerEntregaTest {
 		insectoComeHombres.atacar(otroInsectoComeHombres);
 
 		int vida = 8000;
-		assertTrue(campoA.estaLaCartaEnCementerio(insectoComeHombres));
-		assertTrue(campoB.estaLaCartaEnCementerio(otroInsectoComeHombres));
+		assertTrue(campoJugadorA.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campoJugadorB.estaLaCartaEnCementerio(otroInsectoComeHombres));
 		assertEquals(vida, jugadorA.vida());
 		assertEquals(vida, jugadorB.vida());
 	}
 
 	@Test
-	public void testJugadorAAtacaConUnMonstruoMasDebilAlDeBEnModoDefensaSeDestruyeElMonstruoDeAYNadieSeLastima() throws CapacidadMaximaException {
-		Mazo mazoA = new Mazo();
-		Mazo mazoB = new Mazo();
-
+	public void testJugadorAAtacaConUnMonstruoMasDebilAlDeBEnModoDefensaSeDestruyeElMonstruoDeAYNadieSeLastima() throws Exception {
+		// INICIALIZACION DEL JUEGO
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		//////Aca se agregan y crean las cartas///////
+		
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		CabezaExodia exodiaCabeza = new CabezaExodia();
 
-		mazoA.agregar(insectoComeHombres);
-		mazoB.agregar(exodiaCabeza);
+		mazoJugadorA.agregar(insectoComeHombres);
+		mazoJugadorB.agregar(exodiaCabeza);
+		
+		//////////////////////////////////////////////
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		Campo campoA = new Campo(mazoA);
-		Campo campoB = new Campo(mazoB);
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
 
-		Jugador jugadorA = new JugadorA(campoA);
-		Jugador jugadorB = new JugadorB(campoB);
-
-		jugadorA.asignarOponente(jugadorB);
-		jugadorB.asignarOponente(jugadorA);
-
-		insectoComeHombres.asignarDuenio(jugadorA);
-		exodiaCabeza.asignarDuenio(jugadorB);
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new VistaMock();
+		
+		juego.asignarVista(vista);
+		
+		jugadorA.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		jugadorB.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		
+		//////Fin de inicializacion de contexto///////
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
@@ -317,33 +403,41 @@ public class PrimerEntregaTest {
 		insectoComeHombres.atacar(exodiaCabeza);
 
 		int vida = 8000;
-		assertTrue(campoA.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campoJugadorA.estaLaCartaEnCementerio(insectoComeHombres));
 		assertEquals(vida, jugadorA.vida());
 		assertEquals(vida, jugadorB.vida());
 	}
 
 	@Test
-	public void testJugadorAAtacaConUnMonstruoMasFuerteAlDeBEnModoDefensaSeDestruyeElMonstruoDeBYNadieSeLastima() throws CapacidadMaximaException {
-		Mazo mazoA = new Mazo();
-		Mazo mazoB = new Mazo();
-
+	public void testJugadorAAtacaConUnMonstruoMasFuerteAlDeBEnModoDefensaSeDestruyeElMonstruoDeBYNadieSeLastima() throws Exception {
+		// INICIALIZACION DEL JUEGO
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		//////Aca se agregan y crean las cartas///////
+		
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		CabezaExodia exodiaCabeza = new CabezaExodia();
+		
+		mazoJugadorA.agregar(exodiaCabeza);
+		mazoJugadorB.agregar(insectoComeHombres);
+		
+		//////////////////////////////////////////////
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		mazoA.agregar(exodiaCabeza);
-		mazoB.agregar(insectoComeHombres);
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
 
-		Campo campoA = new Campo(mazoA);
-		Campo campoB = new Campo(mazoB);
-
-		Jugador jugadorA = new JugadorA(campoA);
-		Jugador jugadorB = new JugadorB(campoB);
-
-		jugadorA.asignarOponente(jugadorB);
-		jugadorB.asignarOponente(jugadorA);
-
-		exodiaCabeza.asignarDuenio(jugadorA);
-		insectoComeHombres.asignarDuenio(jugadorB);
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new VistaMock();
+		
+		juego.asignarVista(vista);
+		
+		jugadorA.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		jugadorB.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		
+		//////Fin de inicializacion de contexto///////
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
@@ -354,36 +448,43 @@ public class PrimerEntregaTest {
 		exodiaCabeza.atacar(insectoComeHombres);
 
 		int vida = 8000;
-		assertTrue(campoB.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campoJugadorB.estaLaCartaEnCementerio(insectoComeHombres));
 		assertEquals(vida, jugadorA.vida());
 		assertEquals(vida, jugadorB.vida());
 	}
 
 	@Test
-	public void testJugadorADestruyeTodosLosMonstruosConAgujeroOscuro() throws CapacidadMaximaException {
-		Mazo mazoA = new Mazo();
-		Mazo mazoB = new Mazo();
-
+	public void testJugadorADestruyeTodosLosMonstruosConAgujeroOscuro() throws Exception {
+		// INICIALIZACION DEL JUEGO
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		//////Aca se agregan y crean las cartas///////
+		
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		CabezaExodia exodiaCabeza = new CabezaExodia();
 		AgujeroOscuro agujeroOscuro = new AgujeroOscuro();
 
-		mazoA.agregar(insectoComeHombres);
-		mazoA.agregar(agujeroOscuro);
-		mazoB.agregar(exodiaCabeza);
+		mazoJugadorA.agregar(insectoComeHombres);
+		mazoJugadorA.agregar(agujeroOscuro);
+		mazoJugadorB.agregar(exodiaCabeza);
+		
+		//////////////////////////////////////////////
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		Campo campoA = new Campo(mazoA);
-		Campo campoB = new Campo(mazoB);
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
 
-		Jugador jugadorA = new JugadorA(campoA);
-		Jugador jugadorB = new JugadorB(campoB);
-
-		jugadorA.asignarOponente(jugadorB);
-		jugadorB.asignarOponente(jugadorA);
-
-		insectoComeHombres.asignarDuenio(jugadorA);
-		exodiaCabeza.asignarDuenio(jugadorB);
-		agujeroOscuro.asignarDuenio(jugadorA);
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new VistaMock();
+		
+		juego.asignarVista(vista);
+		
+		jugadorA.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		jugadorB.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		
+		//////Fin de inicializacion de contexto///////
 
 		jugadorA.tomarCartaDelMazo();
 		jugadorB.tomarCartaDelMazo();
@@ -394,29 +495,38 @@ public class PrimerEntregaTest {
 		jugadorA.tomarCartaDelMazo();
 		agujeroOscuro.colocarBocaArriba();
 
-		assertTrue(campoA.estaLaCartaEnCementerio(insectoComeHombres));
-		assertTrue(campoB.estaLaCartaEnCementerio(exodiaCabeza));
+		assertTrue(campoJugadorA.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campoJugadorB.estaLaCartaEnCementerio(exodiaCabeza));
 	}
 
 	@Test
-	public void testJugadorSeQuedaSinVida() throws CapacidadMaximaException {
-		Mazo mazoA = new Mazo();
-		Mazo mazoB = new Mazo();
-
+	public void testJugadorSeQuedaSinVida() throws Exception {
+		// INICIALIZACION DEL JUEGO
+		Mazo mazoJugadorA = new Mazo();
+		Mazo mazoJugadorB = new Mazo();
+		//////Aca se agregan y crean las cartas///////
+		
 		AlphaTheMagnetWarrior alpha = new AlphaTheMagnetWarrior();
 
-		mazoA.agregar(alpha);
+		mazoJugadorA.agregar(alpha);
+		
+		//////////////////////////////////////////////
+		Campo campoJugadorA = new Campo(mazoJugadorA);
+		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		Campo campoA = new Campo(mazoA);
-		Campo campoB = new Campo(mazoB);
+		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		JugadorB jugadorB = new JugadorB(campoJugadorB);
 
-		Jugador jugadorA = new JugadorA(campoA);
-		Jugador jugadorB = new JugadorB(campoB);
-
-		jugadorA.asignarOponente(jugadorB);
-		jugadorB.asignarOponente(jugadorA);
-
-		alpha.asignarDuenio(jugadorA);
+		Juego juego = new Juego(jugadorA, jugadorB);
+		
+		Vista vista = new VistaMock();
+		
+		juego.asignarVista(vista);
+		
+		jugadorA.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		jugadorB.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		
+		//////Fin de inicializacion de contexto///////
 
 		jugadorA.tomarCartaDelMazo();
 

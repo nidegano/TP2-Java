@@ -10,6 +10,7 @@ public class Juego {
 	private Jugador jugadorB;
 	private Jugador deTurno;
 	private Vista vista;
+	private String ganador;
 
 	public Juego(Jugador jugadorA, Jugador jugadorB) {
 		this.jugadorA = jugadorA;
@@ -52,7 +53,12 @@ public class Juego {
 	}
 
 	public void perdioJugador(Jugador jugador){
+		this.ganador = jugador.oponente().nombre();
 		this.vista.terminarJuego(jugador.nombre());
+	}
+
+	public String ganador() {
+		return this.ganador;
 	}
 
 }
