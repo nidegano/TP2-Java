@@ -19,10 +19,9 @@ public class InvocarEnModoDefensaBocaAbajo extends Opcion {
 	}
 
 	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
-		//no chequeo si se puede porque si no se puede se eleva una excepcion
 		try {
 			cartaSeleccionada.chequearSiSePuedeInvocarMonstruo();
-			cartaSeleccionada.desasignarVistaALugarDeManoEnVistaCampoJugadores();
+			cartaSeleccionada.desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba();
 			cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
 			cartaSeleccionada.invocarEnModoDefensaBocaAbajo();
 		} catch (NoSePuedeInvocarMonstruosEnEstaFase | SoloSePuedeInvocarUnSoloMonstruoEnEstaFase e) {

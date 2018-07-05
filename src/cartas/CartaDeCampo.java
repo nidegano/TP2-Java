@@ -48,13 +48,4 @@ public abstract class CartaDeCampo extends CartaEspecial {
 	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
 		return vistaCampoJugadores.obtenerUnLugarVacio(this);
 	}
-	
-	@Override
-	public void desasignarVistaALugarDeManoEnVistaCampoJugadores() {
-		VistaCarta vistaCartaActual = this.vistaCarta;
-		VistaCarta vistaCartaNueva = new VistaCarta(vistaCartaActual.vista());
-		vistaCartaNueva.reemplazarPor(vistaCartaActual);
-		vistaCartaActual.vaciar();
-		this.vistaCarta = vistaCartaNueva;
-	}
 }

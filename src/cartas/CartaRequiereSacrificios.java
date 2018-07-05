@@ -15,13 +15,12 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 		this.estado = new EstadoMonstruoRequiereSacrificioSinInvocar();
 	}
 
-	protected void chequearQueLaCantidadDeSacrificiosSeaCorrecta(ArrayList<CartaMonstruo> sacrificios) throws CantidadInadecuadaDeSacrificiosException{
+	public void chequearQueLaCantidadDeSacrificiosSeaCorrecta(ArrayList<CartaMonstruo> sacrificios) throws CantidadInadecuadaDeSacrificiosException{
 		if (sacrificios.size() != this.sacrificiosRequeridos)
 			throw new CantidadInadecuadaDeSacrificiosException();
 	}
 
-	public void invocarEnModoAtaque(ArrayList<CartaMonstruo> sacrificios) throws CantidadInadecuadaDeSacrificiosException  {
-		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
+	public void invocarEnModoAtaque(ArrayList<CartaMonstruo> sacrificios){
 		this.colocarEnModoAtaque();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.efecto.activar();
@@ -30,8 +29,7 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 
 	}
 	
-	public void invocarEnModoDefensa(ArrayList<CartaMonstruo> sacrificios) throws CantidadInadecuadaDeSacrificiosException {
-		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
+	public void invocarEnModoDefensa(ArrayList<CartaMonstruo> sacrificios) {
 		this.colocarEnModoDefensa();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.efecto.activar();
@@ -39,8 +37,7 @@ public abstract class CartaRequiereSacrificios extends CartaMonstruo {
 			monstruo.matar();
 	}
 	
-	public void invocarEnModoDefensaBocaAbajo(ArrayList<CartaMonstruo> sacrificios) throws CantidadInadecuadaDeSacrificiosException  {
-		this.chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
+	public void invocarEnModoDefensaBocaAbajo(ArrayList<CartaMonstruo> sacrificios){
 		this.colocarEnModoDefensaBocaAbajo();
 		this.agregarEnCampo(this.jugadorDuenio.campo());
 		this.efecto.activar();

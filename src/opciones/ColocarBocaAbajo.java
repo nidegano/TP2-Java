@@ -17,7 +17,7 @@ public class ColocarBocaAbajo extends Opcion {
 	}
 
 	public void aplicarComando(CartaEspecial cartaSeleccionada) {
-		//no chequeo si se puede porque si no se puede al ejecutarse colocarBocaAbajo() tira una excepcion
+		cartaSeleccionada.desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba();
 		cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
 		cartaSeleccionada.colocarBocaAbajo();
 	}

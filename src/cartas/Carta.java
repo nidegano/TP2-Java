@@ -54,7 +54,7 @@ public abstract class Carta {
 	}
 
 	public void matar() {
-		this.vistaCarta.liberarPorMuerteDeCarta(); //tambien limpia la de la vistaCampoJugadores
+		this.vistaCarta.desvincular(); //tambien limpia la de la vistaCampoJugadores
 		ContenedorDeCartas cementerio = this.jugadorDuenio.obtenerCementerio();
 		try {
 			cementerio.agregar(this);
@@ -120,6 +120,7 @@ public abstract class Carta {
 		return this.vistaCarta;
 	}
 
-	public abstract void desasignarVistaALugarDeManoEnVistaCampoJugadores();
-
+	public void desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba() {
+		this.vistaCarta.desvincular();
+	}
 }

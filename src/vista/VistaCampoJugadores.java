@@ -48,8 +48,7 @@ public class VistaCampoJugadores {
 	
 	public void actualizarPorModoSeleccionParaAtacar() {
 		this.grilla.deshabilitarTodosLasVistasCarta();
-		this.activarSoloLasVistasCartaMonstruosDelOponenteDeJugadorDeTurno(this.vista.jugadorDeTurno());
-		//aca falta lo de si no hay monstruos se activa para atacar al jugador
+		this.activarSoloLasVistasCartaMonstruosNoVaciasDelOponenteDeJugadorDeTurno(this.vista.jugadorDeTurno());
 	}
 
 	public void actualizarVidaJugadores() {
@@ -76,7 +75,7 @@ public class VistaCampoJugadores {
 		jugadorDeTurno.oponente().determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(this.grilla);
 	}
 	
-	private void activarSoloLasVistasCartaMonstruosDelOponenteDeJugadorDeTurno(Jugador jugadorDeTurno) {
+	private void activarSoloLasVistasCartaMonstruosNoVaciasDelOponenteDeJugadorDeTurno(Jugador jugadorDeTurno) {
 		jugadorDeTurno.determinarQueMonstruosHabilitarSegunQueJugadorEsATravezDeGrilla(this.grilla);
 	}
 }

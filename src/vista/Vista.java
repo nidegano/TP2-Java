@@ -85,18 +85,19 @@ public class Vista {
 	}
 
 	public void finalizarComandoDeAtacar(Carta cartaNuevaSeleccion) {
+		this.cartaSeleccionada.vistaCarta().deshabilitar(); 
+		// para que la carta que esta atacando no se pueda volver a elegir para atacar
 		((CartaMonstruo) this.cartaSeleccionada).atacar((CartaMonstruo) cartaNuevaSeleccion);
 		//los casts son seguros por que en este contexto las unicas selecciones de cartas posibles son monstruos
 		//aca va a haber problema con lo de atacar directamente al jugador
 		this.vistaCampoJugadores.actualizarVidaJugadores();
 		this.cambiarAModoNormal();
-		this.cartaSeleccionada.obtenerVistaCarta().deshabilitar(); //esto es porque si ya ataco no puede atacar devuelta
 	}
 
 	private void cambiarAModoNormal() {
 		this.modoVista = new ModoNormal(this);	
 		this.vistaCampoJugadores.actualizarPorCambioDeTurno(this.juego.jugadorDeTurno());
-		//para que cualquier configuracion de botones vuelva a como estaba antes
+		//para que cualquier configuracion de botones vuelva a como estaba antes (dado que el turno es el mismo que antes)
 	}
 
 	public Jugador jugadorDeTurno() {
@@ -118,6 +119,7 @@ public class Vista {
 		this.vistaCampoJugadores.actualizarPorCambioDeTurno(jugadorDeTurno);
 		this.panelDeAccion.actualizarPorCambioDeTurno(jugadorDeTurno);
 		this.panelDeAccion.actualizarPorCambioDeFaseALaFase(jugadorDeTurno.obtenerFase());
+		this.liberarSeleccion();
 	}
 
 	public void seTomoEstaCartaDelMazo(Carta unaCarta) {

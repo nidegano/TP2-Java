@@ -39,7 +39,7 @@ public class CartaNula extends Carta {
 	}
 
 	@Override
-	public void desasignarVistaALugarDeManoEnVistaCampoJugadores() {
+	public void desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba() {
 		//una carta nula no se asigna a un lugar de mano
 	}
 }

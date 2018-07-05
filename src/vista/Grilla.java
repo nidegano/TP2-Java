@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import botones.BotonCementerio;
 import botones.BotonFinalizarFase;
+import botones.BotonJugadorA;
+import botones.BotonJugadorB;
 import botones.BotonMazo;
 import botones.VistaCarta;
 import javafx.application.Application;
@@ -61,6 +63,10 @@ public class Grilla extends Application {
 	private ArrayList<VistaCarta> vistaCartaMonstruosJugadorA;
 	private ArrayList<VistaCarta> vistaCartaMonstruosJugadorB;
 	
+	//Botones que representan a los jugadores como entidades cliqueables
+	private BotonJugadorA botonJugadorA;
+	private BotonJugadorB botonJugadorB;
+	
 	//Botones Cartas de Campo
 	private VistaCarta vistaCartaDeCampoJugadorA;
 	private VistaCarta vistaCartaDeCampoJugadorB;
@@ -106,6 +112,9 @@ public class Grilla extends Application {
 		this.inicializarLabels();
 		
 		this.inicializarVistasCartaDeVistaCampoJugadores(vista);
+		
+		this.botonJugadorA = new BotonJugadorA(vista);
+		this.botonJugadorB = new BotonJugadorB(vista);
 
 		this.vistaCartaDeCampoJugadorA = new VistaCarta(vista);
 		this.vistaCartaDeCampoJugadorB = new VistaCarta(vista);
@@ -213,7 +222,7 @@ public class Grilla extends Application {
 	}
 
 	private void inicializarLabels() {
-		this.displayDeTexto = new Label("");
+		this.displayDeTexto = new Label("INFORMACION");
 		this.labelDeJugadorA = new Label("JUGADOR A");
 		this.labelDeJugadorB = new Label("JUGADOR B");
 		this.labelVidaDeJugadorA = new Label("-");
@@ -242,6 +251,7 @@ public class Grilla extends Application {
 		this.gridPane.add(this.botonMazoJugadorA, 1, 1, 1, 1);
 		this.gridPane.add(this.botonCementerioJugadorA, 1, 5, 1, 1);
 		this.gridPane.add(this.vistaCartaDeCampoJugadorA, 9, 5, 1, 1);
+		this.gridPane.add(this.botonJugadorA, 5, 0,1,1);
 
 		int i = 2;
 		for (VistaCarta unSlot : this.vistaCartaManoJugadorA) {
@@ -265,6 +275,7 @@ public class Grilla extends Application {
 		this.gridPane.add(this.botonMazoJugadorB, 9, 11, 1, 1);
 		this.gridPane.add(this.botonCementerioJugadorB, 9, 7, 1, 1);
 		this.gridPane.add(this.vistaCartaDeCampoJugadorB, 1, 7, 1, 1);
+		this.gridPane.add(this.botonJugadorB,5, 13,1,1);
 
 		i = 2;
 		for (VistaCarta unSlot : this.vistaCartaManoJugadorB) {
@@ -297,7 +308,7 @@ public class Grilla extends Application {
 		this.gridPane.add(this.botonDeListo, 13, 5,1,1);
 		
 		//Display
-		this.gridPane.add(this.displayDeTexto, 1, 2, 1, 1);
+		this.gridPane.add(this.displayDeTexto, 5, 6, 1, 1);
 		
 		//OPCIONES
 		this.gridPane.add(this.opcionCambiarAModoAtaque, 13, 7, 1, 1);
@@ -482,12 +493,17 @@ public class Grilla extends Application {
 		this.labelDeTurno.setDisable(false);
 		this.labelDeFase.setDisable(false);
 		
+		//Botonoes Jugadores
+		this.botonJugadorA.setDisable(true);
+		this.botonJugadorB.setDisable(true);
+		
 		//Botones Cementerio
 		this.botonCementerioJugadorA.setDisable(true);
 		this.botonCementerioJugadorB.setDisable(true);
 		
 		//Botones que son propios del juego y no de un Campo especifico de un jugador	
 		this.botonDeFinalizarFase.setDisable(false);
+		this.botonDeListo.setDisable(false);
 	}
 	
 	public void configurarBotonesFaseInicialTunoJugadorB() {
@@ -502,32 +518,32 @@ public class Grilla extends Application {
 
 	public void configurarBotonesFasePreparacionTurnoJugadorA() {
 		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorA);
+		this.habilitarTodasLasVistasNoVaciasDe(this.vistaCartaManoJugadorA);
 	}
 
 	public void configurarBotonesFasePreparacionTurnoJugadorB() {
 		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorB);
+		this.habilitarTodasLasVistasNoVaciasDe(this.vistaCartaManoJugadorB);
 	}
 
 	public void configurarBotonesFaseAtaqueTurnoJugadorA() {
 		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorA);
+		this.habilitarTodasLasVistasNoVaciasDe(this.vistaCartaMonstruosJugadorA);
 	}
 
 	public void configurarBotonesFaseAtaqueTurnoJugadorB() {
 		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);
+		this.habilitarTodasLasVistasNoVaciasDe(this.vistaCartaMonstruosJugadorB);
 	}
 
 	public void configurarBotonesFaseFinalTurnoJugadorA() {
 		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.habilitarTodasLasVistasDe(this.vistaCartaEspecialesJugadorA);
+		this.habilitarTodasLasVistasNoVaciasDe(this.vistaCartaEspecialesJugadorA);
 	}
 
 	public void configurarBotonesFaseFinalTurnoJugadorB() {
 		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.habilitarTodasLasVistasDe(this.vistaCartaEspecialesJugadorB);
+		this.habilitarTodasLasVistasNoVaciasDe(this.vistaCartaEspecialesJugadorB);
 	}
 	
 	
@@ -565,12 +581,14 @@ public class Grilla extends Application {
 		this.deshabilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);		
 	}
 	
-	public void activarSoloLasVistasCartaMonstruosDeJugadorA() {
+	public void habilitarSoloLasVistasCartaNoVaciaslDeLaZonaMonstruosDeJugadorA() {
 		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorA);
+		this.deshabilitarTodasLasVistasVaciasDe(this.vistaCartaMonstruosJugadorA);
 	}
 
-	public void activarSoloLasVistasCartaMonstruosDeJugadorB() {
-		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);		
+	public void habilitarSoloLasVistasCartaNoVaciaslDeLaZonaMonstruosDeJugadorB() {
+		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);
+		this.deshabilitarTodasLasVistasVaciasDe(this.vistaCartaMonstruosJugadorB);
 	}
 
 	public void cambiarLabelDeFasePor(String nombreFaseNueva) {
@@ -602,6 +620,22 @@ public class Grilla extends Application {
 	private void deshabilitarTodasLasVistasDe(ArrayList<VistaCarta> collectionDeVistasCarta) {
 		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
 			vistaCarta.setDisable(true);
+		}
+	}
+	
+	private void deshabilitarTodasLasVistasVaciasDe(ArrayList<VistaCarta> collectionDeVistasCarta) {
+		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
+			if(vistaCarta.estaLibre()) {
+				vistaCarta.setDisable(true);
+			}
+		}
+	}
+	
+	private void habilitarTodasLasVistasNoVaciasDe(ArrayList<VistaCarta> collectionDeVistasCarta) {
+		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
+			if(!vistaCarta.estaLibre()) {
+				vistaCarta.setDisable(false);
+			}
 		}
 	}
 

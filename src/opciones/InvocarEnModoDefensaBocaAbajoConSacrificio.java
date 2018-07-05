@@ -18,7 +18,7 @@ public class InvocarEnModoDefensaBocaAbajoConSacrificio extends InvocarConSacrif
 		
 		this.setOnAction(value -> {
 			
-			CartaMonstruo cartaSeleccionada = (CartaMonstruo) this.vista.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
+			CartaRequiereSacrificios cartaSeleccionada = (CartaRequiereSacrificios) this.vista.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
 			this.aplicarComando(cartaSeleccionada);
 		});
 	}
@@ -35,10 +35,11 @@ public class InvocarEnModoDefensaBocaAbajoConSacrificio extends InvocarConSacrif
 	@Override
 	public void finalizarInvocacionPorSacrificio(Carta cartaSeleccionada, ArrayList<CartaMonstruo> sacrificios) {
 		
-		try {
-			((CartaRequiereSacrificios) cartaSeleccionada).invocarEnModoDefensaBocaAbajo(sacrificios);
-			cartaSeleccionada.desasignarVistaALugarDeManoEnVistaCampoJugadores();
+		try {			
+			((CartaRequiereSacrificios) cartaSeleccionada).chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
+			cartaSeleccionada.desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba();
 			cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
+			((CartaRequiereSacrificios) cartaSeleccionada).invocarEnModoDefensaBocaAbajo(sacrificios);
 		}
 		catch (CantidadInadecuadaDeSacrificiosException e) {
 			e.printStackTrace();

@@ -186,13 +186,4 @@ public abstract class CartaMonstruo extends Carta {
 	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
 		return vistaCampoJugadores.obtenerUnLugarVacio(this);
 	}
-
-	@Override
-	public void desasignarVistaALugarDeManoEnVistaCampoJugadores() {
-		VistaCarta vistaCartaNueva = new VistaCarta(this.vistaCarta.vista());
-		vistaCartaNueva.reemplazarPor(this.vistaCarta);
-		this.vistaCarta.vaciar();
-		this.vistaCarta = vistaCartaNueva;
-	}
-
 }

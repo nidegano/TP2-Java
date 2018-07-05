@@ -1,7 +1,6 @@
 package efectos;
 
 import cartas.Carta;
-import excepciones.AtaqueIntervenidoException;
 
 public class EfectoInsectoComeHombres extends EfectoDeVolteo {
 

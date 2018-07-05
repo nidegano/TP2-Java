@@ -17,8 +17,8 @@ public class VistaCarta extends Button {
 		this.carta = new CartaNula();
 		this.vista = vista;
 		
-		this.setMaxSize(100, 25);
-		this.setMinSize(100, 25);
+		this.setMaxSize(150, 25);
+		this.setMinSize(150, 25);
 		this.setVisible(true);
 		this.setDisable(true);
 		
@@ -27,12 +27,13 @@ public class VistaCarta extends Button {
 		});
 	}
 	
-	public void asignarCarta(Carta carta) {//no usar este metodo para vaciar
+	public void asignarCarta(Carta carta) {
 		this.carta = carta;
 		this.setText(this.carta.obtenerNombre());
 	}
 	
 	public void vaciar() {
+		this.asignarCarta(new CartaNula());
 	}
 
 	public void agregarAVistaCampoJugadores() {
@@ -41,9 +42,9 @@ public class VistaCarta extends Button {
 		VistaCarta lugar = vistaCampoJugadores.obtenerUnLugarVacio(this.carta); 
 		//dependiendo del tipo de la carta busca en la zona correcta
 		
-		lugar.reemplazarPor(this);
+		lugar.reemplazarPor(this); //tambien se asigna la carta a la vista
 		this.carta.asignarVistaCarta(lugar);
-		//la vista en la que estamos (la que no es lugar) al finalizar el metodo queda desreferenciada de programa
+		//la vista en la que estamos (la que no es lugar) al finalizar el metodo queda desreferenciada del programa
 	}
 	
 	public void agregarALaZonaDeLaManoDelJugadorCorrespondiente() {
@@ -62,13 +63,19 @@ public class VistaCarta extends Button {
 	}
 
 	public void reemplazarPor(VistaCarta vistaCarta) {
-		this.carta = vistaCarta.carta;
-		this.setText(vistaCarta.getText());
+		this.asignarCarta(vistaCarta.carta); //la carta que almacena es lo que determina como es la VistaCarta
 	}
 
-	public void liberarPorMuerteDeCarta() {
-		this.vaciar();
+	public void desvincular() {
+		this.desvincularCartaDeEstaVistaCarta();
 		this.vista.liberarSeleccion();
+	}
+
+	private void desvincularCartaDeEstaVistaCarta() {
+		VistaCarta nuevaVistaCartaParaLaCarta = new VistaCarta(this.vista); //creo una nueva VistaCarta
+		nuevaVistaCartaParaLaCarta.asignarCarta(this.carta); //le asigno la carta
+		this.carta.asignarVistaCarta(nuevaVistaCartaParaLaCarta); //a la carta le asigno la nueva VistaCarta
+		this.vaciar(); // a la anterior VistaCarta la desvinculo de la carta pero no de la Vista
 	}
 
 	public void deshabilitar() {

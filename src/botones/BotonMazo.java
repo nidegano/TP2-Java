@@ -12,6 +12,7 @@ public class BotonMazo extends Button {
 		
 		this.setOnAction(value -> {
 			juego.jugadorDeTurno().tomarCartaDelMazo();
+			this.setDisable(true);
 		});
 	}
 }

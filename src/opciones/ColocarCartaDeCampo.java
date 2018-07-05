@@ -17,7 +17,7 @@ public class ColocarCartaDeCampo extends Opcion {
 	}
 
 	public void aplicarComando(CartaDeCampo cartaSeleccionada) {
-		//no chequeo si se puede porque si no se puede se eleva una excepcion
+		cartaSeleccionada.desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba();
 		cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
 		cartaSeleccionada.colocarCartaDeCampo();
 	}

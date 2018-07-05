@@ -11,7 +11,7 @@ public abstract class Opcion extends Button {
 		super("-");
 		this.vista = vista;
 		
-		this.setMaxSize(200, 200);
+		this.setMaxSize(400, 200);
 		this.setVisible(false);
 	}
 }
