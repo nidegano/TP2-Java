@@ -5,6 +5,7 @@ import vista.Vista;
 
 public class BotonJugadorA extends Button {
 
+	@SuppressWarnings("unused")
 	private Vista vista;
 
 	public BotonJugadorA(Vista vista) {
