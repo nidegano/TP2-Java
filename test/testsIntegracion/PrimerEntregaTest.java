@@ -7,69 +7,77 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import cartas.EspadachinSilencioso;
-import cartas.AgujeroOscuro;
-import cartas.AlphaTheMagnetWarrior;
-import cartas.CabezaExodia;
-import cartas.CartaMonstruo;
-import cartas.DragonArmadoOscuro;
-import cartas.DragonBlancoDeOjosAzules;
-import cartas.InsectoComeHombres;
-import excepciones.SinVidaException;
-import juego.Campo;
-import juego.Jugador;
-import juego.JugadorA;
-import juego.JugadorB;
-import juego.Mazo;
+import cartas.*;
+import excepciones.*;
+import juego.*;
+import vista.Vista;
 
 public class PrimerEntregaTest {
 
 	@Test
-	public void testColocarCartaMonstruoEnModoAtaque() {
+	public void testColocarCartaMonstruoEnModoAtaque() throws Exception {
 		Mazo mazo = new Mazo();
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		mazo.agregar(insectoComeHombres);
 		Campo campo = new Campo(mazo);
-		Jugador jugador = new JugadorA(campo);
-		insectoComeHombres.asignarDuenio(jugador);
-
-		jugador.tomarCartaDelMazo();
+		JugadorA jugadorA = new JugadorA(campo);
+		insectoComeHombres.asignarDuenio(jugadorA);
+		
+		try {
+			jugadorA.tomarCartaDelMazo();
+		} catch (NullPointerException e) {
+		}
 		insectoComeHombres.invocarEnModoAtaque();
 
 		assertEquals(450, insectoComeHombres.puntosAUtilizarSegunEstado());
 	}
 
 	@Test
-	public void testColocarCartaMonstruoEnModoDefensa() {
+	public void testColocarCartaMonstruoEnModoDefensa() throws CapacidadMaximaException {
 		Mazo mazo = new Mazo();
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		mazo.agregar(insectoComeHombres);
 		Campo campo = new Campo(mazo);
-		Jugador jugador = new JugadorA(campo);
-		insectoComeHombres.asignarDuenio(jugador);
+		JugadorA jugadorA = new JugadorA(campo);
+		insectoComeHombres.asignarDuenio(jugadorA);
 
-		jugador.tomarCartaDelMazo();
+		try {
+			jugadorA.tomarCartaDelMazo();
+		} catch (NullPointerException e) {
+		}
 		insectoComeHombres.invocarEnModoDefensa();
 
 		assertEquals(600, insectoComeHombres.puntosAUtilizarSegunEstado());
 	}
 
 	@Test
-	public void testMuereMonstruoYApareceEnCementerio() {
-		Mazo mazo = new Mazo();
+	public void testMuereMonstruoYApareceEnCementerio() throws Exception {
+		Mazo mazoA = new Mazo();
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
-		mazo.agregar(insectoComeHombres);
-		Campo campo = new Campo(mazo);
-		Jugador jugador = new JugadorA(campo);
-		insectoComeHombres.asignarDuenio(jugador);
+		mazoA.agregar(insectoComeHombres);
+		Campo campoA = new Campo(mazoA);
+		JugadorA jugadorA = new JugadorA(campoA);
+		insectoComeHombres.asignarDuenio(jugadorA);
+		
+		Mazo mazoB = new Mazo();
+		Campo campoB = new Campo(mazoB);
+		JugadorB jugadorB = new JugadorB(campoB);
 
+		Juego juego = new Juego(jugadorA, jugadorB);
+		Vista vista = null;
+		try {
+			vista = new Vista(jugadorA, jugadorB, juego);
+		} catch (NullPointerException | ExceptionInInitializerError e) {
+		}
+		juego.asignarVista(vista);
+		
 		insectoComeHombres.matar();
 
-		assertTrue(campo.estaLaCartaEnCementerio(insectoComeHombres));
+		assertTrue(campoA.estaLaCartaEnCementerio(insectoComeHombres));
 	}
 
 	@Test
-	public void testInvocarUnaCartaMonstruoDe5EstrellasSacrificaAUnMonstruoDelJugadorQueLoInvoca() {
+	public void testInvocarUnaCartaMonstruoDe5EstrellasSacrificaAUnMonstruoDelJugadorQueLoInvoca() throws CapacidadMaximaException {
 		Mazo mazo = new Mazo();
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		mazo.agregar(insectoComeHombres);
@@ -94,7 +102,7 @@ public class PrimerEntregaTest {
 	}
 
 	@Test
-	public void testInvocarUnaCartaMonstruoDe7EstrellasSacrificaADosMonstruosDelJugadorQueLoInvoca() {
+	public void testInvocarUnaCartaMonstruoDe7EstrellasSacrificaADosMonstruosDelJugadorQueLoInvoca() throws CapacidadMaximaException {
 		Mazo mazo = new Mazo();
 
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
@@ -130,7 +138,7 @@ public class PrimerEntregaTest {
 	}
 
 	@Test
-	public void testInvocarUnaCartaMonstruoDe8EstrellasSacrificaADosMonstruosDelJugadorQueLoInvoca() {
+	public void testInvocarUnaCartaMonstruoDe8EstrellasSacrificaADosMonstruosDelJugadorQueLoInvoca() throws CapacidadMaximaException {
 		Mazo mazo = new Mazo();
 
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
@@ -166,7 +174,7 @@ public class PrimerEntregaTest {
 	}
 
 	@Test
-	public void testJugadorAAtacaConUnMonstruoMasFuerteQueElDeBAmbosEnModoAtaqueSeDestruyeElDeBYSeLastimaB() {
+	public void testJugadorAAtacaConUnMonstruoMasFuerteQueElDeBAmbosEnModoAtaqueSeDestruyeElDeBYSeLastimaB() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -203,7 +211,7 @@ public class PrimerEntregaTest {
 	}
 
 	@Test
-	public void testJugadorAAtacaConUnMonstruoMasDebilQueElDeBAmbosEnModoAtaqueSeDestruyeSuPropioMonstruoYSeLastimaA() {
+	public void testJugadorAAtacaConUnMonstruoMasDebilQueElDeBAmbosEnModoAtaqueSeDestruyeSuPropioMonstruoYSeLastimaA() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -240,7 +248,7 @@ public class PrimerEntregaTest {
 	}
 
 	@Test
-	public void testJugadorAAtacaConUnMonstruoIgualDeFuerteQueElDeBEnModoAtaqueSeDestruyenAmbosMonstruosYNadieSeLastima() {
+	public void testJugadorAAtacaConUnMonstruoIgualDeFuerteQueElDeBEnModoAtaqueSeDestruyenAmbosMonstruosYNadieSeLastima() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -278,7 +286,7 @@ public class PrimerEntregaTest {
 	}
 
 	@Test
-	public void testJugadorAAtacaConUnMonstruoMasDebilAlDeBEnModoDefensaSeDestruyeElMonstruoDeAYNadieSeLastima() {
+	public void testJugadorAAtacaConUnMonstruoMasDebilAlDeBEnModoDefensaSeDestruyeElMonstruoDeAYNadieSeLastima() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -315,7 +323,7 @@ public class PrimerEntregaTest {
 	}
 
 	@Test
-	public void testJugadorAAtacaConUnMonstruoMasFuerteAlDeBEnModoDefensaSeDestruyeElMonstruoDeBYNadieSeLastima() {
+	public void testJugadorAAtacaConUnMonstruoMasFuerteAlDeBEnModoDefensaSeDestruyeElMonstruoDeBYNadieSeLastima() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -352,7 +360,7 @@ public class PrimerEntregaTest {
 	}
 
 	@Test
-	public void testJugadorADestruyeTodosLosMonstruosConAgujeroOscuro() {
+	public void testJugadorADestruyeTodosLosMonstruosConAgujeroOscuro() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -390,8 +398,8 @@ public class PrimerEntregaTest {
 		assertTrue(campoB.estaLaCartaEnCementerio(exodiaCabeza));
 	}
 
-	@Test(expected = SinVidaException.class)
-	public void testJugadorSeQuedaSinVida() {
+	@Test
+	public void testJugadorSeQuedaSinVida() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 

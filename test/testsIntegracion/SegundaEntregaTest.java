@@ -9,36 +9,14 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import cartas.AlphaTheMagnetWarrior;
-import cartas.AncientBrain;
-import cartas.BrazoDerechoExodia;
-import cartas.BrazoIzquierdoExodia;
-import cartas.CilindroMagico;
-import cartas.DragonBlancoDeOjosAzules;
-import cartas.DragonDefinitivo;
-import cartas.CabezaExodia;
-import cartas.CartaMonstruo;
-import cartas.Fisura;
-import cartas.InsectoComeHombres;
-import cartas.Jinzo;
-import cartas.OllaDeLaCodicia;
-import cartas.PiernaDerechaExodia;
-import cartas.PiernaIzquierdaExodia;
-import cartas.Reinforcements;
-import cartas.Sogen;
-import cartas.Wasteland;
-import excepciones.MazoSinCartasException;
-import excepciones.TengoTodasLasPartesDeExodiaException;
-import juego.Campo;
-import juego.Jugador;
-import juego.JugadorA;
-import juego.JugadorB;
-import juego.Mazo;
+import cartas.*;
+import excepciones.*;
+import juego.*;
 
 public class SegundaEntregaTest {
 
 	@Test
-	public void testPongoUnMonstruoEnCadaLadoActivoUnaCartaWastelandYAumenta200DeAtaqueMiMonstruoY300DeDefensaElOtro() {
+	public void testPongoUnMonstruoEnCadaLadoActivoUnaCartaWastelandYAumenta200DeAtaqueMiMonstruoY300DeDefensaElOtro() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -82,7 +60,7 @@ public class SegundaEntregaTest {
 	}
 
 	@Test
-	public void testPongoUnMonstruoEnCadaLadoActivoUnaCartaSogenYAumenta200DeAtaqueMiMonstruoY500DeDefensaElOtro() {
+	public void testPongoUnMonstruoEnCadaLadoActivoUnaCartaSogenYAumenta200DeAtaqueMiMonstruoY500DeDefensaElOtro() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -125,13 +103,12 @@ public class SegundaEntregaTest {
 	}
 
 	@Test
-	public void testActivoUnaCartaOllaDeLaCodiciaYSeTomanDosCartasDelMazo() {
+	public void testActivoUnaCartaOllaDeLaCodiciaYSeTomanDosCartasDelMazo() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 
 		OllaDeLaCodicia ollaDeLaCodicia = new OllaDeLaCodicia();
 
 		mazoA.agregar(ollaDeLaCodicia);
-
 		mazoA.agregar(new Jinzo());
 		mazoA.agregar(new Jinzo());
 
@@ -152,7 +129,7 @@ public class SegundaEntregaTest {
 	}
 
 	@Test
-	public void testPongoDosMonstruosEnemigosActivoUnaCartaFisuraYMuereElMonstruoDeMenorAtaque() {
+	public void testPongoDosMonstruosEnemigosActivoUnaCartaFisuraYMuereElMonstruoDeMenorAtaque() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -192,7 +169,7 @@ public class SegundaEntregaTest {
 	}
 
 	@Test
-	public void testPongoUnMonstruoEnCadaLadoSiendoElPropioUnJinzoYVeoQueSePuedeAtacarDirectamenteAlJugadorContrario() {
+	public void testPongoUnMonstruoEnCadaLadoSiendoElPropioUnJinzoYVeoQueSePuedeAtacarDirectamenteAlJugadorContrario() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -228,7 +205,7 @@ public class SegundaEntregaTest {
 	}
 
 	@Test
-	public void testPongo3DragonesBlancosDeOjosAzulesPongoUnDragonDefinitivoYSeSacrificanLosTresDragonesBlancosDeOjosAzules() {
+	public void testPongo3DragonesBlancosDeOjosAzulesPongoUnDragonDefinitivoYSeSacrificanLosTresDragonesBlancosDeOjosAzules() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -281,7 +258,7 @@ public class SegundaEntregaTest {
 	}
 
 	@Test
-	public void testPongoUnMonstruoEnCadaLadoSiendoElPropioUnInsectoComeHombresBocaAbajoYAlSerAtacadoEsteDestruyeAlAtacanteSolamente() {
+	public void testPongoUnMonstruoEnCadaLadoSiendoElPropioUnInsectoComeHombresBocaAbajoYAlSerAtacadoEsteDestruyeAlAtacanteSolamente() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -321,7 +298,7 @@ public class SegundaEntregaTest {
 	}
 
 	@Test
-	public void testPongoUnMonstruoEnemigoYUnCilindroMagicoDeMiLadoYCuandoElMonstruoEnemigoMeAtacaSeNiegaElAtaqueYloRecibeElJugadorEnemigo() {
+	public void testPongoUnMonstruoEnemigoYUnCilindroMagicoDeMiLadoYCuandoElMonstruoEnemigoMeAtacaSeNiegaElAtaqueYloRecibeElJugadorEnemigo() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -359,7 +336,7 @@ public class SegundaEntregaTest {
 	}
 
 	@Test
-	public void testPongoUnMonstruoEnAmbosLadosYUnReinforcementsDeMiLadoYCuandoElMonstruoEnemigoMeAtacaMiMontruoAumentaElAtaqueEn500() {
+	public void testPongoUnMonstruoEnAmbosLadosYUnReinforcementsDeMiLadoYCuandoElMonstruoEnemigoMeAtacaMiMontruoAumentaElAtaqueEn500() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Mazo mazoB = new Mazo();
 
@@ -416,7 +393,7 @@ public class SegundaEntregaTest {
 	}
 
 	@Test(expected = TengoTodasLasPartesDeExodiaException.class)
-	public void testElJugadorTieneLasCincoPartesDelExodiaYElOtroPierde() {
+	public void testElJugadorTieneLasCincoPartesDelExodiaYElOtroPierde() throws CapacidadMaximaException {
 		Mazo mazoA = new Mazo();
 		Campo campoA = new Campo(mazoA);
 		Jugador jugadorA = new JugadorA(campoA);

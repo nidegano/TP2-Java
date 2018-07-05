@@ -13,40 +13,39 @@ import excepciones.TengoTodasLasPartesDeExodiaException;
 import juego.RecolectorDePartesDeExodia;
 
 public class TestRecolectorDePartesDeExodia {
-	
+
 	@Test(expected = TengoTodasLasPartesDeExodiaException.class)
-	public void testRecolectoTodasLasPartesDeExodiaDevuelveLaExceptionTengoTodasLasPartesDeExodia() {
+	public void testRecolectoTodasLasPartesDeExodiaDevuelveLaExceptionTengoTodasLasPartesDeExodia()
+			throws TengoTodasLasPartesDeExodiaException {
 		RecolectorDePartesDeExodia recolector = new RecolectorDePartesDeExodia();
-		
+
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new BrazoDerechoExodia());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new BrazoIzquierdoExodia());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new PiernaDerechaExodia());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new PiernaIzquierdaExodia());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new CabezaExodia());
 	}
-	
+
 	@Test
-	public void testSiNoSonLasPartesDeExodiaNoLanzaNingunaExepcion() {
-        RecolectorDePartesDeExodia recolector = new RecolectorDePartesDeExodia();
-		
+	public void testSiNoSonLasPartesDeExodiaNoLanzaNingunaExepcion() throws TengoTodasLasPartesDeExodiaException {
+		RecolectorDePartesDeExodia recolector = new RecolectorDePartesDeExodia();
+
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new InsectoComeHombres());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new OllaDeLaCodicia());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new PiernaDerechaExodia());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new PiernaIzquierdaExodia());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new CabezaExodia());
 	}
-	
+
 	@Test
-	public void testSiSonPartesDeExodiaRepetidasNoLanzaNingunaExepcion() {
-        RecolectorDePartesDeExodia recolector = new RecolectorDePartesDeExodia();
-		
+	public void testSiSonPartesDeExodiaRepetidasNoLanzaNingunaExepcion() throws TengoTodasLasPartesDeExodiaException {
+		RecolectorDePartesDeExodia recolector = new RecolectorDePartesDeExodia();
+
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new PiernaIzquierdaExodia());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new PiernaDerechaExodia());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new PiernaDerechaExodia());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new PiernaIzquierdaExodia());
 		recolector.siEsUnaParteDelExodiaQueNoTeniaRecolectar(new CabezaExodia());
 	}
-	
-	
 
 }
