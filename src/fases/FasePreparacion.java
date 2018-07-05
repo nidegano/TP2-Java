@@ -37,6 +37,7 @@ public class FasePreparacion implements Fase {
 
 	@Override
 	public void finalizar() {
+		
 		this.termino = true;
 	}
 	
@@ -45,6 +46,9 @@ public class FasePreparacion implements Fase {
 		if (this.yaSeInvocoUnMonstruo) {
 			throw new SoloSePuedeInvocarUnSoloMonstruoEnEstaFase();
 		}
+	}
+	
+	public void avisarAFaseQueSeInvocoMonstruo() {
 		this.yaSeInvocoUnMonstruo = true;
 	}
 

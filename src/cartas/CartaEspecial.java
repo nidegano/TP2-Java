@@ -50,7 +50,7 @@ public abstract class CartaEspecial extends Carta {
 	}
 
 	public void colocarBocaArriba() {
-		this.estado = new ModoBocaArriba();
+		this.estado = new ModoBocaArriba();		
 		this.activar();
 	}
 

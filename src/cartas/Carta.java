@@ -47,6 +47,7 @@ public abstract class Carta {
 
 	public void asignarDuenio(Jugador jugador) {
 		this.jugadorDuenio = jugador;
+		this.efecto.aisgnarJugadoresEfecto(jugador, jugador.oponente());
 	}
 
 	public Jugador obtenerDuenio() {

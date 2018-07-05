@@ -62,9 +62,13 @@ public abstract class CartaMonstruo extends Carta {
 		this.activarEfectoSiCorresponde();
 	}
 	
-	public void chequearSiSePuedeInvocarMonstruo() throws NoSePuedeInvocarMonstruosEnEstaFase, SoloSePuedeInvocarUnSoloMonstruoEnEstaFase {
+	public void chequearSiSePuedeInvocarMonstruo() throws NoSePuedeInvocarMonstruosEnEstaFase, SoloSePuedeInvocarUnSoloMonstruoEnEstaFase,
+	CapacidadMaximaException{
 		this.jugadorDuenio.obtenerFase().chequearSiSePuedeInvocaMonstruo(); 
 		//tira SoloSePuedeInvocarUnSoloMonstruoEnEstaFase si ya se invoco uno en la fase
+		if (this.jugadorDuenio.campo().obtenerZonaMonstruos().estaLleno()) {
+			new CapacidadMaximaException();
+		}
 	}
 
 	public void invocarEnModoDefensa() {

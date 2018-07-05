@@ -12,7 +12,6 @@ import excepciones.TengoTodasLasPartesDeExodiaException;
 import fases.Fase;
 import fases.FaseInicioDeJuego;
 import fases.FaseJuegoTerminado;
-import fases.FasePreparacion;
 import vista.Grilla;
 
 public abstract class Jugador {
@@ -23,19 +22,15 @@ public abstract class Jugador {
 	protected Jugador oponente;
 	protected Fase fase = new FaseInicioDeJuego();
 	protected Juego juego;
-	protected boolean sePuedeSeguirInvocandoMonstruos;
 	protected String nombre;
 
 	public Jugador(Campo campo) {
 		this.vida = 8000;
 		this.mano = new Mano();
 		this.campo = campo;
-		this.sePuedeSeguirInvocandoMonstruos = true;
-
-		this.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
 	}
 
-	private void asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo() {
+	public void asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo() {
 		this.campo.mazo().asignarComoDuenioDeTodasLasCartasA(this);
 	}
 
@@ -163,20 +158,6 @@ public abstract class Jugador {
 			this.fase = this.fase.faseSiguiente();
 			this.juego.informarQueElJugadorDeTurnoTerminoSuTurno();
 		}
-	}
-
-	public boolean sePuedenSeguirInvocandoMonstruos() {
-		return this.sePuedeSeguirInvocandoMonstruos;
-	}
-
-	public void avisarALaFaseQueSeInvocaUnMonstruo() {
-		if (this.fase.getClass().equals(FasePreparacion.class)) {
-			this.sePuedeSeguirInvocandoMonstruos = false;
-		}
-	}
-
-	public void reiniciarLaPosibilidadDeInvocarMonstruos() {
-		this.sePuedeSeguirInvocandoMonstruos = true;
 	}
 
 	public abstract VistaCarta obtenerLugarParaVistaCartaMonstruoDependiendoDelJugadorATravezDeGrilla(

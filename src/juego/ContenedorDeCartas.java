@@ -64,4 +64,8 @@ public class ContenedorDeCartas implements Iterable<Carta> {
 		return cartas.iterator();
 	}
 
+	public boolean estaLleno() {
+		return this.capacidad == this.cantidad();
+	}
+
 }

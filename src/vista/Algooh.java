@@ -31,6 +31,10 @@ public class Algooh extends Application {
 		Vista vista = new Vista(jugadorA,jugadorB,juego);
 		
 		juego.asignarVista(vista);
+		
+		jugadorA.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		jugadorB.asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo();
+		
 		mazoJugadorA.asignarVistaCartaACartas(vista);
 		mazoJugadorB.asignarVistaCartaACartas(vista);
 

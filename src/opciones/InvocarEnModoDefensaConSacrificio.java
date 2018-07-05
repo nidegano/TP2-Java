@@ -6,8 +6,10 @@ import cartas.Carta;
 import cartas.CartaMonstruo;
 import cartas.CartaRequiereSacrificios;
 import excepciones.CantidadInadecuadaDeSacrificiosException;
+import excepciones.CapacidadMaximaException;
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import excepciones.SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
+import fases.FasePreparacion;
 import vista.Vista;
 
 public class InvocarEnModoDefensaConSacrificio extends InvocarConSacrificio {
@@ -27,7 +29,8 @@ public class InvocarEnModoDefensaConSacrificio extends InvocarConSacrificio {
 		try {
 			cartaSeleccionada.chequearSiSePuedeInvocarMonstruo();
 			this.vista.cambiarAModoSeleccionParaSacrificio(this);
-		} catch (NoSePuedeInvocarMonstruosEnEstaFase | SoloSePuedeInvocarUnSoloMonstruoEnEstaFase e) {
+		} catch (NoSePuedeInvocarMonstruosEnEstaFase | SoloSePuedeInvocarUnSoloMonstruoEnEstaFase 
+				| CapacidadMaximaException e) {
 			e.printStackTrace();
 		}
 	}
@@ -37,6 +40,7 @@ public class InvocarEnModoDefensaConSacrificio extends InvocarConSacrificio {
 		
 		try {
 			((CartaRequiereSacrificios) cartaSeleccionada).chequearQueLaCantidadDeSacrificiosSeaCorrecta(sacrificios);
+			((FasePreparacion) cartaSeleccionada.obtenerDuenio().obtenerFase()).avisarAFaseQueSeInvocoMonstruo();
 			cartaSeleccionada.desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba();
 			cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
 			((CartaRequiereSacrificios) cartaSeleccionada).invocarEnModoDefensa(sacrificios);
