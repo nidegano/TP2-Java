@@ -14,7 +14,7 @@ import fases.FaseInicioDeJuego;
 import fases.FaseJuegoTerminado;
 import vista.Grilla;
 
-public abstract class Jugador {
+public class Jugador {
 
 	protected int vida;
 	protected Mano mano;
@@ -24,10 +24,11 @@ public abstract class Jugador {
 	protected Juego juego;
 	protected String nombre;
 
-	public Jugador(Campo campo) {
+	public Jugador(String nombre , Campo campo) {
 		this.vida = 8000;
 		this.mano = new Mano();
 		this.campo = campo;
+		this.nombre = nombre;
 	}
 
 	public void asignarAEsteJugadorComoDuenioDeTodasLasCartasDeSuMazo() {
@@ -160,14 +161,26 @@ public abstract class Jugador {
 		}
 	}
 
-	public abstract VistaCarta obtenerLugarParaVistaCartaMonstruoDependiendoDelJugadorATravezDeGrilla(
-			Grilla grilla);
+	public VistaCarta obtenerLugarParaVistaCartaMonstruoDependiendoDelJugadorATravezDeGrilla(Grilla grilla) {
+		if( this.nombre == "JUGADOR A" ) {
+			return grilla.obtenerUnLugarVacioParaCartaMonstruoDeJugadorA();
+		}	
+		return grilla.obtenerUnLugarVacioParaCartaMonstruoDeJugadorB();
+	}
 
-	public abstract VistaCarta obtenerLugarParaVistaCartaEspecialDependiendoDelJugadorATravezDeGrilla(
-			Grilla grilla);
+	public VistaCarta obtenerLugarParaVistaCartaEspecialDependiendoDelJugadorATravezDeGrilla(Grilla grilla) {
+		if( this.nombre == "JUGADOR A" ) {
+			return grilla.obtenerUnLugarVacioParaCartaEspecialDeJugadorA();
+		}
+		return grilla.obtenerUnLugarVacioParaCartaEspecialDeJugadorB();
+	}
 
-	public abstract VistaCarta obtenerLugarParaVistaCartaDeCampoDependiendoDelJugadorATravezDeGrilla(
-			Grilla grilla);
+	public VistaCarta obtenerLugarParaVistaCartaDeCampoDependiendoDelJugadorATravezDeGrilla(Grilla grilla) {
+		if( this.nombre == "JUGADOR A" ) {
+			return grilla.obtenerUnLugarVacioParaCartaDeCampoDeJugadorA();
+		}
+		return grilla.obtenerUnLugarVacioParaCartaDeCampoDeJugadorB();
+	}
 
 	public void asignarATodasLasCartasMagicasUnEstadoDeColocablesBocaArriba() {
 		this.campo.asignarATodasLasCartasMagicasUnEstadoDeColocablesBocaArriba();
@@ -177,13 +190,34 @@ public abstract class Jugador {
 		this.campo.asignarATodasLasCartasMagicasUnEstadoDeDeBocaAbajo();
 	}
 
-	public abstract void determinarQueHabilitarAlMomentoDeElegirMonstruosSegunQueJugadorEsATravezDeGrilla(Grilla grilla);
+	public void determinarQueHabilitarAlMomentoDeElegirMonstruosSegunQueJugadorEsATravezDeGrilla(Grilla grilla) {
+		if( this.nombre == "JUGADOR A" ) {
+			grilla.habilitarDeFormaAdecuadaLasVistasDeLaZonaDeMonstruosDelJugadorB();
+		}
+		grilla.habilitarDeFormaAdecuadaLasVistasDeLaZonaDeMonstruosDelJugadorA();
+	}
 
-	public abstract void determinarComoCambiarElLabelDelTurnoDependiendoDeQueJugadorEsElTurnoATravezDeGrilla(Grilla grilla);
+	public void determinarComoCambiarElLabelDelTurnoDependiendoDeQueJugadorEsElTurnoATravezDeGrilla(Grilla grilla) {
+		if( this.nombre == "JUGADOR A" ) {
+			grilla.cambiarLabelDeTurnoActualPorJugadorA();
+		}
+		grilla.cambiarLabelDeTurnoActualPorJugadorB();
+	}
 
-	public abstract ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
+	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase() {
+		if( this.nombre == "JUGADOR A" ) {
+			return this.fase.determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno();
+		}
+		return this.fase.determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno();
+	}
 
-	public abstract VistaCarta obtenerLugarVacioDeLaZonaDeManoATravezDeLaGrilla(Grilla grilla);
+	public VistaCarta obtenerLugarVacioDeLaZonaDeManoATravezDeLaGrilla(Grilla grilla) {
+		if( this.nombre == "JUGADOR A" ) {
+			return grilla.obtenerUnLugarVacioDeZonaManoJugadorA();
+			//se chequea antes de pedir lugar si se puede o no
+		}
+		return grilla.obtenerUnLugarVacioDeZonaManoJugadorB();
+	}
 
 	public String nombre() {
 		return this.nombre; 

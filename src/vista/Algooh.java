@@ -23,8 +23,8 @@ public class Algooh extends Application {
 		Campo campoJugadorA = new Campo(mazoJugadorA);
 		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoJugadorA);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoJugadorB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		

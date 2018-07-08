@@ -7,21 +7,19 @@ import cartas.CartaEspecial;
 import cartas.CartaMonstruo;
 import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
 import juego.Jugador;
-import juego.JugadorA;
-import juego.JugadorB;
 
 public class VistaCampoJugadores {
 	
 	private Grilla grilla;
 	
-	private JugadorA jugadorA;
-	private JugadorB jugadorB;
+	private Jugador jugadorA;
+	private Jugador jugadorB;
 	private Vista vista;
 
-	public VistaCampoJugadores(JugadorA jugadorA,JugadorB jugadorB,Grilla grilla,Vista vista) {
+	public VistaCampoJugadores(Jugador jugadorA2,Jugador jugadorB2,Grilla grilla,Vista vista) {
 		this.grilla = grilla;
-		this.jugadorA = jugadorA;
-		this.jugadorB = jugadorB;
+		this.jugadorA = jugadorA2;
+		this.jugadorB = jugadorB2;
 		this.vista = vista;
 	}
 

@@ -21,7 +21,7 @@ public class PrimerEntregaTest {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		mazo.agregar(insectoComeHombres);
 		Campo campo = new Campo(mazo);
-		JugadorA jugadorA = new JugadorA(campo);
+		Jugador jugadorA = new Jugador("JUGADOR A",campo);
 		insectoComeHombres.asignarDuenio(jugadorA);
 		
 		try {
@@ -39,7 +39,7 @@ public class PrimerEntregaTest {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		mazo.agregar(insectoComeHombres);
 		Campo campo = new Campo(mazo);
-		JugadorA jugadorA = new JugadorA(campo);
+		Jugador jugadorA = new Jugador("JUGADOR A",campo);
 		insectoComeHombres.asignarDuenio(jugadorA);
 
 		try {
@@ -57,12 +57,12 @@ public class PrimerEntregaTest {
 		InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
 		mazoA.agregar(insectoComeHombres);
 		Campo campoA = new Campo(mazoA);
-		JugadorA jugadorA = new JugadorA(campoA);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoA);
 		insectoComeHombres.asignarDuenio(jugadorA);
 		
 		Mazo mazoB = new Mazo();
 		Campo campoB = new Campo(mazoB);
-		JugadorB jugadorB = new JugadorB(campoB);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		Vista vista = null;
@@ -93,8 +93,8 @@ public class PrimerEntregaTest {
 		Campo campoJugadorA = new Campo(mazoJugadorA);
 		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoJugadorA);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoJugadorB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
@@ -140,8 +140,8 @@ public class PrimerEntregaTest {
 		Campo campoJugadorA = new Campo(mazoJugadorA);
 		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoJugadorA);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoJugadorB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
@@ -192,8 +192,8 @@ public class PrimerEntregaTest {
 		Campo campoJugadorA = new Campo(mazoJugadorA);
 		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoJugadorA);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoJugadorB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
@@ -243,8 +243,8 @@ public class PrimerEntregaTest {
 		Campo campoJugadorA = new Campo(mazoJugadorA);
 		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoJugadorA);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoJugadorB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
@@ -289,8 +289,8 @@ public class PrimerEntregaTest {
 		Campo campoJugadorA = new Campo(mazoJugadorA);
 		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoJugadorA);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoJugadorB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
@@ -334,8 +334,8 @@ public class PrimerEntregaTest {
 		Campo campoJugadorA = new Campo(mazoJugadorA);
 		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoJugadorA);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoJugadorB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
@@ -380,8 +380,8 @@ public class PrimerEntregaTest {
 		Campo campoJugadorA = new Campo(mazoJugadorA);
 		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoJugadorA);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoJugadorB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
@@ -425,8 +425,8 @@ public class PrimerEntregaTest {
 		Campo campoJugadorA = new Campo(mazoJugadorA);
 		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoJugadorA);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoJugadorB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
@@ -472,8 +472,8 @@ public class PrimerEntregaTest {
 		Campo campoJugadorA = new Campo(mazoJugadorA);
 		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoJugadorA);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoJugadorB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
@@ -514,8 +514,8 @@ public class PrimerEntregaTest {
 		Campo campoJugadorA = new Campo(mazoJugadorA);
 		Campo campoJugadorB = new Campo(mazoJugadorB);
 
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
-		JugadorB jugadorB = new JugadorB(campoJugadorB);
+		Jugador jugadorA = new Jugador("JUGADOR A",campoJugadorA);
+		Jugador jugadorB = new Jugador("JUGADOR B",campoJugadorB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		

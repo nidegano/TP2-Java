@@ -14,14 +14,13 @@ import excepciones.CapacidadMaximaException;
 import cartas.CabezaExodia;
 import juego.Campo;
 import juego.Jugador;
-import juego.JugadorA;
 import juego.Mazo;
 
 public class JugadorTest {
 
 	@Test
 	public void testDebilitar100PuntosDejaAlJugadorCon7900DeVida() {
-		Jugador jugador = new JugadorA(new Campo(new Mazo()));
+		Jugador jugador = new Jugador("JUGADOR A",new Campo(new Mazo()));
 		int vidaAlPrincipio = jugador.vida();
 		jugador.debilitar(100);
 		int vidaAlFinal = vidaAlPrincipio - 100;
@@ -30,7 +29,7 @@ public class JugadorTest {
 
 	@Test
 	public void testDebilitar0PuntosDejaAlJugadorConLaMismaVidaDelPrincipio() {
-		Jugador jugador = new JugadorA(new Campo(new Mazo()));
+		Jugador jugador = new Jugador("JUGADOR A",new Campo(new Mazo()));
 		int vidaAlPrincipio = jugador.vida();
 		jugador.debilitar(0);
 		assertEquals(vidaAlPrincipio, jugador.vida());
@@ -42,7 +41,7 @@ public class JugadorTest {
 		Carta carta = new Jinzo();
 		mazo.agregar(carta);
 		Campo campo = new Campo(mazo);
-		Jugador jugador = new JugadorA(campo);
+		Jugador jugador = new Jugador("JUGADOR A",campo);
 		
 		try {
 			jugador.tomarCartaDelMazo();
@@ -58,7 +57,7 @@ public class JugadorTest {
 		CabezaExodia monstruo = new CabezaExodia();
 		mazo.agregar(monstruo);
 		Campo campo = new Campo(mazo);
-		Jugador jugador = new JugadorA(campo);
+		Jugador jugador = new Jugador("JUGADOR A",campo);
 		monstruo.asignarDuenio(jugador);
 
 		try {
@@ -76,15 +75,15 @@ public class JugadorTest {
 		AgujeroOscuro magica = new AgujeroOscuro();
 		mazoJugadorA.agregar(magica);
 		Campo campoJugadorA = new Campo(mazoJugadorA);
-		JugadorA jugadorA = new JugadorA(campoJugadorA);
+		Jugador jugador = new Jugador("JUGADOR A",campoJugadorA);
 		
 		try {
-			jugadorA.tomarCartaDelMazo();
+			jugador.tomarCartaDelMazo();
 			magica.colocarBocaAbajo();
 		} catch (NullPointerException | ExceptionInInitializerError e) {
 		}
 		
-		assertTrue(jugadorA.esDuenioDe(magica));
+		assertTrue(jugador.esDuenioDe(magica));
 	}
 
 	@Test
@@ -93,7 +92,7 @@ public class JugadorTest {
 		Carta carta = new Jinzo();
 		mazo.agregar(carta);
 		Campo campo = new Campo(mazo);
-		Jugador jugador = new JugadorA(campo);
+		Jugador jugador = new Jugador("JUGADOR A",campo);
 		assertFalse(jugador.esDuenioDe(carta));
 	}
 

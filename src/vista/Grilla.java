@@ -104,7 +104,7 @@ public class Grilla extends Application {
 	private Atacar opcionAtacar;
 	private Descartar opcionDescartar;
 
-	public Grilla(JugadorA jugadorA, JugadorB jugadorB, Juego juego,Vista vista) throws Exception {
+	public Grilla(Jugador jugadorA, Jugador jugadorB, Juego juego,Vista vista) throws Exception {
 
 		this.inicializarGridPane();
 		

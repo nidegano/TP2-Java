@@ -8,8 +8,6 @@ import cartas.CartaNula;
 import javafx.stage.Stage;
 import juego.Juego;
 import juego.Jugador;
-import juego.JugadorA;
-import juego.JugadorB;
 import modosDeVista.ModoNormal;
 import modosDeVista.ModoSeleccionParaAtacar;
 import modosDeVista.ModoSeleccionParaSacrificio;
@@ -32,7 +30,7 @@ public class Vista {
 	private Opcion opcionQuePidioElCambioDeModo;
 	private ArrayList<CartaMonstruo> seleccionesSecundarias;
 	
-	public Vista(JugadorA jugadorA, JugadorB jugadorB, Juego juego) throws Exception {
+	public Vista(Jugador jugadorA, Jugador jugadorB, Juego juego) throws Exception {
 		
 		this.juego = juego;
 		
