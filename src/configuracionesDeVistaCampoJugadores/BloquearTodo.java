@@ -9,4 +9,9 @@ public class BloquearTodo implements ConfiguracionDeLaVistaCampoJugadores {
 		grilla.deshabilitarTodosLosBotones();
 	}
 
+	@Override
+	public ConfiguracionDeLaVistaCampoJugadores obtenerSiguiente() {
+		return null;
+	}
+
 }

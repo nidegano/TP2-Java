@@ -9,4 +9,9 @@ public class ConfigurarBotonesFaseFinalTurnoJugadorA implements ConfiguracionDeL
 		grilla.configurarBotonesFaseFinalTurnoJugadorA();
 	}
 
+	@Override
+	public ConfiguracionDeLaVistaCampoJugadores obtenerSiguiente() {
+		return new ConfigurarBotonesFaseFinalTurnoJugadorB();
+	}
+
 }

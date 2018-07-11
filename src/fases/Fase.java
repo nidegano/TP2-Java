@@ -1,6 +1,5 @@
 package fases;
 
-import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
 import excepciones.CapacidadMaximaException;
 
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
@@ -25,8 +24,4 @@ public interface Fase {
 	public abstract void finalizar();
 
 	public abstract void chequearSiSePuedeInvocaMonstruo() throws NoSePuedeInvocarMonstruosEnEstaFase, SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
-
-	public abstract ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno();
-
-	public abstract ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno();
 }

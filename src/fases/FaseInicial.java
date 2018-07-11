@@ -1,8 +1,5 @@
 package fases;
 
-import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
-import configuracionesDeVistaCampoJugadores.ConfigurarBotonesFaseInicialTurnoJugadorA;
-import configuracionesDeVistaCampoJugadores.ConfigurarBotonesFaseInicialTurnoJugadorB;
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import excepciones.NoSePuedeTomarMasCartasDelMazoExceptionPorqueYaSeTomoUnaEnFaseInicial;
 import juego.Jugador;
@@ -49,16 +46,6 @@ public class FaseInicial implements Fase {
 	@Override
 	public void chequearSiSePuedeInvocaMonstruo() throws NoSePuedeInvocarMonstruosEnEstaFase {
 		throw new NoSePuedeInvocarMonstruosEnEstaFase();		
-	}
-
-	@Override
-	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
-		return new ConfigurarBotonesFaseInicialTurnoJugadorB();
-	}
-
-	@Override
-	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
-		return new ConfigurarBotonesFaseInicialTurnoJugadorA();
 	}
 
 }

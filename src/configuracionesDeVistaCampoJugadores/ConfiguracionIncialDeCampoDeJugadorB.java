@@ -2,11 +2,11 @@ package configuracionesDeVistaCampoJugadores;
 
 import vista.Grilla;
 
-public class ConfigurarBotonesFaseFinalTurnoJugadorB implements ConfiguracionDeLaVistaCampoJugadores {
+public class ConfiguracionIncialDeCampoDeJugadorB implements ConfiguracionDeLaVistaCampoJugadores{
 
 	@Override
 	public void configurar(Grilla grilla) {
-		grilla.configurarBotonesFaseFinalTurnoJugadorB();
+		//no hace nada con los botones, los deja en el estado en el que estaban
 	}
 
 	@Override

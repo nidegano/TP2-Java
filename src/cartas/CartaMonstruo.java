@@ -111,6 +111,7 @@ public abstract class CartaMonstruo extends Carta {
 
 	public void atacar(CartaMonstruo monstruoAtacado){
 		// PATRON PROXY
+		this.yaAtaco = true;
 		try {
 			monstruoAtacado.serAtacadoPor(this);
 
@@ -119,7 +120,7 @@ public abstract class CartaMonstruo extends Carta {
 
 			if (diferencia > 0) {
 				monstruoAtacado.perder(formaDeAfectar);
-				this.yaAtaco = true;
+
 				try {
 					this.vistaCarta.deshabilitar(); //para que no vuelva a atacar
 				}

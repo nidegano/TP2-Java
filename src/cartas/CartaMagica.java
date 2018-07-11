@@ -2,6 +2,7 @@ package cartas;
 
 import configuraciones.ConfiguracionDeOpciones;
 import estados.EstadoColocableBocaArriba;
+import estados.EstadoInvocableDesdeLaMano;
 import estados.ModoBocaAbajo;
 import excepciones.CapacidadMaximaException;
 import excepciones.CartaNoEstaEnContenedorDeCartasException;
@@ -11,6 +12,7 @@ public abstract class CartaMagica extends CartaEspecial {
 
 	public CartaMagica() {
 		super();
+		this.estado = new EstadoInvocableDesdeLaMano();
 	}
 
 	@Override

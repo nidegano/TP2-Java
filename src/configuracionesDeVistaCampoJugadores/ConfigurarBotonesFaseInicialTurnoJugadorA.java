@@ -9,4 +9,9 @@ public class ConfigurarBotonesFaseInicialTurnoJugadorA implements ConfiguracionD
 		grilla.configurarBotonesFaseInicialTunoJugadorA();	
 	}
 
+	@Override
+	public ConfiguracionDeLaVistaCampoJugadores obtenerSiguiente() {
+		return new ConfigurarBotonesFaseInicialTurnoJugadorB();
+	}
+
 }

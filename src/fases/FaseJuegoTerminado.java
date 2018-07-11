@@ -1,7 +1,5 @@
 package fases;
 
-import configuracionesDeVistaCampoJugadores.BloquearTodo;
-import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
 import excepciones.CapacidadMaximaException;
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import excepciones.NoSePuedeTomarMasCartasDelMazoExceptionPorqueYaSeTomoUnaEnFaseInicial;
@@ -45,16 +43,6 @@ public class FaseJuegoTerminado implements Fase{
 	@Override
 	public void chequearSiSePuedeInvocaMonstruo()
 			throws NoSePuedeInvocarMonstruosEnEstaFase, SoloSePuedeInvocarUnSoloMonstruoEnEstaFase {
-	}
-
-	@Override
-	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
-		return new BloquearTodo();
-	}
-
-	@Override
-	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
-		return new BloquearTodo();
 	}
 
 }

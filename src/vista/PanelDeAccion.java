@@ -217,6 +217,29 @@ public class PanelDeAccion {
 		this.grilla.opcionDescartarHacerVisible(true);
 	}
 	
+
+	public void mostrarSoloLaOpcionDeColocarBocaArribaLaDeColocarBocaAbajoYDescartar() {
+		
+		this.grilla.opcionCambiarAModoAtaqueHacerVisible(false);
+		this.grilla.opcionCambiarAModoDefensaHacerVisible(false);
+		this.grilla.opcionCambiarAModoDefensaBocaAbajoHacerVisible(false);
+		
+		this.grilla.opcionColocarBocaAbajoHacerVisible(true);
+		this.grilla.opcionColocarBocaArribaHacerVisible(true);
+		this.grilla.opcionColocarCartaDeCampoHacerVisible(false);
+		
+		this.grilla.opcionInvocarEnModoAtaqueHacerVisible(false);
+		this.grilla.opcionInvocarEnModoDefensaHacerVisible(false);
+		this.grilla.opcionInvocarEnModoDefensaBocaAbajoHacerVisible(false);
+		
+		this.grilla.opcionInvocarEnModoAtaqueConSacrificioHacerVisible(false);
+		this.grilla.opcionInvocarEnModoDefensaConSacrificioHacerVisible(false);
+		this.grilla.opcionInvocarEnModoDefensaBocaAbajoConSacrificioHacerVisible(false);
+		
+		this.grilla.opcionAtacarHacerVisible(false);
+		this.grilla.opcionDescartarHacerVisible(true);
+	}
+	
 	public void noMostrarNingunaOpcion() {
 		
 		this.grilla.opcionCambiarAModoAtaqueHacerVisible(false);
@@ -244,6 +267,10 @@ public class PanelDeAccion {
 	}
 
 	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
-		jugadorDeTurno.determinarComoCambiarElLabelDelTurnoDependiendoDeQueJugadorEsElTurnoATravezDeGrilla(this.grilla);
+		this.grilla.cambiarLabelDeTurnoActualPor(jugadorDeTurno.nombre());
+	}
+
+	public void ocultarOpciones() {
+		this.noMostrarNingunaOpcion();
 	}
 }

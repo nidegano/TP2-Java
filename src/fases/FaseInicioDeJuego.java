@@ -1,7 +1,5 @@
 package fases;
 
-import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
-import configuracionesDeVistaCampoJugadores.NoHacerNada;
 import excepciones.CapacidadMaximaException;
 
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
@@ -47,15 +45,5 @@ public class FaseInicioDeJuego implements Fase {
 	@Override
 	public void chequearSiSePuedeInvocaMonstruo() throws NoSePuedeInvocarMonstruosEnEstaFase {
 		throw new NoSePuedeInvocarMonstruosEnEstaFase();		
-	}
-
-	@Override
-	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
-		return new NoHacerNada();
-	}
-
-	@Override
-	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
-		return new NoHacerNada();
 	}
 }

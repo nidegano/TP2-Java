@@ -6,4 +6,5 @@ public interface ConfiguracionDeLaVistaCampoJugadores {
 
 	public void configurar(Grilla grilla);
 
+	public ConfiguracionDeLaVistaCampoJugadores obtenerSiguiente();
 }

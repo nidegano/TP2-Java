@@ -316,7 +316,7 @@ public class Grilla extends Application {
 		this.gridPane.add(this.opcionCambiarAModoDefensa, 13, 8, 1, 1);
 		this.gridPane.add(this.opcionCambiarAModoDefensaBocaAbajo, 13, 9, 1, 1);
 		
-		this.gridPane.add(this.opcionColocarBocaAbajo, 13, 7, 1, 1);
+		this.gridPane.add(this.opcionColocarBocaAbajo, 13, 8, 1, 1);
 		this.gridPane.add(this.opcionColocarBocaArriba, 13, 7, 1, 1);
 		this.gridPane.add(this.opcionColocarCartaDeCampo, 13, 7, 1, 1);
 		
@@ -586,7 +586,7 @@ public class Grilla extends Application {
 		this.deshabilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);		
 	}
 	
-	public void habilitarDeFormaAdecuadaLasVistasDeLaZonaDeMonstruosDelJugadorA() {
+	public void habilitarLasVistasCartaMonstruoQueNoEstenVaciasDelJugadorA() {
 		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorA);
 		this.deshabilitarTodasLasVistasVaciasDe(this.vistaCartaMonstruosJugadorA);
 		if (this.todasLasVistaCartaEstanVacias(this.vistaCartaMonstruosJugadorA)) {
@@ -594,7 +594,7 @@ public class Grilla extends Application {
 		}
 	}
 
-	public void habilitarDeFormaAdecuadaLasVistasDeLaZonaDeMonstruosDelJugadorB() {
+	public void habilitarLasVistasCartaMonstruoQueNoEstenVaciasDelJugadorB() {
 		this.habilitarTodasLasVistasDe(this.vistaCartaMonstruosJugadorB);
 		this.deshabilitarTodasLasVistasVaciasDe(this.vistaCartaMonstruosJugadorB);
 		if (this.todasLasVistaCartaEstanVacias(this.vistaCartaMonstruosJugadorB)) {
@@ -606,12 +606,8 @@ public class Grilla extends Application {
 		this.labelDeFase.setText(nombreFaseNueva);
 	}
 
-	public void cambiarLabelDeTurnoActualPorJugadorA() {
-		this.labelDeTurno.setText("TURNO: ".concat(this.labelDeJugadorA.getText()));
-	}
-	
-	public void cambiarLabelDeTurnoActualPorJugadorB() {
-		this.labelDeTurno.setText("TURNO: ".concat(this.labelDeJugadorB.getText()));
+	public void cambiarLabelDeTurnoActualPor(String nombreJugador) {
+		this.labelDeTurno.setText("TURNO: ".concat(nombreJugador));
 	}
 
 	public void cambiarLabelDeTextoDisplayPor(String texto) {

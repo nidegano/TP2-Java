@@ -1,8 +1,5 @@
 package fases;
 
-import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
-import configuracionesDeVistaCampoJugadores.ConfigurarBotonesFaseFinalTurnoJugadorA;
-import configuracionesDeVistaCampoJugadores.ConfigurarBotonesFaseFinalTurnoJugadorB;
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import juego.Jugador;
 
@@ -48,16 +45,6 @@ public class FaseFinal implements Fase {
 	@Override
 	public void chequearSiSePuedeInvocaMonstruo() throws NoSePuedeInvocarMonstruosEnEstaFase {
 		throw new NoSePuedeInvocarMonstruosEnEstaFase();		
-	}
-
-	@Override
-	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno() {
-		return new ConfigurarBotonesFaseFinalTurnoJugadorB();
-	}
-
-	@Override
-	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno() {
-		return new ConfigurarBotonesFaseFinalTurnoJugadorA();
 	}
 
 }

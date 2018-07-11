@@ -9,4 +9,9 @@ public class ConfigurarBotonesFasePreparacionTurnoJugadorA implements Configurac
 		grilla.configurarBotonesFasePreparacionTurnoJugadorA();
 	}
 
+	@Override
+	public ConfiguracionDeLaVistaCampoJugadores obtenerSiguiente() {
+		return new ConfigurarBotonesFasePreparacionTurnoJugadorB();
+	}
+
 }

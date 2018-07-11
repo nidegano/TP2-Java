@@ -6,6 +6,7 @@ import cartas.CartaDeCampo;
 import cartas.CartaEspecial;
 import cartas.CartaMonstruo;
 import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
+import configuracionesDeVistaCampoJugadores.ConfiguracionInicialDeCampoDeJugadorA;
 import juego.Jugador;
 
 public class VistaCampoJugadores {
@@ -15,12 +16,14 @@ public class VistaCampoJugadores {
 	private Jugador jugadorA;
 	private Jugador jugadorB;
 	private ControladorVisual controladorVisual;
+	private ConfiguracionDeLaVistaCampoJugadores configuracionActual;
 
-	public VistaCampoJugadores(Jugador jugadorA2,Jugador jugadorB2,Grilla grilla,ControladorVisual vista) {
+	public VistaCampoJugadores(Jugador jugadorA,Jugador jugadorB,Grilla grilla,ControladorVisual vista) {
 		this.grilla = grilla;
-		this.jugadorA = jugadorA2;
-		this.jugadorB = jugadorB2;
+		this.jugadorA = jugadorA;
+		this.jugadorB = jugadorB;
 		this.controladorVisual = vista;
+		this.configuracionActual = new ConfiguracionInicialDeCampoDeJugadorA();
 	}
 
 	public VistaCarta obtenerUnLugarVacio(Carta carta) {
@@ -54,10 +57,10 @@ public class VistaCampoJugadores {
 		this.grilla.asignarNuevaVidaALabelDeJugadorB(this.jugadorB.vida());
 	}
 
-	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
+	public void actualizarPorCambioDeTurno() {
 		this.actualizarVidaJugadores();
-		ConfiguracionDeLaVistaCampoJugadores configuracion = jugadorDeTurno.determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase();
-		configuracion.configurar(this.grilla);
+		this.configuracionActual = this.configuracionActual.obtenerSiguiente();
+		this.configuracionActual.configurar(this.grilla);
 	}
 
 	public void seTomoEstaCartaDelMazo(Carta unaCarta) {
@@ -70,14 +73,18 @@ public class VistaCampoJugadores {
 	}
 
 	private void activarSoloLasVistasCartaMonstruosDeJugadorDeTurno(Jugador jugadorDeTurno) {
-		jugadorDeTurno.oponente().determinarQueHabilitarAlMomentoDeElegirMonstruosSegunQueJugadorEsATravezDeGrilla(this.grilla);
+		jugadorDeTurno.oponente().habilitarLasVistasCartaMonstruoQueNoEstenVaciasDelOponente(this.grilla);
 	}
 	
 	private void activarSoloLasVistasCartaMonstruosNoVaciasDelOponenteDeJugadorDeTurno(Jugador jugadorDeTurno) {
-		jugadorDeTurno.determinarQueHabilitarAlMomentoDeElegirMonstruosSegunQueJugadorEsATravezDeGrilla(this.grilla);
+		jugadorDeTurno.habilitarLasVistasCartaMonstruoQueNoEstenVaciasDelOponente(this.grilla);
 	}
 
 	public void actualizarPorFinDeJuego() {
 		this.grilla.deshabilitarTodosLosBotones();
+	}
+
+	public void cargarConfiguracionActual() {
+		this.configuracionActual.configurar(this.grilla);
 	}
 }

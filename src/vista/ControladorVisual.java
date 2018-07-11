@@ -87,6 +87,7 @@ public class ControladorVisual {
 	public void cambiarAModoSeleccionParaAtacar(Atacar atacar) {
 		this.modoVista = new ModoSeleccionParaAtacar(this);
 		this.vistaCampoJugadores.actualizarPorModoSeleccionParaAtacar();
+		this.panelDeAccion.ocultarOpciones();
 	}
 	
 	private void cambiarAModoNormal() {
@@ -106,10 +107,11 @@ public class ControladorVisual {
 		this.grilla.botonDeListoHacerVisible(true);
 		this.opcionQuePidioElCambioDeModo = (InvocarConSacrificio) opcionQuePidioElCambioDeModo;
 		this.vistaCampoJugadores.actualizarPorModoSeleccionParaSacrificar();
+		this.panelDeAccion.ocultarOpciones();
 	}
 
 	private void colocarLaConfiguracionDeLosBotonesEnElEstadoPrevioAlCambioDeModo() {
-		this.vistaCampoJugadores.actualizarPorCambioDeTurno(this.juego.jugadorDeTurno());		
+		this.vistaCampoJugadores.cargarConfiguracionActual();
 	}
 
 
@@ -154,7 +156,8 @@ public class ControladorVisual {
 //Actualizar
 	
 	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
-		this.vistaCampoJugadores.actualizarPorCambioDeTurno(jugadorDeTurno);
+		this.cambiarAModoNormal();
+		this.vistaCampoJugadores.actualizarPorCambioDeTurno();
 		this.panelDeAccion.actualizarPorCambioDeTurno(jugadorDeTurno);
 		this.panelDeAccion.actualizarPorCambioDeFaseALaFase(jugadorDeTurno.obtenerFase());
 		this.liberarSeleccion();

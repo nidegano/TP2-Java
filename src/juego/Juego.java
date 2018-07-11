@@ -26,7 +26,7 @@ public class Juego {
 	
 	public void iniciar(){
 		this.deTurno.jugar();
-		this.controladorVisual.actualizarPorCambioDeTurno(this.deTurno);
+		//this.controladorVisual.actualizarPorCambioDeTurno(this.deTurno);
 	}
 
 	public void asignarVista(ControladorVisual vista) {

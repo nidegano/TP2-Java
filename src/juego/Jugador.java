@@ -2,7 +2,6 @@ package juego;
 
 import botones.VistaCarta;
 import cartas.*;
-import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
 import excepciones.CapacidadMaximaException;
 import excepciones.ContenedorDeCartasVacioException;
 
@@ -185,25 +184,11 @@ public class Jugador {
 		this.campo.asignarATodasLasCartasMagicasUnEstadoDeDeBocaAbajo();
 	}
 
-	public void determinarQueHabilitarAlMomentoDeElegirMonstruosSegunQueJugadorEsATravezDeGrilla(Grilla grilla) {
+	public void habilitarLasVistasCartaMonstruoQueNoEstenVaciasDelOponente(Grilla grilla) {
 		if( this.nombre == "JUGADOR A" ) {
-			grilla.habilitarDeFormaAdecuadaLasVistasDeLaZonaDeMonstruosDelJugadorB();
+			grilla.habilitarLasVistasCartaMonstruoQueNoEstenVaciasDelJugadorB();
 		}
-		grilla.habilitarDeFormaAdecuadaLasVistasDeLaZonaDeMonstruosDelJugadorA();
-	}
-
-	public void determinarComoCambiarElLabelDelTurnoDependiendoDeQueJugadorEsElTurnoATravezDeGrilla(Grilla grilla) {
-		if( this.nombre == "JUGADOR A" ) {
-			grilla.cambiarLabelDeTurnoActualPorJugadorA();
-		}
-		grilla.cambiarLabelDeTurnoActualPorJugadorB();
-	}
-
-	public ConfiguracionDeLaVistaCampoJugadores determinarElEstadoDeLaVistaCampoJugadoresDependiendoDeQuienSeaElTurnoYLaFase() {
-		if( this.nombre == "JUGADOR A" ) {
-			return this.fase.determinarElEstadoDeLaVistaCampoJugadoresConJugadorAEnTurno();
-		}
-		return this.fase.determinarElEstadoDeLaVistaCampoJugadoresConJugadorBEnTurno();
+		grilla.habilitarLasVistasCartaMonstruoQueNoEstenVaciasDelJugadorA();
 	}
 
 	public VistaCarta obtenerLugarVacioDeLaZonaDeManoATravezDeLaGrilla(Grilla grilla) {
