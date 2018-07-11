@@ -8,15 +8,15 @@ import cartas.CartaNula;
 import javafx.stage.Stage;
 import juego.Juego;
 import juego.Jugador;
-import modosDeVista.ModoNormal;
-import modosDeVista.ModoSeleccionParaAtacar;
-import modosDeVista.ModoSeleccionParaSacrificio;
-import modosDeVista.ModoVista;
-import opciones.Atacar;
-import opciones.InvocarConSacrificio;
-import opciones.Opcion;
+import modosDeControlador.ModoNormal;
+import modosDeControlador.ModoSeleccionParaAtacar;
+import modosDeControlador.ModoSeleccionParaSacrificio;
+import opcionesQueAlteranALaCarta.Opcion;
+import opcionesQueAlteranAlControladorVisual.Atacar;
+import opcionesQueAlteranAlControladorVisual.InvocarConSacrificio;
+import modosDeControlador.ModoDelControladorVisual;
 
-public class Vista {
+public class ControladorVisual {
 	
 	private Juego juego;
 	
@@ -26,11 +26,13 @@ public class Vista {
 	private TextoDisplay textoDisplay;
 	
 	private Carta cartaSeleccionada;
-	private ModoVista modoVista;
-	private Opcion opcionQuePidioElCambioDeModo;
+	private ModoDelControladorVisual modoVista;
+	private InvocarConSacrificio opcionQuePidioElCambioDeModo;
 	private ArrayList<CartaMonstruo> seleccionesSecundarias;
+
+//Constructores
 	
-	public Vista(Jugador jugadorA, Jugador jugadorB, Juego juego) throws Exception {
+	public ControladorVisual(Jugador jugadorA, Jugador jugadorB, Juego juego) throws Exception {
 		
 		this.juego = juego;
 		
@@ -44,10 +46,14 @@ public class Vista {
 		this.seleccionesSecundarias = new ArrayList<CartaMonstruo>();
 	}
 
-	public Vista() {
+	public ControladorVisual() {
 		// para testear
 	}
 
+
+	
+//Getters
+	
 	public Carta obtenerCartaSeleccionada() {
 		return this.cartaSeleccionada;
 	}
@@ -56,47 +62,31 @@ public class Vista {
 		return this.vistaCampoJugadores;
 	}
 
-	public void start(Stage primaryStage) throws Exception {
-		this.grilla.start(primaryStage);
+	public Jugador obtenerJugadorDeTurno() {
+		return this.juego.jugadorDeTurno();
 	}
 
+	
+	
+//Metodos de carta seleccionada
+	
 	public void cambiarCartaSeleccionActualPor(Carta cartaNuevaSeleccion) {
 		this.cartaSeleccionada = cartaNuevaSeleccion;
 		this.panelDeAccion.actualizarPorCambioDeCartaSeleccionada(cartaNuevaSeleccion);
 	}
-
-	public Jugador jugadorDeTurno() {
-		return this.juego.jugadorDeTurno();
-	}
-
-	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
-		this.vistaCampoJugadores.actualizarPorCambioDeTurno(jugadorDeTurno);
-		this.panelDeAccion.actualizarPorCambioDeTurno(jugadorDeTurno);
-		this.panelDeAccion.actualizarPorCambioDeFaseALaFase(jugadorDeTurno.obtenerFase());
-		this.liberarSeleccion();
-	}
-
-	public void seTomoEstaCartaDelMazo(Carta unaCarta) {
-		this.vistaCampoJugadores.seTomoEstaCartaDelMazo(unaCarta);
-	}
-
-	public void terminarJuego(String nombre){
-		this.textoDisplay.informarQueTalJugadorPerdio(nombre);
-		this.vistaCampoJugadores.actualizarPorFinDeJuego();
-		this.liberarSeleccion();
-	}
-
+	
 	public void liberarSeleccion() {
 		this.cartaSeleccionada = new CartaNula();
 		this.panelDeAccion.actualizarPorCambioDeCartaSeleccionada(this.cartaSeleccionada);
 	}
 	
-	public void avisarDeLaSeleccionDeUnaVistaDeCarta(Carta cartaNuevaSeleccion) {
-		this.modoVista.avisarDeLaSeleccionDeUnaVistaDeCarta(cartaNuevaSeleccion);
-	}
 	
-	public void avisarDeLaSeleccionDeJugador() {
-		this.modoVista.avisarDeLaSeleccionDeJugador();
+	
+//Cambio de modo
+	
+	public void cambiarAModoSeleccionParaAtacar(Atacar atacar) {
+		this.modoVista = new ModoSeleccionParaAtacar(this);
+		this.vistaCampoJugadores.actualizarPorModoSeleccionParaAtacar();
 	}
 	
 	private void cambiarAModoNormal() {
@@ -111,18 +101,29 @@ public class Vista {
 		this.liberarSeleccion();
 	}
 	
+	public void cambiarAModoSeleccionParaSacrificio(Opcion opcionQuePidioElCambioDeModo) {
+		this.modoVista = new ModoSeleccionParaSacrificio(this);
+		this.grilla.botonDeListoHacerVisible(true);
+		this.opcionQuePidioElCambioDeModo = (InvocarConSacrificio) opcionQuePidioElCambioDeModo;
+		this.vistaCampoJugadores.actualizarPorModoSeleccionParaSacrificar();
+	}
+
 	private void colocarLaConfiguracionDeLosBotonesEnElEstadoPrevioAlCambioDeModo() {
 		this.vistaCampoJugadores.actualizarPorCambioDeTurno(this.juego.jugadorDeTurno());		
 	}
 
-	public void cambiarAModoSeleccionParaSacrificio(Opcion opcionQuePidioElCambioDeModo) {
-		this.modoVista = new ModoSeleccionParaSacrificio(this);
-		this.grilla.botonDeListoHacerVisible(true);
-		this.opcionQuePidioElCambioDeModo = opcionQuePidioElCambioDeModo;
-		this.vistaCampoJugadores.actualizarPorModoSeleccionParaSacrificar();
-	}
 
 	
+//Reacciones ante un clickeo
+	
+	public void avisarDeLaSeleccionDeUnaVistaDeCarta(Carta cartaNuevaSeleccion) {
+		this.modoVista.avisarDeLaSeleccionDeUnaVistaDeCarta(cartaNuevaSeleccion);
+	}
+	
+	public void avisarDeLaSeleccionDeJugador() {
+		this.modoVista.avisarDeLaSeleccionDeJugador();
+	}
+		
 	public void agregarSeleccionALasSeleccionesSecundarias(Carta cartaNuevaSeleccion) {
 		this.seleccionesSecundarias.add((CartaMonstruo) cartaNuevaSeleccion); //cast seguro por contexto
 		cartaNuevaSeleccion.vistaCarta().deshabilitar();
@@ -132,11 +133,6 @@ public class Vista {
 		((InvocarConSacrificio) this.opcionQuePidioElCambioDeModo).finalizarInvocacionPorSacrificio(this.cartaSeleccionada,this.seleccionesSecundarias);
 		this.grilla.botonDeListoHacerVisible(false);
 		this.cambiarAModoNormal();
-	}
-	
-	public void cambiarAModoSeleccionParaAtacar(Atacar atacar) {
-		this.modoVista = new ModoSeleccionParaAtacar(this);
-		this.vistaCampoJugadores.actualizarPorModoSeleccionParaAtacar();
 	}
 	
 	public void finalizarComandoDeAtacar(Carta cartaNuevaSeleccion) {
@@ -153,5 +149,32 @@ public class Vista {
 		this.cambiarAModoNormal();
 		this.liberarSeleccion();
 	}
+
+	
+//Actualizar
+	
+	public void actualizarPorCambioDeTurno(Jugador jugadorDeTurno) {
+		this.vistaCampoJugadores.actualizarPorCambioDeTurno(jugadorDeTurno);
+		this.panelDeAccion.actualizarPorCambioDeTurno(jugadorDeTurno);
+		this.panelDeAccion.actualizarPorCambioDeFaseALaFase(jugadorDeTurno.obtenerFase());
+		this.liberarSeleccion();
+	}
+
+//Otros	
+	
+	public void start(Stage primaryStage) throws Exception {
+		this.grilla.start(primaryStage);
+	}
+	
+	public void seTomoEstaCartaDelMazo(Carta unaCarta) {
+		this.vistaCampoJugadores.seTomoEstaCartaDelMazo(unaCarta);
+	}
+
+	public void terminarJuego(String nombre){
+		this.textoDisplay.informarQueTalJugadorPerdio(nombre);
+		this.vistaCampoJugadores.actualizarPorFinDeJuego();
+		this.liberarSeleccion();
+	}
+
 
 }

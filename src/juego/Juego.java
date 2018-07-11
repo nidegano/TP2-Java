@@ -2,14 +2,14 @@ package juego;
 
 import cartas.Carta;
 
-import vista.Vista;
+import vista.ControladorVisual;
 
 public class Juego {
 
 	private Jugador jugadorA;
 	private Jugador jugadorB;
 	private Jugador deTurno;
-	private Vista vista;
+	private ControladorVisual controladorVisual;
 	private String ganador;
 
 	public Juego(Jugador jugadorA, Jugador jugadorB) {
@@ -26,11 +26,11 @@ public class Juego {
 	
 	public void iniciar(){
 		this.deTurno.jugar();
-		this.vista.actualizarPorCambioDeTurno(this.deTurno);
+		this.controladorVisual.actualizarPorCambioDeTurno(this.deTurno);
 	}
 
-	public void asignarVista(Vista vista) {
-		this.vista = vista;
+	public void asignarVista(ControladorVisual vista) {
+		this.controladorVisual = vista;
 	}
 
 	public void informarQueJugadorDeTurnoTocoFinalizarFase(){
@@ -39,7 +39,7 @@ public class Juego {
 
 	public void informarQueElJugadorDeTurnoTerminoSuTurno(){
 		this.deTurno = deTurno.oponente();
-		this.vista.actualizarPorCambioDeTurno(this.deTurno);
+		this.controladorVisual.actualizarPorCambioDeTurno(this.deTurno);
 		this.deTurno.jugar();
 	}
 
@@ -49,12 +49,12 @@ public class Juego {
 	}
 
 	public void seTomoEstaCartaDelMazo(Carta unaCarta) {
-		this.vista.seTomoEstaCartaDelMazo(unaCarta);
+		this.controladorVisual.seTomoEstaCartaDelMazo(unaCarta);
 	}
 
 	public void perdioJugador(Jugador jugador){
 		this.ganador = jugador.oponente().nombre();
-		this.vista.terminarJuego(jugador.nombre());
+		this.controladorVisual.terminarJuego(jugador.nombre());
 	}
 
 	public String ganador() {

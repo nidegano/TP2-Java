@@ -1,18 +1,18 @@
-package opciones;
+package opcionesQueAlteranALaCarta;
 
 import cartas.CartaDeCampo;
 import excepciones.YaHayUnaCartaDeCampoColocadaException;
-import vista.Vista;
+import vista.ControladorVisual;
 
 public class ColocarCartaDeCampo extends Opcion {
 
-	public ColocarCartaDeCampo(Vista vista) {
+	public ColocarCartaDeCampo(ControladorVisual vista) {
 		super(vista);
 		this.setText("colocar carta de campo");
 		
 		this.setOnAction(value -> {
 			
-			CartaDeCampo cartaSeleccionada = (CartaDeCampo) this.vista.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
+			CartaDeCampo cartaSeleccionada = (CartaDeCampo) this.controladorVisual.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
 			this.aplicarComando(cartaSeleccionada);
 		});
 	}

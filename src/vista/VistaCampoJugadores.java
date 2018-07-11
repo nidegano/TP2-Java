@@ -14,13 +14,13 @@ public class VistaCampoJugadores {
 	
 	private Jugador jugadorA;
 	private Jugador jugadorB;
-	private Vista vista;
+	private ControladorVisual controladorVisual;
 
-	public VistaCampoJugadores(Jugador jugadorA2,Jugador jugadorB2,Grilla grilla,Vista vista) {
+	public VistaCampoJugadores(Jugador jugadorA2,Jugador jugadorB2,Grilla grilla,ControladorVisual vista) {
 		this.grilla = grilla;
 		this.jugadorA = jugadorA2;
 		this.jugadorB = jugadorB2;
-		this.vista = vista;
+		this.controladorVisual = vista;
 	}
 
 	public VistaCarta obtenerUnLugarVacio(Carta carta) {
@@ -46,7 +46,7 @@ public class VistaCampoJugadores {
 	
 	public void actualizarPorModoSeleccionParaAtacar() {
 		this.grilla.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.activarSoloLasVistasCartaMonstruosNoVaciasDelOponenteDeJugadorDeTurno(this.vista.jugadorDeTurno());
+		this.activarSoloLasVistasCartaMonstruosNoVaciasDelOponenteDeJugadorDeTurno(this.controladorVisual.obtenerJugadorDeTurno());
 	}
 
 	public void actualizarVidaJugadores() {
@@ -66,7 +66,7 @@ public class VistaCampoJugadores {
 
 	public void actualizarPorModoSeleccionParaSacrificar() {
 		this.grilla.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.activarSoloLasVistasCartaMonstruosDeJugadorDeTurno(this.vista.jugadorDeTurno());
+		this.activarSoloLasVistasCartaMonstruosDeJugadorDeTurno(this.controladorVisual.obtenerJugadorDeTurno());
 	}
 
 	private void activarSoloLasVistasCartaMonstruosDeJugadorDeTurno(Jugador jugadorDeTurno) {

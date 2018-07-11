@@ -1,17 +1,17 @@
-package opciones;
+package opcionesQueAlteranALaCarta;
 
 import cartas.CartaMonstruo;
-import vista.Vista;
+import vista.ControladorVisual;
 
 public class CambiarModoAtaque extends Opcion {
 	
-	public CambiarModoAtaque(Vista vista) {
+	public CambiarModoAtaque(ControladorVisual vista) {
 		super(vista);
 		this.setText("cambiar a modo ataque");
 		
 		this.setOnAction(value -> {
 			
-			CartaMonstruo cartaSeleccionada = (CartaMonstruo) this.vista.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
+			CartaMonstruo cartaSeleccionada = (CartaMonstruo) this.controladorVisual.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
 			this.aplicarComando(cartaSeleccionada);
 		});
 	}

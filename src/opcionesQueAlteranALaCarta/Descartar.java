@@ -1,17 +1,17 @@
-package opciones;
+package opcionesQueAlteranALaCarta;
 
 import cartas.Carta;
-import vista.Vista;
+import vista.ControladorVisual;
 
 public class Descartar extends Opcion {
 
-	public Descartar(Vista vista) {
+	public Descartar(ControladorVisual vista) {
 		super(vista);
 		this.setText("descartar");
 		
 		this.setOnAction(value -> {
 			
-			Carta cartaSeleccionada = this.vista.obtenerCartaSeleccionada();
+			Carta cartaSeleccionada = this.controladorVisual.obtenerCartaSeleccionada();
 			this.aplicarComando(cartaSeleccionada);
 		});
 	}

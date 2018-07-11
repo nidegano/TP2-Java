@@ -28,7 +28,7 @@ public class Algooh extends Application {
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new Vista(jugadorA,jugadorB,juego);
+		ControladorVisual vista = new ControladorVisual(jugadorA,jugadorB,juego);
 		
 		juego.asignarVista(vista);
 		

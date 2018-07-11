@@ -9,7 +9,7 @@ import botones.BotonFinalizarFase;
 import botones.BotonJugadorA;
 import botones.BotonJugadorB;
 import botones.BotonMazo;
-import botones.VistaCarta;
+import botones.VistaCartaConcreta;
 import cartas.CartaMonstruo;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -21,21 +21,21 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import juego.*;
-import opciones.Atacar;
-import opciones.InvocarEnModoDefensaBocaAbajoConSacrificio;
-import opciones.InvocarEnModoDefensaConSacrificio;
-import opciones.Listo;
-import opciones.CambiarAModoDefensa;
-import opciones.CambiarAModoDefensaBocaAbajo;
-import opciones.CambiarModoAtaque;
-import opciones.ColocarBocaAbajo;
-import opciones.ColocarBocaArriba;
-import opciones.ColocarCartaDeCampo;
-import opciones.Descartar;
-import opciones.InvocarEnModoAtaque;
-import opciones.InvocarEnModoAtaqueConSacrificio;
-import opciones.InvocarEnModoDefensa;
-import opciones.InvocarEnModoDefensaBocaAbajo;
+import opcionesQueAlteranAlControladorVisual.Atacar;
+import opcionesQueAlteranAlControladorVisual.InvocarEnModoDefensaBocaAbajoConSacrificio;
+import opcionesQueAlteranAlControladorVisual.InvocarEnModoDefensaConSacrificio;
+import opcionesQueAlteranAlControladorVisual.Listo;
+import opcionesQueAlteranALaCarta.CambiarAModoDefensa;
+import opcionesQueAlteranALaCarta.CambiarAModoDefensaBocaAbajo;
+import opcionesQueAlteranALaCarta.CambiarModoAtaque;
+import opcionesQueAlteranALaCarta.ColocarBocaAbajo;
+import opcionesQueAlteranALaCarta.ColocarBocaArriba;
+import opcionesQueAlteranALaCarta.ColocarCartaDeCampo;
+import opcionesQueAlteranALaCarta.Descartar;
+import opcionesQueAlteranALaCarta.InvocarEnModoAtaque;
+import opcionesQueAlteranAlControladorVisual.InvocarEnModoAtaqueConSacrificio;
+import opcionesQueAlteranALaCarta.InvocarEnModoDefensa;
+import opcionesQueAlteranALaCarta.InvocarEnModoDefensaBocaAbajo;
 
 public class Grilla extends Application {
 
@@ -57,20 +57,20 @@ public class Grilla extends Application {
 	private Label labelDeFase;
 	
 	//Collections de botones similares de VistaCampoJugadores
-	private ArrayList<VistaCarta> vistaCartaManoJugadorA;
-	private ArrayList<VistaCarta> vistaCartaManoJugadorB;
-	private ArrayList<VistaCarta> vistaCartaEspecialesJugadorA;
-	private ArrayList<VistaCarta> vistaCartaEspecialesJugadorB;
-	private ArrayList<VistaCarta> vistaCartaMonstruosJugadorA;
-	private ArrayList<VistaCarta> vistaCartaMonstruosJugadorB;
+	private ArrayList<VistaCartaConcreta> vistaCartaManoJugadorA;
+	private ArrayList<VistaCartaConcreta> vistaCartaManoJugadorB;
+	private ArrayList<VistaCartaConcreta> vistaCartaEspecialesJugadorA;
+	private ArrayList<VistaCartaConcreta> vistaCartaEspecialesJugadorB;
+	private ArrayList<VistaCartaConcreta> vistaCartaMonstruosJugadorA;
+	private ArrayList<VistaCartaConcreta> vistaCartaMonstruosJugadorB;
 	
 	//Botones que representan a los jugadores como entidades cliqueables
 	private BotonJugadorA botonJugadorA;
 	private BotonJugadorB botonJugadorB;
 	
 	//Botones Cartas de Campo
-	private VistaCarta vistaCartaDeCampoJugadorA;
-	private VistaCarta vistaCartaDeCampoJugadorB;
+	private VistaCartaConcreta vistaCartaDeCampoJugadorA;
+	private VistaCartaConcreta vistaCartaDeCampoJugadorB;
 	
 	//Botones Mazo
 	private BotonMazo botonMazoJugadorA;
@@ -104,7 +104,7 @@ public class Grilla extends Application {
 	private Atacar opcionAtacar;
 	private Descartar opcionDescartar;
 
-	public Grilla(Jugador jugadorA, Jugador jugadorB, Juego juego,Vista vista) throws Exception {
+	public Grilla(Jugador jugadorA, Jugador jugadorB, Juego juego,ControladorVisual controladorVisual) throws Exception {
 
 		this.inicializarGridPane();
 		
@@ -112,13 +112,13 @@ public class Grilla extends Application {
 		
 		this.inicializarLabels();
 		
-		this.inicializarVistasCartaDeVistaCampoJugadores(vista);
+		this.inicializarVistasCartaDeVistaCampoJugadores(controladorVisual);
 		
-		this.botonJugadorA = new BotonJugadorA(vista);
-		this.botonJugadorB = new BotonJugadorB(vista);
+		this.botonJugadorA = new BotonJugadorA(controladorVisual);
+		this.botonJugadorB = new BotonJugadorB(controladorVisual);
 
-		this.vistaCartaDeCampoJugadorA = new VistaCarta(vista);
-		this.vistaCartaDeCampoJugadorB = new VistaCarta(vista);
+		this.vistaCartaDeCampoJugadorA = new VistaCartaConcreta(controladorVisual);
+		this.vistaCartaDeCampoJugadorB = new VistaCartaConcreta(controladorVisual);
 
 		this.botonMazoJugadorA = new BotonMazo(juego);
 		this.botonMazoJugadorB = new BotonMazo(juego);
@@ -127,9 +127,9 @@ public class Grilla extends Application {
 		this.botonCementerioJugadorB = new BotonCementerio();
 
 		this.botonDeFinalizarFase = new BotonFinalizarFase(juego);
-		this.botonDeListo = new Listo(vista);
+		this.botonDeListo = new Listo(controladorVisual);
 
-		this.inicializarOpciones(vista);
+		this.inicializarOpciones(controladorVisual);
 		this.agregarBotonesALaGrilla();
 		this.configurarBotonesFaseInicioDeJuego();
 	}
@@ -148,78 +148,78 @@ public class Grilla extends Application {
 	
 // Inicialziar
 	
-	private void inicializarOpciones(Vista vista) {
+	private void inicializarOpciones(ControladorVisual controladorVisual) {
 		
-		this.opcionCambiarAModoAtaque = new CambiarModoAtaque(vista);
-		this.opcionCambiarAModoDefensa = new CambiarAModoDefensa(vista);
-		this.opcionCambiarAModoDefensaBocaAbajo = new CambiarAModoDefensaBocaAbajo(vista);
+		this.opcionCambiarAModoAtaque = new CambiarModoAtaque(controladorVisual);
+		this.opcionCambiarAModoDefensa = new CambiarAModoDefensa(controladorVisual);
+		this.opcionCambiarAModoDefensaBocaAbajo = new CambiarAModoDefensaBocaAbajo(controladorVisual);
 		
-		this.opcionColocarBocaAbajo = new ColocarBocaAbajo(vista);
-		this.opcionColocarBocaArriba = new ColocarBocaArriba(vista);
-		this.opcionColocarCartaDeCampo = new ColocarCartaDeCampo(vista);
+		this.opcionColocarBocaAbajo = new ColocarBocaAbajo(controladorVisual);
+		this.opcionColocarBocaArriba = new ColocarBocaArriba(controladorVisual);
+		this.opcionColocarCartaDeCampo = new ColocarCartaDeCampo(controladorVisual);
 		
-		this.opcionInvocarEnModoAtaque = new InvocarEnModoAtaque(vista);
-		this.opcionInvocarEnModoDefensa = new InvocarEnModoDefensa(vista);
-		this.opcionInvocarEnModoDefensaBocaAbajo = new InvocarEnModoDefensaBocaAbajo(vista);
+		this.opcionInvocarEnModoAtaque = new InvocarEnModoAtaque(controladorVisual);
+		this.opcionInvocarEnModoDefensa = new InvocarEnModoDefensa(controladorVisual);
+		this.opcionInvocarEnModoDefensaBocaAbajo = new InvocarEnModoDefensaBocaAbajo(controladorVisual);
 		
-		this.opcionInvocarEnModoAtaqueConSacrificio = new InvocarEnModoAtaqueConSacrificio(vista);
-		this.opcionInvocarEnModoDefensaConSacrificio = new InvocarEnModoDefensaConSacrificio(vista);
-		this.opcionInvocarEnModoDefensaBocaAbajoConSacrificio = new InvocarEnModoDefensaBocaAbajoConSacrificio(vista);	
+		this.opcionInvocarEnModoAtaqueConSacrificio = new InvocarEnModoAtaqueConSacrificio(controladorVisual);
+		this.opcionInvocarEnModoDefensaConSacrificio = new InvocarEnModoDefensaConSacrificio(controladorVisual);
+		this.opcionInvocarEnModoDefensaBocaAbajoConSacrificio = new InvocarEnModoDefensaBocaAbajoConSacrificio(controladorVisual);	
 		
-		this.opcionAtacar = new Atacar(vista);
-		this.opcionDescartar = new Descartar(vista);
+		this.opcionAtacar = new Atacar(controladorVisual);
+		this.opcionDescartar = new Descartar(controladorVisual);
 	}
 
-	private void inicializarVistasCartaDeVistaCampoJugadores(Vista vista) {
+	private void inicializarVistasCartaDeVistaCampoJugadores(ControladorVisual controladorVisual) {
 		
 		//Se inicializa la collection de "slots" (Vistas) que se corresponden con la mano
-		this.vistaCartaManoJugadorA = new ArrayList<VistaCarta>();		
-		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorA = new ArrayList<VistaCartaConcreta>();		
+		this.vistaCartaManoJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorA.add(new VistaCartaConcreta(controladorVisual));
 
-		this.vistaCartaManoJugadorB = new ArrayList<VistaCarta>();		
-		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaManoJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaManoJugadorB = new ArrayList<VistaCartaConcreta>();		
+		this.vistaCartaManoJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaManoJugadorB.add(new VistaCartaConcreta(controladorVisual));
 
 		//Se inicializa la collection de "slots" (Vistas) que se corresponden con la zona de cartas especiales
-		this.vistaCartaEspecialesJugadorA = new ArrayList<VistaCarta>();
-		this.vistaCartaEspecialesJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaEspecialesJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaEspecialesJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaEspecialesJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaEspecialesJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaEspecialesJugadorA = new ArrayList<VistaCartaConcreta>();
+		this.vistaCartaEspecialesJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaEspecialesJugadorA.add(new VistaCartaConcreta(controladorVisual));
 
-		this.vistaCartaEspecialesJugadorB = new ArrayList<VistaCarta>();
-		this.vistaCartaEspecialesJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaEspecialesJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaEspecialesJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaEspecialesJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaEspecialesJugadorB.add(new VistaCarta(vista));
+		this.vistaCartaEspecialesJugadorB = new ArrayList<VistaCartaConcreta>();
+		this.vistaCartaEspecialesJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaEspecialesJugadorB.add(new VistaCartaConcreta(controladorVisual));
 
 		//Se inicializa la collection de "slots" (Vistas) que se corresponden con la zona de cartas monstruo
-		this.vistaCartaMonstruosJugadorA = new ArrayList<VistaCarta>();
-		this.vistaCartaMonstruosJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaMonstruosJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaMonstruosJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaMonstruosJugadorA.add(new VistaCarta(vista));
-		this.vistaCartaMonstruosJugadorA.add(new VistaCarta(vista));
+		this.vistaCartaMonstruosJugadorA = new ArrayList<VistaCartaConcreta>();
+		this.vistaCartaMonstruosJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaMonstruosJugadorA.add(new VistaCartaConcreta(controladorVisual));
 
-		this.vistaCartaMonstruosJugadorB = new ArrayList<VistaCarta>();
-		this.vistaCartaMonstruosJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaMonstruosJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaMonstruosJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaMonstruosJugadorB.add(new VistaCarta(vista));
-		this.vistaCartaMonstruosJugadorB.add(new VistaCarta(vista));	
+		this.vistaCartaMonstruosJugadorB = new ArrayList<VistaCartaConcreta>();
+		this.vistaCartaMonstruosJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCartaConcreta(controladorVisual));
+		this.vistaCartaMonstruosJugadorB.add(new VistaCartaConcreta(controladorVisual));	
 	}
 
 	private void inicializarLabels() {
@@ -255,19 +255,19 @@ public class Grilla extends Application {
 		this.gridPane.add(this.botonJugadorA, 5, 0,1,1);
 
 		int i = 2;
-		for (VistaCarta unSlot : this.vistaCartaManoJugadorA) {
+		for (VistaCartaConcreta unSlot : this.vistaCartaManoJugadorA) {
 			this.gridPane.add(unSlot, i, 2, 1, 1);
 			i++;
 		}
 
 		i = 3;
-		for (VistaCarta unSlot : this.vistaCartaEspecialesJugadorA) {
+		for (VistaCartaConcreta unSlot : this.vistaCartaEspecialesJugadorA) {
 			this.gridPane.add(unSlot, i, 3, 1, 1);
 			i++;
 		}
 
 		i = 3;
-		for (VistaCarta unSlot : this.vistaCartaMonstruosJugadorA) {
+		for (VistaCartaConcreta unSlot : this.vistaCartaMonstruosJugadorA) {
 			this.gridPane.add(unSlot, i, 4, 1, 1);
 			i++;
 		}
@@ -279,19 +279,19 @@ public class Grilla extends Application {
 		this.gridPane.add(this.botonJugadorB,5, 13,1,1);
 
 		i = 2;
-		for (VistaCarta unSlot : this.vistaCartaManoJugadorB) {
+		for (VistaCartaConcreta unSlot : this.vistaCartaManoJugadorB) {
 			this.gridPane.add(unSlot, i, 10, 1, 1);
 			i++;
 		}
 
 		i = 3;
-		for (VistaCarta unSlot : this.vistaCartaEspecialesJugadorB) {
+		for (VistaCartaConcreta unSlot : this.vistaCartaEspecialesJugadorB) {
 			this.gridPane.add(unSlot, i, 9, 1, 1);
 			i++;
 		}
 
 		i = 3;
-		for (VistaCarta unSlot : this.vistaCartaMonstruosJugadorB) {
+		for (VistaCartaConcreta unSlot : this.vistaCartaMonstruosJugadorB) {
 			this.gridPane.add(unSlot, i, 8, 1, 1);
 			i++;
 		}
@@ -336,8 +336,8 @@ public class Grilla extends Application {
 	
 // Buscar un Lugar vacio para VistaCarta que se quiere colocar en VistaCampoJugadores
 	
-	public VistaCarta obtenerUnLugarVacioParaCartaMonstruoDeJugadorA() {
-		for (VistaCarta lugar : this.vistaCartaMonstruosJugadorA) {
+	public VistaCartaConcreta obtenerUnLugarVacioParaCartaMonstruoDeJugadorA() {
+		for (VistaCartaConcreta lugar : this.vistaCartaMonstruosJugadorA) {
 			if(lugar.estaLibre()) {
 				return lugar;
 			}
@@ -346,8 +346,8 @@ public class Grilla extends Application {
 		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
 	}
 
-	public VistaCarta obtenerUnLugarVacioParaCartaEspecialDeJugadorA() {
-		for (VistaCarta lugar : this.vistaCartaEspecialesJugadorA) {
+	public VistaCartaConcreta obtenerUnLugarVacioParaCartaEspecialDeJugadorA() {
+		for (VistaCartaConcreta lugar : this.vistaCartaEspecialesJugadorA) {
 			if(lugar.estaLibre()) {
 				return lugar;
 			}
@@ -356,7 +356,7 @@ public class Grilla extends Application {
 		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
 	}
 
-	public VistaCarta obtenerUnLugarVacioParaCartaDeCampoDeJugadorA() {
+	public VistaCartaConcreta obtenerUnLugarVacioParaCartaDeCampoDeJugadorA() {
 		if(this.vistaCartaDeCampoJugadorA.estaLibre()) {
 			return this.vistaCartaDeCampoJugadorA;
 		}
@@ -364,8 +364,8 @@ public class Grilla extends Application {
 		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
 	}
 	
-	public VistaCarta obtenerUnLugarVacioParaCartaMonstruoDeJugadorB() {
-		for (VistaCarta lugar : this.vistaCartaMonstruosJugadorB) {
+	public VistaCartaConcreta obtenerUnLugarVacioParaCartaMonstruoDeJugadorB() {
+		for (VistaCartaConcreta lugar : this.vistaCartaMonstruosJugadorB) {
 			if(lugar.estaLibre()) {
 				return lugar;
 			}
@@ -374,8 +374,8 @@ public class Grilla extends Application {
 		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
 	}
 
-	public VistaCarta obtenerUnLugarVacioParaCartaEspecialDeJugadorB() {
-		for (VistaCarta lugar : this.vistaCartaEspecialesJugadorB) {
+	public VistaCartaConcreta obtenerUnLugarVacioParaCartaEspecialDeJugadorB() {
+		for (VistaCartaConcreta lugar : this.vistaCartaEspecialesJugadorB) {
 			if(lugar.estaLibre()) {
 				return lugar;
 			}
@@ -384,7 +384,7 @@ public class Grilla extends Application {
 		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
 	}
 
-	public VistaCarta obtenerUnLugarVacioParaCartaDeCampoDeJugadorB() {
+	public VistaCartaConcreta obtenerUnLugarVacioParaCartaDeCampoDeJugadorB() {
 		if(this.vistaCartaDeCampoJugadorB.estaLibre()) {
 			return this.vistaCartaDeCampoJugadorB;
 		}
@@ -392,8 +392,8 @@ public class Grilla extends Application {
 		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
 	}
 
-	public VistaCarta obtenerUnLugarVacioDeZonaManoJugadorB() {
-		for (VistaCarta lugar : this.vistaCartaManoJugadorB) {
+	public VistaCartaConcreta obtenerUnLugarVacioDeZonaManoJugadorB() {
+		for (VistaCartaConcreta lugar : this.vistaCartaManoJugadorB) {
 			if(lugar.estaLibre()) {
 				return lugar;
 			}
@@ -402,8 +402,8 @@ public class Grilla extends Application {
 		//Si se llega a ejecutar este metodo es porque se chequeo que habia al menos un slot libre
 	}
 
-	public VistaCarta obtenerUnLugarVacioDeZonaManoJugadorA() {
-		for (VistaCarta lugar : this.vistaCartaManoJugadorA) {
+	public VistaCartaConcreta obtenerUnLugarVacioDeZonaManoJugadorA() {
+		for (VistaCartaConcreta lugar : this.vistaCartaManoJugadorA) {
 			if(lugar.estaLibre()) {
 				return lugar;
 			}
@@ -627,8 +627,8 @@ public class Grilla extends Application {
 	
 // Metodos privados que no son de inicializacion
 
-	private void habilitarTodasLasVistasNoVaciasDeCartasMonstruoQueNoAtacaron(ArrayList<VistaCarta> collectionDeVistasCarta) {
-		for (VistaCarta vistaCarta : collectionDeVistasCarta) 
+	private void habilitarTodasLasVistasNoVaciasDeCartasMonstruoQueNoAtacaron(ArrayList<VistaCartaConcreta> collectionDeVistasCarta) {
+		for (VistaCartaConcreta vistaCarta : collectionDeVistasCarta) 
 			if(!vistaCarta.estaLibre()) {
 				if (!((CartaMonstruo) vistaCarta.carta()).yaAtaco()) {
 					vistaCarta.setDisable(false);
@@ -636,28 +636,28 @@ public class Grilla extends Application {
 			}
 		}
 	
-	private void habilitarTodasLasVistasDe(ArrayList<VistaCarta> collectionDeVistasCarta) {
-		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
+	private void habilitarTodasLasVistasDe(ArrayList<VistaCartaConcreta> collectionDeVistasCarta) {
+		for (VistaCartaConcreta vistaCarta : collectionDeVistasCarta) {
 			vistaCarta.setDisable(false);
 		}
 	}
 	
-	private void deshabilitarTodasLasVistasDe(ArrayList<VistaCarta> collectionDeVistasCarta) {
-		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
+	private void deshabilitarTodasLasVistasDe(ArrayList<VistaCartaConcreta> collectionDeVistasCarta) {
+		for (VistaCartaConcreta vistaCarta : collectionDeVistasCarta) {
 			vistaCarta.setDisable(true);
 		}
 	}
 	
-	private void deshabilitarTodasLasVistasVaciasDe(ArrayList<VistaCarta> collectionDeVistasCarta) {
-		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
+	private void deshabilitarTodasLasVistasVaciasDe(ArrayList<VistaCartaConcreta> collectionDeVistasCarta) {
+		for (VistaCartaConcreta vistaCarta : collectionDeVistasCarta) {
 			if(vistaCarta.estaLibre()) {
 				vistaCarta.setDisable(true);
 			}
 		}
 	}
 	
-	private void habilitarTodasLasVistasNoVaciasDe(ArrayList<VistaCarta> collectionDeVistasCarta) {
-		for (VistaCarta vistaCarta : collectionDeVistasCarta) {
+	private void habilitarTodasLasVistasNoVaciasDe(ArrayList<VistaCartaConcreta> collectionDeVistasCarta) {
+		for (VistaCartaConcreta vistaCarta : collectionDeVistasCarta) {
 			if(!vistaCarta.estaLibre()) {
 				vistaCarta.setDisable(false);
 			}
@@ -687,12 +687,12 @@ public class Grilla extends Application {
 		this.botonCementerioJugadorB.setDisable(true);
 	}
 
-	private boolean todasLasVistaCartaEstanVacias(ArrayList<VistaCarta> collectionDeVistasCarta) {
-		for (VistaCarta lugar : collectionDeVistasCarta) {
+	private boolean todasLasVistaCartaEstanVacias(ArrayList<VistaCartaConcreta> collectionDeVistasCarta) {
+		for (VistaCartaConcreta lugar : collectionDeVistasCarta) {
 			if (!lugar.estaLibre()) {
 				return false;
 			}
 		}
-		return true;
+return true;
 	}
 }

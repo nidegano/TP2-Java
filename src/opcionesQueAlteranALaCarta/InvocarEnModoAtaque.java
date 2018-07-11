@@ -1,21 +1,21 @@
-package opciones;
+package opcionesQueAlteranALaCarta;
 
 import cartas.CartaMonstruo;
 import excepciones.CapacidadMaximaException;
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import excepciones.SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
 import fases.FasePreparacion;
-import vista.Vista;
+import vista.ControladorVisual;
 
-public class InvocarEnModoDefensaBocaAbajo extends Opcion {
+public class InvocarEnModoAtaque extends Opcion {
 
-	public InvocarEnModoDefensaBocaAbajo(Vista vista) {
+	public InvocarEnModoAtaque(ControladorVisual vista) {
 		super(vista);
-		this.setText("invocar en modo defensa boca abajo");
+		this.setText("invocar en modo ataque");
 		
 		this.setOnAction(value -> {
 			
-			CartaMonstruo cartaSeleccionada = (CartaMonstruo) this.vista.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
+			CartaMonstruo cartaSeleccionada = (CartaMonstruo) this.controladorVisual.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
 			this.aplicarComando(cartaSeleccionada);
 		});
 	}
@@ -26,7 +26,7 @@ public class InvocarEnModoDefensaBocaAbajo extends Opcion {
 			((FasePreparacion) cartaSeleccionada.obtenerDuenio().obtenerFase()).avisarAFaseQueSeInvocoMonstruo();
 			cartaSeleccionada.desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba();
 			cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
-			cartaSeleccionada.invocarEnModoDefensaBocaAbajo();
+			cartaSeleccionada.invocarEnModoAtaque();
 		} catch (NoSePuedeInvocarMonstruosEnEstaFase | SoloSePuedeInvocarUnSoloMonstruoEnEstaFase 
 				| CapacidadMaximaException e) {
 			e.printStackTrace();

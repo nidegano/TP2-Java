@@ -1,17 +1,17 @@
-package modosDeVista;
+package modosDeControlador;
 
 import cartas.Carta;
-import vista.Vista;
+import vista.ControladorVisual;
 
-public class ModoNormal extends ModoVista {
+public class ModoNormal extends ModoDelControladorVisual {
 
-	public ModoNormal(Vista vista) {
+	public ModoNormal(ControladorVisual vista) {
 		super(vista);
 	}
 
 	@Override
 	public void avisarDeLaSeleccionDeUnaVistaDeCarta(Carta cartaNuevaSeleccion) {
-		this.vista.cambiarCartaSeleccionActualPor(cartaNuevaSeleccion);	
+		this.controladorVisual.cambiarCartaSeleccionActualPor(cartaNuevaSeleccion);	
 	}
 
 	@Override

@@ -10,7 +10,7 @@ import org.junit.Test;
 import cartas.*;
 import excepciones.*;
 import juego.*;
-import vista.Vista;
+import vista.ControladorVisual;
 import vista.VistaMock;
 
 public class PrimerEntregaTest {
@@ -65,9 +65,9 @@ public class PrimerEntregaTest {
 		Jugador jugadorB = new Jugador("JUGADOR B",campoB);
 
 		Juego juego = new Juego(jugadorA, jugadorB);
-		Vista vista = null;
+		ControladorVisual vista = null;
 		try {
-			vista = new Vista(jugadorA, jugadorB, juego);
+			vista = new ControladorVisual(jugadorA, jugadorB, juego);
 		} catch (NullPointerException | ExceptionInInitializerError e) {
 		}
 		juego.asignarVista(vista);
@@ -98,7 +98,7 @@ public class PrimerEntregaTest {
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new VistaMock();
+		ControladorVisual vista = new VistaMock();
 		
 		juego.asignarVista(vista);
 		
@@ -145,7 +145,7 @@ public class PrimerEntregaTest {
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new VistaMock();
+		ControladorVisual vista = new VistaMock();
 		
 		juego.asignarVista(vista);
 		
@@ -197,7 +197,7 @@ public class PrimerEntregaTest {
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new VistaMock();
+		ControladorVisual vista = new VistaMock();
 		
 		juego.asignarVista(vista);
 		
@@ -248,7 +248,7 @@ public class PrimerEntregaTest {
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new VistaMock();
+		ControladorVisual vista = new VistaMock();
 		
 		juego.asignarVista(vista);
 		
@@ -294,7 +294,7 @@ public class PrimerEntregaTest {
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new VistaMock();
+		ControladorVisual vista = new VistaMock();
 		
 		juego.asignarVista(vista);
 		
@@ -339,7 +339,7 @@ public class PrimerEntregaTest {
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new VistaMock();
+		ControladorVisual vista = new VistaMock();
 		
 		juego.asignarVista(vista);
 		
@@ -385,7 +385,7 @@ public class PrimerEntregaTest {
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new VistaMock();
+		ControladorVisual vista = new VistaMock();
 		
 		juego.asignarVista(vista);
 		
@@ -430,7 +430,7 @@ public class PrimerEntregaTest {
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new VistaMock();
+		ControladorVisual vista = new VistaMock();
 		
 		juego.asignarVista(vista);
 		
@@ -477,7 +477,7 @@ public class PrimerEntregaTest {
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new VistaMock();
+		ControladorVisual vista = new VistaMock();
 		
 		juego.asignarVista(vista);
 		
@@ -519,7 +519,7 @@ public class PrimerEntregaTest {
 
 		Juego juego = new Juego(jugadorA, jugadorB);
 		
-		Vista vista = new VistaMock();
+		ControladorVisual vista = new VistaMock();
 		
 		juego.asignarVista(vista);
 		

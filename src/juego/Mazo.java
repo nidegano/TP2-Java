@@ -5,7 +5,7 @@ import java.util.Collections;
 import cartas.*;
 import excepciones.CapacidadMaximaException;
 import excepciones.MazoSinCartasException;
-import vista.Vista;
+import vista.ControladorVisual;
 
 public class Mazo extends ContenedorDeCartas {
 
@@ -61,7 +61,7 @@ public class Mazo extends ContenedorDeCartas {
 		}
 	}
 
-	public void asignarVistaCartaACartas(Vista vista) {
+	public void asignarVistaCartaACartas(ControladorVisual vista) {
 		for (Carta carta : this.cartas) {
 			carta.asignarVistaCarta(vista);
 		}

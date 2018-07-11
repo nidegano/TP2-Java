@@ -1,17 +1,17 @@
-package opciones;
+package opcionesQueAlteranALaCarta;
 
 import cartas.CartaEspecial;
-import vista.Vista;
+import vista.ControladorVisual;
 
 public class ColocarBocaArriba extends Opcion {
 
-	public ColocarBocaArriba(Vista vista) {
+	public ColocarBocaArriba(ControladorVisual vista) {
 		super(vista);
 		this.setText("colocar boca arriba");
 		
 		this.setOnAction(value -> {
 			
-			CartaEspecial cartaSeleccionada = (CartaEspecial) this.vista.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
+			CartaEspecial cartaSeleccionada = (CartaEspecial) this.controladorVisual.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
 			this.aplicarComando(cartaSeleccionada);
 		});
 	}

@@ -1,17 +1,17 @@
-package opciones;
+package opcionesQueAlteranALaCarta;
 
 import cartas.CartaMonstruo;
-import vista.Vista;
+import vista.ControladorVisual;
 
 public class CambiarAModoDefensaBocaAbajo extends Opcion {
 
-	public CambiarAModoDefensaBocaAbajo(Vista vista) {
+	public CambiarAModoDefensaBocaAbajo(ControladorVisual vista) {
 		super(vista);
 		this.setText("cambiar a modo defensa boca abajo");
 		
 		this.setOnAction(value -> {
 			
-			CartaMonstruo cartaSeleccionada = (CartaMonstruo) this.vista.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
+			CartaMonstruo cartaSeleccionada = (CartaMonstruo) this.controladorVisual.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
 			this.aplicarComando(cartaSeleccionada);
 		});
 	}

@@ -1,21 +1,21 @@
 package botones;
 
 import javafx.scene.control.Button;
-import vista.Vista;
+import vista.ControladorVisual;
 
 public class BotonJugadorB extends Button {
 
-	private Vista vista;
+	private ControladorVisual controladorVisual;
 
-	public BotonJugadorB(Vista vista) {
+	public BotonJugadorB(ControladorVisual vista) {
 		super("Jugador B");
 		this.setMaxSize(200, 200);
 		this.setVisible(true);
 		
-		this.vista = vista;
+		this.controladorVisual = vista;
 		
 		this.setOnAction(value -> {
-			this.vista.avisarDeLaSeleccionDeJugador();
+			this.controladorVisual.avisarDeLaSeleccionDeJugador();
 		});
 	}
 }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import botones.VistaCarta;
+import botones.VistaCartaConcreta;
 import configuraciones.ConfiguracionDeOpciones;
 import efectos.Efecto;
 import efectos.EfectoNulo;
@@ -21,7 +22,7 @@ import juego.ContenedorDeCartas;
 import juego.Jugador;
 import juego.Mano;
 import juego.RecolectorDePartesDeExodia;
-import vista.Vista;
+import vista.ControladorVisual;
 import vista.VistaCampoJugadores;
 
 public abstract class Carta {
@@ -102,12 +103,12 @@ public abstract class Carta {
 
 	public abstract VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores);
 
-	public void asignarVistaCarta(VistaCarta vistaNueva) {
-		this.vistaCarta = vistaNueva;
+	public void asignarVistaCarta(VistaCarta lugar) {
+		this.vistaCarta = lugar;
 	}
 
-	public void asignarVistaCarta(Vista vista) {
-		this.vistaCarta = new VistaCarta(vista);
+	public void asignarVistaCarta(ControladorVisual vista) {
+		this.vistaCarta = new VistaCartaConcreta(vista); //aca hay una dependencia
 		this.vistaCarta.asignarCarta(this);
 	}
 	

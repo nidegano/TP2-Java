@@ -120,11 +120,6 @@ public class Jugador {
 		this.tomarCartaDelMazo();
 	}
 
-	/*
-	 * public void iniciarTurno() { this.fase = new FaseInicial();
-	 * this.juego.actualizar(); }
-	 */
-
 	public void siguienteFase() {
 		this.fase = this.fase.faseSiguiente();
 	}

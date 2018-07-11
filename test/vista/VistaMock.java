@@ -4,10 +4,10 @@ package vista;
 import cartas.Carta;
 import javafx.stage.Stage;
 import juego.Jugador;
-import opciones.Atacar;
-import opciones.Opcion;
+import opcionesQueAlteranALaCarta.Opcion;
+import opcionesQueAlteranAlControladorVisual.Atacar;
 
-public class VistaMock extends Vista {
+public class VistaMock extends ControladorVisual {
 
 	public VistaMock() throws Exception {
 		super();
@@ -32,7 +32,7 @@ public class VistaMock extends Vista {
 	}
 
 	@Override
-	public Jugador jugadorDeTurno() {
+	public Jugador obtenerJugadorDeTurno() {
 		return null;
 	}
 

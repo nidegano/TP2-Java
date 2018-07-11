@@ -1,4 +1,4 @@
-package opciones;
+package opcionesQueAlteranAlControladorVisual;
 
 import java.util.ArrayList;
 
@@ -10,17 +10,17 @@ import excepciones.CapacidadMaximaException;
 import excepciones.NoSePuedeInvocarMonstruosEnEstaFase;
 import excepciones.SoloSePuedeInvocarUnSoloMonstruoEnEstaFase;
 import fases.FasePreparacion;
-import vista.Vista;
+import vista.ControladorVisual;
 
 public class InvocarEnModoAtaqueConSacrificio extends InvocarConSacrificio {
 
-	public InvocarEnModoAtaqueConSacrificio(Vista vista) {
+	public InvocarEnModoAtaqueConSacrificio(ControladorVisual vista) {
 		super(vista);
 		this.setText("invocar en modo ataque");
 		
 		this.setOnAction(value -> {
 			
-			CartaRequiereSacrificios cartaSeleccionada = (CartaRequiereSacrificios) this.vista.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
+			CartaRequiereSacrificios cartaSeleccionada = (CartaRequiereSacrificios) this.controladorVisual.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
 			this.aplicarComando(cartaSeleccionada);
 		});
 	}
@@ -28,7 +28,7 @@ public class InvocarEnModoAtaqueConSacrificio extends InvocarConSacrificio {
 	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
 		try {
 			cartaSeleccionada.chequearSiSePuedeInvocarMonstruo();
-			this.vista.cambiarAModoSeleccionParaSacrificio(this);
+			this.controladorVisual.cambiarAModoSeleccionParaSacrificio(this);
 		} catch (NoSePuedeInvocarMonstruosEnEstaFase | SoloSePuedeInvocarUnSoloMonstruoEnEstaFase 
 				| CapacidadMaximaException e) {
 			e.printStackTrace();
