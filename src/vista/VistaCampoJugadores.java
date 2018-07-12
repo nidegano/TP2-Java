@@ -5,6 +5,7 @@ import cartas.Carta;
 import cartas.CartaDeCampo;
 import cartas.CartaEspecial;
 import cartas.CartaMonstruo;
+import cartas.Jinzo;
 import configuracionesDeVistaCampoJugadores.ConfiguracionDeLaVistaCampoJugadores;
 import configuracionesDeVistaCampoJugadores.ConfiguracionInicialDeCampoDeJugadorA;
 import juego.Jugador;
@@ -50,6 +51,11 @@ public class VistaCampoJugadores {
 	public void actualizarPorModoSeleccionParaAtacar() {
 		this.grilla.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
 		this.activarSoloLasVistasCartaMonstruosNoVaciasDelOponenteDeJugadorDeTurno(this.controladorVisual.obtenerJugadorDeTurno());
+		
+		Carta cartaSeleccionada = this.controladorVisual.obtenerCartaSeleccionada();
+		if (cartaSeleccionada.getClass().equals(Jinzo.class)) {
+			this.grilla.habilitarBotonQueRepresentaAlJugador(this.controladorVisual.obtenerJugadorDeTurno().oponente().nombre());
+		}
 	}
 
 	public void actualizarVidaJugadores() {

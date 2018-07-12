@@ -1,6 +1,7 @@
 package opcionesQueAlteranALaCarta;
 
 import cartas.CartaEspecial;
+import excepciones.CapacidadMaximaException;
 import vista.ControladorVisual;
 
 public class ColocarBocaAbajo extends Opcion {
@@ -17,8 +18,14 @@ public class ColocarBocaAbajo extends Opcion {
 	}
 
 	public void aplicarComando(CartaEspecial cartaSeleccionada) {
-		cartaSeleccionada.desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba();
-		cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
-		cartaSeleccionada.colocarBocaAbajo();
+		try {
+			cartaSeleccionada.chequearSiSePuedeInvocarMonstruo();
+			cartaSeleccionada.desasignarSuVistaCartaDelLugarDeManoEnVistaCampoJugadoresEnElQueEstaba();
+			cartaSeleccionada.vistaCarta().agregarAVistaCampoJugadores();
+			cartaSeleccionada.colocarBocaAbajo();
+		}
+		catch (CapacidadMaximaException e) {
+			e.printStackTrace();
+		}
 	}
 }

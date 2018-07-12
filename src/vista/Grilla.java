@@ -691,4 +691,15 @@ public class Grilla extends Application {
 		}
 return true;
 	}
+
+
+	public void habilitarBotonQueRepresentaAlJugador(String nombre) {
+		
+		if (nombre == this.labelDeJugadorA.getText()) {
+			this.botonJugadorA.setDisable(false);
+		}
+		else {
+			this.botonJugadorB.setDisable(false);
+		}
+	}
 }

@@ -67,7 +67,7 @@ public abstract class CartaMonstruo extends Carta {
 		this.jugadorDuenio.obtenerFase().chequearSiSePuedeInvocaMonstruo(); 
 		//tira SoloSePuedeInvocarUnSoloMonstruoEnEstaFase si ya se invoco uno en la fase
 		if (this.jugadorDuenio.campo().obtenerZonaMonstruos().estaLleno()) {
-			new CapacidadMaximaException();
+			throw new CapacidadMaximaException();
 		}
 	}
 

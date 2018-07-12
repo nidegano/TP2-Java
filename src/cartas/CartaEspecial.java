@@ -6,7 +6,7 @@ import estados.EstadoDeCartaEspecial;
 import estados.ModoBocaAbajo;
 import estados.ModoBocaArriba;
 import estados.ModoCartaEspecialSinInvocar;
-
+import excepciones.CapacidadMaximaException;
 import juego.Campo;
 import juego.Jugador;
 import juego.RecolectorDePartesDeExodia;
@@ -67,5 +67,11 @@ public abstract class CartaEspecial extends Carta {
 	@Override
 	public VistaCarta obtenerLugarVacioMedianteVistaCampoJugadores(VistaCampoJugadores vistaCampoJugadores) {
 		return vistaCampoJugadores.obtenerUnLugarVacio(this);
+	}
+
+	public void chequearSiSePuedeInvocarMonstruo() throws CapacidadMaximaException {
+		if (this.obtenerDuenio().campo().obtenerZonaEspeciales().estaLleno()) {
+			throw new CapacidadMaximaException();
+		}		
 	}
 }

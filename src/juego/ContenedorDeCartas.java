@@ -67,4 +67,8 @@ public class ContenedorDeCartas implements Iterable<Carta> {
 		return this.capacidad == this.cantidad();
 	}
 
+	public int capacidad() {
+		return this.capacidad;
+	}
+
 }

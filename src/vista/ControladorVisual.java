@@ -85,6 +85,7 @@ public class ControladorVisual {
 //Cambio de modo
 	
 	public void cambiarAModoSeleccionParaAtacar(Atacar atacar) {
+		
 		this.modoVista = new ModoSeleccionParaAtacar(this);
 		this.vistaCampoJugadores.actualizarPorModoSeleccionParaAtacar();
 		this.panelDeAccion.ocultarOpciones();

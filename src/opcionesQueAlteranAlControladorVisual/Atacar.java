@@ -17,7 +17,7 @@ public class Atacar extends Opcion {
 		});
 	}
 
-	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
+	public void aplicarComando(CartaMonstruo cartaSeleccionada) {		
 		this.controladorVisual.cambiarAModoSeleccionParaAtacar(this);
 	}
 }
