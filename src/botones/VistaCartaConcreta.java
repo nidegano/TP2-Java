@@ -17,8 +17,8 @@ public class VistaCartaConcreta extends Button implements VistaCarta{
 		this.carta = new CartaNula();
 		this.controladorVisual = vista;
 		
-		this.setMaxSize(150, 25);
-		this.setMinSize(150, 25);
+		this.setMaxSize(100, 25);
+		this.setMinSize(100, 25);
 		this.setVisible(true);
 		this.setDisable(true);
 		

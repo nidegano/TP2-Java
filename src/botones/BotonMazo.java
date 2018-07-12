@@ -7,7 +7,7 @@ public class BotonMazo extends Button {
 
 	public BotonMazo(Juego juego) {
 		super("Mazo");
-		this.setMaxSize(200, 200);
+		this.setMaxSize(100, 100);
 		this.setVisible(true);
 		
 		this.setOnAction(value -> {

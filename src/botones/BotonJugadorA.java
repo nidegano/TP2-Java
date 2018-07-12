@@ -9,7 +9,7 @@ public class BotonJugadorA extends Button {
 
 	public BotonJugadorA(ControladorVisual vista) {
 		super("Jugador A");
-		this.setMaxSize(200, 200);
+		this.setMaxSize(100, 100);
 		this.setVisible(true);
 		
 		this.controladorVisual = vista;
