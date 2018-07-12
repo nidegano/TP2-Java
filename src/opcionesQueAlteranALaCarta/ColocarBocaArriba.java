@@ -32,8 +32,13 @@ public class ColocarBocaArriba extends Opcion {
 	protected void activarSonido() {
 		String musicFile = "resources/sounds/magia.wav";
 		Media sound = new Media(new File(musicFile).toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(sound);
-		mediaPlayer.play();
+		try {
+			MediaPlayer mediaPlayer = new MediaPlayer(sound);
+			mediaPlayer.play();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

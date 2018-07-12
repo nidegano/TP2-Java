@@ -24,7 +24,12 @@ public class BotonFinalizarFase extends Button {
 	private void activarSonido() {
 		String musicFile = "resources/sounds/click2.wav";
 		Media sound = new Media(new File(musicFile).toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(sound);
-		mediaPlayer.play();
+		try {
+			MediaPlayer mediaPlayer = new MediaPlayer(sound);
+			mediaPlayer.play();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
