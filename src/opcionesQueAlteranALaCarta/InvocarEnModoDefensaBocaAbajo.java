@@ -17,6 +17,7 @@ public class InvocarEnModoDefensaBocaAbajo extends Opcion {
 			
 			CartaMonstruo cartaSeleccionada = (CartaMonstruo) this.controladorVisual.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
 			this.aplicarComando(cartaSeleccionada);
+			this.activarSonido();
 		});
 	}
 

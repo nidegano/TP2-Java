@@ -1,5 +1,7 @@
 package juego;
 
+import java.util.Collections;
+
 import cartas.*;
 import excepciones.CapacidadMaximaException;
 import excepciones.MazoSinCartasException;
@@ -51,7 +53,7 @@ public class Mazo extends ContenedorDeCartas {
 		this.agregar(new PiernaDerechaExodia());
 		this.agregar(new PiernaIzquierdaExodia());
 
-		//Collections.shuffle(this.cartas);
+		Collections.shuffle(this.cartas);
 		
 
 	}

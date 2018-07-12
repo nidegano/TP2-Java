@@ -14,6 +14,7 @@ public class ColocarCartaDeCampo extends Opcion {
 			
 			CartaDeCampo cartaSeleccionada = (CartaDeCampo) this.controladorVisual.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
 			this.aplicarComando(cartaSeleccionada);
+			this.activarSonido();
 		});
 	}
 

@@ -14,6 +14,7 @@ public class ColocarBocaAbajo extends Opcion {
 			
 			CartaEspecial cartaSeleccionada = (CartaEspecial) this.controladorVisual.obtenerCartaSeleccionada(); //el casteo es seguro por el contexto
 			this.aplicarComando(cartaSeleccionada);
+			this.activarSonido();
 		});
 	}
 

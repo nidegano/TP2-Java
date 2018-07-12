@@ -13,6 +13,7 @@ public class Descartar extends Opcion {
 			
 			Carta cartaSeleccionada = this.controladorVisual.obtenerCartaSeleccionada();
 			this.aplicarComando(cartaSeleccionada);
+			this.activarSonido();
 		});
 	}
 

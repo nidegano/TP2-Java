@@ -1,10 +1,13 @@
 package vista;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import cartas.Carta;
 import cartas.CartaMonstruo;
 import cartas.CartaNula;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import juego.Juego;
 import juego.Jugador;
@@ -29,6 +32,10 @@ public class ControladorVisual {
 	private ModoDelControladorVisual modoVista;
 	private InvocarConSacrificio opcionQuePidioElCambioDeModo;
 	private ArrayList<CartaMonstruo> seleccionesSecundarias;
+	
+	private MediaPlayer sonidoDeAtaque;
+	private MediaPlayer sonidoDeSacrificio;
+	private MediaPlayer sonidoDeSeleccionDeCarta;
 
 //Constructores
 	
@@ -44,6 +51,24 @@ public class ControladorVisual {
 		this.cartaSeleccionada = new CartaNula();
 		this.modoVista = new ModoNormal(this);
 		this.seleccionesSecundarias = new ArrayList<CartaMonstruo>();
+		
+		this.inicializarSonidos();
+	}
+
+	private void inicializarSonidos() {
+		
+		String musicFile = "resources/sounds/ataque.wav";
+		Media sound = new Media(new File(musicFile).toURI().toString());
+		this.sonidoDeAtaque = new MediaPlayer(sound);
+		
+		String musicFile2 = "resources/sounds/sacrificio.wav";
+		Media sound2 = new Media(new File(musicFile2).toURI().toString());
+		this.sonidoDeSacrificio = new MediaPlayer(sound2);
+		
+		String musicFile3 = "resources/sounds/click.wav";
+		Media sound3 = new Media(new File(musicFile3).toURI().toString());
+		this.sonidoDeSeleccionDeCarta  = new MediaPlayer(sound3);
+		
 	}
 
 	public ControladorVisual() {
@@ -120,9 +145,10 @@ public class ControladorVisual {
 //Reacciones ante un clickeo
 	
 	public void avisarDeLaSeleccionDeUnaVistaDeCarta(Carta cartaNuevaSeleccion) {
+		this.activarSonidoDeClick();
 		this.modoVista.avisarDeLaSeleccionDeUnaVistaDeCarta(cartaNuevaSeleccion);
 	}
-	
+
 	public void avisarDeLaSeleccionDeJugador() {
 		this.modoVista.avisarDeLaSeleccionDeJugador();
 	}
@@ -136,13 +162,15 @@ public class ControladorVisual {
 		((InvocarConSacrificio) this.opcionQuePidioElCambioDeModo).finalizarInvocacionPorSacrificio(this.cartaSeleccionada,this.seleccionesSecundarias);
 		this.grilla.botonDeListoHacerVisible(false);
 		this.cambiarAModoNormal();
+		this.activarSonidoDeSacrificio();
 	}
-	
+
 	public void finalizarComandoDeAtacar(Carta cartaNuevaSeleccion) {
 		((CartaMonstruo) this.cartaSeleccionada).atacar((CartaMonstruo) cartaNuevaSeleccion);
 		this.vistaCampoJugadores.actualizarVidaJugadores();
 		this.cambiarAModoNormal();
 		this.liberarSeleccion();
+		this.activarSonidoDeAtaque();
 	}
 
 	public void finalizarComandoDeAtacarAJugador() {
@@ -151,6 +179,7 @@ public class ControladorVisual {
 		this.vistaCampoJugadores.actualizarVidaJugadores();
 		this.cambiarAModoNormal();
 		this.liberarSeleccion();
+		this.activarSonidoDeAtaque();
 	}
 
 	
@@ -182,5 +211,17 @@ public class ControladorVisual {
 
 	public void reseleccionarCarta(CartaMonstruo cartaSeleccionada) {
 		this.avisarDeLaSeleccionDeUnaVistaDeCarta(cartaSeleccionada);
+	}
+	
+	private void activarSonidoDeAtaque() {
+		this.sonidoDeAtaque.play();	
+	}
+	
+	private void activarSonidoDeSacrificio() {
+		this.sonidoDeSacrificio.play();	
+	}
+	
+	private void activarSonidoDeClick() {
+		this.sonidoDeSeleccionDeCarta.play();	
 	}
 }

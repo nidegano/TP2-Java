@@ -12,6 +12,7 @@ public class Listo extends Opcion {
 		this.setOnAction(value -> {
 			
 			this.controladorVisual.finalizarInvocacionPorSacrificio();
+			this.activarSonido();
 		});
 	}
 }
