@@ -188,7 +188,9 @@ public class Jugador {
 		if( this.nombre == "JUGADOR A" ) {
 			grilla.habilitarLasVistasCartaMonstruoQueNoEstenVaciasDelJugadorB();
 		}
-		grilla.habilitarLasVistasCartaMonstruoQueNoEstenVaciasDelJugadorA();
+		else {
+			grilla.habilitarLasVistasCartaMonstruoQueNoEstenVaciasDelJugadorA();
+		}
 	}
 
 	public VistaCarta obtenerLugarVacioDeLaZonaDeManoATravezDeLaGrilla(Grilla grilla) {

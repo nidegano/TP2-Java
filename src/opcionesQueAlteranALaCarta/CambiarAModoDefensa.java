@@ -5,8 +5,8 @@ import vista.ControladorVisual;
 
 public class CambiarAModoDefensa extends Opcion {
 
-	public CambiarAModoDefensa(ControladorVisual vista) {
-		super(vista);
+	public CambiarAModoDefensa(ControladorVisual controladorVisual) {
+		super(controladorVisual);
 		this.setText("cambiar a modo defensa");
 		
 		this.setOnAction(value -> {
@@ -18,5 +18,6 @@ public class CambiarAModoDefensa extends Opcion {
 
 	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
 		cartaSeleccionada.cambiarAModoDefensa();
+		this.controladorVisual.reseleccionarCarta(cartaSeleccionada);
 	}
 }

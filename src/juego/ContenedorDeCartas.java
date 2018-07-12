@@ -44,9 +44,8 @@ public class ContenedorDeCartas implements Iterable<Carta> {
 	}
 
 	public void matarATodasLasCartas() {
-		Iterator<Carta> iterator = this.iterator();
-		while ((iterator.hasNext()) && (this.cartas.size() != 0)) {
-			Carta carta = iterator.next();
+		while (this.cartas.size() != 0) {
+			Carta carta = this.cartas.get(this.cartas.size()-1);
 			carta.matar();
 		}
 	}

@@ -1,7 +1,5 @@
 package juego;
 
-import java.util.Collections;
-
 import cartas.*;
 import excepciones.CapacidadMaximaException;
 import excepciones.MazoSinCartasException;
@@ -22,6 +20,7 @@ public class Mazo extends ContenedorDeCartas {
 	}
 
 	public void generarCartas() throws CapacidadMaximaException {
+		
 		// CARTAS MONSTRUO
 		for (int i = 0; i <= 3; i++) {
 			this.agregar(new AlphaTheMagnetWarrior());
@@ -38,9 +37,9 @@ public class Mazo extends ContenedorDeCartas {
 		// CARTAS MAGICAS
 		this.agregar(new Fisura());
 		this.agregar(new OllaDeLaCodicia());
+		this.agregar(new AgujeroOscuro());
 		// CARTAS TRAMPA
 		this.agregar(new CilindroMagico());
-		this.agregar(new AgujeroOscuro());
 		this.agregar(new Reinforcements());
 		// CARTAS DE CAMPO
 		this.agregar(new Sogen());
@@ -52,7 +51,9 @@ public class Mazo extends ContenedorDeCartas {
 		this.agregar(new PiernaDerechaExodia());
 		this.agregar(new PiernaIzquierdaExodia());
 
-		Collections.shuffle(this.cartas);
+		//Collections.shuffle(this.cartas);
+		
+
 	}
 
 	public void asignarComoDuenioDeTodasLasCartasA(Jugador jugador) {

@@ -18,5 +18,6 @@ public class CambiarModoAtaque extends Opcion {
 
 	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
 		cartaSeleccionada.cambiarAModoAtaque();
+		this.controladorVisual.reseleccionarCarta(cartaSeleccionada);
 	}
 }

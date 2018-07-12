@@ -179,5 +179,7 @@ public class ControladorVisual {
 		this.liberarSeleccion();
 	}
 
-
+	public void reseleccionarCarta(CartaMonstruo cartaSeleccionada) {
+		this.avisarDeLaSeleccionDeUnaVistaDeCarta(cartaSeleccionada);
+	}
 }

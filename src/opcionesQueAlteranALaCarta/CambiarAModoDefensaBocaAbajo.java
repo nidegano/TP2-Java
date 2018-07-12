@@ -18,5 +18,6 @@ public class CambiarAModoDefensaBocaAbajo extends Opcion {
 
 	public void aplicarComando(CartaMonstruo cartaSeleccionada) {
 		cartaSeleccionada.cambiarAModoDefensaBocaAbajo();
+		this.controladorVisual.reseleccionarCarta(cartaSeleccionada);
 	}
 }

@@ -519,12 +519,12 @@ public class Grilla extends Application {
 
 	public void configurarBotonesFasePreparacionTurnoJugadorA() {
 		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.habilitarTodasLasVistasNoVaciasDe(this.vistaCartaManoJugadorA);
+		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorA);
 	}
 
 	public void configurarBotonesFasePreparacionTurnoJugadorB() {
 		this.deshabilitarTodosLosBotonesAsociadosAVistaCampoJugadores();
-		this.habilitarTodasLasVistasNoVaciasDe(this.vistaCartaManoJugadorB);
+		this.habilitarTodasLasVistasDe(this.vistaCartaManoJugadorB);
 	}
 
 	public void configurarBotonesFaseAtaqueTurnoJugadorA() {
