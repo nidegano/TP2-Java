@@ -137,6 +137,7 @@ public class Grilla extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		
 		primaryStage.setTitle("Al-Go-Oh!");
 		Scene scene = new Scene(this.gridPane, 1200, 1200);
 		primaryStage.setFullScreen(true);
