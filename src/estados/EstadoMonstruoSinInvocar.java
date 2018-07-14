@@ -1,6 +1,7 @@
 package estados;
 
 import configuraciones.ConfiguracionDeOpciones;
+import configuraciones.MostrarOpcionesDeMonstruoSinInvocar;
 import efectos.EfectoDeCampo;
 import efectos.EfectoDeVolteo;
 import efectos.EfectoEspeciales;
