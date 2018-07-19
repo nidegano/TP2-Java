@@ -16,7 +16,7 @@ public class InvocarEnModoDefensaConSacrificio extends InvocarConSacrificio {
 
 	public InvocarEnModoDefensaConSacrificio(ControladorVisual vista) {
 		super(vista);
-		this.setText("invocar en modo defensa");
+		this.setText("Invocar en modo defensa");
 		
 		this.setOnAction(value -> {
 			
@@ -32,7 +32,7 @@ public class InvocarEnModoDefensaConSacrificio extends InvocarConSacrificio {
 			this.controladorVisual.cambiarAModoSeleccionParaSacrificio(this);
 		} catch (NoSePuedeInvocarMonstruosEnEstaFase | SoloSePuedeInvocarUnSoloMonstruoEnEstaFase 
 				| CapacidadMaximaException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class InvocarEnModoDefensaConSacrificio extends InvocarConSacrificio {
 			((CartaRequiereSacrificios) cartaSeleccionada).invocarEnModoDefensa(sacrificios);
 		}
 		catch (CantidadInadecuadaDeSacrificiosException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}	
 	}
 }

@@ -66,7 +66,7 @@ public abstract class Carta {
 		try {
 			cementerio.agregar(this);
 		} catch (CapacidadMaximaException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 		this.quitarDeLosContenedoresEnLosQueEstaba();
 	}
@@ -92,7 +92,7 @@ public abstract class Carta {
 			try {
 				contenedor.remover(this);
 			} catch (CartaNoEstaEnContenedorDeCartasException e) {
-				e.printStackTrace();
+				// e.printStackTrace();
 			}
 		this.removerContenedoresQueLacontienen();
 	}

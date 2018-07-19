@@ -11,7 +11,7 @@ public class ColocarBocaArriba extends Opcion {
 
 	public ColocarBocaArriba(ControladorVisual vista) {
 		super(vista);
-		this.setText("colocar boca arriba");
+		this.setText("Colocar boca arriba");
 		
 		this.setOnAction(value -> {
 			
@@ -37,7 +37,7 @@ public class ColocarBocaArriba extends Opcion {
 			mediaPlayer.play();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 

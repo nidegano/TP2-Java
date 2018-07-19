@@ -46,7 +46,7 @@ public class RecolectorDePartesDeExodia {
 			try {
 				this.lugarParaElBrazoIzquierdo.agregar(brazoIzquierdoExodia);
 			} catch (CapacidadMaximaException e) {
-				e.printStackTrace();
+				// e.printStackTrace();
 			}
 
 		if (this.tengoTodasLasPartesDeExodia())
@@ -58,7 +58,7 @@ public class RecolectorDePartesDeExodia {
 			try {
 				this.lugarParaElBrazoDerecho.agregar(brazoDerechoExodia);
 			} catch (CapacidadMaximaException e) {
-				e.printStackTrace();
+				// e.printStackTrace();
 			}
 
 		if (this.tengoTodasLasPartesDeExodia())
@@ -70,7 +70,7 @@ public class RecolectorDePartesDeExodia {
 			try {
 				this.lugarParaLaPiernaDerecha.agregar(piernaDerechaExodia);
 			} catch (CapacidadMaximaException e) {
-				e.printStackTrace();
+				// e.printStackTrace();
 			}
 
 		if (this.tengoTodasLasPartesDeExodia())
@@ -82,7 +82,7 @@ public class RecolectorDePartesDeExodia {
 			try {
 				this.lugarParaLaPiernaIzquierda.agregar(piernaIzquierdaExodia);
 			} catch (CapacidadMaximaException e) {
-				e.printStackTrace();
+				// e.printStackTrace();
 			}
 
 		if (this.tengoTodasLasPartesDeExodia())
@@ -94,7 +94,7 @@ public class RecolectorDePartesDeExodia {
 			try {
 				this.lugarParaLaCabeza.agregar(cabezaExodia);
 			} catch (CapacidadMaximaException e) {
-				e.printStackTrace();
+				// e.printStackTrace();
 			}
 
 		if (this.tengoTodasLasPartesDeExodia())
@@ -113,7 +113,7 @@ public class RecolectorDePartesDeExodia {
 				try {
 					lugar.remover(carta);
 				} catch (CartaNoEstaEnContenedorDeCartasException e) {
-					e.printStackTrace();
+					// e.printStackTrace();
 				}
 		}
 	}

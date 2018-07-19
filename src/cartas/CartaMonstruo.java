@@ -95,7 +95,7 @@ public abstract class CartaMonstruo extends Carta {
 			this.jugadorDuenio.obtenerMano().remover(this);
 		}
 		catch (CapacidadMaximaException | CartaNoEstaEnContenedorDeCartasException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 

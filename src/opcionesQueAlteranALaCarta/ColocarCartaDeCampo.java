@@ -8,7 +8,7 @@ public class ColocarCartaDeCampo extends Opcion {
 
 	public ColocarCartaDeCampo(ControladorVisual vista) {
 		super(vista);
-		this.setText("colocar carta de campo");
+		this.setText("Colocar carta de campo");
 		
 		this.setOnAction(value -> {
 			
@@ -26,7 +26,7 @@ public class ColocarCartaDeCampo extends Opcion {
 			cartaSeleccionada.colocarCartaDeCampo();
 		}
 		catch (YaHayUnaCartaDeCampoColocadaException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 
 	}

@@ -7,7 +7,7 @@ public class Descartar extends Opcion {
 
 	public Descartar(ControladorVisual vista) {
 		super(vista);
-		this.setText("descartar");
+		this.setText("Descartar");
 		
 		this.setOnAction(value -> {
 			

@@ -18,7 +18,7 @@ public class EfectoFisura extends EfectoEspeciales {
 			this.cartaDuenia.matar();
 		}
 		catch (ContenedorDeCartasVacioException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 

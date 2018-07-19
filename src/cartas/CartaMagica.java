@@ -28,7 +28,7 @@ public abstract class CartaMagica extends CartaEspecial {
 			this.jugadorDuenio.obtenerMano().remover(this);
 		}
 		catch (CapacidadMaximaException | CartaNoEstaEnContenedorDeCartasException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			
 		}
 	}

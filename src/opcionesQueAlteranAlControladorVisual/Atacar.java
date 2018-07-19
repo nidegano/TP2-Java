@@ -8,7 +8,7 @@ public class Atacar extends Opcion {
 
 	public Atacar(ControladorVisual vista) {
 		super(vista);
-		this.setText("atacar");
+		this.setText("Atacar");
 		
 		this.setOnAction(value -> {
 			

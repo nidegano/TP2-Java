@@ -59,7 +59,7 @@ public class Jugador {
 			this.juego.seTomoEstaCartaDelMazo(unaCarta);
 		}
 		catch (CapacidadMaximaException | NoSePuedeTomarMasCartasDelMazoExceptionPorqueYaSeTomoUnaEnFaseInicial e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		} 
 		catch (TengoTodasLasPartesDeExodiaException e) {
 			this.fase = new FaseJuegoTerminado();
@@ -139,7 +139,7 @@ public class Jugador {
 		try {
 			this.fase.ejecutar(this);
 		} catch (CapacidadMaximaException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 		if (this.fase.termino()) {
 			this.fase = this.fase.faseSiguiente();

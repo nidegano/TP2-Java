@@ -17,8 +17,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import juego.*;
 import opcionesQueAlteranAlControladorVisual.Atacar;
@@ -223,13 +226,20 @@ public class Grilla extends Application {
 	}
 
 	private void inicializarLabels() {
-		this.displayDeTexto = new Label("INFORMACION");
+		this.displayDeTexto = new Label("");
+		this.displayDeTexto.setTextFill(Color.web("#FFFFFF"));
 		this.labelDeJugadorA = new Label("JUGADOR A");
+		this.labelDeJugadorA.setTextFill(Color.web("#FFFFFF"));
 		this.labelDeJugadorB = new Label("JUGADOR B");
+		this.labelDeJugadorB.setTextFill(Color.web("#FFFFFF"));
 		this.labelVidaDeJugadorA = new Label("-");
+		this.labelVidaDeJugadorA.setTextFill(Color.web("#FFFFFF"));
 		this.labelVidaDeJugadorB = new Label("-");
+		this.labelVidaDeJugadorB.setTextFill(Color.web("#FFFFFF"));
 		this.labelDeTurno = new Label("");
-		this.labelDeFase = new Label("");	
+		this.labelDeTurno.setTextFill(Color.web("#FFFFFF"));
+		this.labelDeFase = new Label("");
+		this.labelDeFase.setTextFill(Color.web("#FFFFFF"));
 	}
 
 	private void inicializarSoporteParaImagenDeCartaSeleccionada() throws FileNotFoundException {
@@ -244,7 +254,14 @@ public class Grilla extends Application {
 		this.gridPane = new GridPane();
 		this.gridPane.setHgap(10);
 		this.gridPane.setVgap(10);
-		this.gridPane.setAlignment(Pos.CENTER);		
+		this.gridPane.setAlignment(Pos.CENTER);
+		BackgroundImage fondo = null;
+		try {
+			fondo = new BackgroundImage(new Image(new FileInputStream("resources/images/fondo.png")), null, null, null, null);
+		} catch (FileNotFoundException e) {
+			// e.printStackTrace();
+		}
+		this.gridPane.setBackground(new Background(fondo));
 	}
 
 	private void agregarBotonesALaGrilla() {

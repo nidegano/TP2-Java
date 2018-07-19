@@ -28,7 +28,7 @@ public abstract class CartaDeCampo extends CartaEspecial {
 		catch (CapacidadMaximaException e) {
 			throw new YaHayUnaCartaDeCampoColocadaException();
 		} catch (CartaNoEstaEnContenedorDeCartasException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 	
@@ -45,7 +45,7 @@ public abstract class CartaDeCampo extends CartaEspecial {
 			this.activar();
 		}
 		catch (YaHayUnaCartaDeCampoColocadaException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 	

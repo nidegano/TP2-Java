@@ -11,7 +11,7 @@ public class InvocarEnModoAtaque extends Opcion {
 
 	public InvocarEnModoAtaque(ControladorVisual vista) {
 		super(vista);
-		this.setText("invocar en modo ataque");
+		this.setText("Invocar en modo ataque");
 		
 		this.setOnAction(value -> {
 			
@@ -30,7 +30,7 @@ public class InvocarEnModoAtaque extends Opcion {
 			cartaSeleccionada.invocarEnModoAtaque();
 		} catch (NoSePuedeInvocarMonstruosEnEstaFase | SoloSePuedeInvocarUnSoloMonstruoEnEstaFase 
 				| CapacidadMaximaException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 }

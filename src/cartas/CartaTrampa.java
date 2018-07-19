@@ -20,7 +20,7 @@ public abstract class CartaTrampa extends CartaEspecial {
 			this.jugadorDuenio.obtenerMano().remover(this);
 		}
 		catch (CapacidadMaximaException | CartaNoEstaEnContenedorDeCartasException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			
 		}
 	}	

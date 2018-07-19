@@ -11,7 +11,7 @@ public class InvocarEnModoDefensaBocaAbajo extends Opcion {
 
 	public InvocarEnModoDefensaBocaAbajo(ControladorVisual vista) {
 		super(vista);
-		this.setText("invocar en modo defensa boca abajo");
+		this.setText("Invocar en modo defensa boca abajo");
 		
 		this.setOnAction(value -> {
 			
@@ -30,7 +30,7 @@ public class InvocarEnModoDefensaBocaAbajo extends Opcion {
 			cartaSeleccionada.invocarEnModoDefensaBocaAbajo();
 		} catch (NoSePuedeInvocarMonstruosEnEstaFase | SoloSePuedeInvocarUnSoloMonstruoEnEstaFase 
 				| CapacidadMaximaException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 }

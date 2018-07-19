@@ -29,7 +29,7 @@ public class BotonFinalizarFase extends Button {
 			mediaPlayer.play();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 }

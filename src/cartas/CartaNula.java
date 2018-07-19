@@ -28,7 +28,7 @@ public class CartaNula extends Carta {
 		try {
 			throw new NoSePuedeColocarUnaCartaNulaEnCampoException();
 		} catch (NoSePuedeColocarUnaCartaNulaEnCampoException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 		return null;
 	}

@@ -16,7 +16,7 @@ public class InvocarEnModoDefensaBocaAbajoConSacrificio extends InvocarConSacrif
 
 	public InvocarEnModoDefensaBocaAbajoConSacrificio(ControladorVisual vista) {
 		super(vista);
-		this.setText("invocar en modo defensa boca abajo");
+		this.setText("Invocar en modo defensa boca abajo");
 		
 		this.setOnAction(value -> {
 			
@@ -32,7 +32,7 @@ public class InvocarEnModoDefensaBocaAbajoConSacrificio extends InvocarConSacrif
 			this.controladorVisual.cambiarAModoSeleccionParaSacrificio(this);
 		} catch (NoSePuedeInvocarMonstruosEnEstaFase | SoloSePuedeInvocarUnSoloMonstruoEnEstaFase 
 				| CapacidadMaximaException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class InvocarEnModoDefensaBocaAbajoConSacrificio extends InvocarConSacrif
 			((CartaRequiereSacrificios) cartaSeleccionada).invocarEnModoDefensaBocaAbajo(sacrificios);
 		}
 		catch (CantidadInadecuadaDeSacrificiosException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}	
 	}
 }

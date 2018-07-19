@@ -8,7 +8,7 @@ public class ColocarBocaAbajo extends Opcion {
 
 	public ColocarBocaAbajo(ControladorVisual vista) {
 		super(vista);
-		this.setText("colocar boca abajo");
+		this.setText("Colocar boca abajo");
 		
 		this.setOnAction(value -> {
 			
@@ -26,7 +26,7 @@ public class ColocarBocaAbajo extends Opcion {
 			cartaSeleccionada.colocarBocaAbajo();
 		}
 		catch (CapacidadMaximaException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 }

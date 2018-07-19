@@ -7,7 +7,7 @@ public class CambiarModoAtaque extends Opcion {
 	
 	public CambiarModoAtaque(ControladorVisual vista) {
 		super(vista);
-		this.setText("cambiar a modo ataque");
+		this.setText("Cambiar a modo ataque");
 		
 		this.setOnAction(value -> {
 			

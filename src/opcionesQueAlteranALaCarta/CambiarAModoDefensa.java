@@ -7,7 +7,7 @@ public class CambiarAModoDefensa extends Opcion {
 
 	public CambiarAModoDefensa(ControladorVisual controladorVisual) {
 		super(controladorVisual);
-		this.setText("cambiar a modo defensa");
+		this.setText("Cambiar a modo defensa");
 		
 		this.setOnAction(value -> {
 			

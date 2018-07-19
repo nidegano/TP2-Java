@@ -29,7 +29,7 @@ public abstract class Opcion extends Button {
 			mediaPlayer.play();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 }

@@ -7,7 +7,7 @@ public class CambiarAModoDefensaBocaAbajo extends Opcion {
 
 	public CambiarAModoDefensaBocaAbajo(ControladorVisual vista) {
 		super(vista);
-		this.setText("cambiar a modo defensa boca abajo");
+		this.setText("Cambiar a modo defensa boca abajo");
 		
 		this.setOnAction(value -> {
 			
